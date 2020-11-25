@@ -30,6 +30,11 @@
  		<put-attribute name="title"  value="{2}" />
  		<put-attribute name="main"  value="/WEB-INF/views/{1}/{2}.jsp"/>
  	</definition>
+ 	
+ 	<definition name="*/*/*.tiles" extends="home.tiles">
+ 		<put-attribute name="title"  value="{3}" />
+ 		<put-attribute name="main"  value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+ 	</definition>
 </tiles-definitions>
 
 
