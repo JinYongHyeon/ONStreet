@@ -37,12 +37,12 @@ public class TestJUnit {
 	
 	@Test
 	public void board(){
-
+		
 	}
 	
 	@Test
 	public void member(){
-
+		System.out.println(mm.login("bityong"));
 	}
 }
 
