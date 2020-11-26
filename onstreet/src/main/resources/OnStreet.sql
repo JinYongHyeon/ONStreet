@@ -47,6 +47,7 @@ CREATE TABLE os_event(
 CREATE TABLE os_show(
 	show_no NUMBER PRIMARY KEY,
 	show_title VARCHAR2(100) NOT NULL,
+	show_img VARCHAR2(100) NOT NULL,
 	show_write_date DATE NOT NULL,
 	show_content CLOB NOT NULL,
 	show_date DATE NOT NULL,
@@ -121,5 +122,14 @@ DROP TABLE os_notice;
 --샘플 아이디(관객)
 INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
 VALUES('bityong','hey1234','펭수','판교','01023451234','bit@gmail.com','펭귄','1997-01-01');
+
+--샘플 권환(관객)
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','bityong');
+
+--로그인
+SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
+a.sns,a.account,a.artist_info,a.check_date
+FROM os_member m, os_artist a
+WHERE m.id = a.id(+) AND m.id='bityong'
 
 

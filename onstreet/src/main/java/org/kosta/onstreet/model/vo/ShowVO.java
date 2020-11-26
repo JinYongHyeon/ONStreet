@@ -3,6 +3,7 @@ package org.kosta.onstreet.model.vo;
 public class ShowVO {
 	private String showNo;// 공연일정번호
 	private String showTitle;// 공연일정 제목
+	private String showImg;//포스터
 	private String showWriteDate;// 공연일정 작성일
 	private String showContent;// 공연일정 내용
 	private String showDate;// 공연날짜
@@ -12,17 +13,19 @@ public class ShowVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public ShowVO(String showNo, String showTitle, String showWriteDate, String showContent, String showDate,
-			ArtistVO artistVO) {
+	
+	public ShowVO(String showNo, String showTitle, String showImg, String showWriteDate, String showContent,
+			String showDate, ArtistVO artistVO) {
 		super();
 		this.showNo = showNo;
 		this.showTitle = showTitle;
+		this.showImg = showImg;
 		this.showWriteDate = showWriteDate;
 		this.showContent = showContent;
 		this.showDate = showDate;
 		this.artistVO = artistVO;
 	}
+
 
 	public String getShowNo() {
 		return showNo;
@@ -38,6 +41,14 @@ public class ShowVO {
 
 	public void setShowTitle(String showTitle) {
 		this.showTitle = showTitle;
+	}
+
+	public String getShowImg() {
+		return showImg;
+	}
+
+	public void setShowImg(String showImg) {
+		this.showImg = showImg;
 	}
 
 	public String getShowWriteDate() {
