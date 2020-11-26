@@ -5,4 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.MemberMapper">
  	
+ 	<resultMap type="memberVO" id="">
+ 	
+ 	</resultMap>
+ 	
+ 	<select id ="login" resultMap="">
+ 		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
+		a.sns,a.account,a.artist_info,a.check_date
+		FROM os_member m, os_artist a
+		WHERE m.id = a.id(+) AND m.id=#{value}
+ 	</select>
+
 </mapper>

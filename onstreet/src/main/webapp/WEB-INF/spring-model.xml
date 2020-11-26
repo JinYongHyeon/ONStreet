@@ -45,6 +45,7 @@
 class="org.mybatis.spring.SqlSessionFactoryBean">
  <property name="dataSource" ref="dataSource"></property>
   <property name="typeAliasesPackage" value="org.kosta.myapp.model.vo" />
+  <!-- 카멜표기법 변환 -->
  <property name="configuration">
      <bean class="org.apache.ibatis.session.Configuration">
        <property name="mapUnderscoreToCamelCase" value="true"/>
