@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.service.MemberService;
+import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -51,7 +52,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		// 사용자가 로그인시 입력한 ID 반환
 		String id = authentication.getName();
 		// 입력받은 id를 이용해 사용자 정보 DB로부터 조회
-		MemberVO member = memberService.findMemberById(id);
+		ArtistVO member = memberService.findMemberById(id);
 		if (member == null) {
 			throw new UsernameNotFoundException("회원 아이디가 존재하지 않습니다");
 		}
