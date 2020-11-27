@@ -47,7 +47,7 @@ CREATE TABLE os_event(
 CREATE TABLE os_show(
 	show_no NUMBER PRIMARY KEY,
 	show_title VARCHAR2(100) NOT NULL,
-	show_img VARCHAR2(100) NOT NULL,
+	show_img VARCHAR2(100),
 	show_write_date DATE NOT NULL,
 	show_content CLOB NOT NULL,
 	show_date DATE NOT NULL,
