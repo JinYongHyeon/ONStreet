@@ -29,7 +29,7 @@
 		<%-- 비로그인 --%>
 		<sec:authorize access="!hasRole('ROLE_MEMBER')">
 
-			<a href="" id="loginFormBtn">로그인</a>
+			<a href="#" id="loginFormBtn">로그인</a>
 			<a href="">회원가입</a>
 		</sec:authorize>
 
