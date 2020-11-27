@@ -41,5 +41,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="artistCheckDate" resultType="string">
  		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>
+ 	
+ 	<!-- 닉네임 중복검사 -->
+ 	<select id="nickNameCheck" resultType="int">
+ 		SELECT COUNT(*) FROM os_member WHERE nickname=#{value}
+ 	</select>
 
 </mapper>

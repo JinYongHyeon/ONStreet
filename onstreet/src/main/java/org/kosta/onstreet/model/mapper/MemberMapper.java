@@ -24,4 +24,11 @@ public interface MemberMapper {
 	public List<AuthVO> selectAuthorityByUsername(String id);
 	
 	public String artistCheckDate(String id);
+	
+	/**
+	 * 닉네임중복검사 - 진용현
+	 * @param nickName
+	 * @return
+	 */
+	public int nickNameCheck(String nickName);
 }
