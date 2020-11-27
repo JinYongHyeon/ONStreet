@@ -13,4 +13,7 @@ public interface MemberService {
 	List<AuthVO> selectAuthorityByUsername(String id);
 	
 	String artistCheckDate(String id);
+	
+	int nickNameCheck(String nickName);
+
 }
