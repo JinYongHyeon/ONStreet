@@ -1,14 +1,13 @@
 package org.kosta.onstreet;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.service.BoardService;
+//github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -41,9 +40,21 @@ public class TestJUnit {
 	@Resource
 	private BoardMapper bm;
 	
+	private BoardService bs;
 	@Test
 	public void board(){
+
 		System.out.println(bm.getTotalArtistCount());
+
+		/* 이동욱 테스트
+		공연일정 전체 글 불러오기 테스트
+		String pagingBean = "1";
+		System.out.println(bs.getShowList(pagingBean));
+		공연일정 상세보기 테스트
+		*/
+		String showNo ="4";
+		System.out.println(bs.getShowDetail(showNo));
+
 	}
 	
 	@Test

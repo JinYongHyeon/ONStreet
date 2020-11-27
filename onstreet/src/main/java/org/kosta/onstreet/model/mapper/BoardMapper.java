@@ -22,11 +22,13 @@ public interface BoardMapper {
 	List<ArtistVO> getArtistList(PagingBean pagingBean);
 
 	//이동욱 시작
-	//게시물 전체개수 불러오는 메서드
+	//공연일정글 전체개수 불러오는 메서드
 	int getTotalShowCount();
-	//게시물 전체 리스트 불러오는 메서드
+	//공연일정 전체 리스트 불러오는 메서드
 	List<ShowVO> getShowList(PagingBean pagingBean);
 
 
+	// 공연일정 상세보기
+	ShowVO getShowDetail(String showNo);
 
 }

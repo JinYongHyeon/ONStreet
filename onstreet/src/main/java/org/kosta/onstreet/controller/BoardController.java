@@ -26,9 +26,22 @@ public class BoardController {
 
 	// 이동욱 시작
 	// 전체리스트 보여준는 메서드
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("getShowList.do")
 	public ModelAndView getShowList(String pageNo) {
-		return new ModelAndView("board/show/showList.tiles","slvo",boardService.getShowList(pageNo));
-
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/show/showList.tiles");
+		mv.addObject("slvo",boardService.getShowList(pageNo));
+		mv.addObject("totalPostCount",boardService.getTotalShowCount());
+		return mv;
+	}
+	// 공연상세보기 메서드
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getShowDetail.do")
+	public ModelAndView getShowDetail(String showNo) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/show/showDetail.tiles");
+		mv.addObject("svo", boardService.getShowDetail(showNo));
+		return mv;
 	}
 }
