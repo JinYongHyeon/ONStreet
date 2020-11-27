@@ -18,13 +18,8 @@
 	<div class="col-sm-8 col-sm-offset-2">
 		<nav>
 			<ul>
-<<<<<<< HEAD
-				<li><a href="${pageContext.request.contextPath}/home.do">공연</a></li>
-				<li><a href="${pageContext.request.contextPath}/getArtistList.do">아티스트</a></li>
-=======
 				<li><a href="${pageContext.request.contextPath}/getShowList.do">공연</a></li>
-				<li><a href="${pageContext.request.contextPath}/home.do">아티스트</a></li>
->>>>>>> branch 'main' of https://github.com/JinYongHyeon/ONStreet.git
+				<li><a href="${pageContext.request.contextPath}/getArtistList.do">아티스트</a></li>
 				<li><a href="${pageContext.request.contextPath}/home.do">이벤트</a></li>
 				<li><a href="${pageContext.request.contextPath}/home.do">Q&A</a></li>
 			</ul>

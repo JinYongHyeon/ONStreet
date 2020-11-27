@@ -43,9 +43,7 @@ public class TestJUnit {
 	
 	@Test
 	public void board(){
-		List<ArtistVO> list = bm.getArtistList();
-		for(ArtistVO avo:list)
-		System.out.println(avo.getMemberVO().getNickName());
+		System.out.println(bm.getTotalArtistCount());
 	}
 	
 	@Test

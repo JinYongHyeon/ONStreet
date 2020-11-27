@@ -4,15 +4,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.onstreet.model.mapper.BoardMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
-
-import javax.annotation.Resource;
-
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
+import org.kosta.onstreet.model.vo.ArtistListVO;
+import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,9 +17,20 @@ public class BoardServiceImpl implements BoardService {
 	@Resource
 	private BoardMapper boardMapper;
 	
+	/**
+	 * 정지윤
+	 * 아티스트 리스트 불러오기
+	 */
 	@Override
-	public List<ArtistVO> getArtistList() {
-		return boardMapper.getArtistList();
+	public ArtistListVO getArtistList(String pageNo) {
+		int artistTotalCount = boardMapper.getTotalArtistCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(artistTotalCount);
+		else
+			pagingBean = new PagingBean(artistTotalCount,Integer.parseInt(pageNo));
+		ArtistListVO artistListVO = new ArtistListVO(boardMapper.getArtistList(pagingBean),pagingBean);
+		return artistListVO;
 	}
 
 	//이동욱시작
