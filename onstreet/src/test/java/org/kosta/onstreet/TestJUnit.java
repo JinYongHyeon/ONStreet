@@ -45,7 +45,10 @@ public class TestJUnit {
 	
 	@Test
 	public void member(){
-		System.out.println(mm.login("bityong"));
+		
+		//System.out.println(mm.login("bityong")); 로그인테스트
+		//System.out.println(mm.selectAuthorityByUsername("bityong")); 권한조회테스트
+		System.out.println(mm.artistCheckDate("biton")==null);
 	}
 }
 

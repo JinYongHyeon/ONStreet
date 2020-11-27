@@ -123,13 +123,28 @@ DROP TABLE os_notice;
 INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
 VALUES('bityong','hey1234','펭수','판교','01023451234','bit@gmail.com','펭귄','1997-01-01');
 
+INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
+VALUES('biton','hey1234','펭수2','판교','01023451234','bit@gmail.com','펭귄2','1997-01-01');
+
+--샘플 아티스트 정보
+INSERT INTO os_artist(id,sns,account,artist_info) VALUES('biton','instagram','2222223141','하이루');
+
 --샘플 권환(관객)
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','bityong');
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','biton');
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_ARTIST','biton');
 
 --로그인
 SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
 a.sns,a.account,a.artist_info,a.check_date
 FROM os_member m, os_artist a
 WHERE m.id = a.id(+) AND m.id='bityong'
+
+--권한
+SELECT auth_name,id FROM os_auth WHERE id='bityong';
+
+--아티스트 승인검사
+SELECT check_date FROM os_artist WHERE id='biton'; 
+
 
 
