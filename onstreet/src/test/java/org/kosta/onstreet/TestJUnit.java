@@ -1,10 +1,14 @@
 package org.kosta.onstreet;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.ArtistVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -34,10 +38,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 	@Resource
 	private MemberMapper mm;
+	@Resource
+	private BoardMapper bm;
 	
 	@Test
 	public void board(){
-		
+		List<ArtistVO> list = bm.getArtistList();
+		for(ArtistVO avo:list)
+		System.out.println(avo.getMemberVO().getNickName());
 	}
 	
 	@Test
@@ -45,7 +53,7 @@ public class TestJUnit {
 		
 		//System.out.println(mm.login("bityong")); 로그인테스트
 		//System.out.println(mm.selectAuthorityByUsername("bityong")); 권한조회테스트
-		System.out.println(mm.artistCheckDate("biton")==null);
+		//System.out.println(mm.artistCheckDate("biton")==null);
 	}
 }
 

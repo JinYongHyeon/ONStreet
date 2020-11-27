@@ -19,7 +19,7 @@
 		<nav>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/home.do">공연</a></li>
-				<li><a href="${pageContext.request.contextPath}/home.do">아티스트</a></li>
+				<li><a href="${pageContext.request.contextPath}/getArtistList.do">아티스트</a></li>
 				<li><a href="${pageContext.request.contextPath}/home.do">이벤트</a></li>
 				<li><a href="${pageContext.request.contextPath}/home.do">Q&A</a></li>
 			</ul>
