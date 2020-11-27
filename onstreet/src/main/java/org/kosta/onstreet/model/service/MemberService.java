@@ -7,8 +7,11 @@ import org.kosta.onstreet.model.vo.AuthVO;
 
 public interface MemberService {
 	
+
 	ArtistVO findMemberById(String id);
 
 	List<AuthVO> selectAuthorityByUsername(String id);
+	
+	String artistCheckDate(String id);
 
 }

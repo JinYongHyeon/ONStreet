@@ -15,16 +15,30 @@ public class MemberServiceImpl implements MemberService {
 	@Resource
 	private MemberMapper memberMapper;
 	
+	/**
+	 * 로그인 - 진용현
+	 */
 	@Override
 	public ArtistVO findMemberById(String id) {
 		
 		return memberMapper.login(id);
 	}
-
+	
+	/**
+	 * 권한조회 -진용현
+	 */
 	@Override
 	public List<AuthVO> selectAuthorityByUsername(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return memberMapper.selectAuthorityByUsername(id);
+	}
+	
+	/**
+	 * 아티스트 승인 조회 - 진용현
+	 */
+	@Override
+	public String artistCheckDate(String id) {
+		return memberMapper.artistCheckDate(id);
 	}
 
 }
