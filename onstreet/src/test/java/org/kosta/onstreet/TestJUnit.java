@@ -4,7 +4,9 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.service.BoardService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -34,10 +36,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 	@Resource
 	private MemberMapper mm;
-	
+	@Resource
+	private BoardService bs;
 	@Test
 	public void board(){
-		
+		/* 이동욱 테스트
+		공연일정 전체 글 불러오기 테스트
+		String pagingBean = "1";
+		System.out.println(bs.getShowList(pagingBean));
+		공연일정 상세보기 테스트
+		*/
+		String showNo ="4";
+		System.out.println(bs.getShowDetail(showNo));
 	}
 	
 	@Test
@@ -45,7 +55,7 @@ public class TestJUnit {
 		
 		//System.out.println(mm.login("bityong")); 로그인테스트
 		//System.out.println(mm.selectAuthorityByUsername("bityong")); 권한조회테스트
-		System.out.println(mm.artistCheckDate("biton")==null);
+		//System.out.println(mm.artistCheckDate("biton")==null);
 	}
 }
 

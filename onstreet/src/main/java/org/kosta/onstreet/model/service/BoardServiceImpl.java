@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.vo.ShowListVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,8 +22,18 @@ BoardMapper boardMapper;
 			pagingBean = new PagingBean(showTotalCount);
 		else 
 			pagingBean	=new PagingBean(showTotalCount, Integer.parseInt(pageNo));
-		ShowListVO showListVO =new ShowListVO( boardMapper.getShowList(pagingBean),pagingBean);
+		ShowListVO showListVO =new ShowListVO(boardMapper.getShowList(pagingBean),pagingBean);
 		return showListVO;
+	}
+	// 전체공연 갯수 불러오기(페이징에 필요)
+	@Override
+	public int getTotalShowCount() {
+		return boardMapper.getTotalShowCount();
+	}
+	// 공연일정 상세보기
+	@Override
+	public ShowVO getShowDetail(String showNo) {
+		return boardMapper.getShowDetail(showNo);
 	}
 
 }
