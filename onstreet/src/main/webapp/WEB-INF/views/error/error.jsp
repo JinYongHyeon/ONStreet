@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="red">
+<h1bb>야~ error 다~~~~~~</h1>
 <div class="error-img">
  <img alt="" src="${pageContext.request.contextPath}/resources/errorimg.jpg" width="600" height="600"> 
  </div>
