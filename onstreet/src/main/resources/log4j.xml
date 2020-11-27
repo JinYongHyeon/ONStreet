@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.kosta.myapp">
+	<logger name="org.kosta.onstreet">
 		<level value="warn" />
 	</logger>
 	

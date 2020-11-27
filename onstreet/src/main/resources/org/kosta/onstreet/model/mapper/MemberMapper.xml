@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.MemberMapper">
  	
+ 	<!-- artist has-a  -->
  	<resultMap type="artistVO" id="memberList">
  		<result column="id" property="memberVO.id"/>
  		<result column="password" property="memberVO.password"/>
@@ -18,11 +19,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
+ 	<!-- 권한 has-a -->
+ 	<resultMap type="authVO" id="memberAuth">
+ 		<result column="id" property="memberVO.id"/>
+ 	</resultMap>
+ 	
+ 	<!-- 로그인-진용현  -->
  	<select id ="login" resultMap="memberList">
  		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
 		a.sns,a.account,a.artist_info,a.check_date
 		FROM os_member m, os_artist a
 		WHERE m.id = a.id(+) AND m.id=#{value}
+ 	</select>
+ 	
+ 	<!-- 권한조회-진용현  -->
+ 	<select id="selectAuthorityByUsername" resultMap="memberAuth">
+ 		SELECT auth_name,id FROM os_auth WHERE id=#{value}
+ 	</select>
+ 	
+ 	<!-- 아티스트 승인조회-진용현 -->
+ 	<select id="artistCheckDate" resultType="string">
+ 		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>
 
 </mapper>

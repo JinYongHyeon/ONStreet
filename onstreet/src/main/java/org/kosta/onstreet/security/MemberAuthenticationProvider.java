@@ -1,5 +1,7 @@
 package org.kosta.onstreet.security;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +78,16 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		if (list.size() == 0) {
 			throw new UsernameNotFoundException("권한이 없습니다.");
 		}
-
+		
+		//아티스트인 경우 아티스트 승인조회
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getAuthName().equals("ROLE_ARTIST")) {
+				if(memberService.artistCheckDate(id) == null) {
+					throw new UsernameNotFoundException("미승인 아티스트입니다.");
+				}
+			}
+		}
+		
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 		for (AuthVO au : list) { // ROLE_ 형식의 db 정보가 아니라면 이 시점에 ROLE_ 를 접두어로 추가한다
 			authorities.add(new SimpleGrantedAuthority(au.getAuthName()));
