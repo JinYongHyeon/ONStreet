@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Insert title here</title>
 </head>
-<body>
-
+<body bgcolor="red">
+ <img alt="" src="${pageContext.request.contextPath}/resources/errorimg.jpg"> 
 </body>
 </html>
