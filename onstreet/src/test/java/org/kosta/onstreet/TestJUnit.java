@@ -1,11 +1,15 @@
 package org.kosta.onstreet;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.NoticeVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -38,9 +42,16 @@ public class TestJUnit {
 	
 	@Resource
 	private BoardMapper bm;
+	
 	@Test
 	public void board(){
-		System.out.println(bm.getnoticeList());
+		int noticeTotalCount=bm.getTotalNoticeCount();
+		//System.out.println(noticeTotalCount);
+		  PagingBean pb=new PagingBean(noticeTotalCount); 
+		   List<NoticeVO> list=bm.getNoticeList(pb);
+		   for(NoticeVO vo:list) 
+		   System.out.println(vo);
+		 
 	}
 	
 	@Test

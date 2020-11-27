@@ -1,3 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<table border="1">
+<tr>
+<th>번호</th>
+<th>제목</th>
+<th>작성일시</th>
+<th>작성자닉네임</th>
+</tr>
+<tr>
+<c:forEach var="list" items="${requestScope.lvo}">
+<td>${list.noticeNo}</td>
+<td>${list.noticeTitle}</td>
+<td>${list.noticeWriteDate}</td>
+<td>${list.memberVO.nickName}</td>
+</c:forEach>	
+</tr>
+</table>
+<ul class="pagination">
+	<c:if test="${pb.previousPageGroup}">	
+	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+	</c:if>
+	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
+	end="${pb.endPageOfPageGroup}">
+	<c:choose>
+	<c:when test="${pb.nowPage!=i}">
+	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${i}">${i}</a></li> 
+	</c:when>
+	<c:otherwise>
+	<li class="active"><a href="#" >${i}</a></li>
+	</c:otherwise>
+	</c:choose>
+	&nbsp;
+	</c:forEach>
+	<c:if test="${pb.nextPageGroup}">	
+	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+	</c:if>
+	</ul>	 		
+	</div> 	

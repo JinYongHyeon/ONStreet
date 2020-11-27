@@ -25,7 +25,6 @@
 			<div id="main" class="col-sm-12">
 				<!-- Tiles main 영역 -->
 				<tiles:insertAttribute name="main" />
-				<a href="${pageContext.request.contextPath}/noticeList.do">list</a>
 			</div>
 			<%-- main --%>	
 		</div>

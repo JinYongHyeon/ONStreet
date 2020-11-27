@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.service.BoardService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,9 +20,14 @@ public class BoardController {
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
-	@RequestMapping("noticeList.do")
-public ModelAndView getnoticeList() {
-		return new ModelAndView("board/notice","list",boardService.getnoticeList());
+	@RequestMapping("getNoticeList.do")
+public ModelAndView getNoticeList(String pageNo) {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("board/notice/noticeList.tiles");
+		mv.addObject("lvo",boardService.getNoticeList(pageNo));
+	return mv;
+	
 }
+	
 	//끝
 }
