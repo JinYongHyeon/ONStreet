@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -35,9 +36,11 @@ public class TestJUnit {
 	@Resource
 	private MemberMapper mm;
 	
+	@Resource
+	private BoardMapper bm;
 	@Test
 	public void board(){
-		
+	
 	}
 	
 	@Test
