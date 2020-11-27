@@ -41,5 +41,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="artistCheckDate" resultType="string">
  		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>
+ 	<!-- 멤버 마이페이지 정세희 -->
+ 	<select id ="memberMypage" resultMap="memberList">
+ 		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
+		a.sns,a.account,a.artist_info,a.check_date
+		FROM os_member m, os_artist a
+		WHERE m.id = a.id(+) AND m.id=#{value}
+ 	</select>
 
 </mapper>

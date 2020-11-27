@@ -39,7 +39,7 @@
 				<sec:csrfInput />
 			</form>
 			<a href="#" id="logout">로그아웃</a>
-			<a href="">마이페이지</a>
+			<a href="${pageContext.request.contextPath}/mypageForm.do">마이페이지</a>
 
 		</sec:authorize>
 

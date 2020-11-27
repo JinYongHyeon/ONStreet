@@ -46,6 +46,8 @@ public class TestJUnit {
 		//System.out.println(mm.login("bityong")); 로그인테스트
 		//System.out.println(mm.selectAuthorityByUsername("bityong")); 권한조회테스트
 		System.out.println(mm.artistCheckDate("biton")==null);
+		//String id="zarta";
+		//System.out.println(mm.findMemberById(id));
 	}
 }
 

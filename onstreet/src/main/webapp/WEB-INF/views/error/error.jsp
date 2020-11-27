@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="red">
- <img alt="" src="${pageContext.request.contextPath}/resources/errorimg.jpg"> 
+<div class="error-img">
+ <img alt="" src="${pageContext.request.contextPath}/resources/errorimg.jpg" width="600" height="600"> 
+ </div>
 </body>
 </html>
