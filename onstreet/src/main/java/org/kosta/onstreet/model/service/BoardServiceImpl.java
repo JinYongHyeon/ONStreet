@@ -1,13 +1,14 @@
 package org.kosta.onstreet.model.service;
 
-import java.util.List;
+
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.vo.ArtistListVO;
-import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,23 @@ import org.springframework.stereotype.Service;
 public class BoardServiceImpl implements BoardService {
 
 	@Resource
-	private BoardMapper boardMapper;
+private BoardMapper boardMapper;
+
+	
+	//김수민시작
+	//공지사항리스트불러오기
+	@Override
+	public ArrayList<NoticeVO> getNoticeList(String pageNo) {
+		int totalNoticeCount=boardMapper.getTotalNoticeCount();
+		PagingBean pagingBean=null;
+		if(pageNo==null) {
+			pagingBean=new PagingBean(totalNoticeCount);
+		}else {
+			pagingBean=new PagingBean(totalNoticeCount,Integer.parseInt(pageNo));
+		}
+		ArrayList<NoticeVO> list=(boardMapper.getNoticeList(pagingBean));
+		return list;
+	}
 	
 	/**
 	 * 정지윤
@@ -59,4 +76,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+	@Override
+	public int getTotalNoticeCount() {
+		return boardMapper.getTotalNoticeCount();
+	}
 }

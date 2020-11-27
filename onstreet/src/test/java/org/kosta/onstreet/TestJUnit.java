@@ -1,12 +1,18 @@
 package org.kosta.onstreet;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.PagingBean;
+//github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.service.BoardService;
+//github.com/JinYongHyeon/ONStreet.git
+import org.kosta.onstreet.model.vo.NoticeVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,7 +49,13 @@ public class TestJUnit {
 	private BoardService bs;
 	@Test
 	public void board(){
-
+		int noticeTotalCount=bm.getTotalNoticeCount();
+		//System.out.println(noticeTotalCount);
+		  PagingBean pb=new PagingBean(noticeTotalCount); 
+		   List<NoticeVO> list=bm.getNoticeList(pb);
+		   for(NoticeVO vo:list) 
+		   System.out.println(vo);
+		 
 		System.out.println(bm.getTotalArtistCount());
 
 		/* 이동욱 테스트

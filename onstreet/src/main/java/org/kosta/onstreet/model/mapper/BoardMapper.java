@@ -1,17 +1,21 @@
 package org.kosta.onstreet.model.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-
-import org.kosta.onstreet.model.vo.ArtistVO;
-
+//github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.PagingBean;
+import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
 
 @Mapper
 public interface BoardMapper {
+
+	int getTotalNoticeCount();
+ ArrayList<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
 
 	/**
 	 * 정지윤
