@@ -1,5 +1,7 @@
 package org.kosta.onstreet.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVO {
 	private String id;// 아이디
 	private String password;// 패스워드
@@ -11,6 +13,7 @@ public class MemberVO {
 	private String age;// 나이
 	private String removeUserDate;// 탈퇴일자
 	private String profile;// 프로필 사진
+	private MultipartFile profileFile;//프로필 이미지
 
 	public MemberVO() {
 		super();
@@ -112,11 +115,21 @@ public class MemberVO {
 		this.profile = profile;
 	}
 
+	public MultipartFile getProfileFile() {
+		return profileFile;
+	}
+
+	public void setProfileFile(MultipartFile profileFile) {
+		this.profileFile = profileFile;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", nickName=" + nickName + ", address=" + address
 				+ ", phone=" + phone + ", email=" + email + ", name=" + name + ", age=" + age + ", removeUserDate="
-				+ removeUserDate + ", profile=" + profile + "]";
+				+ removeUserDate + ", profile=" + profile + ", profileFile=" + profileFile + "]";
 	}
+
+	
 
 }

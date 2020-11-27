@@ -58,6 +58,11 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		if (member == null) {
 			throw new UsernameNotFoundException("회원 아이디가 존재하지 않습니다");
 		}
+		
+		if(member.getMemberVO().getRemoveUserDate() != null) {
+			throw new UsernameNotFoundException("이미 탈퇴된 회원입니다.");
+		}
+		
 		// 사용자가 입력한 패스워드 반환
 		String password = (String) authentication.getCredentials();//Credential의 사전적 의미는 증명  
 		// 일반적 방식의 패스워드 비교 ( 암호화 사용하지 않을 경우 ) 

@@ -146,5 +146,19 @@ SELECT auth_name,id FROM os_auth WHERE id='bityong';
 --아티스트 승인검사
 SELECT check_date FROM os_artist WHERE id='biton'; 
 
+ALTER TABLE os_show MODIFY show_img VARCHAR2(100) NULL;
+
+--세희(개인) sql
+INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
+VALUES('zarta','1','세희','광주','01023451234','tpgml@gmail.com','정세희','1996-05-13');
+
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','zarta1');
+
+INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
+VALUES('zarta1','1','세희','광주','01023451234','tpgml@gmail.com','정세희','1996-05-13');
+INSERT INTO os_artist(id,sns,account,artist_info) VALUES('zarta1','sns주소','0000000000','아티스트정보');
+
+update os_artist set check_date=sysdate where id='zarta1';
+
 
 

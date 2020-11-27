@@ -40,5 +40,13 @@ public class MemberServiceImpl implements MemberService {
 	public String artistCheckDate(String id) {
 		return memberMapper.artistCheckDate(id);
 	}
+	
+	/**
+	 * 닉네임 중복검사 - 진용현
+	 */
+	@Override
+	public int nickNameCheck(String nickName) {
+		return memberMapper.nickNameCheck(nickName);
+	}
 
 }

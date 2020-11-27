@@ -19,7 +19,7 @@
 		<nav>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/getShowList.do">공연</a></li>
-				<li><a href="${pageContext.request.contextPath}/home.do">아티스트</a></li>
+				<li><a href="${pageContext.request.contextPath}/getArtistList.do">아티스트</a></li>
 				<li><a href="${pageContext.request.contextPath}/home.do">이벤트</a></li>
 				<li><a href="${pageContext.request.contextPath}/getNoticeList.do">Q&A</a></li>
 			</ul>
@@ -30,7 +30,7 @@
 		<sec:authorize access="!hasRole('ROLE_MEMBER')">
 
 			<a href="#" id="loginFormBtn">로그인</a>
-			<a href="">회원가입</a>
+			<a href="${pageContext.request.contextPath}/registerMemberForm.do">회원가입</a>
 		</sec:authorize>
 
 		<%-- 로그인 --%>
@@ -39,7 +39,7 @@
 				<sec:csrfInput />
 			</form>
 			<a href="#" id="logout">로그아웃</a>
-			<a href="">마이페이지</a>
+			<a href="${pageContext.request.contextPath}/mypageForm.do">마이페이지</a>
 
 		</sec:authorize>
 

@@ -10,4 +10,8 @@ public class HomeController {
 	public String home() {
 		return "index.tiles";
 	}
+	@RequestMapping("error.do")
+	public String error() {
+		return "/error/error";
+	}
 }
