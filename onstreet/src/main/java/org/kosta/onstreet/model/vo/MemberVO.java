@@ -1,5 +1,7 @@
 package org.kosta.onstreet.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVO {
 	private String id;// 아이디
 	private String password;// 패스워드
