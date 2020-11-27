@@ -1,5 +1,8 @@
 package org.kosta.onstreet.model.service;
 
-public interface BoardService {
+import org.kosta.onstreet.model.vo.ShowListVO;
 
+public interface BoardService {
+	
+	ShowListVO getShowList(String pageNo);
 }

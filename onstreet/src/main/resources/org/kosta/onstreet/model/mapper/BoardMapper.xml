@@ -4,5 +4,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.BoardMapper">
- 	
+ 	<!-- 이동욱 시작 -->
+ 	<!-- 게시물 전체 갯수 불러오는 sql -->
+ 	<select id="getTotalShowCount" resultType="int">
+		select count(*) from os_show
+	</select>
+	<select id="getShowList" parameterType="pagingBean" resultType="showVO">
+		SELECT s.rnum,s.show_title,m.nickname,s.show_date FROM(
+		SELECT row_number() over(order by show_no desc) as rnum,show_no,show_title,
+		to_char(show_date,'YYYY.MM.DD') as show_date,id
+		FROM os_show
+		) s,os_member m where s.id = m.id and rnum between #{startRowNumber} and #{endRowNumber} 
+		order by rnum desc 
+	</select>
 </mapper>
