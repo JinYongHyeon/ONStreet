@@ -146,5 +146,13 @@ SELECT auth_name,id FROM os_auth WHERE id='bityong';
 --아티스트 승인검사
 SELECT check_date FROM os_artist WHERE id='biton'; 
 
+ALTER TABLE os_show MODIFY show_img VARCHAR2(100) NULL;
+
+--세희 로그인
+INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
+VALUES('zarta','1','세희','광주','01023451234','tpgml@gmail.com','정세희','1996-05-13');
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','zarta');
+
+
 
 

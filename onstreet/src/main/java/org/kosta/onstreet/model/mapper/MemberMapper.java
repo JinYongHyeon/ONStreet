@@ -24,4 +24,6 @@ public interface MemberMapper {
 	public List<AuthVO> selectAuthorityByUsername(String id);
 	
 	public String artistCheckDate(String id);
+	
+	
 }
