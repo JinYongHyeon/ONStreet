@@ -11,7 +11,7 @@
 /* header 로고 + 검색 */
 #header {
 	width: 100%;
-	border-bottom: 2px solid #e5e5e5;
+	border-bottom: 4px solid #e5e5e5;
 }
 
 #header .bitLog {
