@@ -16,4 +16,14 @@ public class MemberController {
 	public String registerMemberForm() {
 		return "member/user/registerMemberForm";
 	}
+	
+	/**
+	 * 로그인 실패
+	 * @return
+	 */
+	@RequestMapping("login_fail.do")
+	public String loginFail() {
+		return "member/login-fail";
+	}
+	
 }
