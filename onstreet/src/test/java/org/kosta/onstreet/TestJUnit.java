@@ -40,7 +40,7 @@ public class TestJUnit {
 	private BoardMapper bm;
 	@Test
 	public void board(){
-	
+		System.out.println(bm.getnoticeList());
 	}
 	
 	@Test
