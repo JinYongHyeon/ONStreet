@@ -62,9 +62,16 @@ public class TestJUnit {
 		 *  for(NoticeVO vo:list) 
 		 *  System.out.println(vo);
 		 */
-		String noticeNo="4";
-		System.out.println(bm.getNoticeDetail(noticeNo));
-		 
+		//공지사항 상세정보:김수민
+		//String noticeNo="4";
+		//System.out.println(bm.getNoticeDetail(noticeNo));
+		for(int i=0; i<3; i++) {
+			NoticeVO nvo=new NoticeVO();
+			nvo.setNoticeTitle("aaaaa"+i);
+			nvo.setNoticeContent("oooo"+i);
+			nvo.setMemberVO(new MemberVO("bityong",null,null,null,null,null,null,null,null,null));
+		}
+		
 		System.out.println(bm.getTotalArtistCount());
 
 		/* 이동욱 테스트

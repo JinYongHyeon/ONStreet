@@ -2,20 +2,25 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <table border="1">
+<thead>
 <tr>
 <th>번호</th>
 <th>제목</th>
 <th>작성일시</th>
 <th>작성자닉네임</th>
 </tr>
-<tr>
+</thead>
+<tbody>
 <c:forEach var="list" items="${requestScope.lvo}">
+<tr>
 <td>${list.noticeNo}</td>
-<td>${list.noticeTitle}</td>
+<td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">
+  ${list.noticeTitle}</a></td>
 <td>${list.noticeWriteDate}</td>
 <td>${list.memberVO.nickName}</td>
-</c:forEach>	
 </tr>
+</c:forEach>	
+</tbody>
 </table>
 <ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -36,5 +41,9 @@
 	<c:if test="${pb.nextPageGroup}">	
 	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
-	</ul>	 		
-	</div> 	
+	</ul><br>	 			
+ <div class="col-sm-8" align="right">
+ <form action="addNoticeForm.do" method="get">
+ <input type="submit" value="등록">
+ </form>
+ </div>

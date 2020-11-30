@@ -19,7 +19,6 @@ public class BoardServiceImpl implements BoardService {
 	@Resource
 private BoardMapper boardMapper;
 
-	
 	//김수민시작
 	//공지사항리스트불러오기
 	@Override
@@ -34,11 +33,15 @@ private BoardMapper boardMapper;
 		ArrayList<NoticeVO> list=(boardMapper.getNoticeList(pagingBean));
 		return list;
 	}
-	//공지사항 상세사항
+	//공지사항 상세사항:김수민
 	@Override
 	public NoticeVO getNoticeDetail(String noticeNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.getNoticeDetail(noticeNo);
+	}
+	//공지사항 등록:김수민
+	@Override
+	public void addNotice(NoticeVO noticeVO) {
+		boardMapper.addNotice(noticeVO);
 	}
 	/**
 	 * 정지윤
@@ -80,7 +83,7 @@ private BoardMapper boardMapper;
 		return boardMapper.getShowDetail(showNo);
 	}
 
-
+	//공지사항 총합게시물 :김수민
 	@Override
 	public int getTotalNoticeCount() {
 		return boardMapper.getTotalNoticeCount();

@@ -24,14 +24,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	order by rnum desc
  </select>
  <!-- 공지사항 상세보기 :김수민 -->
- 	<select id="getNoticeDetail" resultType="noticeVO">
- 	select n.notice_no,n.notice_title,n.notice_write_date,notice_content,m.id,m.nickname
+ 	<select id="getNoticeDetail" resultMap="noticeListRM">
+ 	select n.notice_no,n.notice_title,n.notice_write_date,notice_content,m.nickName
 	from(
 	select notice_no,notice_title,to_char(notice_write_date,'YYYY.MM.DD')as 
 	notice_write_date,notice_content,id
 	from os_notice) n,os_member m
 	where n.id=m.id and n.notice_no=#{value}
  	</select>
+ 	<!-- 공지사항 등록 :김수민-->
+ <insert id="addNotice" parameterType="noticeVO">
+ <selectKey keyProperty="noticeNo" resultType="noticeVO" order="BEFORE">
+ 	select os_notice_seq.nextval from dual
+ </selectKey>
+ insert into os_notice(notice_no,notice_title,notice_write_date,notice_content,id) 
+ values(#{noticeNo},#{noticeTitle},sysdate,#{noticeContent},#{memberVO.id})
+ </insert>
  	<resultMap type="artistVO" id="artistList">
  		<result column="id" property="memberVO.id"/>
  		<result column="password" property="memberVO.password"/>

@@ -14,7 +14,8 @@ import org.kosta.onstreet.model.vo.ShowVO;
 public interface BoardService {
     ArrayList<NoticeVO> getNoticeList(String pageNo);//공지사항리스트 -김수민
     int getTotalNoticeCount();//공지사항리스트 총합-김수민
-    NoticeVO getNoticeDetail(String noticeNo);
+    NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세정보-김수민 
+    void addNotice(NoticeVO noticeVO);//공지사항등록-김수민
 	// 이동욱 시작
 	// 공연일정 리스트 메서드
 	ShowListVO getShowList(String pageNo);
