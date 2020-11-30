@@ -151,5 +151,13 @@ public class MemberController {
 		return "member/user/updateMemberForm.tiles";
 	}
 
-	
+	/**
+	 * 정지윤
+	 * 아티스트 상세정보 불러오기
+	 */
+	@RequestMapping("getArtistDetail.do")
+	public String getArtistDetail(String id,Model model) {
+		model.addAttribute("artistVO", memberService.findMemberById(id));
+		return "board/artist/artistDetail.tiles";
+	}
 }
