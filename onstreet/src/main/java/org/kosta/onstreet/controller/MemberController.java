@@ -6,7 +6,9 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.aspectj.util.FileUtil;
+import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.MemberVO;
@@ -23,6 +25,10 @@ public class MemberController {
 	@Resource
 	private MemberService memberService;
 	
+	/**
+	 * 회원가입폼[관객] - 진용현
+	 * @return
+	 */
 	@RequestMapping("registerMemberForm.do")
 	public String registerMemberForm() {
 
@@ -50,31 +56,26 @@ public class MemberController {
 			
 		}
 	}
+	
 	/**
-	 * 회원가입 - 진용현
+	 * 회원가입 선택[관객 or 아티스트] 
+	 * @return
+	 */
+	@RequestMapping("choiceMember.do")
+	public String choiceMember() {
+		return "member/choiceMember";
+	}
+	
+	/**
+	 * 회원가입[관객] - 진용현
 	 * @param memberVO
 	 * @return
 	 */
 	@PostMapping("registerMember.do")
 	public String registerMember(MemberVO mvo,HttpServletRequest request) {
-		String realPath = request.getSession().getServletContext().getRealPath("/resources/img/profile/");
-		String copyPath = "C:"+File.separator+"kosta203"+File.separator+"final-project"+File.separator+"ONStreet"+File.separator+"onstreet"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"resources"+File.separator+"img"+File.separator+"profile"+File.separator;
-		System.out.println(realPath);
-
-		File file =  new File(realPath,System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
-		File file2 = new File(copyPath,System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
-		
-		if(file.exists()) {
-			file.mkdirs();
-		}
-		try {
-			mvo.getProfileFile().transferTo(file);
-			FileUtil.copyFile(file, file2);
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		FileUploadBean fileUploadBean = new FileUploadBean();
+		fileUploadBean.profileUpload(mvo, request);
+		memberService.registerMember(mvo);
 		return "index.tiles";
 	}
 	
@@ -86,19 +87,47 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping("idCheck.do")
 	public String idCheck(String id) {
-		System.out.println(id);
 		ArtistVO artistVO = memberService.findMemberById(id);
 		String check = "id_ok";
 		if(artistVO != null) {
 			check ="id_fail";
 		}
 		return check;
-	}
+	}	
 	
+	/**
+	 * 닉네임 중복검사 - 진용현
+	 * @param nickName
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("nickNameCheck.do")
 	public int nickName(String nickName) {
 		return memberService.nickNameCheck(nickName);
+	}
+	
+	/**
+	 * 회원가입폼[아티스트] - 진용현
+	 * @return
+	 */
+	@RequestMapping("registerArtistForm.do")
+	public String registerMemberArtist() {
+		return "member/artist/registerArtistForm.tiles";
+	}
+	
+	/**
+	 * 회원가입[아티스트] - 진용현
+	 * @param memberVO
+	 * @param artistVO
+	 * @return
+	 */
+	@PostMapping("registerArtist.do")
+	public String registerArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
+		FileUploadBean fileUploadBean = new FileUploadBean();
+		fileUploadBean.profileUpload(memberVO, request);
+		artistVO.setMemberVO(memberVO);
+		memberService.registerArtist(artistVO);
+		return "index.tiles";
 	}
 	
 }

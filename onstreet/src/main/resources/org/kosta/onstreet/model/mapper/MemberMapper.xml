@@ -42,9 +42,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>
  	
- 	<!-- 닉네임 중복검사 -->
+ 	<!-- 닉네임 중복검사 - 진용현 -->
  	<select id="nickNameCheck" resultType="int">
  		SELECT COUNT(*) FROM os_member WHERE nickname=#{value}
  	</select>
-
+	
+	<!-- 회원가입 - 진용현 -->
+	<insert id="registerMember" parameterType="memberVO">
+		INSERT INTO os_member(id,password,nickname,address,phone,email,name,age,profile) 
+		VALUES(#{id},#{password},#{nickName},#{address},#{phone},#{email},#{name},#{age},#{profile})
+	</insert>
+	
+	<!-- 회원가입 권한추가 - 진용현 -->
+	<insert id="registerAuth" parameterType="authVO">
+	INSERT INTO os_auth(auth_name,id) VALUES(#{authName},#{memberVO.id})
+	</insert>
+	
+	<!-- 회원가입[아티스트] - 진용현 -->
+	<insert id="registerArtist" parameterType="artistVO">
+		INSERT INTO os_artist(id,sns,account,artist_info) VALUES(#{memberVO.id},#{sns},#{account},#{artistInfo})
+	</insert>
 </mapper>

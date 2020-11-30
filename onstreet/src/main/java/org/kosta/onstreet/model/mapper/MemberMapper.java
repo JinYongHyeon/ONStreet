@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 
 @Mapper
 public interface MemberMapper {
@@ -31,4 +32,27 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int nickNameCheck(String nickName);
+	
+	/**
+	 * 회원가입 - 진용현
+	 * @param memberVO
+	 * @return
+	 */
+	public int registerMember(MemberVO memberVO);
+	
+	/**
+	 * 회원가입 권한등록 - 진용현
+	 * @param authVO
+	 * @return
+	 */
+	public int registerAuth(AuthVO authVO);
+	
+	/**
+	 * 회원가입[아티스트] - 진용현
+	 * @param artistVO
+	 * @return
+	 */
+	public int registerArtist(ArtistVO artistVO);
+	
 }
+	

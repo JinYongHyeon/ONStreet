@@ -7,6 +7,15 @@
 	font-family: "맑은고딕";
 }
 
+body{
+	position:relative;
+	min-height: 100vh;
+}
+
+.content{
+	min-height: 78vh;
+}
+
 /* header 로고 + 검색 */
 #header {
 	width: 100%;
@@ -37,7 +46,7 @@
 }
 
 /*footer*/
-footer {
+#footer {
 	width: 100%;
 	border-top: 4px solid #999;
 	padding: 25px;
@@ -60,6 +69,7 @@ footer {
 	border-radius: 5px;
 	border:3px solid #e5e5e5;
 	display: none;
+	z-index:2;
 }
 
 #login .loginTitle {
@@ -141,7 +151,7 @@ footer {
 
 #login .loginMain .loginForm .login-label-group input::placeholder {
 	color: transparent;
-}
+}	
 
 #login .loginMain .loginForm .login-label-group input:not(:placeholder-shown) {
 	padding-top:1.25rem;
@@ -152,6 +162,78 @@ footer {
 	padding-bottom:.25rem;
 	font-size:12px;
 	color:#777;
+}
+
+/* 회원가입 */
+
+#registerTitle{
+	margin-top:30px;
+}
+#registerTitle h1{
+	position: relative;
+}
+#registerTitle h1::before{
+	content:"";
+	width:100px;
+	height: 5px;
+	background-color:#999;
+	position: absolute;
+	bottom:-10px;
+	left:50%;
+	transform:translate(-50%,0);
+}
+
+#registerForm{
+	width:600px;
+	margin-top:25px;
+}
+
+#registerForm table tr th{
+	width:150px;
+	text-align: center;
+}
+#registerForm table tr td{
+	width:450px;
+}
+
+#registerForm table tr td,#registerForm table tr th{
+	border:1px solid #e5e5e5;
+}
+
+#registerForm table tr td input{
+	width:100%;
+	border:none;
+	padding:10px;
+}
+
+#registerForm table tr td #registerId,#registerForm table tr td #registerAddress,#registerForm table tr td input[name=phone],#registerForm table tr td input[name=nickName]{
+	width:50%;
+	float:left;
+}
+#registerForm table tr td span{
+	line-height: 40px;
+}
+#registerForm table tr td button{
+	width:50%;
+	height: 41px;
+	border:none;
+	background-color:#999;
+}
+
+
+#registerForm .defaultprofile{
+	float:left;
+	height:100px;
+	overflow: hidden;
+	position: relative;
+}
+#registerForm .defaultprofile img{
+	width:100px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+
 }
 
 /* 아티스트 리스트 */
