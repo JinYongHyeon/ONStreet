@@ -11,6 +11,9 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.service.BoardService;
+import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.vo.NoticeVO;
 //github.com/JinYongHyeon/ONStreet.git
@@ -81,6 +84,32 @@ public class TestJUnit {
 		
 		//String id="zarta";
 		//System.out.println("반환값"+mm.removeMember(id));
+		
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setId("ju1234");
+//		memberVO.setPassword("1234");
+//		memberVO.setNickName("여우");
+//		memberVO.setAddress("부천");
+//		memberVO.setPhone("12345678901");
+//		memberVO.setEmail("ju@gmail.com");
+//		memberVO.setName("박신혜");
+//		memberVO.setAge("1990-01-01");
+//		memberVO.setProfile("default.png");
+//		System.out.println(mm.registerMember(memberVO)); 회원가입 - 진용현
+//		AuthVO authVO = new AuthVO();
+//		authVO.setAuthName("ROLE_MEMBER");
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setId("ju1234");
+//		authVO.setMemberVO(memberVO);
+//		System.out.println(mm.registerAuth(authVO)); 회원가입 권한등록 - 진용현
+//		ArtistVO artistVO = new ArtistVO();
+//		artistVO.setSns("fb");
+//		artistVO.setAccount("123-3333-44444");
+//		artistVO.setArtistInfo("펭귄은 귀엽다");
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setId("ju1234");
+//		artistVO.setMemberVO(memberVO);
+//		System.out.println(mm.registerArtist(artistVO)); 회원가입[아티스트] - 진용현
 	}
 }
 

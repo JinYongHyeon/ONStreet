@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 
 public interface MemberService {
 	
@@ -17,4 +18,9 @@ public interface MemberService {
 	int nickNameCheck(String nickName);
 
 	void removeMember(String password);
+	
+	void registerMember(MemberVO memberVO);
+	
+	void registerArtist(ArtistVO artistVO);
+
 }
