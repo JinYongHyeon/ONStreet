@@ -14,6 +14,7 @@ import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,18 +110,23 @@ public class MemberController {
 		return memberService.nickNameCheck(nickName);
 	}
 	//회원탈퇴폼으로 보내는메서드 정세희
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("removeMemberForm.do")
 	public ModelAndView removeMemberForm() {
 		return new ModelAndView("member/user/removeMemberForm.tiles");
 	}
 	
 	//회원탈퇴 메서드 정세희
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
 	@PostMapping("removeMember.do")
-	public String removeMember(String password,HttpSession session) {
-		memberService.removeMember(password);
-		session.invalidate();
-		return "redirect:home.do";
-	}
+	public int removeMember(String password,HttpSession session) {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println("zzzz");
+		int pointcount=memberService.removeMember(password,avo);
+			return pointcount;
+		}
+		
 	/**
 	 * 회원가입폼[아티스트] - 진용현
 	 * @return

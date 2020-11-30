@@ -48,8 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<!-- 회원탈퇴 세희 -->
- 	<delete id="removeMember">
- 		delete from os_member where password=#{value}
+ 	<delete id="removeMember" parameterType="artistVO">
+	update os_member 
+	set remove_user_date=sysdate
+	where id=#{memberVO.id} 
  	</delete>
  	
 	

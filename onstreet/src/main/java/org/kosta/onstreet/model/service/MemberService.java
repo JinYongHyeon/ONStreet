@@ -17,7 +17,7 @@ public interface MemberService {
 	
 	int nickNameCheck(String nickName);
 
-	void removeMember(String password);
+	int removeMember(String password,ArtistVO avo);
 	
 	void registerMember(MemberVO memberVO);
 	

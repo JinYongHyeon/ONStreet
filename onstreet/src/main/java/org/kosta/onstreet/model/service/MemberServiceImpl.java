@@ -107,13 +107,22 @@ public class MemberServiceImpl implements MemberService {
 		authVO.setAuthName("ROLE_ARTIST");
 		memberMapper.registerAuth(authVO);
 		
-	}
+	}	
 
 	//회원 탈퇴재확인 정세희
 	@Override
-	public void removeMember(String password) {
-		 memberMapper.removeMember(password);
+	public int removeMember(String password, ArtistVO avo) {
+		int point = 0;
+		String encodepassowrd=passwordEncoder.encode(avo.getMemberVO().getPassword());
+		System.out.println(avo.getMemberVO().getPassword());
+		System.out.println(encodepassowrd);
+		System.out.println(password);
 		
+		if(passwordEncoder.matches(password,avo.getMemberVO().getPassword())) {
+			point=memberMapper.removeMember(avo);
+		}
+		return point;
+			
 	}
 
 }
