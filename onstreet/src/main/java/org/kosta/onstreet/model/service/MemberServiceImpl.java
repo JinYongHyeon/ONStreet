@@ -70,9 +70,7 @@ public class MemberServiceImpl implements MemberService {
 	public void registerMember(MemberVO memberVO) {
 		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword())); //암호화처리
 		//if(memberVO.getProfile() == null)memberVO.setProfile("default.png");
-		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
-		else
+		if(memberVO.getProfileFile().getOriginalFilename().equals(""))
 		memberVO.setProfile(memberVO.getProfileFile().getOriginalFilename());
 		memberMapper.registerMember(memberVO);
 		AuthVO authVO = new AuthVO();
@@ -91,14 +89,11 @@ public class MemberServiceImpl implements MemberService {
 	public void registerArtist(ArtistVO artistVO) {
 		artistVO.getMemberVO().setPassword(passwordEncoder.encode(artistVO.getMemberVO().getPassword()));//암호화처리
 		//if(artistVO.getMemberVO().getProfile() == null)artistVO.getMemberVO().setProfile("default.png");
-		if(!artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))
-			artistVO.getMemberVO().setProfile(System.currentTimeMillis()+artistVO.getMemberVO().getProfileFile().getOriginalFilename());
-			else
-			artistVO.getMemberVO().setProfile(artistVO.getMemberVO().getProfileFile().getOriginalFilename());
+		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))
+		artistVO.getMemberVO().setProfile(artistVO.getMemberVO().getProfileFile().getOriginalFilename());
 		memberMapper.registerMember(artistVO.getMemberVO());
 		//if(artistVO.getSns() == null)artistVO.setSns("미입력");
 		//if(artistVO.getAccount() == null)artistVO.setAccount("미입력");
-		System.out.println(artistVO);
 		memberMapper.registerArtist(artistVO);
 		AuthVO authVO = new AuthVO();
 		authVO.setAuthName("ROLE_MEMBER");
@@ -107,6 +102,22 @@ public class MemberServiceImpl implements MemberService {
 		authVO.setAuthName("ROLE_ARTIST");
 		memberMapper.registerAuth(authVO);
 		
+	}	
+
+	//회원 탈퇴재확인 정세희
+	@Override
+	public int removeMember(String password, ArtistVO avo) {
+		int point = 0;
+		String encodepassowrd=passwordEncoder.encode(avo.getMemberVO().getPassword());
+		System.out.println(avo.getMemberVO().getPassword());
+		System.out.println(encodepassowrd);
+		System.out.println(password);
+		
+		if(passwordEncoder.matches(password,avo.getMemberVO().getPassword())) {
+			point=memberMapper.removeMember(avo);
+		}
+		return point;
+			
 	}
 
 }

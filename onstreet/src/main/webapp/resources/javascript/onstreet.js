@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$("#login").hide();
 	});
 	
-		var idCoin = 0;
+	var idCoin = 0;
 	var nickCoin = 0;
 	var telCoin = 0;
 	$(document).ready(function(){
@@ -137,6 +137,19 @@ $(document).ready(function(){
 			preViewProfile(); //정상적인 이미지 일경우 작동
 		});
 		
+	});
+	//이용약관 동의확인 - 진용현
+	$("#checkDocument .checkDocumentBtn input[value=확인]").click(function(){
+		if(!$("#checkDocumentForm input[name=checkDocument]").is(":checked")){
+			alert("이용약관 동의해주십시오.");	
+			return;
+		}
+		$("#checkDocumentForm").submit();
+	});
+	
+	//이용약관 취소 - 진용현
+	$("#checkDocument .checkDocumentBtn input[value=취소]").click(function(){
+		location.href="home.do";
 	});
 		
 });

@@ -8,6 +8,9 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.vo.ArtistListVO;
+import org.kosta.onstreet.model.vo.CommentListVO;
+import org.kosta.onstreet.model.vo.EventListVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -58,6 +61,31 @@ private BoardMapper boardMapper;
 		ArtistListVO artistListVO = new ArtistListVO(boardMapper.getArtistList(pagingBean),pagingBean);
 		return artistListVO;
 	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 리스트 불러오기
+	 */
+	@Override
+	public EventListVO getEventList(String pageNo) {
+		int eventTotalCount = boardMapper.getTotalEventCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(eventTotalCount);
+		else
+			pagingBean = new PagingBean(eventTotalCount,Integer.parseInt(pageNo));
+		EventListVO eventListVO = new EventListVO(boardMapper.getEventList(pagingBean),pagingBean);
+		return eventListVO;
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 상세보기 불러오기
+	 */
+	@Override
+	public EventVO findEventByNo(String eventNo) {
+		return boardMapper.findEventByNo(eventNo);
+	}
 
 	//이동욱시작
 	//전체리스트 불러오는 메서드
@@ -87,5 +115,22 @@ private BoardMapper boardMapper;
 	@Override
 	public int getTotalNoticeCount() {
 		return boardMapper.getTotalNoticeCount();
+	}
+	// 댓글 리스트 불러오기
+	@Override
+	public CommentListVO getCommentList(String showNo, String pageNo) {
+		int commentTotalCount = boardMapper.getTotalCommentCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(commentTotalCount);
+		else 
+			pagingBean	=new PagingBean(commentTotalCount, Integer.parseInt(pageNo));
+		CommentListVO commListVO =new CommentListVO(boardMapper.getCommentList(showNo, pagingBean),pagingBean);
+		return commListVO;
+	}
+
+	@Override
+	public int getTotalCommnetCount() {
+		return boardMapper.getTotalCommentCount();
 	}
 }

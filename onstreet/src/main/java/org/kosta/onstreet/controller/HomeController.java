@@ -14,4 +14,8 @@ public class HomeController {
 	public String error() {
 		return "/error/error";
 	}
+	@RequestMapping("accessDeniedView.do")
+	public String accessDeniedView() {
+		return "error/accessDeniedView";
+	}
 }

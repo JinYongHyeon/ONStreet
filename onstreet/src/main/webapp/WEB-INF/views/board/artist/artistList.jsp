@@ -6,8 +6,8 @@
 <div id="artist">
 <c:forEach var="avo" items="${requestScope.artistVO.artistList}">
 <div class="artistList">
-<img src="${pageContext.request.contextPath}/resources/image/profile/${avo.memberVO.profile}"> <br>
-<a href="#">${avo.memberVO.nickName}</a> <br>
+<img src="${pageContext.request.contextPath}/resources/img/profile/${avo.memberVO.profile}"> <br>
+<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${avo.memberVO.id}">${avo.memberVO.nickName}</a> <br>
 </div>
 </c:forEach>
 </div>

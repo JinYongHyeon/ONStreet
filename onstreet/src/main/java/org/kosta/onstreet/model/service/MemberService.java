@@ -8,7 +8,6 @@ import org.kosta.onstreet.model.vo.MemberVO;
 
 public interface MemberService {
 	
-
 	ArtistVO findMemberById(String id);
 
 	List<AuthVO> selectAuthorityByUsername(String id);
@@ -17,6 +16,8 @@ public interface MemberService {
 	
 	int nickNameCheck(String nickName);
 
+	int removeMember(String password,ArtistVO avo);
+	
 	void registerMember(MemberVO memberVO);
 	
 	void registerArtist(ArtistVO artistVO);

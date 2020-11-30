@@ -34,6 +34,11 @@ public interface MemberMapper {
 	public int nickNameCheck(String nickName);
 	
 	/**
+	 * 정세희 회원탈퇴
+	 * @param 
+	 */
+	public int removeMember(ArtistVO avo);
+	/**
 	 * 회원가입 - 진용현
 	 * @param memberVO
 	 * @return
@@ -53,6 +58,5 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int registerArtist(ArtistVO artistVO);
-	
 }
 	
