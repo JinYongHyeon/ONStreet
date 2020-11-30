@@ -70,8 +70,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="remove_user_date" property="memberVO.removeUserDate"/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
-
-
  	<!-- 정지윤 -->
  	<!-- 아티스트 개수 -->
  	<select id="getTotalArtistCount" resultType="int">
