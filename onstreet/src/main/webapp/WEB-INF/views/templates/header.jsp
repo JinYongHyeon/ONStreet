@@ -30,7 +30,7 @@
 		<sec:authorize access="!hasRole('ROLE_MEMBER')">
 
 			<a href="#" id="loginFormBtn">로그인</a>
-			<a href="${pageContext.request.contextPath}/registerMemberForm.do">회원가입</a>
+			<a href="${pageContext.request.contextPath}/choiceMember.do">회원가입</a>
 		</sec:authorize>
 
 		<%-- 로그인 --%>

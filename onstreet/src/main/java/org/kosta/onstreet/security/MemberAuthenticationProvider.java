@@ -1,7 +1,5 @@
 package org.kosta.onstreet.security;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +8,6 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
-import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -75,8 +72,8 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		  ( 비밀번호 암호화를 이용할 경우 )
 		 */
 		
-		//if (passwordEncoder.matches(password, member.getPassword()) == false)
-		//	throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
+			if (passwordEncoder.matches(password, member.getMemberVO().getPassword()) == false)
+			throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
 		
 		// 사용자 권한 조회 ( 회원가입시 권한 부여 , 관리자는 시스템 상에서 권한 부여 )
 		List<AuthVO> list = memberService.selectAuthorityByUsername(id);
