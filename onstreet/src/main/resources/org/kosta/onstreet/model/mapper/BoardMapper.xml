@@ -4,7 +4,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.BoardMapper">
- 	<resultMap type="artistVO" id="artistList">
+	
+	 <resultMap type="artistVO" id="artistList">
  		<result column="id" property="memberVO.id"/>
  		<result column="password" property="memberVO.password"/>
  		<result column="nickname" property="memberVO.nickName"/>
@@ -16,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="remove_user_date" property="memberVO.removeUserDate"/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
+ 	
  	
  	<resultMap type="eventVO" id="eventList">
  		<result column="id" property="artistVO.memberVO.id"/>
@@ -58,19 +60,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  insert into os_notice(notice_no,notice_title,notice_write_date,notice_content,id) 
  values(#{noticeNo},#{noticeTitle},sysdate,#{noticeContent},#{memberVO.id})
  </insert>
- 	<resultMap type="artistVO" id="artistList">
- 		<result column="id" property="memberVO.id"/>
- 		<result column="password" property="memberVO.password"/>
- 		<result column="nickname" property="memberVO.nickName"/>
- 		<result column="address" property="memberVO.address"/>
- 		<result column="phone" property="memberVO.phone"/>
- 		<result column="email" property="memberVO.email"/>
- 		<result column="name" property="memberVO.name"/>
- 		<result column="age" property="memberVO.age"/>
- 		<result column="remove_user_date" property="memberVO.removeUserDate"/>
- 		<result column="profile" property="memberVO.profile"/>
- 	</resultMap>
-
 
  	<!-- 정지윤 -->
  	<!-- 아티스트 개수 -->
@@ -106,56 +95,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM os_event e, os_member m
 		WHERE m.id=e.id AND event_no=#{value}
  	</select>
-
- 	<!-- 이동욱 시작 -->
- 	<!-- board resultmap 설정 -->
- 	<resultMap type="showVO" id="showListRM">
-		<result property="artistVO.memberVO.id" column="id"/>
-		<result property="artistVO.memberVO.nickName" column="nickname"/>
-	</resultMap>
-	<select id="getNoticeList" parameterType="pagingBean"
-		resultMap="noticeListRM">
-		select n.rnum,n.notice_no,n.notice_title,n.notice_write_date,m.nickname
-		from (
-		select row_number() over(order by notice_no desc) as
-		rnum,notice_no,notice_title,
-		to_char(notice_write_date,'YYYY.MM.DD')as notice_write_date,id
-		from os_notice) n,os_member m
-		where n.id = m.id
-		and rnum between #{startRowNumber} and #{endRowNumber}
-		order by rnum desc
-	</select>
-	<resultMap type="artistVO" id="artistList">
-		<result column="id" property="memberVO.id" />
-		<result column="password" property="memberVO.password" />
-		<result column="nickname" property="memberVO.nickName" />
-		<result column="address" property="memberVO.address" />
-		<result column="phone" property="memberVO.phone" />
-		<result column="email" property="memberVO.email" />
-		<result column="name" property="memberVO.name" />
-		<result column="age" property="memberVO.age" />
-		<result column="remove_user_date"
-			property="memberVO.removeUserDate" />
-		<result column="profile" property="memberVO.profile" />
-	</resultMap>
-
-	<!-- 정지윤 -->
-	<select id="getTotalArtistCount" resultType="int">
-		select count(*) from
-		os_artist
-	</select>
-	<!-- 아티스트 리스트 불러오기 -->
-	<select id="getArtistList" resultMap="artistList"
-		parameterType="pagingBean">
-		SELECT m.nickname, m.profile
-		FROM(SELECT row_number() over(order by check_date desc) as rnum, check_date, id
-		FROM os_artist) t, os_member m, os_auth a
-		WHERE m.id=a.id AND m.id=t.id
-		AND a.auth_name='ROLE_ARTIST' AND t.check_date is not null
-		AND rnum
-		between #{startRowNumber} and #{endRowNumber}
-		ORDER BY t.check_date DESC
-	</select>
 
 	<!-- 이동욱 시작 -->
 	<!-- board resultmap 설정 -->
