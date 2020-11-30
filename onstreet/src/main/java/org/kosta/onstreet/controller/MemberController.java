@@ -5,13 +5,16 @@ import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.aspectj.util.FileUtil;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -100,5 +103,17 @@ public class MemberController {
 	public int nickName(String nickName) {
 		return memberService.nickNameCheck(nickName);
 	}
+	//회원탈퇴폼으로 보내는메서드 정세희
+	@RequestMapping("removeMemberForm.do")
+	public ModelAndView removeMemberForm() {
+		return new ModelAndView("member/user/removeMemberForm.tiles");
+	}
 	
+	//회원탈퇴 메서드 정세희
+	@PostMapping("removeMember.do")
+	public String removeMember(String password,HttpSession session) {
+		memberService.removeMember(password);
+		session.invalidate();
+		return "redirect:home.do";
+	}
 }

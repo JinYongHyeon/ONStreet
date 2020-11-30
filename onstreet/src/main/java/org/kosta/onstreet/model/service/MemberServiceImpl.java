@@ -49,4 +49,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.nickNameCheck(nickName);
 	}
 
+	//회원 탈퇴재확인 정세희
+	@Override
+	public void removeMember(String password) {
+		 memberMapper.removeMember(password);
+		
+	}
+
 }

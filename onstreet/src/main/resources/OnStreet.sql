@@ -152,7 +152,7 @@ ALTER TABLE os_show MODIFY show_img VARCHAR2(100) NULL;
 INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
 VALUES('zarta','1','세희','광주','01023451234','tpgml@gmail.com','정세희','1996-05-13');
 
-INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','zarta1');
+INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','zarta');
 
 INSERT INTO os_member(id,password,nickname,address,phone,email,name,age) 
 VALUES('zarta1','1','세희','광주','01023451234','tpgml@gmail.com','정세희','1996-05-13');

@@ -72,13 +72,15 @@ public class TestJUnit {
 	@Test
 	public void member(){
 		
-		System.out.println(mm.artistCheckDate("biton")==null);
+		//System.out.println(mm.artistCheckDate("biton")==null);
 		//String id="zarta";
 		//System.out.println(mm.findMemberById(id));
 		//System.out.println(mm.selectAuthorityByUsername("bityong")); 권한조회테스트 - 진용현
 		//System.out.println(mm.artistCheckDate("biton")==null); 아티스트 승인조회 - 진용현
-		System.out.println(mm.nickNameCheck("펭수"));
-
+		//System.out.println(mm.nickNameCheck("펭수"));
+		
+		//String id="zarta";
+		//System.out.println("반환값"+mm.removeMember(id));
 	}
 }
 

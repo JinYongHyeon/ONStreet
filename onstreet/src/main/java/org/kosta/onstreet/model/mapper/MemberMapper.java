@@ -31,4 +31,6 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int nickNameCheck(String nickName);
+	
+	public void removeMember(String password);
 }

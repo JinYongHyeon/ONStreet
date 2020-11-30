@@ -16,4 +16,5 @@ public interface MemberService {
 	
 	int nickNameCheck(String nickName);
 
+	void removeMember(String password);
 }

@@ -46,5 +46,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="nickNameCheck" resultType="int">
  		SELECT COUNT(*) FROM os_member WHERE nickname=#{value}
  	</select>
-
+ 	
+ 	<!-- 회원탈퇴 세희 -->
+ 	<delete id="removeMember">
+ 		delete from os_member where password=#{value}
+ 	</delete>
+ 	
 </mapper>
