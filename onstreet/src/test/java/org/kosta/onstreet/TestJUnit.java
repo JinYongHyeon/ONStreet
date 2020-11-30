@@ -49,12 +49,18 @@ public class TestJUnit {
 	private BoardService bs;
 	@Test
 	public void board(){
-		int noticeTotalCount=bm.getTotalNoticeCount();
-		//System.out.println(noticeTotalCount);
-		  PagingBean pb=new PagingBean(noticeTotalCount); 
-		   List<NoticeVO> list=bm.getNoticeList(pb);
-		   for(NoticeVO vo:list) 
-		   System.out.println(vo);
+		/* 김수민 테스트
+		 * 공지사항 총합 테스트
+		 * 공지사항 리스트 불러오는 테스트
+		 *  int noticeTotalCount=bm.getTotalNoticeCount();
+		 *  System.out.println(noticeTotalCount);
+		 *  PagingBean pb=new PagingBean(noticeTotalCount); 
+		 *  List<NoticeVO> list=bm.getNoticeList(pb);
+		 *  for(NoticeVO vo:list) 
+		 *  System.out.println(vo);
+		 */
+		String noticeNo="4";
+		System.out.println(bm.getNoticeDetail(noticeNo));
 		 
 		System.out.println(bm.getTotalArtistCount());
 

@@ -34,7 +34,12 @@ private BoardMapper boardMapper;
 		ArrayList<NoticeVO> list=(boardMapper.getNoticeList(pagingBean));
 		return list;
 	}
-	
+	//공지사항 상세사항
+	@Override
+	public NoticeVO getNoticeDetail(String noticeNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기

@@ -23,6 +23,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	and rnum between #{startRowNumber} and #{endRowNumber} 
 	order by rnum desc
  </select>
+ <!-- 공지사항 상세보기 :김수민 -->
+ 	<select id="getNoticeDetail" resultType="noticeVO">
+ 	select n.notice_no,n.notice_title,n.notice_write_date,notice_content,m.id,m.nickname
+	from(
+	select notice_no,notice_title,to_char(notice_write_date,'YYYY.MM.DD')as 
+	notice_write_date,notice_content,id
+	from os_notice) n,os_member m
+	where n.id=m.id and n.notice_no=#{value}
+ 	</select>
  	<resultMap type="artistVO" id="artistList">
  		<result column="id" property="memberVO.id"/>
  		<result column="password" property="memberVO.password"/>
@@ -35,7 +44,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="remove_user_date" property="memberVO.removeUserDate"/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
- 	
  	<!-- 정지윤 -->
  	<select id="getTotalArtistCount" resultType="int">
 		select count(*) from os_artist

@@ -15,7 +15,8 @@ import org.kosta.onstreet.model.vo.ShowVO;
 public interface BoardMapper {
 
 	int getTotalNoticeCount();
- ArrayList<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
+   ArrayList<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
+   NoticeVO getNoticeDetail(String noticeNo);
 
 	/**
 	 * 정지윤
