@@ -264,3 +264,37 @@ body{
     border-radius: 5px;
     border: 2px solid #000000;
 }
+
+/*아티스트 상세보기*/
+.artistProfileImg {
+	float: left;
+	margin-left: 250px;
+	border: 2px solid #000000;
+	border-radius: 5px;
+}
+
+/*이벤트 리스트*/
+.eventList img {
+	width: 800px;
+	height: 150px;
+}
+
+#eventTitle {
+	font-weight: bolder;
+	font-size: large;
+}
+
+#eventDate {
+	font-size: medium;
+}
+
+#event a {
+	text-decoration: none;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    float: right;
+    margin-right: 350px;
+}

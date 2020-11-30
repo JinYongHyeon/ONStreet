@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
@@ -24,6 +25,21 @@ public interface BoardMapper {
 	 */
 	int getTotalArtistCount();
 	List<ArtistVO> getArtistList(PagingBean pagingBean);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 리스트 불러오기
+	 * @return
+	 */
+	int getTotalEventCount();
+	List<EventVO> getEventList(PagingBean pagingBean);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 상세정보 불러오기
+	 * @return
+	 */
+	EventVO findEventByNo(String eventNo);
 
 	//이동욱 시작
 	//공연일정글 전체개수 불러오는 메서드

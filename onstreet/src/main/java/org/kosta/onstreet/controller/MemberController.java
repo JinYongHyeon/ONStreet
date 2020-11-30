@@ -14,6 +14,7 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -130,4 +131,13 @@ public class MemberController {
 		return "index.tiles";
 	}
 	
+	/**
+	 * 정지윤
+	 * 아티스트 상세정보 불러오기
+	 */
+	@RequestMapping("getArtistDetail.do")
+	public String getArtistDetail(String id,Model model) {
+		model.addAttribute("artistVO", memberService.findMemberById(id));
+		return "board/artist/artistDetail.tiles";
+	}
 }

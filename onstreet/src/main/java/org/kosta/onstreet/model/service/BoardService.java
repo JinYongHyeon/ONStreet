@@ -2,10 +2,13 @@ package org.kosta.onstreet.model.service;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistListVO;
+import org.kosta.onstreet.model.vo.EventListVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
@@ -22,6 +25,20 @@ public interface BoardService {
 	 * 아티스트 리스트 불러오기
 	 */
 	ArtistListVO getArtistList(String pageNo);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 리스트 불러오기
+	 * @return
+	 */
+	EventListVO getEventList(String pageNo);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 상세보기 불러오기
+	 * @return
+	 */
+	EventVO findEventByNo(String eventNo);
 
 	// 전체공연 갯수 불러오기(페이징에 필요)
 	int getTotalShowCount();

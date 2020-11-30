@@ -20,7 +20,7 @@
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/getShowList.do">공연</a></li>
 				<li><a href="${pageContext.request.contextPath}/getArtistList.do">아티스트</a></li>
-				<li><a href="${pageContext.request.contextPath}/home.do">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/getEventList.do">이벤트</a></li>
 				<li><a href="${pageContext.request.contextPath}/getNoticeList.do">Q&A</a></li>
 			</ul>
 		</nav>
