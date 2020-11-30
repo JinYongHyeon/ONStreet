@@ -79,10 +79,12 @@ public ModelAndView getNoticeList(String pageNo) {
 	// 공연상세보기 메서드
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("getShowDetail.do")
-	public ModelAndView getShowDetail(String showNo) {
+	public ModelAndView getShowDetail(String showNo,String pageNo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/show/showDetail.tiles");
 		mv.addObject("svo", boardService.getShowDetail(showNo));
+		mv.addObject("clvo", boardService.getCommentList(showNo,pageNo));
 		return mv;
 	}
+	
 }

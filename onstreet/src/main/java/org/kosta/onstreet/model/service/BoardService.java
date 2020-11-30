@@ -2,13 +2,12 @@ package org.kosta.onstreet.model.service;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.kosta.onstreet.model.vo.NoticeVO;
-import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistListVO;
+import org.kosta.onstreet.model.vo.CommentListVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
@@ -44,5 +43,9 @@ public interface BoardService {
 	int getTotalShowCount();
 	// 공연일정 상세보기
 	ShowVO getShowDetail(String showNo);
+	// 댓글 리스트 불러오기
+	CommentListVO getCommentList(String showNo,String PageNo);
+	// 댓글 총개수 불러오기
+	int getTotalCommnetCount();
 }
 
