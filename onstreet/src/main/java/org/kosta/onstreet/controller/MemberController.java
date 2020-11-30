@@ -1,14 +1,9 @@
 package org.kosta.onstreet.controller;
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.FileUpload;
-import org.aspectj.util.FileUtil;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -67,7 +62,7 @@ public class MemberController {
 	 */
 	@RequestMapping("choiceMember.do")
 	public String choiceMember() {
-		return "member/choiceMember";
+		return "member/choiceMember.tiles";
 	}
 	
 	/**
@@ -78,6 +73,7 @@ public class MemberController {
 	@PostMapping("registerMember.do")
 	public String registerMember(MemberVO mvo,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
+		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
 		return "index.tiles";
@@ -145,10 +141,42 @@ public class MemberController {
 	@PostMapping("registerArtist.do")
 	public String registerArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
 		return "index.tiles";
 	}
 	
+	/**
+	 * 이용약관 - 진용현
+	 * @param url
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("checkDocument.do")
+	public String checkDocument(String url,Model model) {
+		model.addAttribute("url", url);
+		return "member/checkDocument.tiles";
+	}
+	
+	/**
+	 * 회원수정폼[관객] - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("updateMemberForm.do")
+	public String updateMemberForm() {
+		return "member/user/updateMemberForm.tiles";
+	}
+
+	/**
+	 * 정지윤
+	 * 아티스트 상세정보 불러오기
+	 */
+	@RequestMapping("getArtistDetail.do")
+	public String getArtistDetail(String id,Model model) {
+		model.addAttribute("artistVO", memberService.findMemberById(id));
+		return "board/artist/artistDetail.tiles";
+	}
 }

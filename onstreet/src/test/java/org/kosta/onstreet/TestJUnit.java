@@ -1,5 +1,6 @@
 package org.kosta.onstreet;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -48,18 +49,28 @@ public class TestJUnit {
 	private MemberMapper mm;
 	@Resource
 	private BoardMapper bm;
-	
-	private BoardService bs;
 	@Test
 	public void board(){
-		int noticeTotalCount=bm.getTotalNoticeCount();
+		/*
+		 * int noticeTotalCount=bm.getTotalNoticeCount();
+		 * System.out.println(noticeTotalCount); PagingBean pb=new
+		 * PagingBean(noticeTotalCount); List<NoticeVO> list=bm.getNoticeList(pb);
+		 * for(NoticeVO vo:list) System.out.println(vo);
+		 */
+		
+		 /**
+		  * 정지윤 테스트
+		  */
+		//System.out.println(bm.getTotalArtistCount());
+		System.out.println(bm.findEventByNo("1"));
+		//int noticeTotalCount=bm.getTotalNoticeCount();
 		//System.out.println(noticeTotalCount);
-		  PagingBean pb=new PagingBean(noticeTotalCount); 
-		   List<NoticeVO> list=bm.getNoticeList(pb);
-		   for(NoticeVO vo:list) 
-		   System.out.println(vo);
-		 
-		System.out.println(bm.getTotalArtistCount());
+//		  PagingBean pb=new PagingBean(noticeTotalCount); 
+//		   List<NoticeVO> list=bm.getNoticeList(pb);
+//		   for(NoticeVO vo:list) 
+//		   System.out.println(vo);
+//		 
+//		System.out.println(bm.getTotalArtistCount());
 
 		/* 이동욱 테스트
 		공연일정 전체 글 불러오기 테스트
@@ -67,8 +78,8 @@ public class TestJUnit {
 		System.out.println(bs.getShowList(pagingBean));
 		공연일정 상세보기 테스트
 		*/
-		String showNo ="4";
-		System.out.println(bs.getShowDetail(showNo));
+		//System.out.println(bm.getTotalCommentCount());
+//		System.out.println(bs.getShowDetail(showNo));
 
 	}
 	

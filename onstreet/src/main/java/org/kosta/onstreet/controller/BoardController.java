@@ -40,6 +40,30 @@ public ModelAndView getNoticeList(String pageNo) {
 	public ModelAndView getArtistList(String pageNo) {
 		return new ModelAndView("board/artist/artistList.tiles","artistVO",boardService.getArtistList(pageNo));
 	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 리스트 메서드
+	 * @param pageNo
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getEventList.do")
+	public ModelAndView getEventList(String pageNo) {
+		return new ModelAndView("board/event/eventList.tiles","eventVO",boardService.getEventList(pageNo));
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 상세보기 메서드
+	 * @param pageNo
+	 * @return
+	 */
+	@RequestMapping("getEventDetail.do")
+	public String getArtistDetail(String eventNo,Model model) {
+		model.addAttribute("eventVO", boardService.findEventByNo(eventNo));
+		return "board/event/eventDetail.tiles";
+	}
 
 	// 이동욱 시작
 	// 전체리스트 보여준는 메서드
@@ -55,10 +79,12 @@ public ModelAndView getNoticeList(String pageNo) {
 	// 공연상세보기 메서드
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("getShowDetail.do")
-	public ModelAndView getShowDetail(String showNo) {
+	public ModelAndView getShowDetail(String showNo,String pageNo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/show/showDetail.tiles");
 		mv.addObject("svo", boardService.getShowDetail(showNo));
+		mv.addObject("clvo", boardService.getCommentList(showNo,pageNo));
 		return mv;
 	}
+	
 }

@@ -18,8 +18,8 @@ public class FileUploadBean {
 		String realPath = request.getSession().getServletContext().getRealPath("/resources/img/profile/");
 		String copyPath = "C:"+File.separator+"kosta203"+File.separator+"final-project"+File.separator+"ONStreet"+File.separator+"onstreet"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"resources"+File.separator+"img"+File.separator+"profile"+File.separator;
 		System.out.println(mvo.getProfileFile().getOriginalFilename());
-		File file =  new File(realPath,System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
-		File file2 = new File(copyPath,System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
+		File file =  new File(realPath,mvo.getProfile());
+		File file2 = new File(copyPath,mvo.getProfile());
 		if(file.exists()) {
 			file.mkdirs();
 		}

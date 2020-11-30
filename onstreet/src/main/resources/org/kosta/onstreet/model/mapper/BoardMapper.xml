@@ -4,6 +4,25 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.BoardMapper">
+
+ 	<resultMap type="artistVO" id="artistList">
+ 		<result column="id" property="memberVO.id"/>
+ 		<result column="password" property="memberVO.password"/>
+ 		<result column="nickname" property="memberVO.nickName"/>
+ 		<result column="address" property="memberVO.address"/>
+ 		<result column="phone" property="memberVO.phone"/>
+ 		<result column="email" property="memberVO.email"/>
+ 		<result column="name" property="memberVO.name"/>
+ 		<result column="age" property="memberVO.age"/>
+ 		<result column="remove_user_date" property="memberVO.removeUserDate"/>
+ 		<result column="profile" property="memberVO.profile"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="eventVO" id="eventList">
+ 		<result column="id" property="artistVO.memberVO.id"/>
+ 		<result column="nickname" property="artistVO.memberVO.nickName"/>
+ 	</resultMap>
+ 	
 <!-- 공지사항 총합 -김수민 -->
 <select id="getTotalNoticeCount" resultType="int">
 	select count(*) from os_notice
@@ -23,32 +42,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	and rnum between #{startRowNumber} and #{endRowNumber} 
 	order by rnum desc
  </select>
- 	<resultMap type="artistVO" id="artistList">
- 		<result column="id" property="memberVO.id"/>
- 		<result column="password" property="memberVO.password"/>
- 		<result column="nickname" property="memberVO.nickName"/>
- 		<result column="address" property="memberVO.address"/>
- 		<result column="phone" property="memberVO.phone"/>
- 		<result column="email" property="memberVO.email"/>
- 		<result column="name" property="memberVO.name"/>
- 		<result column="age" property="memberVO.age"/>
- 		<result column="remove_user_date" property="memberVO.removeUserDate"/>
- 		<result column="profile" property="memberVO.profile"/>
- 	</resultMap>
- 	
+ 
  	<!-- 정지윤 -->
+ 	<!-- 아티스트 개수 -->
  	<select id="getTotalArtistCount" resultType="int">
 		select count(*) from os_artist
 	</select>
+
  	<!-- 아티스트 리스트 불러오기 -->
  	<select id="getArtistList" resultMap="artistList" parameterType="pagingBean">
- 		SELECT m.nickname, m.profile
+ 		SELECT m.id, m.nickname, m.profile
  		FROM(SELECT row_number() over(order by check_date desc) as rnum, check_date, id
  		FROM os_artist) t, os_member m, os_auth a
 		WHERE m.id=a.id AND m.id=t.id 
 		AND a.auth_name='ROLE_ARTIST' AND t.check_date is not null
 		AND rnum between #{startRowNumber} and #{endRowNumber} 
 		ORDER BY t.check_date DESC 
+ 	</select>
+ 	<!-- 이벤트 개수 -->
+ 	<select id="getTotalEventCount" resultType="int">
+		select count(*) from os_event
+	</select>
+ 	<!-- 이벤트 리스트 불러오기 -->
+ 	<select id="getEventList" resultMap="eventList" parameterType="pagingBean">
+ 		SELECT event_no, event_title, event_image, event_date
+		FROM (SELECT row_number() over(order by event_check_date desc) as rnum, event_check_date, event_no,
+		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event)
+		WHERE event_check_date IS NOT NULL
+		AND rnum between #{startRowNumber} and #{endRowNumber} 
+ 	</select>
+ 	<!-- 이벤트 상세보기 -->
+ 	<select id="findEventByNo" resultMap="eventList">
+ 		SELECT e.event_no, e.event_title, e.event_content, e.event_date, m.nickname
+		FROM os_event e, os_member m
+		WHERE m.id=e.id AND event_no=#{value}
  	</select>
 
  	<!-- 이동욱 시작 -->
@@ -57,23 +84,102 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="artistVO.memberVO.id" column="id"/>
 		<result property="artistVO.memberVO.nickName" column="nickname"/>
 	</resultMap>
- 	<!-- 공연일정글 전체 갯수 불러오는 sql -->
- 	<select id="getTotalShowCount" resultType="int">
-		select count(*) from os_show
+	<select id="getNoticeList" parameterType="pagingBean"
+		resultMap="noticeListRM">
+		select n.rnum,n.notice_no,n.notice_title,n.notice_write_date,m.nickname
+		from (
+		select row_number() over(order by notice_no desc) as
+		rnum,notice_no,notice_title,
+		to_char(notice_write_date,'YYYY.MM.DD')as notice_write_date,id
+		from os_notice) n,os_member m
+		where n.id = m.id
+		and rnum between #{startRowNumber} and #{endRowNumber}
+		order by rnum desc
+	</select>
+	<resultMap type="artistVO" id="artistList">
+		<result column="id" property="memberVO.id" />
+		<result column="password" property="memberVO.password" />
+		<result column="nickname" property="memberVO.nickName" />
+		<result column="address" property="memberVO.address" />
+		<result column="phone" property="memberVO.phone" />
+		<result column="email" property="memberVO.email" />
+		<result column="name" property="memberVO.name" />
+		<result column="age" property="memberVO.age" />
+		<result column="remove_user_date"
+			property="memberVO.removeUserDate" />
+		<result column="profile" property="memberVO.profile" />
+	</resultMap>
+
+	<!-- 정지윤 -->
+	<select id="getTotalArtistCount" resultType="int">
+		select count(*) from
+		os_artist
+	</select>
+	<!-- 아티스트 리스트 불러오기 -->
+	<select id="getArtistList" resultMap="artistList"
+		parameterType="pagingBean">
+		SELECT m.nickname, m.profile
+		FROM(SELECT row_number() over(order by check_date desc) as rnum, check_date, id
+		FROM os_artist) t, os_member m, os_auth a
+		WHERE m.id=a.id AND m.id=t.id
+		AND a.auth_name='ROLE_ARTIST' AND t.check_date is not null
+		AND rnum
+		between #{startRowNumber} and #{endRowNumber}
+		ORDER BY t.check_date DESC
+	</select>
+
+	<!-- 이동욱 시작 -->
+	<!-- board resultmap 설정 -->
+	<resultMap type="showVO" id="showListRM">
+		<result property="artistVO.memberVO.id" column="id" />
+		<result property="artistVO.memberVO.nickName" column="nickname" />
+	</resultMap>
+	<resultMap type="commentVO" id="commentListRM">
+		<result property="memberVO.id" column="id" />
+		<result property="showVO.showNo" column="showNo" />
+		<result property="memberVO.nickName" column="nickName" />
+	</resultMap>
+	<!-- 공연일정글 전체 갯수 불러오는 sql -->
+	<select id="getTotalShowCount" resultType="int">
+		select count(*) from
+		os_show
 	</select>
 	<!-- 공연일정 전체글 리스트 불러오기 -->
-	<select id="getShowList" parameterType="pagingBean" resultMap="showListRM">
-		SELECT s.show_no,s.rnum,s.show_title,m.nickname,s.show_date FROM(
-		SELECT row_number() over(order by show_date desc) as rnum,show_no,show_title,
-		to_char(show_date,'YYYY.MM.DD') as show_date,id
+	<select id="getShowList" parameterType="pagingBean"
+		resultMap="showListRM">
+		SELECT s.show_no,s.rnum,s.show_title,m.nickname,s.show_date
+		FROM(
+		SELECT row_number() over(order by show_date desc) as
+		rnum,show_no,show_title,
+		to_char(show_date,'YYYY.MM.DD') as
+		show_date,id
 		FROM os_show
-		) s,os_member m where s.id = m.id and rnum between #{startRowNumber} and #{endRowNumber} 
-		order by show_date desc 
+		) s,os_member m where s.id = m.id and rnum
+		between #{startRowNumber} and #{endRowNumber}
+		order by show_date desc
 	</select>
 	<!-- 공연일정 상세보기 -->
-	<select id="getShowDetail" parameterType="String" resultMap="showListRM">
-		select s.id,s.show_no,s.show_title,s.show_img,to_char(s.show_write_date,'YYYY.MM.DD') as show_write_date,s.show_content,to_char(s.show_date,'YYYY.MM.DD') as show_date,m.nickname
-		from OS_SHOW s, OS_member m 
+	<select id="getShowDetail" parameterType="String"
+		resultMap="showListRM">
+		select
+		s.id,s.show_no,s.show_title,s.show_img,to_char(s.show_write_date,'YYYY.MM.DD')
+		as show_write_date,s.show_content,to_char(s.show_date,'YYYY.MM.DD') as
+		show_date,m.nickname
+		from OS_SHOW s, OS_member m
 		where s.id= m.id and show_no=#{value}
+	</select>
+	<!-- 댓글 리스트 불러오기 -->
+	<select id="getCommentList"
+		resultMap="commentListRM">
+		select c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
+		from OS_COMMENT c, OS_MEMBER m
+		where c.show_no=#{showNo} and c.id=m.id and
+		c.comment_no between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
+		order by comment_write_date asc
+	</select>
+	<!-- 댓글 총갯수 불러오기 -->
+	<select id="getTotalCommentCount" resultType="int">
+		select count(*) from
+		OS_COMMENT
 	</select>
 </mapper>

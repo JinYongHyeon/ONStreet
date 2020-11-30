@@ -58,6 +58,5 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int registerArtist(ArtistVO artistVO);
-	
 }
 	
