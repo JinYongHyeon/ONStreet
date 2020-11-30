@@ -1,12 +1,13 @@
 package org.kosta.onstreet.controller;
 
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.service.BoardService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,10 +56,12 @@ public ModelAndView getNoticeList(String pageNo) {
 	// 공연상세보기 메서드
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("getShowDetail.do")
-	public ModelAndView getShowDetail(String showNo) {
+	public ModelAndView getShowDetail(String showNo,String pageNo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/show/showDetail.tiles");
 		mv.addObject("svo", boardService.getShowDetail(showNo));
+		mv.addObject("clvo", boardService.getCommentList(showNo,pageNo));
 		return mv;
 	}
+	
 }

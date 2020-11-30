@@ -2,12 +2,16 @@ package org.kosta.onstreet.model.service;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.vo.ArtistListVO;
+import org.kosta.onstreet.model.vo.CommentListVO;
+import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -74,10 +78,26 @@ private BoardMapper boardMapper;
 	public ShowVO getShowDetail(String showNo) {
 		return boardMapper.getShowDetail(showNo);
 	}
-
-
+	
 	@Override
 	public int getTotalNoticeCount() {
 		return boardMapper.getTotalNoticeCount();
+	}
+	// 댓글 리스트 불러오기
+	@Override
+	public CommentListVO getCommentList(String showNo, String pageNo) {
+		int commentTotalCount = boardMapper.getTotalCommentCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(commentTotalCount);
+		else 
+			pagingBean	=new PagingBean(commentTotalCount, Integer.parseInt(pageNo));
+		CommentListVO commListVO =new CommentListVO(boardMapper.getCommentList(showNo, pagingBean),pagingBean);
+		return commListVO;
+	}
+
+	@Override
+	public int getTotalCommnetCount() {
+		return boardMapper.getTotalCommentCount();
 	}
 }
