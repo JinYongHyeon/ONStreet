@@ -4,9 +4,12 @@ package org.kosta.onstreet.controller;
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.service.BoardService;
-import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -108,5 +111,29 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		mv.addObject("clvo", boardService.getCommentList(showNo,pageNo));
 		return mv;
 	}
-	
+	// 댓글 작성메서드
+	@Secured("ROLE_MEMBER")
+	@PostMapping("addComment.do")
+	public String addComment(ShowVO showVO, CommentVO commentVO) {
+		ArtistVO avo = (ArtistVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		commentVO.setShowVO(showVO);
+		commentVO.setMemberVO(avo.getMemberVO());
+		boardService.addComment(commentVO);
+		return "redirect:getShowDetail.do?showNo="+showVO.getShowNo();
+	}
+	// 공연일정 등록폼 메서드
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("addShowForm.do")
+	public String addShowForm() {
+		return "board/show/showRegister.tiles";
+	}
+	// 공연일정등록 메서드
+	@Secured("ROLE_ARTIST")
+	@PostMapping("addShow.do")
+	public String addShow(ShowVO showVO) {
+		ArtistVO avo = (ArtistVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		showVO.setArtistVO(avo);
+		
+		return "null";
+	}
 }
