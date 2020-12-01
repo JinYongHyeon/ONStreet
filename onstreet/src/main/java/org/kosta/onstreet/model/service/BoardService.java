@@ -4,17 +4,17 @@ package org.kosta.onstreet.model.service;
 import java.util.ArrayList;
 
 import org.kosta.onstreet.model.vo.ArtistListVO;
-import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.CommentListVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
 
 public interface BoardService {
-    ArrayList<NoticeVO> getNoticeList(String pageNo);//공지사항리스트 -김수민
+    NoticeListVO getNoticeList(String pageNo);//공지사항리스트 -김수민
     int getTotalNoticeCount();//공지사항리스트 총합-김수민
     NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세정보-김수민 
     void addNotice(NoticeVO noticeVO);//공지사항등록-김수민

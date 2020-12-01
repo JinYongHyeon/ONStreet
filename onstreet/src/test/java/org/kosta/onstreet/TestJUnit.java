@@ -64,14 +64,15 @@ public class TestJUnit {
 		//공지사항 상세정보:김수민
 		//String noticeNo="4";
 		//System.out.println(bm.getNoticeDetail(noticeNo));
-		for(int i=0; i<3; i++) {
-			NoticeVO nvo=new NoticeVO();
-			nvo.setNoticeTitle("aaaaa"+i);
-			nvo.setNoticeContent("oooo"+i);
-			nvo.setMemberVO(new MemberVO("bityong",null,null,null,null,null,null,null,null,null));
-		}
-		
-		System.out.println(bm.getTotalArtistCount());
+		NoticeVO nvo=new NoticeVO();
+		nvo.setNoticeTitle("에러");
+		nvo.setNoticeContent("테스트완료");
+		MemberVO mvo=new MemberVO();
+		mvo.setId("bityong");
+		nvo.setMemberVO(mvo);
+		bm.addNotice(nvo);
+		System.out.println(nvo);
+		//System.out.println(bm.getTotalArtistCount());
 		/*
 		 * int noticeTotalCount=bm.getTotalNoticeCount();
 		 * System.out.println(noticeTotalCount); PagingBean pb=new
@@ -83,7 +84,7 @@ public class TestJUnit {
 		  * 정지윤 테스트
 		  */
 		//System.out.println(bm.getTotalArtistCount());
-		System.out.println(bm.findEventByNo("1"));
+		//System.out.println(bm.findEventByNo("1"));
 		//int noticeTotalCount=bm.getTotalNoticeCount();
 		//System.out.println(noticeTotalCount);
 //		  PagingBean pb=new PagingBean(noticeTotalCount); 
@@ -153,15 +154,12 @@ public class TestJUnit {
 //		memberVO.setProfile(null);
 //		System.out.println(mm.updateMember(memberVO)); 회원수정 - 진용현
 		
-		ArtistVO artistVO= new ArtistVO();
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId("yhking");
-		artistVO.setSns("111");
-		artistVO.setAccount("222");
-		artistVO.setArtistInfo("3333");
-		artistVO.setMemberVO(memberVO);
-		System.out.println(artistVO);
-		System.out.println(mm.updateArtist(artistVO));
+		/*
+		 * ArtistVO artistVO= new ArtistVO(); MemberVO memberVO = new MemberVO();
+		 * memberVO.setId("yhking"); artistVO.setSns("111"); artistVO.setAccount("222");
+		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
+		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
+		 */
 		
 	}
 }

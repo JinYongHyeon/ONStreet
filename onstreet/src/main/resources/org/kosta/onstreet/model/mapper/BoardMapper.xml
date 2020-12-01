@@ -36,12 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="getNoticeList" parameterType="pagingBean" resultMap="noticeListRM">
  	select n.rnum,n.notice_no,n.notice_title,n.notice_write_date,m.nickname
     from (
-	select row_number() over(order by notice_no desc) as rnum,notice_no,notice_title,
+	select row_number() over(order by notice_no asc) as rnum,notice_no,notice_title,
 	to_char(notice_write_date,'YYYY.MM.DD')as notice_write_date,id
 	from os_notice) n,os_member m 
 	where n.id = m.id 
 	and rnum between #{startRowNumber} and #{endRowNumber} 
-	order by rnum desc
  </select>
  <!-- 공지사항 상세보기 :김수민 -->
  	<select id="getNoticeDetail" resultMap="noticeListRM">
@@ -55,8 +54,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<!-- 공지사항 등록 :김수민-->
  <insert id="addNotice" parameterType="noticeVO">
  <selectKey keyProperty="noticeNo" resultType="noticeVO" order="BEFORE">
- 	select os_notice_seq.nextval from dual
- </selectKey>
+ 	select os_notice_seq.nextval as noticeNo from dual
+ </selectKey> 
  insert into os_notice(notice_no,notice_title,notice_write_date,notice_content,id) 
  values(#{noticeNo},#{noticeTitle},sysdate,#{noticeContent},#{memberVO.id})
  </insert>

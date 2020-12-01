@@ -33,6 +33,7 @@ public ModelAndView getNoticeList(String pageNo) {
 	return mv;
 	
 }
+	//공지사항 상세보기:김수민
 	@Secured("ROLE_MEMBER")
 @RequestMapping("getNoticeDetail.do")
 public ModelAndView getNoticeDetail(String noticeNo){
@@ -41,16 +42,18 @@ public ModelAndView getNoticeDetail(String noticeNo){
 		mv.addObject("nvo",boardService.getNoticeDetail(noticeNo));
 	return mv;
 	}
+	// 공지사항등록폼:김수민
 	@GetMapping("addNoticeForm.do")
 	public String addNoticeForm() {
 		return "board/notice/noticeRegister.tiles";
 	}
+	// 공지사항등록:김수민
 	@Secured("ROLE_MEMBER")
 	@PostMapping("addNotice.do")
 public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	  boardService.addNotice(noticeVO);
 	  ra.addAttribute("noticeVO",noticeVO.getNoticeNo());
-		return "board/notice/noticeList.tiles";
+		return "redirect:board/notice/noticeList.tiles";
 	}
 	/**
 	 * 정지윤

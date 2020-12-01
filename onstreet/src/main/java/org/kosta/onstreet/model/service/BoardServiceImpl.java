@@ -11,6 +11,7 @@ import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.CommentListVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -25,7 +26,7 @@ private BoardMapper boardMapper;
 	//김수민시작
 	//공지사항리스트불러오기
 	@Override
-	public ArrayList<NoticeVO> getNoticeList(String pageNo) {
+	public NoticeListVO getNoticeList(String pageNo) {
 		int totalNoticeCount=boardMapper.getTotalNoticeCount();
 		PagingBean pagingBean=null;
 		if(pageNo==null) {
@@ -33,7 +34,7 @@ private BoardMapper boardMapper;
 		}else {
 			pagingBean=new PagingBean(totalNoticeCount,Integer.parseInt(pageNo));
 		}
-		ArrayList<NoticeVO> list=(boardMapper.getNoticeList(pagingBean));
+		NoticeListVO  list=new NoticeListVO(boardMapper.getNoticeList(pagingBean),pagingBean);
 		return list;
 	}
 	//공지사항 상세사항:김수민
