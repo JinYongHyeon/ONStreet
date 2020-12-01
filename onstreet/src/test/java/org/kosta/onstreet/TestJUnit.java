@@ -142,6 +142,27 @@ public class TestJUnit {
 //		memberVO.setId("ju1234");
 //		artistVO.setMemberVO(memberVO);
 //		System.out.println(mm.registerArtist(artistVO)); 회원가입[아티스트] - 진용현
+		
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setNickName("펭수3");
+//		memberVO.setAddress("판교");
+//		memberVO.setPhone("01022223333");
+//		memberVO.setEmail("qq@gmail.com");
+//		memberVO.setName("펭귄");
+//		memberVO.setId("shking");
+//		memberVO.setProfile(null);
+//		System.out.println(mm.updateMember(memberVO)); 회원수정 - 진용현
+		
+		ArtistVO artistVO= new ArtistVO();
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("yhking");
+		artistVO.setSns("111");
+		artistVO.setAccount("222");
+		artistVO.setArtistInfo("3333");
+		artistVO.setMemberVO(memberVO);
+		System.out.println(artistVO);
+		System.out.println(mm.updateArtist(artistVO));
+		
 	}
 }
 

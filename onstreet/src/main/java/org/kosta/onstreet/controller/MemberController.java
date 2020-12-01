@@ -57,7 +57,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * 회원가입 선택[관객 or 아티스트] 
+	 * 회원가입 선택[관객 or 아티스트]  - 진용현
 	 * @return
 	 */
 	@RequestMapping("choiceMember.do")
@@ -76,7 +76,7 @@ public class MemberController {
 		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
-		return "index.tiles";
+		return "redirect:home.do";
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class MemberController {
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
-		return "index.tiles";
+		return "redirect:home.do";
 	}
 	
 	/**
@@ -169,6 +169,16 @@ public class MemberController {
 	public String updateMemberForm() {
 		return "member/user/updateMemberForm.tiles";
 	}
+	
+	/**
+	 * 회원수정폼[아티스트] - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("updateArtistForm.do")
+	public String updateArtistForm() {
+		return "member/artist/updateArtistForm.tiles";
+	}
 
 	/**
 	 * 정지윤
@@ -178,5 +188,31 @@ public class MemberController {
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));
 		return "board/artist/artistDetail.tiles";
+	}
+	
+	/**
+	 * 회원수정[관객] - 진용현
+	 * @param memberVO
+	 * @param request
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("updateMember.do")
+	public String updateMember(MemberVO memberVO,HttpServletRequest request) {
+		FileUploadBean fileaUploadBean = new FileUploadBean();
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		fileaUploadBean.profileUpload(memberVO, request);
+		memberService.updateMember(memberVO);
+		return "redirect:mypageForm.do";
+	}
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("updateArtist.do")
+	public String updateArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
+		FileUploadBean fileUploadBean = new FileUploadBean();
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		fileUploadBean.profileUpload(memberVO, request);
+		artistVO.setMemberVO(memberVO);
+		memberService.updateArtist(artistVO);
+		return "redirect:mypageForm.do";
 	}
 }

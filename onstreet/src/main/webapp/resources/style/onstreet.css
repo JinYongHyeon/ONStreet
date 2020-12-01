@@ -164,7 +164,7 @@ body{
 	color:#777;
 }
 
-/* 회원가입 */
+/* 회원가입 + 회원수정 */
 
 #registerTitle{
 	margin-top:30px;
@@ -183,37 +183,56 @@ body{
 	transform:translate(-50%,0);
 }
 
-#registerForm{
+#registerForm,#updateForm{
 	width:600px;
 	margin-top:25px;
 }
 
-#registerForm table tr th{
+#registerForm input[type=submit] ,#updateForm input[type=submit]{
+	width:100%;
+	height:50px;
+	border:none;
+	background-color:#999;
+	color:#fff;
+	float:left;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+#registerForm table tr th,#updateForm table tr th{
 	width:150px;
 	text-align: center;
 }
-#registerForm table tr td{
+#registerForm table tr td,#updateForm table tr td{
 	width:450px;
 }
 
-#registerForm table tr td,#registerForm table tr th{
+#registerForm table tr td,#registerForm table tr th,#updateForm table tr td,#updateForm table tr th{
 	border:1px solid #e5e5e5;
 }
 
-#registerForm table tr td input{
+#registerForm table tr td input,#updateForm table tr td input{
 	width:100%;
 	border:none;
 	padding:10px;
 }
 
-#registerForm table tr td #registerId,#registerForm table tr td #registerAddress,#registerForm table tr td input[name=phone],#registerForm table tr td input[name=nickName]{
+#registerForm table tr td textarea,#updateForm table tr td textarea{
+	width:100%;
+	height:200px;
+	padding:15px;
+	float:left;
+}
+
+#registerForm table tr td #registerId,#registerForm table tr td #registerAddress,#registerForm table tr td input[name=phone],#registerForm table tr td input[name=nickName],
+#updateForm table tr td #registerId,#updateForm table tr td #registerAddress,#updateForm table tr td input[name=phone],#updateForm table tr td input[name=nickName]{
 	width:50%;
 	float:left;
 }
-#registerForm table tr td span{
+#registerForm table tr td span,#updateForm table tr td span{
 	line-height: 40px;
 }
-#registerForm table tr td button{
+#registerForm table tr td button,#updateForm table tr td button{
 	width:50%;
 	height: 41px;
 	border:none;
@@ -221,13 +240,13 @@ body{
 }
 
 
-#registerForm .defaultprofile{
+#registerForm .defaultprofile,#updateForm .defaultprofile{
 	float:left;
 	height:100px;
 	overflow: hidden;
 	position: relative;
 }
-#registerForm .defaultprofile img{
+#registerForm .defaultprofile img,#updateForm .defaultprofile img{
 	width:100px;
 	position: absolute;
 	top:50%;
@@ -315,12 +334,13 @@ body{
 	font-size:36px;
 	font-weight: bold;
 }
-#choiceRegister ul li h1{
+#choiceRegister ul li h3{
 	width:100%;
 	border:1px solid #e5e5e5;
 	padding:15px;
 	background-color:#999;
 	margin-top:45px;
+	color:#fff;
 }
 #choiceRegister ul li>a{
 	color:inherit;
@@ -331,7 +351,7 @@ body{
 	float:left;
 }
 
-#choiceRegister ul li h1 a{
+#choiceRegister ul li h3 a{
 	color:inherit;
 	text-decoration: none;
 }

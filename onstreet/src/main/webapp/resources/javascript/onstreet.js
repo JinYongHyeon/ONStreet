@@ -37,9 +37,11 @@ $(document).ready(function(){
 					if(event === "id_ok"){
 						$("#idCheck").text("사용 가능한 아이디입니다").css("color","#0000ff");
 						idCoin =1;
+						return;
 					}else if(event === "id_fail"){
 						$("#idCheck").text("사용 불가능한 아이디입니다").css("color","#ff0000");
 						idCoin =0;
+						return;
 					}
 				}
 			});
@@ -83,9 +85,9 @@ $(document).ready(function(){
 			
 			return flag;
 		});
-		
+		var nickName = $("#registerForm input[name=nickName],#updateForm input[name=nickName]").val();
 		// 닉네임 중복 체크 - 진용현
-		$("#registerForm input[name=nickName]").keyup(function(){
+		$("#registerForm input[name=nickName],#updateForm input[name=nickName]").keyup(function(){
 			if($(this).val().length<2 || $(this).val().length>=10){
 				$("#nickNameCheck").text("2자이상 10자이하로 입력해주세요").css("color","#ff0000");
 				nickCoin = 0;
@@ -100,31 +102,40 @@ $(document).ready(function(){
 					if(event==="0"){
 						$("#nickNameCheck").text("사용가능한 닉네임입니다").css("color","#0000ff");
 						nickCoin = 1;
+						return;
+					}else if($("#updateForm input[name=nickName]").val()===nickName){
+						$("#nickNameCheck").text("기존 닉네임입니다.").css("color","#00ff00");
+						nickCoin = 1;
+						return;
 					}else if(event==="1"){
 						$("#nickNameCheck").text("이미 존재하는 닉네임입니다").css("color","#ff0000");
 						nickCoin = 0;
+						return;
 					}
 				}
 			});
 		});
 		//전화번호 숫자 체크 - 진용현
-		$("#registerForm input[name=phone]").keyup(function(){
+		$("#registerForm input[name=phone],#updateForm input[name=phone]").keyup(function(){
 			var telLength = $(this).val();
 			
 			if(telLength.length<11 || telLength.length>11){
 				$("#registerTelCheck").text("전화번호 11자리 입력해주세요").css("color","#ff0000");
 					telCoin = 0; 
+					return;
 			}else if(isNaN(telLength)){
 				$("#registerTelCheck").text("전화번호 숫자만 입력해주세요").css("color","#ff0000");
 					telCoin = 0;
+					return;
 			}else{
 				$("#registerTelCheck").text("사용 가능한 전화번호 입니다").css("color","#0000ff");
 					telCoin = 1;
+					return;
 			}
 		});
 		
 		//이미지 확장자 체크 - 진용현
-		$(document).on("change","#registerForm input[name=profileFile]",function(){
+		$(document).on("change","#registerForm input[name=profileFile],#updateForm input[name=profileFile]",function(){
 			//확장자 체크
 			var ext =  $(this).val().split(".").pop().toLowerCase();
 			
@@ -151,15 +162,42 @@ $(document).ready(function(){
 	$("#checkDocument .checkDocumentBtn input[value=취소]").click(function(){
 		location.href="home.do";
 	});
+	var nickName = $("#registerForm input[name=nickName],#updateForm input[name=nickName]").val();
+	//회원수정 체크 -- 진용현
+	$("#updateForm").submit(function(){
+		if($("#updateForm input[name=nickName]").val()!==nickName){
+			if(nickCoin == 0){
+				alert("닉네임 중복체크를 해주십시오");
+				$("#registerForm input[name=nickName]").focus();
+				return false;
+			}
+		}
 		
-});
-//ready end
+		if($("#registerAddress").val()==""){
+				alert("주소를 입력해주세요");
+				return false;
+		}
+		if($("#updateForm input[name=phone]").val().length<11 || $("#updateForm input[name=phone]").val().length>11 || isNaN($("#updateForm input[name=phone]").val())){
+			if(telCoin == 0){
+				alert("전화번호를 다시 입력해주세요.");
+				$("#updateForm input[name=phone]").focus();
+				return false;
+			}
+		}
+		if($("#updateForm input[name=age]").val().length >10 || $("#updateForm input[name=age]").val().length < 10){
+				alert("생년월일 다시 입력해주세요");
+				return false;
+			}
+	});
+		
+});//ready end
+
 //이미지 미리보기 - 진용현
 	function preViewProfile(){
 		var reader = new FileReader();//파일읽기
 		
 		reader.onload = function(evnet){
-			$("#registerForm .defaultprofile img").attr("src",event.target.result); //img 속성 중 src에 주소값 넣기
+			$("#registerForm .defaultprofile img,#updateForm .defaultprofile img").attr("src",event.target.result); //img 속성 중 src에 주소값 넣기
 		}
 		reader.readAsDataURL(event.target.files[0]);
 	}
