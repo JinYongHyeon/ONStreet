@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <script>
 $(document).ready(function() {
 	var showNo = ${requestScope.svo.showNo};
@@ -76,8 +77,10 @@ ${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}<br>${cvo.commentWriteDate}<
 	</c:if>
 	</ul>	 		
 	</div> 	 
-<!-- 이곳인가 -->
- <form id="commentForm" name="commentForm" method="post">
+<!-- 댓글입력폼 -->
+ <form method="post" action="addComment.do">
+ 	<sec:csrfInput/>
+ 	<input type="hidden" name="showNo" value="${svo.showNo}">
     <br><br>
         <div>
             <div>
@@ -87,19 +90,18 @@ ${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}<br>${cvo.commentWriteDate}<
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
-                                <a href='#' class="btn pull-right btn-success">등록</a>
+                                <input type="submit" class="btn pull-right btn-success" value="등록">
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="" name="" />        
+        
     </form>
-<!-- 끝인가 -->
 
 </div>
 <div class="col-sm-2"></div>

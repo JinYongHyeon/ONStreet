@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.access.annotation.Secured;
@@ -188,6 +189,18 @@ public class MemberController {
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));
 		return "board/artist/artistDetail.tiles";
+	}
+	
+	/**
+	 * 정지윤
+	 * 팔로잉 등록
+	 */
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@RequestMapping("registerFollowing.do")
+	public int registerFollowing(FollowVO followVO) {
+		int count = memberService.registerFollowing(followVO);
+		return count;
 	}
 	
 	/**

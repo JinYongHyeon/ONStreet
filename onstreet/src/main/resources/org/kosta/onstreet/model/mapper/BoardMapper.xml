@@ -77,10 +77,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND rnum between #{startRowNumber} and #{endRowNumber} 
 		ORDER BY t.check_date DESC 
  	</select>
+ 	
  	<!-- 이벤트 개수 -->
  	<select id="getTotalEventCount" resultType="int">
 		select count(*) from os_event
 	</select>
+	
  	<!-- 이벤트 리스트 불러오기 -->
  	<select id="getEventList" resultMap="eventList" parameterType="pagingBean">
  		SELECT event_no, event_title, event_image, event_date
@@ -89,6 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE event_check_date IS NOT NULL
 		AND rnum between #{startRowNumber} and #{endRowNumber} 
  	</select>
+ 	
  	<!-- 이벤트 상세보기 -->
  	<select id="findEventByNo" resultMap="eventList">
  		SELECT e.event_no, e.event_title, e.event_content, e.event_date, m.nickname
@@ -139,15 +142,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글 리스트 불러오기 -->
 	<select id="getCommentList"
 		resultMap="commentListRM">
-		select c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
+		<!-- select c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
 		from OS_COMMENT c, OS_MEMBER m
 		where c.show_no=#{showNo} and c.id=m.id and
 		c.comment_no between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
-		order by comment_write_date asc
+		order by comment_write_date asc -->
+		select cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname
+		from (
+			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
+			from OS_COMMENT c, OS_MEMBER m
+			where c.show_no=#{showNo} and c.id=m.id
+		) cm
+		where rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} order by rnum asc
 	</select>
 	<!-- 댓글 총갯수 불러오기 -->
 	<select id="getTotalCommentCount" resultType="int">
 		select count(*) from
-		OS_COMMENT
+		OS_COMMENT where show_no=#{value}
 	</select>
+	<!-- 댓글등록하기 -->
+	<insert id="addComment">
+		INSERT INTO os_comment(comment_no,show_no,id,comment_content,comment_write_date) VALUES(os_comment_seq.nextval,#{showVO.showNo},#{memberVO.id},#{commentContent},sysdate)
+	</insert>
 </mapper>
