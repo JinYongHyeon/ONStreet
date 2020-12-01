@@ -354,6 +354,9 @@
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
+			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+			    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				},
 			onload : function(res){ // 요청이 완료되면 실행될 콜백 함수
 				var sResString = res._response.responseText;
 				if (res.readyState() == 4) {
