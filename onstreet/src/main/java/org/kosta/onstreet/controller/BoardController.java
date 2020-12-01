@@ -147,11 +147,12 @@ public class BoardController {
 	// 공연일정등록 메서드
 	@Secured("ROLE_ARTIST")
 	@PostMapping("addShow.do")
-	public String addShow(ShowVO showVO) {
+	public String addShow(ShowVO showVO,RedirectAttributes ra) {
 		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		showVO.setArtistVO(avo);
-		System.out.println(showVO);
-		return "null";
+		boardService.addShow(showVO);
+		ra.addAttribute("showNo", showVO.getShowNo());
+		return "redirect:getShowDetail.do";
 	}
 	
 	@RequestMapping("fileupload.do")

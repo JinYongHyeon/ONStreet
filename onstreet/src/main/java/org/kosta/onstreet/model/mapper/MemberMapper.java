@@ -79,7 +79,7 @@ public interface MemberMapper {
 	 * 팔로우리스트 불러오기 정세희
 	 * 
 	 */
-	public List<FollowVO> getFollowingList(String id);
+	public List<FollowVO> getfollowingList(String id);
 	
 		/**
 	 * 정지윤
