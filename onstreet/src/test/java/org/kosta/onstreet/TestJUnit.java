@@ -14,9 +14,11 @@ import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.vo.NoticeVO;
+import org.springframework.security.core.context.SecurityContextHolder;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -64,14 +66,21 @@ public class TestJUnit {
 		//공지사항 상세정보:김수민
 		//String noticeNo="4";
 		//System.out.println(bm.getNoticeDetail(noticeNo));
-		NoticeVO nvo=new NoticeVO();
+		/*NoticeVO nvo=new NoticeVO();
 		nvo.setNoticeTitle("에러");
 		nvo.setNoticeContent("테스트완료");
 		MemberVO mvo=new MemberVO();
 		mvo.setId("bityong");
 		nvo.setMemberVO(mvo);
 		bm.addNotice(nvo);
-		System.out.println(nvo);
+		System.out.println(nvo);*/
+		/*
+		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
+		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);
+		 * nvo.setMemberVO(new
+		 * MemberVO("bityong",null,null,null,null,null,null,null,null,null)); }
+		 */
+		
 		//System.out.println(bm.getTotalArtistCount());
 		/*
 		 * int noticeTotalCount=bm.getTotalNoticeCount();
@@ -160,6 +169,9 @@ public class TestJUnit {
 		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
+
+	//	String id="user1";
+		//System.out.println(mm.getFollowingList(id));
 		
 	}
 }

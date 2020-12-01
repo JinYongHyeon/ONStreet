@@ -55,6 +55,8 @@ public interface BoardMapper {
 	// 댓글 리스트 불러오기
 	List<CommentVO> getCommentList(@Param("showNo")String showNo,@Param("pagingBean")PagingBean pagingBean);
 	// 댓글 총갯수 가져오기(페이징에 필요)
-	int getTotalCommentCount();
+	int getTotalCommentCount(String showNo);
+	// 댓글 등록하기
+	void addComment(CommentVO commentVO);
 
 }

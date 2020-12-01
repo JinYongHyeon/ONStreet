@@ -19,6 +19,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
+ 	<!-- follow has a -->
+ 	<resultMap type="followVO" id="followlist">
+ 		<result column="id" property="memberVO.id"/>
+ 		<result column="nickname" property="memberVO.nickName"/>
+ 		<result column="profile" property="memberVO.profile"/>
+ 	</resultMap>
+ 	
+ 	
+ 	
+ 	<resultMap type="followVO" id="follow">
+ 		<result column="id" property="memberVO.id"/>
+ 	</resultMap>
+ 	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
  		<result column="id" property="memberVO.id"/>
@@ -48,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<!-- 회원탈퇴 세희 -->
- 	<delete id="removeMember" parameterType="artistVO">
+ 	<delete id=" " parameterType="artistVO">
 	update os_member 
 	set remove_user_date=sysdate
 	where id=#{memberVO.id} 
@@ -95,4 +108,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set>
 		WHERE id=#{memberVO.id}
 	</update>
+	
+	<!-- 팔로우리스트가져오기 정세희 -->
+	<select id="getFollowingList" parameterType="String" resultMap="followlist">
+		select m.nickname,m.profile
+		from os_follow f,os_member m
+		where m.id=f.id and f.id=#{value}
+	</select>
+	
+	<!-- 정지윤 -->
+	<!-- 팔로잉 등록 -->
+	<insert id="registerFollowing" parameterType="followVO">
+		INSERT INTO os_follow (following_id,id)
+		VALUES (#{followingId},#{memberVO.id})
+	</insert>
+	
+	<!-- 팔로잉 조회 -->
+	<select id="followingCheckList" resultType="int">
+		SELECT COUNT(*) FROM os_follow 
+		WHERE following_id=#{followingId} 
+		AND id=#{memberVO.id}
+	</select>
 </mapper>

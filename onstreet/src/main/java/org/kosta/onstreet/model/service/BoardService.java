@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.CommentListVO;
+import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
@@ -48,6 +49,8 @@ public interface BoardService {
 	// 댓글 리스트 불러오기
 	CommentListVO getCommentList(String showNo,String PageNo);
 	// 댓글 총개수 불러오기
-	int getTotalCommnetCount();
+	int getTotalCommnetCount(String showNo);
+	// 댓글작성
+	void addComment(CommentVO commentVO);
 }
 

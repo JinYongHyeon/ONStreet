@@ -83,6 +83,9 @@ CREATE TABLE os_follow(
 	CONSTRAINT os_follow_pk PRIMARY KEY(following_id,id),
 	CONSTRAINT os_follow_fk FOREIGN KEY(id) REFERENCES os_member(id) ON DELETE CASCADE
 );
+select * from os_follow;
+
+
 
 --공지사항
 CREATE TABLE os_notice(
@@ -134,6 +137,8 @@ INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','bityong');
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','biton');
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_ARTIST','biton');
 
+
+
 --로그인
 SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
 a.sns,a.account,a.artist_info,a.check_date
@@ -148,5 +153,5 @@ SELECT check_date FROM os_artist WHERE id='biton';
 
 ALTER TABLE os_show MODIFY show_img VARCHAR2(100) NULL;
 
-
+alter table os_show drop column show_img
 
