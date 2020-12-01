@@ -26,8 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
- 	
- 	
  	<resultMap type="followVO" id="follow">
  		<result column="id" property="memberVO.id"/>
  	</resultMap>

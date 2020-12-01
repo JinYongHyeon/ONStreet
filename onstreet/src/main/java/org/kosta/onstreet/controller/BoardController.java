@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.security.access.annotation.Secured;
@@ -91,6 +92,25 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	public String getArtistDetail(String eventNo,Model model) {
 		model.addAttribute("eventVO", boardService.findEventByNo(eventNo));
 		return "board/event/eventDetail.tiles";
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 등록
+	 * @param pageNo
+	 * @return
+	 */
+	@RequestMapping("addEventForm.do")
+	public String addEventForm() {
+		return "board/event/eventRegister.tiles";
+	}
+	
+	@PostMapping("addEvent.do")
+	public String addEvent(EventVO eventVO) {
+		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		eventVO.setArtistVO(artistVO);
+		boardService.addEvent(eventVO);
+		return "redirect:getEventDetail.do?eventNo="+eventVO.getEventNo();
 	}
 
 	// 이동욱 시작
