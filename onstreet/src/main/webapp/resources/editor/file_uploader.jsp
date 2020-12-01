@@ -47,7 +47,7 @@ if (ServletFileUpload.isMultipartContent(request)){
                     //파일 기본경로
                     String dftFilePath = request.getSession().getServletContext().getRealPath("/");
                     //파일 기본경로 _ 상세경로
-                    String filePath = dftFilePath + "resources" + File.separator +"img" + File.separator;
+                    String filePath = dftFilePath + "resources" + File.separator +"img" + File.separator +"content" + File.separator;
                     //String filePath =  "C:"+File.separator+"Users"+File.separator+"User"+File.separator+"eclipse-jspworkspace"+File.separator+"smarteditorSample"+File.separator+"WebContent"+File.separator+"SE2"+File.separator+"multiupload"+File.separator; 
                     File file = null;
                     file = new File(filePath);
