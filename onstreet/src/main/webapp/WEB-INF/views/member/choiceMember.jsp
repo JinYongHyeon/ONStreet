@@ -10,20 +10,20 @@
 			<div class="col-sm-4 col-sm-offset-2">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/registerMemberForm.do"><span>관객</span></a></li>
-					<li><h1>
+					<li><h3>
 							<a
 								href="${pageContext.request.contextPath}/registerMemberForm.do">관객</a>
-						</h1></li>
+						</h3></li>
 				</ul>
 			</div>
 			<div class="col-sm-4">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/registerArtistForm.do"><span>아티스트</span></a></li>
 					<li>
-						<h1>
+						<h3>
 							<a
 								href="${pageContext.request.contextPath}/registerArtistForm.do">아티스트</a>
-						</h1>
+						</h3>
 					</li>
 				</ul>
 			</div>

@@ -58,5 +58,19 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int registerArtist(ArtistVO artistVO);
+	
+	/**
+	 * 회원수정 - 진용현
+	 * @param memberVO
+	 * @return
+	 */
+	public int updateMember(MemberVO memberVO);
+	
+	/**
+	 * 회원수정[아티스트] - 진용현
+	 * @param artistVO
+	 * @return
+	 */
+	public int updateArtist(ArtistVO artistVO);
 }
 	

@@ -70,4 +70,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="registerArtist" parameterType="artistVO">
 		INSERT INTO os_artist(id,sns,account,artist_info) VALUES(#{memberVO.id},#{sns},#{account},#{artistInfo})
 	</insert>
+	
+	<!-- 회원수정 - 진용현 -->
+	<update id="updateMember" parameterType="memberVO">
+		UPDATE os_member
+		<set>
+			<if test="nickName != null">nickname=#{nickName},</if>
+			<if test="address != null">address=#{address},</if>
+			<if test="phone != null">phone=#{phone},</if>
+			<if test="email != null">email=#{email},</if>
+			<if test="name != null">name=#{name},</if>
+			<if test="profile != null">profile=#{profile}</if>
+		</set>
+		 WHERE id=#{id}
+	</update>
+	
+	<!-- 회원수정[아티스트] - 진용현 -->
+	<update id="updateArtist" parameterType="artistVO">
+		UPDATE os_artist 
+		<set>
+			<if test="sns != null">sns=#{sns},</if>
+			<if test="account != null">account=#{account},</if>
+			<if test="artistInfo != null">artist_info=#{artistInfo}</if>
+		</set>
+		WHERE id=#{memberVO.id}
+	</update>
 </mapper>
