@@ -405,11 +405,22 @@ body{
 }
 
 /*아티스트 상세보기*/
-.artistProfileImg {
+.artistProfileImg img {
 	float: left;
 	margin-left: 250px;
 	border: 2px solid #000000;
 	border-radius: 5px;
+}
+
+#follow input[type=button] {
+	text-decoration: none;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    float: right;
+    margin-right: 300px;
 }
 
 /*이벤트 리스트*/
