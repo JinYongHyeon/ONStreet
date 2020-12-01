@@ -59,5 +59,7 @@ public interface BoardService {
 	int getTotalCommnetCount(String showNo);
 	// 댓글작성
 	void addComment(CommentVO commentVO);
+	// 공연일정 등록
+	void addShow(ShowVO showVO);
 }
 

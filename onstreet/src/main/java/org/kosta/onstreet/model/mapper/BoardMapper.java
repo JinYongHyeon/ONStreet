@@ -65,5 +65,7 @@ public interface BoardMapper {
 	int getTotalCommentCount(String showNo);
 	// 댓글 등록하기
 	void addComment(CommentVO commentVO);
+	// 공연일정등록하기
+	void addShow(ShowVO showVO);
 
 }
