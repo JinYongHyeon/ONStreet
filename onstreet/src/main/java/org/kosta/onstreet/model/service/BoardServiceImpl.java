@@ -9,6 +9,7 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.CommentListVO;
+import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
@@ -119,7 +120,7 @@ private BoardMapper boardMapper;
 	// 댓글 리스트 불러오기
 	@Override
 	public CommentListVO getCommentList(String showNo, String pageNo) {
-		int commentTotalCount = boardMapper.getTotalCommentCount();
+		int commentTotalCount = boardMapper.getTotalCommentCount(showNo);
 		PagingBean pagingBean = null;
 		if(pageNo==null)
 			pagingBean = new PagingBean(commentTotalCount);
@@ -128,9 +129,14 @@ private BoardMapper boardMapper;
 		CommentListVO commListVO =new CommentListVO(boardMapper.getCommentList(showNo, pagingBean),pagingBean);
 		return commListVO;
 	}
-
+	// 댓글 게시물별 갯수불러오기
 	@Override
-	public int getTotalCommnetCount() {
-		return boardMapper.getTotalCommentCount();
+	public int getTotalCommnetCount(String showNo) {
+		return boardMapper.getTotalCommentCount(showNo);
+	}
+	// 댓글등록하기
+	@Override
+	public void addComment(CommentVO commentVO) {
+		boardMapper.addComment(commentVO);
 	}
 }

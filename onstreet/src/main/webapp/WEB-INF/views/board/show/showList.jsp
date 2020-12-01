@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 <table border="1">
 	<thead>
 		<tr>
@@ -57,5 +60,14 @@
 	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
 	</ul>	 		
-	</div> 	
-
+	</div>
+	<sec:authorize access="hasRole('ROLE_ARTIST')">
+	<div align="right">
+		<form method="get" action="addShowForm.do">
+			<sec:csrfInput/>
+			<input type="submit" class="btn btn-primary" value="공연등록"/>
+		</form>
+	</div>
+	</sec:authorize>
+	</div>
+<div class="col-sm-2"></div>
