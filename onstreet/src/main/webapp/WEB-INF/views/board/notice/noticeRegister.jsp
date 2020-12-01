@@ -7,25 +7,23 @@
 <tr>
 <td>제목&nbsp;&nbsp;
 <sec:csrfInput/>
-<input type="text" name="title" placeholder="제목을 입력하세요" required="required"> 
+<input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required"> 
 </td>
 </tr>
 <tr>
 <td>공지사항&nbsp;&nbsp;
-<textarea rows="5" cols="15" name="content" required="required" placeholder="공지사항의 내용을 입력하세요">
+<textarea rows="5" cols="15" name="noticeContent" required="required" placeholder="공지사항의 내용을 입력하세요">
 </textarea>
 </td>
 </tr>
 </table>
-<div class="btnArea">
 <button type="submit" class="btn">확인</button>
 <button type="reset" class="btn">취소</button>
-</div>
+</form>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("noticeRegister").submit(function() {
-		return confirm("글 등록을 하시겠습니까?");
+	$("#noticeRegister").submit(function() {
+		return confirm("공지사항을 등록하시겠습니까?");
 	});
 });
 </script>
-</form>

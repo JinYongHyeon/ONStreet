@@ -66,6 +66,14 @@ public class TestJUnit {
 		//공지사항 상세정보:김수민
 		//String noticeNo="4";
 		//System.out.println(bm.getNoticeDetail(noticeNo));
+		/*NoticeVO nvo=new NoticeVO();
+		nvo.setNoticeTitle("에러");
+		nvo.setNoticeContent("테스트완료");
+		MemberVO mvo=new MemberVO();
+		mvo.setId("bityong");
+		nvo.setMemberVO(mvo);
+		bm.addNotice(nvo);
+		System.out.println(nvo);*/
 		/*
 		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
 		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);
@@ -161,7 +169,7 @@ public class TestJUnit {
 		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
-		
+
 	//	String id="user1";
 		//System.out.println(mm.getFollowingList(id));
 		

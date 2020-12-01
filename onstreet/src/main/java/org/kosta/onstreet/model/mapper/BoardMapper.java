@@ -1,15 +1,14 @@
 package org.kosta.onstreet.model.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-//github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
@@ -18,7 +17,7 @@ import org.kosta.onstreet.model.vo.ShowVO;
 public interface BoardMapper {
 
 	int getTotalNoticeCount();
-   ArrayList<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
+   List<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
    NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세보기 :김수민
    void addNotice(NoticeVO noticeVO);//공지사항 작성 :김수민
 
@@ -59,5 +58,7 @@ public interface BoardMapper {
 	int getTotalCommentCount(String showNo);
 	// 댓글 등록하기
 	void addComment(CommentVO commentVO);
+	// 공연일정등록하기
+	void addShow(ShowVO showVO);
 
 }

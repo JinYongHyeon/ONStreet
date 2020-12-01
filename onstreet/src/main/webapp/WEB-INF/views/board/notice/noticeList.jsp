@@ -11,7 +11,7 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach var="list" items="${requestScope.lvo}">
+<c:forEach var="list" items="${requestScope.lvo.noList}">
 <tr>
 <td>${list.noticeNo}</td>
 <td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">
@@ -22,12 +22,13 @@
 </c:forEach>	
 </tbody>
 </table>
-<ul class="pagination">
+<div class="pagingInfo">
+	<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
 	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
 	</c:if>
-	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
-	end="${pb.endPageOfPageGroup}">
+	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
 	<c:choose>
 	<c:when test="${pb.nowPage!=i}">
 	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${i}">${i}</a></li> 
@@ -36,12 +37,12 @@
 	<li class="active"><a href="#" >${i}</a></li>
 	</c:otherwise>
 	</c:choose>
-	&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">	
 	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
-	</ul><br>	 			
+	</ul>	 		
+	</div><br>	 			
  <div class="col-sm-8" align="right">
  <form action="addNoticeForm.do" method="get">
  <input type="submit" value="등록">
