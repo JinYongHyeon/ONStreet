@@ -57,10 +57,6 @@
 				<td><input type="text" name="showTitle"></td>
 			</tr>
 			<tr>
-				<td>포스터</td>
-				<td><input type="text" name="showImg"></td>
-			</tr>
-			<tr>
 				<td>공연내용</td>
 				<td style="width:1300px"><textarea rows="25" cols="100" name="showContent" id="showContent"></textarea></td>
 			</tr>

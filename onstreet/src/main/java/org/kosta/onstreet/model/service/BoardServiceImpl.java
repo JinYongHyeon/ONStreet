@@ -140,4 +140,9 @@ private BoardMapper boardMapper;
 	public void addComment(CommentVO commentVO) {
 		boardMapper.addComment(commentVO);
 	}
+	// 공연일정 등록하기
+	@Override
+	public void addShow(ShowVO showVO) {
+		boardMapper.addShow(showVO);
+	}
 }

@@ -17,8 +17,8 @@ $(document).ready(function() {
 });
 </script>
 <c:set var="svo" value="${requestScope.svo}" />
-<div class="col-sm-2"></div>
-<div class="col-sm-4">
+<div style="float: left; width: 15%; height: 100px"></div>
+<div style="float: left; width: 40%;">
 <table border="1">
 		<tr>
 			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
@@ -37,8 +37,7 @@ $(document).ready(function() {
 		</tr>
 </table>
 </div>
-
-<div class="col-sm-4">
+<div style="float: left; width: 30%;">
 <c:forEach var="cvo" items="${requestScope.clvo.commentList}">
 <c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
@@ -104,4 +103,4 @@ ${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}<br>${cvo.commentWriteDate}<
     </form>
 
 </div>
-<div class="col-sm-2"></div>
+<div style="float: left; width: 15% height: 100px;"></div>
