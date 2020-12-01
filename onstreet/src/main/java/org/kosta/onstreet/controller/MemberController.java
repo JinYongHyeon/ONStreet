@@ -76,7 +76,7 @@ public class MemberController {
 		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
-		return "redirect:home.do";
+		return "redirect:registerMemberResult.do";
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class MemberController {
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
-		return "redirect:home.do";
+		return "redirect:registerArtistResult.do";
 	}
 	
 	/**
@@ -205,14 +205,24 @@ public class MemberController {
 		memberService.updateMember(memberVO);
 		return "redirect:mypageForm.do";
 	}
-	@Secured("ROLE_ARTIST")
-	@RequestMapping("updateArtist.do")
-	public String updateArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
-		FileUploadBean fileUploadBean = new FileUploadBean();
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
-		fileUploadBean.profileUpload(memberVO, request);
-		artistVO.setMemberVO(memberVO);
-		memberService.updateArtist(artistVO);
-		return "redirect:mypageForm.do";
+	
+                                                                                           
+	
+	/**
+	 * 회원가입완료[아티스트]
+	 * @return
+	 */
+	@RequestMapping("registerMemberResult.do")
+	public String registerMemberResult() {
+		return "member/user/registerMemberResult.tiles";
+	}
+	
+	/**
+	 * 회원가입완료[아티스트]
+	 * @return
+	 */
+	@RequestMapping("registerArtistResult.do")
+	public String registerArtistResult() {
+		return "member/artist/registerArtistResult.tiles";
 	}
 }
