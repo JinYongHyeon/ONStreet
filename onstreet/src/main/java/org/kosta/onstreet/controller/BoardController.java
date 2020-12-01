@@ -50,7 +50,7 @@ public ModelAndView getNoticeDetail(String noticeNo){
 public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	  boardService.addNotice(noticeVO);
 	  ra.addAttribute("noticeVO",noticeVO.getNoticeNo());
-		return "redirect:board/notice/noticeRegister.tiles";
+		return "board/notice/noticeList.tiles";
 	}
 	/**
 	 * 정지윤

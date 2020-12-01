@@ -17,15 +17,13 @@
 </td>
 </tr>
 </table>
-<div class="btnArea">
 <button type="submit" class="btn">확인</button>
 <button type="reset" class="btn">취소</button>
-</div>
+</form>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("noticeRegister").submit(function() {
-		return confirm("글 등록을 하시겠습니까?");
+	$("#noticeRegister").submit(function() {
+		return confirm("공지사항을 등록하시겠습니까?");
 	});
 });
 </script>
-</form>

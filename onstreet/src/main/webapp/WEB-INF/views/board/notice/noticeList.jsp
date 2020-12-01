@@ -33,7 +33,7 @@
 	<li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${i}">${i}</a></li> 
 	</c:when>
 	<c:otherwise>
-	<li class="active"><a href="#" >${i}</a></li>
+	<li class="active"><a href="#">${i}</a></li>
 	</c:otherwise>
 	</c:choose>
 	&nbsp;
