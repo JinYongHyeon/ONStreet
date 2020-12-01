@@ -19,7 +19,7 @@ public class FileUploadBean {
 		String copyPath = "C:"+File.separator+"kosta203"+File.separator+"final-project"+File.separator+"ONStreet"+File.separator+"onstreet"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"resources"+File.separator+"img"+File.separator+"profile"+File.separator;
 		File file =  new File(realPath,mvo.getProfile());
 		File file2 = new File(copyPath,mvo.getProfile());
-		if(file.exists()) {
+		if(file.exists() == false) {
 			file.mkdirs();
 		}
 		try {
