@@ -21,5 +21,9 @@ public interface MemberService {
 	void registerMember(MemberVO memberVO);
 	
 	void registerArtist(ArtistVO artistVO);
+	
+	void updateMember(MemberVO memberVO);
+	
+	void updateArtist(ArtistVO artistVO);
 
 }

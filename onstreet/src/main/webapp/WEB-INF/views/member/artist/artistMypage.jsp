@@ -51,7 +51,7 @@
 		</tr>
 	</table>
 	<a href="">회원탈퇴</a>
-	<a href="">회원정보수정</a>
+	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a>
 	<a href="">이벤트신청현황</a>
 
 
