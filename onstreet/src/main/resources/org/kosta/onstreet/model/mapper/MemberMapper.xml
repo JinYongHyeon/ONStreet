@@ -19,6 +19,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
+ 	<!-- follow has a -->
+ 	<resultMap type="followVO" id="followlist">
+ 		<result column="id" property="memberVO.id"/>
+ 		<result column="nickname" property="memberVO.nickName"/>
+ 		<result column="profile" property="memberVO.profile"/>
+ 	</resultMap>
+ 	
+ 	
+ 	
+ 	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
  		<result column="id" property="memberVO.id"/>
@@ -95,4 +105,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set>
 		WHERE id=#{memberVO.id}
 	</update>
+	
+	<!-- 팔로우리스트가져오기 정세희 -->
+	<select id="getFollowingList" parameterType="String" resultMap="followlist">
+		select m.nickname,m.profile
+		from os_follow f,os_member m
+		where m.id=f.id and f.id=#{value}
+	</select>
+	
 </mapper>

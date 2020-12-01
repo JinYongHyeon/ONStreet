@@ -215,4 +215,9 @@ public class MemberController {
 		memberService.updateArtist(artistVO);
 		return "redirect:mypageForm.do";
 	}
+	
+	//컨트롤러 세희 미완성 
+	//@Secured("ROLE_MEMBER")
+	//@RequestMapping("")
+	
 }

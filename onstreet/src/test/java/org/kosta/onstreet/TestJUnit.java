@@ -153,15 +153,15 @@ public class TestJUnit {
 //		memberVO.setProfile(null);
 //		System.out.println(mm.updateMember(memberVO)); 회원수정 - 진용현
 		
-		ArtistVO artistVO= new ArtistVO();
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId("yhking");
-		artistVO.setSns("111");
-		artistVO.setAccount("222");
-		artistVO.setArtistInfo("3333");
-		artistVO.setMemberVO(memberVO);
-		System.out.println(artistVO);
-		System.out.println(mm.updateArtist(artistVO));
+		/*
+		 * ArtistVO artistVO= new ArtistVO(); MemberVO memberVO = new MemberVO();
+		 * memberVO.setId("yhking"); artistVO.setSns("111"); artistVO.setAccount("222");
+		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
+		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
+		 */
+		
+		String id="user1";
+		System.out.println(mm.getFollowingList(id));
 		
 	}
 }

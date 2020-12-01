@@ -153,5 +153,5 @@ SELECT check_date FROM os_artist WHERE id='biton';
 
 ALTER TABLE os_show MODIFY show_img VARCHAR2(100) NULL;
 
-
+alter table os_show drop column show_img
 

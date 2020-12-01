@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 
 public interface MemberService {
@@ -26,4 +27,5 @@ public interface MemberService {
 	
 	void updateArtist(ArtistVO artistVO);
 
+	List<FollowVO> getFollowingList(String id);
 }

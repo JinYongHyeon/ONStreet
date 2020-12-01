@@ -3,8 +3,10 @@ package org.kosta.onstreet.model.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 
 @Mapper
@@ -72,5 +74,13 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int updateArtist(ArtistVO artistVO);
+	
+	/**
+	 * 팔로우리스트 불러오기 정세희
+	 * 
+	 */
+	public List<FollowVO> getFollowingList(String id);
+	
+	
 }
 	

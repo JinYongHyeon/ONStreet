@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -149,6 +150,11 @@ public class MemberServiceImpl implements MemberService {
 			avo.setAccount(artistVO.getAccount());
 		avo.setArtistInfo(artistVO.getArtistInfo());
 		avo.setMemberVO(artistVO.getMemberVO());
+	}
+
+	@Override
+	public List<FollowVO> getFollowingList(String id) {
+		return memberMapper.getFollowingList(id);
 	}
 
 }
