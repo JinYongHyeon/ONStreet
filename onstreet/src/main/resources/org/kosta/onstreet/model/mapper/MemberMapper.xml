@@ -28,6 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	
  	
+ 	<resultMap type="followVO" id="follow">
+ 		<result column="id" property="memberVO.id"/>
+ 	</resultMap>
  	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
@@ -58,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<!-- 회원탈퇴 세희 -->
- 	<delete id="removeMember" parameterType="artistVO">
+ 	<delete id=" " parameterType="artistVO">
 	update os_member 
 	set remove_user_date=sysdate
 	where id=#{memberVO.id} 
@@ -113,4 +116,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m.id=f.id and f.id=#{value}
 	</select>
 	
+	<!-- 정지윤 -->
+	<!-- 팔로잉 등록 -->
+	<insert id="registerFollowing" parameterType="followVO">
+		INSERT INTO os_follow (following_id,id)
+		VALUES (#{followingId},#{memberVO.id})
+	</insert>
+	
+	<!-- 팔로잉 조회 -->
+	<select id="followingCheckList" resultType="int">
+		SELECT COUNT(*) FROM os_follow 
+		WHERE following_id=#{followingId} 
+		AND id=#{memberVO.id}
+	</select>
 </mapper>

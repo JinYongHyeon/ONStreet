@@ -3,6 +3,7 @@ package org.kosta.onstreet.model.service;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -157,4 +158,19 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.getFollowingList(id);
 	}
 
+	/**
+	 * 정지윤
+	 * 1. 중복체크
+	 * 2. 중복 아니면 팔로잉 등록
+	 */
+	@Override
+	public int registerFollowing(FollowVO followVO) {
+		int count=0;
+		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		followVO.setMemberVO(artistVO.getMemberVO());
+		if(memberMapper.followingCheckList(followVO)==0) {
+			count = memberMapper.registerFollowing(followVO);
+		}
+		return count;
+	}
 }

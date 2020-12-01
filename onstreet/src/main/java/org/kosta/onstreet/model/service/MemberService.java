@@ -28,4 +28,6 @@ public interface MemberService {
 	void updateArtist(ArtistVO artistVO);
 
 	List<FollowVO> getFollowingList(String id);
+	
+	int registerFollowing(FollowVO followVO);
 }
