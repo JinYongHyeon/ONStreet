@@ -154,4 +154,14 @@ private BoardMapper boardMapper;
 	public void addShow(ShowVO showVO) {
 		boardMapper.addShow(showVO);
 	}
+	// 공연일정 업데이트
+	@Override
+	public void updateShow(ShowVO showVO) {
+		boardMapper.updateShow(showVO);
+	}
+	// 공연삭제 메서드
+	@Override
+	public void deleteShow(String showNo) {
+		boardMapper.deleteShow(showNo);
+	}
 }

@@ -193,12 +193,32 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		return fileUploadBean.multipartImgUpload(files, request);
 	}
 	// 공연수정폼으로 가는 메서드
-	
-	@RequestMapping("updateForm.do")
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("updateShowForm.do")
 	public String updateForm(String showNo, Model model) {
 		model.addAttribute("svo", boardService.getShowDetail(showNo));
 		return "board/show/showUpdate.tiles";
 	}
-
+	// 공연수정 하는 메서드
+	@Secured("ROLE_ARTIST")
+	@PostMapping("updateShow.do")
+	public String updateShow(ShowVO showVO, RedirectAttributes ra) {
+		boardService.updateShow(showVO);
+		ra.addAttribute("showNo", showVO.getShowNo());
+		return "redirect:getShowDetail.do";
+	}
+	// 공연삭제 메서드 
+	@Secured("ROLE_ARTIST")
+	@PostMapping("deleteShow.do")
+	public String deleteShow(String showNo) {
+		boardService.deleteShow(showNo);
+		return "redirect:home.do";
+	}
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("commentUpdateForm.do")
+	public String commentUpdateForm(String showNo, String commentNo) {
+		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return "";
+	}
 }
 

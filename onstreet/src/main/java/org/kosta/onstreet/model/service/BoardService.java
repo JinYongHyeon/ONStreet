@@ -61,5 +61,9 @@ public interface BoardService {
 	void addComment(CommentVO commentVO);
 	// 공연일정 등록
 	void addShow(ShowVO showVO);
+	// 공연일정 업데이트
+	void updateShow(ShowVO showVO);
+	// 공연삭제 
+	void deleteShow(String showNo);
 }
 

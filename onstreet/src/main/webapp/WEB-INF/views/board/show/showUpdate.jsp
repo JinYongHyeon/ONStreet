@@ -5,7 +5,8 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/editor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
-	var oEditors = [];
+
+var oEditors = [];
 	$(function() {
 		nhn.husky.EZCreator
 				.createInIFrame({
@@ -35,7 +36,7 @@
 		});
 
 		//저장버튼 클릭시 form 전송
-		$("#postWrite").click(function() {
+		$("#postUpdate").click(function() {
 			if ($("#postTitle").val() == "") {
 				alert("게시글 제목을 입력하세요.");
 				return;
@@ -197,10 +198,12 @@
 <c:set var="svo" value="${requestScope.svo}" />
 <div style="float: left; width: 15%; height: 100px"></div>
 <div style="float: left; width: 70%;">
-<form action="" method="post">
+<form action="updateShow.do" method="post" id="frm">
+<input type="hidden" name="showNo" value="${svo.showNo}">
+<sec:csrfInput/>
 <table border="1" id="showDetail">
 		<tr>
-			<td>공연제목</td><td><input type="text" name="showTitle" value="${svo.showTitle}"></td>
+			<td>공연제목</td><td><input type="text" name="showTitle" value="${svo.showTitle}" required="required"></td>
 		</tr>
 		<tr>
 			<td>공연내용</td>
@@ -208,9 +211,10 @@
 						name="showContent" id="showContent">${svo.showContent}</textarea></td>
 		</tr>
 		<tr>
-			<td>공연일정</td><td>${svo.showDate}</td>
+			<td>공연일정</td><td><input type="date" name="showDate" required="required" value="${svo.showDate}"></td>
 		</tr>
 </table>
+<input type="submit" value="수정하기" id="postUpdate" class="btn btn-warning">
 </form>
 </div>
 <div style="float: left; width: 15%;"></div>
