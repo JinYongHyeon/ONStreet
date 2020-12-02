@@ -77,7 +77,8 @@ public class MemberController {
 	@PostMapping("registerMember.do")
 	public String registerMember(MemberVO mvo,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
+		if(!mvo.getProfileFile().getOriginalFilename().equals(""))
+		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
 		return "redirect:registerMemberResult.do";
@@ -144,7 +145,8 @@ public class MemberController {
 	@PostMapping("registerArtist.do")
 	public String registerArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
@@ -187,6 +189,7 @@ public class MemberController {
 	 * 정지윤
 	 * 아티스트 상세정보 불러오기
 	 */
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("getArtistDetail.do")
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));
@@ -215,16 +218,17 @@ public class MemberController {
 	@RequestMapping("updateMember.do")
 	public String updateMember(MemberVO memberVO,HttpServletRequest request) {
 		FileUploadBean fileaUploadBean = new FileUploadBean();
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		memberService.updateMember(memberVO);
 		return "redirect:mypageForm.do";
 	}
 	
-                                                                                           
+		
 	
 	/**
-	 * 회원가입완료[아티스트]
+	 * 회원가입완료[아티스트] - 진용현
 	 * @return
 	 */
 	@RequestMapping("registerMemberResult.do")
@@ -233,7 +237,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * 회원가입완료[아티스트]
+	 * 회원가입완료[아티스트] - 진용현
 	 * @return
 	 */
 	@RequestMapping("registerArtistResult.do")
@@ -241,7 +245,23 @@ public class MemberController {
 		return "member/artist/registerArtistResult.tiles";
 	}
 	
-	//컨트롤러 세희 미완성 
+	/**
+	 * 회원수정[아티스트] - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@PostMapping("updateArtist.do")
+	public String updateArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
+		FileUploadBean fileaUploadBean = new FileUploadBean();
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
+		fileaUploadBean.profileUpload(memberVO, request);
+		artistVO.setMemberVO(memberVO);
+		memberService.updateArtist(artistVO);
+		return "redirect:mypageForm.do";
+	}
+	
+	//팔로우리스트 불러오기 정세희 
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
 	public ModelAndView getfollowingList() {
@@ -249,6 +269,13 @@ public class MemberController {
 		mv.setViewName("member/user/followingList.tiles");
 		mv.addObject("list",memberService.getfollowingList());
 		return mv;
+	}
+	//팔로우 선택 삭제
+	@Secured("ROLE_MEMBER")
+	@PostMapping("removeFollowing.do")
+	public ModelAndView removeFollowing() {
+		return new ModelAndView("member/user/followingList.tiles");
+		
 	}
 	
 }

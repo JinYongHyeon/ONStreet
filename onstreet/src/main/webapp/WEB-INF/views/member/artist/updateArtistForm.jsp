@@ -18,8 +18,7 @@
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" id="registerId" name="id"
-					value="${artist.memberVO.id}" readonly="readonly" placeholder="아이디 입력해주세요"><span
-					id="idCheck"></span></td>
+					value="${artist.memberVO.id}" readonly="readonly" placeholder="아이디 입력해주세요"></td>
 			</tr>
 			
 			<tr>

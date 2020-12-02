@@ -67,5 +67,8 @@ public interface BoardMapper {
 	void addComment(CommentVO commentVO);
 	// 공연일정등록하기
 	void addShow(ShowVO showVO);
-
+	// 공연일정 업데이트
+	void updateShow(ShowVO showVO);
+	// 공연삭제
+	void deleteShow(String showNo);
 }

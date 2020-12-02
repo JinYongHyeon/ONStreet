@@ -1,8 +1,6 @@
 package org.kosta.onstreet.model.service;
 
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.PagingBean;
@@ -99,6 +97,8 @@ private BoardMapper boardMapper;
 	 */
 	@Override
 	public void addEvent(EventVO eventVO) {
+		if(eventVO.getEventImageFile().getOriginalFilename().equals(""))
+			eventVO.setEventImage(eventVO.getEventImageFile().getOriginalFilename());
 		boardMapper.addEvent(eventVO);
 	}
 
@@ -156,5 +156,15 @@ private BoardMapper boardMapper;
 	@Override
 	public void addShow(ShowVO showVO) {
 		boardMapper.addShow(showVO);
+	}
+	// 공연일정 업데이트
+	@Override
+	public void updateShow(ShowVO showVO) {
+		boardMapper.updateShow(showVO);
+	}
+	// 공연삭제 메서드
+	@Override
+	public void deleteShow(String showNo) {
+		boardMapper.deleteShow(showNo);
 	}
 }

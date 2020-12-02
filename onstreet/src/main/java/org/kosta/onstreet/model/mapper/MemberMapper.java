@@ -81,11 +81,14 @@ public interface MemberMapper {
 	 */
 	public List<FollowVO> getfollowingList(String id);
 	
-		/**
+	/**
 	 * 정지윤
 	 * 팔로잉 등록
 	 */
 	int registerFollowing(FollowVO followVO);
 	int followingCheckList(FollowVO followVO);
+	
+	public int removeFollowing(String id);
+	
 }
 	

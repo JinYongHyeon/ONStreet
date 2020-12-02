@@ -75,7 +75,7 @@
 												oEditors.getById["showContent"]
 														.exec(
 																"PASTE_HTML",
-																[ "<img src='${pageContext.request.contextPath}/resources/img/profile/"+data[i]+"'/>" ]);
+																[ "<img src='${pageContext.request.contextPath}/resources/img/content/"+data[i]+"'/>" ]);
 											}
 											if($("#multipartPreView").is(":animated"))return;
 											$("#multipartPreView").animate({
@@ -121,6 +121,7 @@
 			fileArr.forEach(function(f) {
 						if (!f.type.match("image/.*")) {
 							alert("이미지 확장자만 업로드 가능합니다.");
+							$("#multipartPreView .preViewImg ul").html("");
 							$("#multipartPreViewForm input[type=file]").val("");
 							return;
 						}
@@ -139,6 +140,7 @@
 						}
 					})
 						if (files.length > 11) {
+								$("#multipartPreView .preViewImg ul").html("");
 								alert("최대 10장까지 업로드 할 수 있습니다.");
 								$(this).val("");
 								return;
@@ -159,7 +161,7 @@
 			});
 	});
 </script>
-<button type="button" id="preView">보기</button>
+
 
 <div id="multipartPreView">
 
@@ -200,12 +202,21 @@
 		<table border="1">
 			<tr>
 				<td>공연제목</td>
-				<td><input type="text" name="showTitle"></td>
+				<td><input type="text" name="showTitle" required="required"></td>
 			</tr>
 			<tr>
 				<td>공연내용</td>
-				<td style="width: 1300px"><textarea rows="25" cols="100"
-						name="showContent" id="showContent"></textarea></td>
+				<td style="width: 1300px">
+					<div class="mutiPhotoUpload">
+						<div id="mutiPhotoUploadBtn">
+							<button type="button" class="preView" id="test">
+							<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-camera-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+							  <path fill-rule="evenodd" d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+							</svg></button>
+						</div><textarea rows="25" name="showContent" id="showContent"></textarea>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td>공연날짜</td>

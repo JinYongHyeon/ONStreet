@@ -105,8 +105,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	<!-- 이벤트 등록 -->
  	<insert id="addEvent" parameterType="eventVO">
+ 		<selectKey keyProperty="eventNo" resultType="String" order="BEFORE">
+			select os_event_seq.nextval from dual
+		</selectKey>
  		INSERT INTO os_event(event_no,event_title,event_content,event_image,event_write_date,event_date,id)
-		VALUES(os_event_seq.nextval,#{eventTitle},#{eventContent},#{eventImage},sysdate,#{eventDate},#{artistVO.memberVO.id})
+		VALUES(#{eventNo},#{eventTitle},#{eventContent},#{eventImage},sysdate,#{eventDate},#{artistVO.memberVO.id})
  	</insert>
 
 	<!-- 이동욱 시작 -->
@@ -132,7 +135,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM(
 		SELECT row_number() over(order by show_date desc) as
 		rnum,show_no,show_title,
-		to_char(show_date,'YYYY.MM.DD') as
+		to_char(show_date,'YYYY-MM-DD') as
 		show_date,id
 		FROM os_show
 		) s,os_member m where s.id = m.id and rnum
@@ -143,8 +146,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getShowDetail" parameterType="String"
 		resultMap="showListRM">
 		select
-		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY.MM.DD')
-		as show_write_date,s.show_content,to_char(s.show_date,'YYYY.MM.DD') as
+		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY-MM-DD')
+		as show_write_date,s.show_content,to_char(s.show_date,'YYYY-MM-DD') as
 		show_date,m.nickname
 		from OS_SHOW s, OS_member m
 		where s.id= m.id and show_no=#{value}
@@ -157,7 +160,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where c.show_no=#{showNo} and c.id=m.id and
 		c.comment_no between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
 		order by comment_write_date asc -->
-		select cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname
+		select cm.comment_no,cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname
 		from (
 			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
 			from OS_COMMENT c, OS_MEMBER m
@@ -182,4 +185,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO os_show(show_no,show_title,show_write_date,show_content,show_date,id) 
 		VALUES(#{showNo},#{showTitle},sysdate,#{showContent},#{showDate},#{artistVO.memberVO.id})
 	</insert>
+	<!-- 공연일정 업데이트 -->
+	<update id="updateShow">
+		update OS_SHOW set show_title=#{showTitle}, show_content=#{showContent},show_date=#{showDate} where show_no=#{showNo}
+	</update>
+	<!-- 공연삭제 -->
+	<delete id="deleteShow">
+		delete from OS_SHOW where show_no=#{value}
+	</delete>
 </mapper>

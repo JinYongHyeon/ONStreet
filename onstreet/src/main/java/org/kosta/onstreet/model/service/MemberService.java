@@ -30,4 +30,6 @@ public interface MemberService {
 	List<FollowVO> getfollowingList();
 	
 	int registerFollowing(FollowVO followVO);
+	
+	int removeFollowing();
 }
