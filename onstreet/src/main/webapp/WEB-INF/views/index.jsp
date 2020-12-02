@@ -19,8 +19,3 @@
 
 </div>
 
-
-<form action="${pageContext.request.contextPath}/fileupload.do" method="post" enctype="multipart/form-data" >
-	<sec:csrfInput/>
-	<input type="file" name= "files" multiple="multiple">
-</form>

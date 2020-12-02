@@ -1,11 +1,11 @@
 package org.kosta.onstreet.controller;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -155,27 +156,12 @@ public class BoardController {
 		return "redirect:getShowDetail.do";
 	}
 	
+	@ResponseBody
 	@RequestMapping("fileupload.do")
-	 public String  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
-		String realPath = request.getSession().getServletContext().getRealPath("/resources/img/profile/");
-		File file =  new File(realPath);
-		if(file.exists() == false) {
-			file.mkdirs();
-		}
-		for(int i=0; i<files.size();i++) {
-			String fileName = files.get(i).getOriginalFilename();
-			if(!fileName.equals("")) {
-				try {
-					files.get(i).transferTo(new File(realPath+fileName));
-					System.out.println(fileName+"업로드 완료");
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return "redirect:home.do";
+	 public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
+		FileUploadBean fileUploadBean = new FileUploadBean();
+		System.out.println(files);
+		return fileUploadBean.multipartImgUpload(files, request);
 	}
 
 
