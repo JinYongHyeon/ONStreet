@@ -153,9 +153,16 @@ public class MemberServiceImpl implements MemberService {
 		avo.setMemberVO(artistVO.getMemberVO());
 	}
 
+	/**
+	 * 정세희
+	 * 팔로우리스트 불러오기
+	 */
 	@Override
-	public List<FollowVO> getFollowingList(String id) {
-		return memberMapper.getFollowingList(id);
+	public List<FollowVO> getfollowingList() {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 List<FollowVO> list=memberMapper.getfollowingList(avo.getMemberVO().getId());
+		return list;
+		
 	}
 
 	/**

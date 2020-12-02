@@ -27,7 +27,7 @@ public interface MemberService {
 	
 	void updateArtist(ArtistVO artistVO);
 
-	List<FollowVO> getFollowingList(String id);
+	List<FollowVO> getfollowingList();
 	
 	int registerFollowing(FollowVO followVO);
 }
