@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.kosta.onstreet.model.EventFileUploadBean;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -126,11 +125,14 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	@Secured("ROLE_ARTIST")
 	@PostMapping("addEvent.do")
 	public String addEvent(EventVO eventVO,HttpServletRequest request) {
+		
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		EventFileUploadBean eventFileUploadBean = new EventFileUploadBean();
+		FileUploadBean eventFileUploadBean = new FileUploadBean();
 		eventVO.setArtistVO(artistVO);
-		eventVO.setEventImage(System.currentTimeMillis()+eventVO.getEventImageFile().getOriginalFilename());
-		eventFileUploadBean.profileUpload(eventVO, request);
+		if(!eventVO.getEventImageFile().getOriginalFilename().equals(""))
+		eventVO.setEventImage(System.currentTimeMillis()+eventVO.getEventImageFile().getOriginalFilename().substring(eventVO.getEventImageFile().getOriginalFilename().indexOf(".")));
+		eventFileUploadBean.eventBannerUpload(eventVO, request);
+		
 		boardService.addEvent(eventVO);
 		return "redirect:getEventDetail.do?eventNo="+eventVO.getEventNo();
 	}

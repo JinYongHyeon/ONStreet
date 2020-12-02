@@ -511,6 +511,35 @@ body{
     margin-right: 30px;
 }
 
+/*관리자 페이지*/
+#manageMember {
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    float: left;
+    margin-left: 400px;
+    margin-bottom: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
+    width: 20%;
+    padding-top: 100px;
+    padding-bottom: 100px;	
+}
+
+#managePost {
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    float: right;
+    margin-right: 400px;
+    margin-bottom: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
+    width: 20%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 /* 회원가입 성공 */
 #registerResult{
 	width:500px;

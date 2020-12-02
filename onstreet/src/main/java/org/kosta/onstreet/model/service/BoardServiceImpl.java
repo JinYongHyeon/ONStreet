@@ -1,8 +1,6 @@
 package org.kosta.onstreet.model.service;
 
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.PagingBean;

@@ -44,19 +44,19 @@
 
 		//저장버튼 클릭시 form 전송
 		$("#postWrite").click(function() {
-			if ($("#postTitle").val() == "") {
+			if ($("#eventTitle").val() == "") {
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}
 
 			oEditors.getById["eventContent"].exec("UPDATE_CONTENTS_FIELD", []);
 
-			if ($("#eventContent").val() == "") {
+			if ($("#eventContent").val() == ""||$("#eventContent").val()=="<p>&nbsp;</p>") {
 				alert("게시글 내용을 입력하세요.");
 				return;
 			}
 
-			$("#frm").submit();
+			$("#addEvent").submit();
 		});
 
 		$("#multipartPreViewForm input[value=전송]").click(
@@ -199,13 +199,13 @@
 	</form>
 </div>
 <div class="container">
-<form action="addEvent.do" method="post" id="addEvent">
+<form action="addEvent.do" method="post" id="addEvent" enctype="multipart/form-data">
 <sec:csrfInput />
 제목  <input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle"> <br><br>
 <textarea rows="25" cols="170" name="eventContent" id="eventContent"></textarea> <br><br>
 이벤트 날짜  <input type="date" name="eventDate" required="required"> 
-<input type="file" name="eventImage" id="eventImage"><br><br>
-<input type="submit" value="등록하기"><br><br>
+<input type="file" name="eventImageFile" id="eventImage"><br><br>
+<input type="button" id="postWrite" value="등록하기"><br><br>
 </form>
 </div>
 </body>
