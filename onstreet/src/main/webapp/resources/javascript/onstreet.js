@@ -2,6 +2,8 @@
  * 
  */
 $(document).ready(function(){
+	
+	
 	//로그아웃 진용현
 	$(document).on("click","#logout",function(){
 		$("#logoutForm").submit();
@@ -245,4 +247,12 @@ $(document).ready(function(){
 			}
 		}).open();
 		}
+		
+
+		
+		
+
+
+		
+		
 

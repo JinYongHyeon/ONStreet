@@ -1,5 +1,7 @@
 package org.kosta.onstreet.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EventVO {
 	private String eventNo; // 이벤트 번호
 	private String eventTitle; // 이벤트 제목
@@ -9,6 +11,7 @@ public class EventVO {
 	private String eventCheckDate; // 이벤트 승인일
 	private String eventImage; // 이벤트 이미지
 	private ArtistVO artistVO;// 작성자
+	private MultipartFile eventImageFile;
 
 	public EventVO() {
 		super();
@@ -90,6 +93,14 @@ public class EventVO {
 
 	public void setArtistVO(ArtistVO artistVO) {
 		this.artistVO = artistVO;
+	}
+	
+	public MultipartFile getEventImageFile() {
+		return eventImageFile;
+	}
+
+	public void setEventImageFile(MultipartFile eventImageFile) {
+		this.eventImageFile = eventImageFile;
 	}
 
 	@Override

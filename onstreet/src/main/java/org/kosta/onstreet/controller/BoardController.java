@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.BoardService;
@@ -16,6 +17,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,6 +104,7 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 * @param pageNo
 	 * @return
 	 */
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("getEventDetail.do")
 	public String getArtistDetail(String eventNo, Model model) {
 		model.addAttribute("eventVO", boardService.findEventByNo(eventNo));
@@ -114,15 +117,23 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 * @param pageNo
 	 * @return
 	 */
+	@Secured("ROLE_ARTIST")
 	@RequestMapping("addEventForm.do")
 	public String addEventForm() {
 		return "board/event/eventRegister.tiles";
 	}
 	
+	@Secured("ROLE_ARTIST")
 	@PostMapping("addEvent.do")
-	public String addEvent(EventVO eventVO) {
+	public String addEvent(EventVO eventVO,HttpServletRequest request) {
+		
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		FileUploadBean eventFileUploadBean = new FileUploadBean();
 		eventVO.setArtistVO(artistVO);
+		if(!eventVO.getEventImageFile().getOriginalFilename().equals(""))
+		eventVO.setEventImage(System.currentTimeMillis()+eventVO.getEventImageFile().getOriginalFilename().substring(eventVO.getEventImageFile().getOriginalFilename().indexOf(".")));
+		eventFileUploadBean.eventBannerUpload(eventVO, request);
+		
 		boardService.addEvent(eventVO);
 		return "redirect:getEventDetail.do?eventNo="+eventVO.getEventNo();
 	}
@@ -187,12 +198,37 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 */
 	@ResponseBody
 	@RequestMapping("fileupload.do")
-	 public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
+	public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		System.out.println(files);
 		return fileUploadBean.multipartImgUpload(files, request);
 	}
-
-
+	// 공연수정폼으로 가는 메서드
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("updateShowForm.do")
+	public String updateForm(String showNo, Model model) {
+		model.addAttribute("svo", boardService.getShowDetail(showNo));
+		return "board/show/showUpdate.tiles";
+	}
+	// 공연수정 하는 메서드
+	@Secured("ROLE_ARTIST")
+	@PostMapping("updateShow.do")
+	public String updateShow(ShowVO showVO, RedirectAttributes ra) {
+		boardService.updateShow(showVO);
+		ra.addAttribute("showNo", showVO.getShowNo());
+		return "redirect:getShowDetail.do";
+	}
+	// 공연삭제 메서드 
+	@Secured("ROLE_ARTIST")
+	@PostMapping("deleteShow.do")
+	public String deleteShow(String showNo) {
+		boardService.deleteShow(showNo);
+		return "redirect:home.do";
+	}
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("commentUpdateForm.do")
+	public String commentUpdateForm(String showNo, String commentNo) {
+		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return "";
+	}
 }
 
