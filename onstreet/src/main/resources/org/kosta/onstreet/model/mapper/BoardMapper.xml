@@ -18,7 +18,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
- 	
  	<resultMap type="eventVO" id="eventList">
  		<result column="id" property="artistVO.memberVO.id"/>
  		<result column="nickname" property="artistVO.memberVO.nickName"/>
@@ -96,6 +95,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM os_event e, os_member m
 		WHERE m.id=e.id AND event_no=#{value}
  	</select>
+ 	
+ 	<!-- 이벤트 등록 -->
+ 	<insert id="addEvent" parameterType="eventVO">
+ 		INSERT INTO os_event(event_no,event_title,event_content,event_image,event_write_date,event_date,id)
+		VALUES(os_event_seq.nextval,#{eventTitle},#{eventContent},#{eventImage},sysdate,#{eventDate},#{artistVO.memberVO.id})
+ 	</insert>
 
 	<!-- 이동욱 시작 -->
 	<!-- board resultmap 설정 -->

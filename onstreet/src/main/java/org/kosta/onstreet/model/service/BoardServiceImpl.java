@@ -88,6 +88,15 @@ private BoardMapper boardMapper;
 	public EventVO findEventByNo(String eventNo) {
 		return boardMapper.findEventByNo(eventNo);
 	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 등록
+	 */
+	@Override
+	public void addEvent(EventVO eventVO) {
+		boardMapper.addEvent(eventVO);
+	}
 
 	//이동욱시작
 	//전체리스트 불러오는 메서드

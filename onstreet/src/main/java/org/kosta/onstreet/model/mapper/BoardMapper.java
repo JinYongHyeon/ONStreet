@@ -43,6 +43,13 @@ public interface BoardMapper {
 	 * @return
 	 */
 	EventVO findEventByNo(String eventNo);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 등록
+	 * @return
+	 */
+	void addEvent(EventVO eventVO);
 
 	//이동욱 시작
 	//공연일정글 전체개수 불러오는 메서드
