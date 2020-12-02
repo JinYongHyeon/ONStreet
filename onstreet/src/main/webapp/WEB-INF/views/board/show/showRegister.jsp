@@ -75,7 +75,7 @@
 												oEditors.getById["showContent"]
 														.exec(
 																"PASTE_HTML",
-																[ "<img src='${pageContext.request.contextPath}/resources/img/profile/"+data[i]+"'/>" ]);
+																[ "<img src='${pageContext.request.contextPath}/resources/img/content/"+data[i]+"'/>" ]);
 											}
 											if($("#multipartPreView").is(":animated"))return;
 											$("#multipartPreView").animate({
@@ -121,6 +121,7 @@
 			fileArr.forEach(function(f) {
 						if (!f.type.match("image/.*")) {
 							alert("이미지 확장자만 업로드 가능합니다.");
+							$("#multipartPreView .preViewImg ul").html("");
 							$("#multipartPreViewForm input[type=file]").val("");
 							return;
 						}
@@ -139,6 +140,7 @@
 						}
 					})
 						if (files.length > 11) {
+								$("#multipartPreView .preViewImg ul").html("");
 								alert("최대 10장까지 업로드 할 수 있습니다.");
 								$(this).val("");
 								return;
@@ -159,7 +161,7 @@
 			});
 	});
 </script>
-<button type="button" id="preView">보기</button>
+<button type="button" class="preView">보기</button>
 
 <div id="multipartPreView">
 

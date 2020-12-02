@@ -77,7 +77,8 @@ public class MemberController {
 	@PostMapping("registerMember.do")
 	public String registerMember(MemberVO mvo,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename());
+		if(!mvo.getProfileFile().getOriginalFilename().equals(""))
+		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
 		return "redirect:registerMemberResult.do";
@@ -144,7 +145,8 @@ public class MemberController {
 	@PostMapping("registerArtist.do")
 	public String registerArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
@@ -215,16 +217,17 @@ public class MemberController {
 	@RequestMapping("updateMember.do")
 	public String updateMember(MemberVO memberVO,HttpServletRequest request) {
 		FileUploadBean fileaUploadBean = new FileUploadBean();
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename());
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		memberService.updateMember(memberVO);
 		return "redirect:mypageForm.do";
 	}
 	
-                                                                                           
+		
 	
 	/**
-	 * 회원가입완료[아티스트]
+	 * 회원가입완료[아티스트] - 진용현
 	 * @return
 	 */
 	@RequestMapping("registerMemberResult.do")
@@ -233,12 +236,28 @@ public class MemberController {
 	}
 	
 	/**
-	 * 회원가입완료[아티스트]
+	 * 회원가입완료[아티스트] - 진용현
 	 * @return
 	 */
 	@RequestMapping("registerArtistResult.do")
 	public String registerArtistResult() {
 		return "member/artist/registerArtistResult.tiles";
+	}
+	
+	/**
+	 * 회원수정[아티스트] - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@PostMapping("updateArtist.do")
+	public String updateArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
+		FileUploadBean fileaUploadBean = new FileUploadBean();
+		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
+		fileaUploadBean.profileUpload(memberVO, request);
+		artistVO.setMemberVO(memberVO);
+		memberService.updateArtist(artistVO);
+		return "redirect:mypageForm.do";
 	}
 	
 	//컨트롤러 세희 미완성 
