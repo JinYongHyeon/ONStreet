@@ -187,6 +187,7 @@ public class MemberController {
 	 * 정지윤
 	 * 아티스트 상세정보 불러오기
 	 */
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("getArtistDetail.do")
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));

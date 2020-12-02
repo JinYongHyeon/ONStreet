@@ -95,6 +95,8 @@ private BoardMapper boardMapper;
 	 */
 	@Override
 	public void addEvent(EventVO eventVO) {
+		if(eventVO.getEventImageFile().getOriginalFilename().equals(""))
+			eventVO.setEventImage(eventVO.getEventImageFile().getOriginalFilename());
 		boardMapper.addEvent(eventVO);
 	}
 

@@ -479,6 +479,38 @@ body{
     margin-right: 350px;
 }
 
+/*이벤트 등록*/
+#eventContent {
+	margin-left: 350px;
+}
+
+#addEvent input[type=text] {
+	width: 91%;
+	font-size: small;
+	border-radius: 5px;
+    border: 2px solid #000000;
+    height: 30px;
+}
+
+#addEvent input[type=file] {
+	float: right;
+	border-radius: 5px;
+    border: 2px solid #000000;
+    margin-right: 300px;
+    width: 50%;
+}
+
+#addEvent input[type=submit] {
+	text-decoration: none;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    float: right;
+    margin-right: 30px;
+}
+
 /* 회원가입 성공 */
 #registerResult{
 	width:500px;

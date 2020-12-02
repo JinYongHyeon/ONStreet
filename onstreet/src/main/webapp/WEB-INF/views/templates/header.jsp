@@ -42,6 +42,9 @@
 			<a href="${pageContext.request.contextPath}/mypageForm.do">마이페이지</a>
 
 		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="${pageContext.request.contextPath}/adminPageForm.do">관리자페이지</a>
+		</sec:authorize>
 
 	</div>
 </div>

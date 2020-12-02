@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.kosta.onstreet.model.EventFileUploadBean;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -102,6 +104,7 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 * @param pageNo
 	 * @return
 	 */
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("getEventDetail.do")
 	public String getArtistDetail(String eventNo, Model model) {
 		model.addAttribute("eventVO", boardService.findEventByNo(eventNo));
@@ -114,15 +117,20 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 * @param pageNo
 	 * @return
 	 */
+	@Secured("ROLE_ARTIST")
 	@RequestMapping("addEventForm.do")
 	public String addEventForm() {
 		return "board/event/eventRegister.tiles";
 	}
 	
+	@Secured("ROLE_ARTIST")
 	@PostMapping("addEvent.do")
-	public String addEvent(EventVO eventVO) {
+	public String addEvent(EventVO eventVO,HttpServletRequest request) {
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		EventFileUploadBean eventFileUploadBean = new EventFileUploadBean();
 		eventVO.setArtistVO(artistVO);
+		eventVO.setEventImage(System.currentTimeMillis()+eventVO.getEventImageFile().getOriginalFilename());
+		eventFileUploadBean.profileUpload(eventVO, request);
 		boardService.addEvent(eventVO);
 		return "redirect:getEventDetail.do?eventNo="+eventVO.getEventNo();
 	}
