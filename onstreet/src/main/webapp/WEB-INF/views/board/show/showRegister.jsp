@@ -75,7 +75,7 @@
 												oEditors.getById["showContent"]
 														.exec(
 																"PASTE_HTML",
-																[ "<img src='${pageContext.request.contextPath}/resources/img/profile/"+data[i]+"'/>" ]);
+																[ "<img src='${pageContext.request.contextPath}/resources/img/content/"+data[i]+"'/>" ]);
 											}
 											if($("#multipartPreView").is(":animated"))return;
 											$("#multipartPreView").animate({
@@ -159,7 +159,7 @@
 			});
 	});
 </script>
-<button type="button" id="preView">보기</button>
+<button type="button" class="preView">보기</button>
 
 <div id="multipartPreView">
 

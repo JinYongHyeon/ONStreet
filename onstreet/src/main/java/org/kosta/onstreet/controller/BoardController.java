@@ -16,6 +16,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -181,12 +182,17 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	
 	@ResponseBody
 	@RequestMapping("fileupload.do")
-	 public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
+	public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		System.out.println(files);
 		return fileUploadBean.multipartImgUpload(files, request);
 	}
-
+	// 공연수정폼으로 가는 메서드
+	
+	@RequestMapping("updateForm.do")
+	public String updateForm(String showNo, Model model) {
+		model.addAttribute("svo", boardService.getShowDetail(showNo));
+		return "board/show/showUpdate.tiles";
+	}
 
 }
 

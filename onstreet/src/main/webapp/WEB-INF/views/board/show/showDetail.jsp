@@ -3,12 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <script>
+
+$(function(){
+	$('#btn-update').click(function(){
+		if(confirm("수정하시겠습니까?")){
+			self.location.href = "updateForm.do?showNo="+${svo.showNo};
+		}
+	});
+});
+
 $(document).ready(function() {
 	var showNo = ${requestScope.svo.showNo};
 	 $.ajax({
          type : "get",
          url : "front",
-         data :"command=commentList.do?showNo="+showNo,
+         data :"command=commentList.do?showNo=",
          success: function(result){
 			
          } //ajax success
@@ -19,7 +28,7 @@ $(document).ready(function() {
 <c:set var="svo" value="${requestScope.svo}" />
 <div style="float: left; width: 15%; height: 100px"></div>
 <div style="float: left; width: 40%;">
-<table border="1">
+<table border="1" id="showDetail">
 		<tr>
 			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
 		</tr>
@@ -32,6 +41,16 @@ $(document).ready(function() {
 		<tr>
 			<td>공연일정</td><td>${svo.showDate}</td>
 		</tr>
+		<tr>
+			<td colspan="2">
+			<sec:authentication property="principal.memberVO" var="member"/>
+			<c:if test="${member.id==svo.artistVO.memberVO.id}">
+				<button type="button" id="btn-update" class="btn btn-warning" style="float: left; width: 33%">수정</button>
+				<button type="button" class="btn btn-danger" style="float: left; width: 33%">삭제</button>
+			</c:if>
+			</td>
+		</tr>
+		
 		<tr>
 			<td colspan="2"><pre>${svo.showContent}</pre></td>
 		</tr>
