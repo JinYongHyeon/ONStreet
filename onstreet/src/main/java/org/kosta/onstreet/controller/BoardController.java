@@ -89,7 +89,7 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		noticeVO.setMemberVO(avo.getMemberVO());
 		boardService.updateNotice(noticeVO);
 		ra.addAttribute("nvo",noticeVO.getNoticeNo());
-		System.out.println(noticeVO);
+		//System.out.println(noticeVO);
 		return "redirect:getNoticeList.do?noticeNo="+noticeVO.getNoticeNo();
 	}
 	/**
