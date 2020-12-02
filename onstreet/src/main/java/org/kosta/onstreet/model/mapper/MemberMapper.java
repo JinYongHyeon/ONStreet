@@ -87,5 +87,7 @@ public interface MemberMapper {
 	 */
 	int registerFollowing(FollowVO followVO);
 	int followingCheckList(FollowVO followVO);
+	
+	public int removeFollowing(String id);
 }
 	

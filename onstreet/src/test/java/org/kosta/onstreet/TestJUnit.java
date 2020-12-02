@@ -163,8 +163,8 @@ public class TestJUnit {
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
 
-	//	String id="user1";
-		//System.out.println(mm.getFollowingList(id));
+		String id="user1";
+		System.out.println(mm.removeFollowing(id));
 		
 	}
 }

@@ -180,4 +180,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return count;
 	}
+
+	@Override
+	public int removeFollowing() {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return memberMapper.removeFollowing(avo.getMemberVO().getId());
+	}
 }

@@ -59,11 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<!-- 회원탈퇴 세희 -->
- 	<delete id="removeMember" parameterType="artistVO">
+ 	<update id="removeMember" parameterType="artistVO">
 	update os_member 
 	set remove_user_date=sysdate
 	where id=#{memberVO.id} 
- 	</delete>
+ 	</update>
  	
 	
 	<!-- 회원가입 - 진용현 -->
@@ -127,4 +127,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE following_id=#{followingId} 
 		AND id=#{memberVO.id}
 	</select>
+	
+	<!-- 팔로우리스트 삭제하기 정세희 -->
+	<delete id="removeFollowing">
+		delete 
+		from os_follow
+		where id=#{value}
+	</delete>
+	
 </mapper>

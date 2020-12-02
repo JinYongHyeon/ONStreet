@@ -260,7 +260,7 @@ public class MemberController {
 		return "redirect:mypageForm.do";
 	}
 	
-	//컨트롤러 세희 미완성 
+	//팔로우리스트 불러오기 정세희 
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
 	public ModelAndView getfollowingList() {
@@ -268,6 +268,13 @@ public class MemberController {
 		mv.setViewName("member/user/followingList.tiles");
 		mv.addObject("list",memberService.getfollowingList());
 		return mv;
+	}
+	//팔로우 선택 삭제
+	@Secured("ROLE_MEMBER")
+	@PostMapping("removeFollowing.do")
+	public ModelAndView removeFollowing() {
+		return new ModelAndView("member/user/followingList.tiles");
+		
 	}
 	
 }

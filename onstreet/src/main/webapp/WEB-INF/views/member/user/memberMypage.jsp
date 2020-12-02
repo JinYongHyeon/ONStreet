@@ -32,5 +32,4 @@
 	</table>
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a>
 	<a href="${pageContext.request.contextPath}/updateMemberForm.do">회원정보수정</a>
-	<a href="">이벤트신청현황</a>
 	<a href="${pageContext.request.contextPath}/followingList.do">팔로잉목록보기</a>
