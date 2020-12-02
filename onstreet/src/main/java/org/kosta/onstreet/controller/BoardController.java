@@ -17,6 +17,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -197,12 +198,37 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	 */
 	@ResponseBody
 	@RequestMapping("fileupload.do")
-	 public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
+	public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){
 		FileUploadBean fileUploadBean = new FileUploadBean();
-		System.out.println(files);
 		return fileUploadBean.multipartImgUpload(files, request);
 	}
-
-
+	// 공연수정폼으로 가는 메서드
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("updateShowForm.do")
+	public String updateForm(String showNo, Model model) {
+		model.addAttribute("svo", boardService.getShowDetail(showNo));
+		return "board/show/showUpdate.tiles";
+	}
+	// 공연수정 하는 메서드
+	@Secured("ROLE_ARTIST")
+	@PostMapping("updateShow.do")
+	public String updateShow(ShowVO showVO, RedirectAttributes ra) {
+		boardService.updateShow(showVO);
+		ra.addAttribute("showNo", showVO.getShowNo());
+		return "redirect:getShowDetail.do";
+	}
+	// 공연삭제 메서드 
+	@Secured("ROLE_ARTIST")
+	@PostMapping("deleteShow.do")
+	public String deleteShow(String showNo) {
+		boardService.deleteShow(showNo);
+		return "redirect:home.do";
+	}
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("commentUpdateForm.do")
+	public String commentUpdateForm(String showNo, String commentNo) {
+		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return "";
+	}
 }
 

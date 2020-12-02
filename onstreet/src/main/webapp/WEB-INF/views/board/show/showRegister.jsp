@@ -202,7 +202,7 @@
 		<table border="1">
 			<tr>
 				<td>공연제목</td>
-				<td><input type="text" name="showTitle"></td>
+				<td><input type="text" name="showTitle" required="required"></td>
 			</tr>
 			<tr>
 				<td>공연내용</td>

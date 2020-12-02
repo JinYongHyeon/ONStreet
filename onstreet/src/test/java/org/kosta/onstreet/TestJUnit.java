@@ -8,6 +8,7 @@ import org.kosta.onstreet.model.mapper.AdminMapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -107,7 +108,16 @@ public class TestJUnit {
 		*/
 		//System.out.println(bm.getTotalCommentCount());
 //		System.out.println(bs.getShowDetail(showNo));
-
+		// 공연업데이트 테스트
+//		ShowVO svo = new ShowVO();
+//		svo.setShowNo("18");
+//		svo.setShowTitle("수정테스트");
+//		svo.setShowContent("수정이 어디갔니");
+//		svo.setShowDate("2020-11-20");
+//		bm.updateShow(svo);
+		// 삭제 테스트
+//		String no = "3";
+//		bm.deleteShow(no);
 	}
 	
 	@Test
