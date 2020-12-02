@@ -72,7 +72,26 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	  //System.out.println(noticeVO);
 		return "redirect:getNoticeList.do";
 	}
-
+	//공지사항수정폼:김수민
+	@GetMapping("updateNoticeForm.do")
+	public ModelAndView updateNoticeForm(String noticeNo) {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("board/notice/noticeUpdate.tiles");
+		mv.addObject("nvo",noticeNo);
+		//System.out.println(noticeNo);
+		return mv;
+	}
+	//공지사항 수정:김수민
+	@Secured("ROLE_MEMBER")
+	@PostMapping("updateNotice.do")
+	public String updateNotice(NoticeVO noticeVO,RedirectAttributes ra) {
+		ArtistVO avo = (ArtistVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		noticeVO.setMemberVO(avo.getMemberVO());
+		boardService.updateNotice(noticeVO);
+		ra.addAttribute("nvo",noticeVO.getNoticeNo());
+		System.out.println(noticeVO);
+		return "redirect:getNoticeList.do?noticeNo="+noticeVO.getNoticeNo();
+	}
 	/**
 	 * 정지윤 아티스트 리스트 메서드
 	 * 

@@ -21,7 +21,6 @@ public interface BoardMapper {
    NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세보기 :김수민
    void addNotice(NoticeVO noticeVO);//공지사항 작성 :김수민
    void updateNotice(NoticeVO noticeVO);//공지사항수정:김수민
-
 	/**
 	 * 정지윤
 	 * 아티스트 수 불러오고 리스트 불러오기

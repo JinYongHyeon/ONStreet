@@ -48,6 +48,10 @@ private BoardMapper boardMapper;
 	public void addNotice(NoticeVO noticeVO) {
 		boardMapper.addNotice(noticeVO);
 	}
+	//공지사항 수정 :김수민
+	public void updateNotice(NoticeVO noticeVO) {
+		boardMapper.updateNotice(noticeVO);
+	}
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기
@@ -121,7 +125,6 @@ private BoardMapper boardMapper;
 	public ShowVO getShowDetail(String showNo) {
 		return boardMapper.getShowDetail(showNo);
 	}
-
 	//공지사항 총합게시물 :김수민
 	@Override
 	public int getTotalNoticeCount() {

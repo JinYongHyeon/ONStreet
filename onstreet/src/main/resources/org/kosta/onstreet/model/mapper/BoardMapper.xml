@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <update id="updateNotice" parameterType="noticeVO">
  update os_notice
  set 
- notice_title=#{noticeTitle},notice_content=#{noticeContent} 
+ notice_title=#{noticeTitle},notice_content=#{noticeContent}
  where notice_no=#{noticeNo}
  </update>
  	<!-- 정지윤 -->

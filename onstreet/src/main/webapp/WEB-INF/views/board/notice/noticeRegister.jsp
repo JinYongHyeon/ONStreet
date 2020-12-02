@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <form action="addNotice.do" method="post" id="noticeRegister">
+<input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
 <table border="1">
 <tr>
 <td>제목&nbsp;&nbsp;

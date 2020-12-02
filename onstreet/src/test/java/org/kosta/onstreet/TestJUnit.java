@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.NoticeVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -62,11 +63,14 @@ public class TestJUnit {
 		 * System.out.println(nvo);
 		 */
 		//공지사항수정 :김수민
-		/*
-		 * System.out.println(bm.getNoticeDetail("2")); NoticeVO nvo=new NoticeVO();
-		 * nvo.setNoticeTitle("spring"); nvo.setNoticeContent("mvc");
-		 * bm.updateNotice(nvo); System.out.println(bm.getNoticeDetail("2"));
-		 */
+		
+		  //System.out.println(bm.getNoticeDetail("2")); 
+		  NoticeVO nvo=new NoticeVO();
+		  nvo.setNoticeTitle("springmvc"); 
+		  nvo.setNoticeContent("boot");
+		  nvo.setNoticeNo("3");
+		  bm.updateNotice(nvo); 
+		 System.out.println(nvo);
 		/*
 		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
 		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);
