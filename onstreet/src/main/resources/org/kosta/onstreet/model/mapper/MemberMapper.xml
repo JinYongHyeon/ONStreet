@@ -26,8 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
- 	
- 	
  	<resultMap type="followVO" id="follow">
  		<result column="id" property="memberVO.id"/>
  	</resultMap>
@@ -61,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<!-- 회원탈퇴 세희 -->
- 	<delete id=" " parameterType="artistVO">
+ 	<delete id="removeMember" parameterType="artistVO">
 	update os_member 
 	set remove_user_date=sysdate
 	where id=#{memberVO.id} 
@@ -110,7 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 팔로우리스트가져오기 정세희 -->
-	<select id="getFollowingList" parameterType="String" resultMap="followlist">
+	<select id="getfollowingList" resultMap="followlist">
 		select m.nickname,m.profile
 		from os_follow f,os_member m
 		where m.id=f.id and f.id=#{value}

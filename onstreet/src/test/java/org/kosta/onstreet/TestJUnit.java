@@ -1,24 +1,12 @@
 package org.kosta.onstreet;
 
-import java.util.HashMap;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.onstreet.model.PagingBean;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.service.BoardService;
-import org.kosta.onstreet.model.vo.ArtistVO;
-import org.kosta.onstreet.model.vo.AuthVO;
-import org.kosta.onstreet.model.vo.FollowVO;
-import org.kosta.onstreet.model.vo.MemberVO;
-//github.com/JinYongHyeon/ONStreet.git
-import org.kosta.onstreet.model.vo.NoticeVO;
-import org.springframework.security.core.context.SecurityContextHolder;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -74,12 +62,11 @@ public class TestJUnit {
 		 * System.out.println(nvo);
 		 */
 		//공지사항수정 :김수민
-		System.out.println(bm.getNoticeDetail("2"));
-		NoticeVO nvo=new NoticeVO();
-		nvo.setNoticeTitle("spring");
-		nvo.setNoticeContent("mvc");
-		bm.updateNotice(nvo);
-		System.out.println(bm.getNoticeDetail("2"));
+		/*
+		 * System.out.println(bm.getNoticeDetail("2")); NoticeVO nvo=new NoticeVO();
+		 * nvo.setNoticeTitle("spring"); nvo.setNoticeContent("mvc");
+		 * bm.updateNotice(nvo); System.out.println(bm.getNoticeDetail("2"));
+		 */
 		/*
 		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
 		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);

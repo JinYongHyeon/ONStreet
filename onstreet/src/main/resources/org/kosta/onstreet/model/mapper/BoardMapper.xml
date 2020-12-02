@@ -18,7 +18,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
- 	
  	<resultMap type="eventVO" id="eventList">
  		<result column="id" property="artistVO.memberVO.id"/>
  		<result column="nickname" property="artistVO.memberVO.nickName"/>
@@ -103,6 +102,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM os_event e, os_member m
 		WHERE m.id=e.id AND event_no=#{value}
  	</select>
+ 	
+ 	<!-- 이벤트 등록 -->
+ 	<insert id="addEvent" parameterType="eventVO">
+ 		INSERT INTO os_event(event_no,event_title,event_content,event_image,event_write_date,event_date,id)
+		VALUES(os_event_seq.nextval,#{eventTitle},#{eventContent},#{eventImage},sysdate,#{eventDate},#{artistVO.memberVO.id})
+ 	</insert>
 
 	<!-- 이동욱 시작 -->
 	<!-- board resultmap 설정 -->
@@ -138,7 +143,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getShowDetail" parameterType="String"
 		resultMap="showListRM">
 		select
-		s.id,s.show_no,s.show_title,s.show_img,to_char(s.show_write_date,'YYYY.MM.DD')
+		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY.MM.DD')
 		as show_write_date,s.show_content,to_char(s.show_date,'YYYY.MM.DD') as
 		show_date,m.nickname
 		from OS_SHOW s, OS_member m
@@ -168,5 +173,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글등록하기 -->
 	<insert id="addComment">
 		INSERT INTO os_comment(comment_no,show_no,id,comment_content,comment_write_date) VALUES(os_comment_seq.nextval,#{showVO.showNo},#{memberVO.id},#{commentContent},sysdate)
+	</insert>
+	<!-- 공연일정 등록하기 -->
+	<insert id="addShow" parameterType="showVO">
+		<selectKey keyProperty="showNo" resultType="String" order="BEFORE">
+			select os_show_seq.nextval from dual
+		</selectKey>
+		INSERT INTO os_show(show_no,show_title,show_write_date,show_content,show_date,id) 
+		VALUES(#{showNo},#{showTitle},sysdate,#{showContent},#{showDate},#{artistVO.memberVO.id})
 	</insert>
 </mapper>

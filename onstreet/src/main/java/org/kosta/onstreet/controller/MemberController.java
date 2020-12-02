@@ -1,9 +1,12 @@
 package org.kosta.onstreet.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.executor.ReuseExecutor;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -117,9 +120,8 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@ResponseBody
 	@PostMapping("removeMember.do")
-	public int removeMember(String password,HttpSession session) {
+	public int removeMember(String password) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("zzzz");
 		int pointcount=memberService.removeMember(password,avo);
 			return pointcount;
 		}
@@ -240,7 +242,13 @@ public class MemberController {
 	}
 	
 	//컨트롤러 세희 미완성 
-	//@Secured("ROLE_MEMBER")
-	//@RequestMapping("")
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("followingList.do")
+	public ModelAndView getfollowingList() {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("member/user/followingList.tiles");
+		mv.addObject("list",memberService.getfollowingList());
+		return mv;
+	}
 	
 }

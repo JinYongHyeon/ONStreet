@@ -508,4 +508,84 @@ body{
 	color:#fff;
 	text-decoration: none;
 }
+/* 이동욱 css */ 
+img {
+width: 100%;
+/*height: 100%;*/
+}
+
+/* 사진 미리보기 */
+#multipartPreView{
+	width:1400px;
+	height: 800px;
+	background-color:#fff;
+	border:1px solid #e5e5e5;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);	
+	z-index: 2;
+	display: none;
+	opacity: 0;
+}
+#multipartPreView .preViewImg{
+	width:100%;
+	height: 80%;
+	position: relative;
+}
+#multipartPreView .preViewImg .preViewDefault{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	color:#999;
+}
+
+#multipartPreView .preViewImg ul{	
+	width:100%;
+	padding:15px;
+}
+#multipartPreView .preViewImg ul li{
+	float:left;
+	width: 19%;
+	height: 200px;
+	overflow: hidden;
+	border:1px solid #000;
+	position: relative;
+	margin-right: 17px;
+	margin-bottom:15px;
+}
+#multipartPreView .preViewImg ul li:nth-child(5n+0){
+	margin-right:0;
+}
+
+#multipartPreView .preViewImg ul li img{
+	width:100%;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+#multipartPreViewForm{
+	height: 20%;
+}
+
+#multipartPreViewForm .multipartPreViewFile input{
+	text-align: center;
+	display:initial;
+	line-height: 50px;
+}
+#multipartPreViewForm .multipartPreViewFile,#multipartPreViewForm .multipartPreViewBtn{
+	height: 50%;
+	border-top:1px solid #e5e5e5;
+	padding-top:15px;
+}
+#multipartPreViewForm input[type=button]{
+	width:150px;
+	height: 50px;
+	background-color:#999;
+	color:#fff;
+	border:none;
+	margin-right:10px;
+}
 

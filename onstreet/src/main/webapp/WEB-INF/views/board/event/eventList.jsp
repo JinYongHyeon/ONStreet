@@ -15,7 +15,7 @@
 
 <div id="event">
 <sec:authorize access="hasRole('ROLE_ARTIST')">
-	<a href="#">이벤트 등록</a>
+	<a href="${pageContext.request.contextPath}/addEventForm.do">이벤트 등록</a>
 </sec:authorize>
 <br><br>
 </div>

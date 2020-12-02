@@ -41,6 +41,13 @@ public interface BoardService {
 	 * @return
 	 */
 	EventVO findEventByNo(String eventNo);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 등록
+	 * @return
+	 */
+	void addEvent(EventVO eventVO);
 
 	// 전체공연 갯수 불러오기(페이징에 필요)
 	int getTotalShowCount();
@@ -52,5 +59,7 @@ public interface BoardService {
 	int getTotalCommnetCount(String showNo);
 	// 댓글작성
 	void addComment(CommentVO commentVO);
+	// 공연일정 등록
+	void addShow(ShowVO showVO);
 }
 
