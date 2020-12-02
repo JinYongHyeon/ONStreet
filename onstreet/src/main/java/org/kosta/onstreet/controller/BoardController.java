@@ -180,6 +180,12 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		return "redirect:getShowDetail.do";
 	}
 	
+	/**
+	 * 멀티 이미지 업로드 - 진용현
+	 * @param files
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("fileupload.do")
 	public ArrayList<String>  file_uploader_html5(List<MultipartFile> files,MultipartHttpServletRequest request){

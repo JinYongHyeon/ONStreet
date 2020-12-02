@@ -21,14 +21,14 @@ public class FileUploadBean {
 		if(!mvo.getProfileFile().getOriginalFilename().equals("")) {
 		String realPath = request.getSession().getServletContext().getRealPath("/resources/img/profile/");
 		String copyPath = "C:"+File.separator+"kosta203"+File.separator+"final-project"+File.separator+"ONStreet"+File.separator+"onstreet"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"resources"+File.separator+"img"+File.separator+"profile"+File.separator;
-		File file =  new File(realPath,mvo.getProfile());
-		File file2 = new File(copyPath,mvo.getProfile());
+		File file =  new File(realPath);
 		if(file.exists() == false) {
 			file.mkdirs();
 		}
 		try {
-			mvo.getProfileFile().transferTo(file);
-			FileUtil.copyFile(file, file2);
+			String fileName = mvo.getProfile();
+			mvo.getProfileFile().transferTo(new File(realPath+fileName));
+			FileUtil.copyFile(new File(realPath+fileName), new File(copyPath+fileName));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -37,6 +37,12 @@ public class FileUploadBean {
 		}
 	}
 	
+	/**
+	 * 멀티 이미지 업로드 - 진용현
+	 * @param files
+	 * @param request
+	 * @return
+	 */
 	public ArrayList<String> multipartImgUpload(List<MultipartFile> files,MultipartHttpServletRequest request){
 		String realPath = request.getSession().getServletContext().getRealPath("/resources/img/content/");
 		String copyPath = "C:"+File.separator+"kosta203"+File.separator+"final-project"+File.separator+"ONStreet"+File.separator+"onstreet"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"resources"+File.separator+"img"+File.separator+"content"+File.separator;
@@ -46,7 +52,7 @@ public class FileUploadBean {
 			file.mkdirs();
 		}
 		for(int i=0; i<files.size();i++) {
-			String fileName = System.currentTimeMillis()+files.get(i).getOriginalFilename();
+			String fileName = System.currentTimeMillis()+files.get(i).getOriginalFilename().substring(files.get(i).getOriginalFilename().indexOf("."));
 			if(!fileName.equals("")) {
 				try {
 					files.get(i).transferTo(new File(realPath+fileName));
