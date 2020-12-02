@@ -66,14 +66,20 @@ public class TestJUnit {
 		//공지사항 상세정보:김수민
 		//String noticeNo="4";
 		//System.out.println(bm.getNoticeDetail(noticeNo));
-		/*NoticeVO nvo=new NoticeVO();
-		nvo.setNoticeTitle("에러");
-		nvo.setNoticeContent("테스트완료");
-		MemberVO mvo=new MemberVO();
-		mvo.setId("bityong");
-		nvo.setMemberVO(mvo);
-		bm.addNotice(nvo);
-		System.out.println(nvo);*/
+		//공지사항 등록 :김수민
+		/*
+		 * NoticeVO nvo=new NoticeVO(); nvo.setNoticeTitle("에러");
+		 * nvo.setNoticeContent("테스트완료"); MemberVO mvo=new MemberVO();
+		 * mvo.setId("bityong"); nvo.setMemberVO(mvo); bm.addNotice(nvo);
+		 * System.out.println(nvo);
+		 */
+		//공지사항수정 :김수민
+		System.out.println(bm.getNoticeDetail("2"));
+		NoticeVO nvo=new NoticeVO();
+		nvo.setNoticeTitle("spring");
+		nvo.setNoticeContent("mvc");
+		bm.updateNotice(nvo);
+		System.out.println(bm.getNoticeDetail("2"));
 		/*
 		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
 		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);

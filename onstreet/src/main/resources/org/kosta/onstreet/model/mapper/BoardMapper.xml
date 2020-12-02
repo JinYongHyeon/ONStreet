@@ -59,6 +59,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  insert into os_notice(notice_no,notice_title,notice_write_date,notice_content,id) 
  values(#{noticeNo},#{noticeTitle},sysdate,#{noticeContent},#{memberVO.id})
  </insert>
+ <!--공지사항 수정:김수민 -->
+ <update id="updateNotice" parameterType="noticeVO">
+ update os_notice
+ set 
+ notice_title=#{noticeTitle},notice_content=#{noticeContent} 
+ where notice_no=#{noticeNo}
+ </update>
  	<!-- 정지윤 -->
  	<!-- 아티스트 개수 -->
  	<select id="getTotalArtistCount" resultType="int">

@@ -19,4 +19,9 @@
 <td colspan="2">작성자닉네임:${requestScope.nvo.memberVO.nickName}</td>
 </tr>
 </table>
+<button form="updateNoticeForm" type="submit">수정</button>
+<input type="reset" value="취소">
+<form action="updateNotice.do" id="updateNoticeForm" method="post">
+
+</form>
 </div>

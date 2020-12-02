@@ -20,6 +20,7 @@ public interface BoardMapper {
    List<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
    NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세보기 :김수민
    void addNotice(NoticeVO noticeVO);//공지사항 작성 :김수민
+   void updateNotice(NoticeVO noticeVO);//공지사항수정:김수민
 
 	/**
 	 * 정지윤

@@ -54,9 +54,12 @@ public ModelAndView getNoticeDetail(String noticeNo){
 	@Secured("ROLE_MEMBER")
 	@PostMapping("addNotice.do")
 public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
-	  boardService.addNotice(noticeVO);
-	  ra.addAttribute("noticeVO",noticeVO.getNoticeNo());
-		return "redirect:board/notice/noticeList.tiles";
+		ArtistVO avo = (ArtistVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		noticeVO.setMemberVO(avo.getMemberVO());
+		boardService.addNotice(noticeVO);
+	  ra.addAttribute("nvo",noticeVO.getNoticeNo());
+	  //System.out.println(noticeVO);
+		return "redirect:getNoticeList.do";
 	}
 	/**
 	 * 정지윤
