@@ -66,5 +66,9 @@ public interface BoardService {
 	void updateShow(ShowVO showVO);
 	// 공연삭제 
 	void deleteShow(String showNo);
+	// 댓글 수정
+	void updateComment(CommentVO commentVO);
+	// 댓글 삭제
+	void deleteComment(String commentNo);
 }
 
