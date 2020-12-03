@@ -1,11 +1,14 @@
 package org.kosta.onstreet.model.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.EventListVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 
@@ -88,7 +91,16 @@ public interface MemberMapper {
 	int registerFollowing(FollowVO followVO);
 	int followingCheckList(FollowVO followVO);
 	
-	public int removeFollowing(String id);
+	/**
+	 * 팔로우삭제 정세희
+	 * @param fvo
+	 * @return
+	 */
+	public int removeFollowing(FollowVO fvo);
 	
+	/**
+	 * 이벤트승인현황 정세희
+	 */
+	ArrayList<EventListVO> artistCheckEventList(EventVO evo);
 }
 	

@@ -158,8 +158,7 @@ public class MemberServiceImpl implements MemberService {
 	 * 팔로우리스트 불러오기
 	 */
 	@Override
-	public List<FollowVO> getfollowingList() {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public List<FollowVO> getfollowingList(ArtistVO avo) {
 		 List<FollowVO> list=memberMapper.getfollowingList(avo.getMemberVO().getId());
 		return list;
 		
@@ -182,8 +181,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int removeFollowing() {
+	public int removeFollowing(FollowVO fvo) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return memberMapper.removeFollowing(avo.getMemberVO().getId());
+		fvo.setMemberVO(avo.getMemberVO());
+		return memberMapper.removeFollowing(fvo);
 	}
 }

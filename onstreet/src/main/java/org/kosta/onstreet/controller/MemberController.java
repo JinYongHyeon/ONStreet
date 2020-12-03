@@ -265,16 +265,21 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
 	public ModelAndView getfollowingList() {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("member/user/followingList.tiles");
-		mv.addObject("list",memberService.getfollowingList());
+		mv.addObject("list",memberService.getfollowingList(avo));
 		return mv;
 	}
-	//팔로우 선택 삭제
+	
+	
+	//팔로우 선택 삭제 정세희
 	@Secured("ROLE_MEMBER")
 	@PostMapping("removeFollowing.do")
-	public ModelAndView removeFollowing() {
-		return new ModelAndView("member/user/followingList.tiles");
+	public ModelAndView removeFollowing(FollowVO fvo) {
+		System.out.println(fvo);
+		memberService.removeFollowing(fvo);
+		return new ModelAndView("redirect:followingList.do");
 		
 	}
 	

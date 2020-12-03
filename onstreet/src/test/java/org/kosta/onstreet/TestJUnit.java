@@ -8,6 +8,8 @@ import org.kosta.onstreet.model.mapper.AdminMapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
@@ -180,8 +182,16 @@ public class TestJUnit {
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
 
-		String id="user1";
-		System.out.println(mm.removeFollowing(id));
+		//String id="user1";
+		//System.out.println(mm.removeFollowing(id));
+		
+		/*
+		 * 세희~~~~~~~
+		 * EventVO eventVO=new EventVO();
+		 * 
+		 * ArtistVO artistVO=new ArtistVO(); artistVO.setMemberVO(memberVO);
+		 * eventVO.setArtistVO(artistVO); System.out.println(mm.);
+		 */
 		
 	}
 	
@@ -189,6 +199,7 @@ public class TestJUnit {
 	public void admin() {
 		System.out.println(am.getTotalMemberCount());
 	}
+	
 }
 
 
