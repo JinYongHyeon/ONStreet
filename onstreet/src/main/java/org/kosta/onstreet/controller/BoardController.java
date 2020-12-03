@@ -94,6 +94,13 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		//System.out.println(noticeVO);
 		return "redirect:getNoticeList.do?noticeNo="+noticeVO.getNoticeNo();
 	}
+	//공지사항 삭제 :김수민
+	@Secured("ROLE_MEMBER")
+	@PostMapping("deleteNotice.do")
+	public String deleteNotice(String noticeNo){
+		boardService.deleteNotice(noticeNo);
+		return "redirect:getNoticeList.do";
+	}
 	/**
 	 * 정지윤 아티스트 리스트 메서드
 	 * 

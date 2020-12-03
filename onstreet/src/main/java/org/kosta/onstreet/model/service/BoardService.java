@@ -20,6 +20,7 @@ public interface BoardService {
     NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세정보-김수민 
     void addNotice(NoticeVO noticeVO);//공지사항등록-김수민
     void updateNotice(NoticeVO noticeVO);//공지사항수정-김수민
+    void deleteNotice(String noticeNo);//공지사항삭제-김수민
 	// 이동욱 시작
 	// 공연일정 리스트 메서드
 	ShowListVO getShowList(String pageNo);

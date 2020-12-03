@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
+<script type="text/javascript">
+$(document).ready(function() {
+	var noticeNo=$("#deleteNoticeForm [input name=noticeNo]").val();
+	$("#deleteNoticeForm [input name=noticeNo]:checked").submit(function(){
+		for(var i=0; i<noticeNo.length; i++){
+		    alert(noticeNo);
+	    }
+     });//submit
+});//ready
+</script>
 <table border="1">
 <thead>
 <tr>
@@ -13,7 +24,12 @@
 <tbody>
 <c:forEach var="list" items="${requestScope.lvo.noList}">
 <tr>
-<td>${list.noticeNo}</td>
+<td>
+<form action="deleteNotice.do" method="post" id="deleteNoticeForm" >
+ <sec:csrfInput/>
+<input type="checkbox" name="noticeNo" value="${list.noticeNo}">${list.noticeNo}
+ </form>
+</td>
 <td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">
   ${list.noticeTitle}</a></td>
 <td>${list.noticeWriteDate}</td>
@@ -47,4 +63,5 @@
  <form action="addNoticeForm.do" method="get">
  <input type="submit" value="등록">
  </form>
+ <button form="deleteNoticeForm" type="submit">삭제</button>
  </div>

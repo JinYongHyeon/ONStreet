@@ -76,6 +76,9 @@ public class TestJUnit {
 		  nvo.setNoticeNo("3");
 		  bm.updateNotice(nvo); 
 		 System.out.println(nvo);*/
+		//공지사항 삭제:김수민
+		//String noticeNo="23";
+		//bm.deleteNotice(noticeNo);
 		/*
 		 * for(int i=0; i<3; i++) { NoticeVO nvo=new NoticeVO();
 		 * nvo.setNoticeTitle("aaaaa"+i); nvo.setNoticeContent("oooo"+i);
@@ -180,14 +183,14 @@ public class TestJUnit {
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
 
-		String id="user1";
-		System.out.println(mm.removeFollowing(id));
+		//String id="user1";
+		//System.out.println(mm.removeFollowing(id));
 		
 	}
 	
 	@Test
 	public void admin() {
-		System.out.println(am.getTotalMemberCount());
+		//System.out.println(am.getTotalMemberCount());
 	}
 }
 

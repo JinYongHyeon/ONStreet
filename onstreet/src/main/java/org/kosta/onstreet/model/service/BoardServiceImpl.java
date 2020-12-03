@@ -50,6 +50,10 @@ private BoardMapper boardMapper;
 	public void updateNotice(NoticeVO noticeVO) {
 		boardMapper.updateNotice(noticeVO);
 	}
+	//공지사항 삭제:김수민
+	public void deleteNotice(String noticeNo) {
+		boardMapper.deleteNotice(noticeNo);
+	}
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기
