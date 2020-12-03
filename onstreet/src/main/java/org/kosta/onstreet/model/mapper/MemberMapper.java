@@ -11,6 +11,7 @@ import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 
 @Mapper
 public interface MemberMapper {

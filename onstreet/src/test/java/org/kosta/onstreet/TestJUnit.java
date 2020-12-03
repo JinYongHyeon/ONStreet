@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.AdminMapper;
-//github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
@@ -124,6 +123,21 @@ public class TestJUnit {
 		// 삭제 테스트
 //		String no = "3";
 //		bm.deleteShow(no);
+		
+//		List<ShowVO> list = bm.todayShow();
+//		Set<ShowVO> set = new HashSet<ShowVO>();
+//		while(set.size() < 5) {
+//			int num  = (int)(Math.random()*(list.size()-1)+1);
+//			set.add(list.get(num));
+//		}
+//		System.out.println(set); 오늘의 공연 -- 진용현
+		// 댓글 수정테스트
+//		CommentVO cvo = new CommentVO();
+//		cvo.setCommentContent("테스트하기");
+//		cvo.setCommentNo("27");
+//		bm.updateComment(cvo);
+		// 댓글 삭제
+		//bm.deleteComment("27");
 	}
 	
 	@Test
@@ -197,7 +211,13 @@ public class TestJUnit {
 	
 	@Test
 	public void admin() {
-		System.out.println(am.getTotalMemberCount());
+		/*
+		 * //System.out.println(am.getTotalMemberCount()); PagingBean pagin = new
+		 * PagingBean(10); //System.out.println(am.getManageMemberList("ROLE_MEMBER",
+		 * pagin)); System.out.println(bm.getTotalShowCount());
+		 * System.out.println(bm.getShowList(pagin));
+		 */
+		//System.out.println(am.getTotalMemberCount());
 	}
 	
 }

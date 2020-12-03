@@ -1,6 +1,10 @@
 package org.kosta.onstreet.model.service;
 
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.PagingBean;
@@ -166,5 +170,29 @@ private BoardMapper boardMapper;
 	@Override
 	public void deleteShow(String showNo) {
 		boardMapper.deleteShow(showNo);
+	}
+	
+	/**
+	 * 오늘의 공연 - 진용현
+	 */
+	@Override
+	public Set<ShowVO> todayShow() {
+		List<ShowVO> list = boardMapper.todayShow();
+		Set<ShowVO> set = new HashSet<ShowVO>();
+		while(set.size() < 5) {
+			int num  = (int)(Math.random()*(list.size()-1)+1);
+			set.add(list.get(num));
+		}
+		return set;
+}
+	// 댓글 수정
+	@Override
+	public void updateComment(CommentVO commentVO) {
+		boardMapper.updateComment(commentVO);
+	}
+	// 댓글 삭제
+	@Override
+	public void deleteComment(String commentNo) {
+		boardMapper.deleteComment(commentNo);
 	}
 }
