@@ -58,18 +58,24 @@ body{
 .showMain {
 	float: inherit;
 }
-/* 메인페이지 */
+/* 메인페이지 - 오늘의 공연 */
 #todayShow{
 	width:100%;
-	height:300px;
-	border:1px solid #000;
 	float:left;
-	margin-top:10px;
+}
+#todayShow .artistShowTitle{
+	margin-left:45px;
+	margin-bottom:45px;
+}
+
+#todayShow .artistShowTitle h2{
+	text-align: left;
+	font-weight: bold;
 }
 
 #todayShow .artistShowLeftBtn ,#todayShow .artistShowRightBtn{
 	width:10%;
-	height:100%;
+	height:300px;
 	float:left;
 	position: relative;
 }
@@ -79,12 +85,33 @@ body{
 	left:50%;
 	transform:translate(-50%,-50%);
 	margin-top:0;
+	cursor: pointer;
+	font-weight: bold;
 	
 }
+#todayShow .artistShowLeftBtn h1 svg,#todayShow .artistShowRightBtn h1 svg{
+	width:2em;
+	height: 2em;
+}
+
 #todayShow .artistShow{
 	width:80%;
-	height:100%;
+	height:300px;
 	float:left;	
+	background-size:100%;
+	background-image: url("../../resources/img/content/todayShowbg.png");
+	background-position: center center;
+	position: relative;
+}
+#todayShow .artistShow::before{
+	content:"";
+	width:100%;
+	height: 100%;
+	background-color:#000;
+	position: absolute;
+	left:0;
+	top:0;
+	opacity:0.4;
 }
 #todayShow .artistShow .artistShowList{
 	width:100%;
@@ -95,17 +122,106 @@ body{
 #todayShow .artistShow .artistShowList li{
 	width:100%;
 	height: 100%;
-	background-color: #ff0000;
 	position: absolute;
 	left:100%;
+	z-index: 2;
+	color:#fff;
 }
 #todayShow .artistShow .artistShowList li:nth-child(1){
 	left:0;
 }
-#todayShow .artistShow .artistShowList li:nth-child(odd){
-	background-color:#ff00ff;
+
+#todayShow .artistShow .artistShowList li .todayShowInfo{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
 }
 
+#todayShow .artistShow .artistShowList li a{
+	width:100%;
+	height:100%;
+	float:left;
+	color:#fff;
+	text-decoration: none;
+}
+
+/* 메인페이지 - 추천 아티스트 */
+#artisStandardt{
+	width:100%;
+	float:left;
+	margin-bottom:30px;
+}
+#artisStandardt .artistRecommendationTltle{
+	margin-left:45px;
+}
+
+#artisStandardt .artistRecommendationTltle h2{
+	text-align: left;
+	font-weight: bold;
+}
+
+#artisStandardt .artistRecommendationLeftBtn ,#artisStandardt .artistRecommendationRightBtn{
+	width:10%;
+	height:300px;
+	float:left;
+	position: relative;
+}
+
+#artisStandardt .artistRecommendationLeftBtn h1,#artisStandardt .artistRecommendationRightBtn h1{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	margin-top:0;
+	cursor: pointer;
+	font-weight: bold;
+	
+}
+#artisStandardt .artistRecommendationLeftBtn h1 svg,#artisStandardt .artistRecommendationRightBtn h1 svg{
+	width:2em;
+	height: 2em;
+}
+
+#artisStandardt .artistRecommendation{
+	width:80%;
+	height:300px;
+	float:left;
+	position: relative;
+	border:1px solid #000;
+	overflow: hidden;
+}
+
+#artisStandardt .artistRecommendation .artistRecommendationList{
+	position: absolute;
+	left:100%;
+}
+#artisStandardt .artistRecommendation .artistRecommendationList:nth-child(1){
+	left:0;
+}
+#artisStandardt .artistRecommendation .artistRecommendationList,#artisStandardt .artistRecommendation .artistRecommendationList ul{
+	width:100%;
+	height: 100%;
+	float:left;
+}
+
+#artisStandardt .artistRecommendation .artistRecommendationList ul li{
+	width:30%;
+	height:100%;
+	float:left;
+	background-color:#000;
+	margin-right: 45px;
+	
+}
+#artisStandardt .artistRecommendation .artistRecommendationList ul li:nth-child(3){
+	margin-right:0;
+}
+
+#artisStandardt .artistRecommendation .artistRecommendationList ul li img{
+	width:100%;
+	height: 100%;
+	
+}
 
 /* 로그인  */
 #login{
@@ -594,7 +710,7 @@ body{
 width: 100%;
 height: 100%;
 }
-#btn-comment form{
+.btn-comment form{
 	display: inline;
 }
 

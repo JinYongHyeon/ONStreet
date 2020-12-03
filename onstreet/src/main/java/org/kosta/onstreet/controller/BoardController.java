@@ -250,11 +250,37 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		boardService.deleteShow(showNo);
 		return "redirect:home.do";
 	}
+	// 공연댓글 수정 폼으로 가는 Ajax
 	@Secured("ROLE_MEMBER")
+	@ResponseBody
 	@RequestMapping("commentUpdateForm.do")
-	public String commentUpdateForm(String showNo, String commentNo) {
+	public ArrayList<String> commentUpdateForm(String showNo, String commentNo, int countNo) {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(showNo);
+		list.add(commentNo);
+		list.add(countNo+"");
+		return list;
+	}
+	// 댓글수정메서드
+	@Secured("ROLE_MEMBER")
+	@PostMapping("updateComment.do")
+	public String updateComment(String showNo, CommentVO commentVO, RedirectAttributes ra) {
 		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return "";
+		ShowVO svo = new ShowVO();
+		svo.setShowNo(showNo);
+		commentVO.setShowVO(svo);
+		commentVO.setMemberVO(avo.getMemberVO());
+		boardService.updateComment(commentVO);
+		ra.addAttribute("showNo", showNo);
+		return "redirect:getShowDetail.do";
+	}
+	// 댓글삭제
+	@Secured("ROLE_MEMBER")
+	@PostMapping("deleteComment.do")
+	public String deleteComment(String commentNo, String showNo, RedirectAttributes ra) {
+		boardService.deleteComment(commentNo);
+		ra.addAttribute("showNo", showNo);
+		return "redirect:getShowDetail.do";
 	}
 }
 

@@ -3,14 +3,12 @@ package org.kosta.onstreet.model.service;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -90,9 +88,8 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	@Override
 	public void registerArtist(ArtistVO artistVO) {
-		System.out.println(artistVO);
-		artistVO.getMemberVO().setPassword(passwordEncoder.encode(artistVO.getMemberVO().getPassword()));//암호화처리
 		//if(artistVO.getMemberVO().getProfile() == null)artistVO.getMemberVO().setProfile("default.png");
+		artistVO.getMemberVO().setPassword(passwordEncoder.encode(artistVO.getMemberVO().getPassword()));//암호화처리
 		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))
 		artistVO.getMemberVO().setProfile(artistVO.getMemberVO().getProfileFile().getOriginalFilename());
 		memberMapper.registerMember(artistVO.getMemberVO());
@@ -128,11 +125,7 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public void updateMember(MemberVO memberVO) {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(memberVO.getProfileFile().getOriginalFilename().equals(""))memberVO.setProfile(avo.getMemberVO().getProfile());
 		memberMapper.updateMember(memberVO);
-		avo.setMemberVO(memberVO);
-		
 	}
 	/**
 	 * 회원수정[아티스트] 진용현
@@ -141,16 +134,8 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	@Override
 	public void updateArtist(ArtistVO artistVO) {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))artistVO.getMemberVO().setProfile(avo.getMemberVO().getProfile());
 		memberMapper.updateMember(artistVO.getMemberVO());
 		memberMapper.updateArtist(artistVO);
-		if(artistVO.getSns() != null)
-			avo.setSns(artistVO.getSns());
-		if(artistVO.getAccount() != null)
-			avo.setAccount(artistVO.getAccount());
-		avo.setArtistInfo(artistVO.getArtistInfo());
-		avo.setMemberVO(artistVO.getMemberVO());
 	}
 
 	/**
@@ -158,8 +143,7 @@ public class MemberServiceImpl implements MemberService {
 	 * 팔로우리스트 불러오기
 	 */
 	@Override
-	public List<FollowVO> getfollowingList() {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public List<FollowVO> getfollowingList(ArtistVO avo) {
 		 List<FollowVO> list=memberMapper.getfollowingList(avo.getMemberVO().getId());
 		return list;
 		
@@ -182,8 +166,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int removeFollowing() {
+	public int removeFollowing(FollowVO fvo) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return memberMapper.removeFollowing(avo.getMemberVO().getId());
+		fvo.setMemberVO(avo.getMemberVO());
+		return memberMapper.removeFollowing(fvo);
 	}
+	
 }

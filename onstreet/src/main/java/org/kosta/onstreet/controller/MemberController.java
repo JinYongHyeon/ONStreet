@@ -222,8 +222,16 @@ public class MemberController {
 		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		memberService.updateMember(memberVO);
+		
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(memberVO.getProfileFile().getOriginalFilename().equals(""))memberVO.setProfile(avo.getMemberVO().getProfile());
+		avo.setMemberVO(memberVO);
 		return "redirect:mypageForm.do";
 	}
+	
+	
+	
+	
 	
 		
 	
@@ -258,6 +266,16 @@ public class MemberController {
 		fileaUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.updateArtist(artistVO);
+		
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))artistVO.getMemberVO().setProfile(avo.getMemberVO().getProfile());
+		if(artistVO.getSns() != null)
+			avo.setSns(artistVO.getSns());
+		if(artistVO.getAccount() != null)
+			avo.setAccount(artistVO.getAccount());
+		avo.setArtistInfo(artistVO.getArtistInfo());
+		avo.setMemberVO(artistVO.getMemberVO());
+		
 		return "redirect:mypageForm.do";
 	}
 	
@@ -265,16 +283,21 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
 	public ModelAndView getfollowingList() {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("member/user/followingList.tiles");
-		mv.addObject("list",memberService.getfollowingList());
+		mv.addObject("list",memberService.getfollowingList(avo));
 		return mv;
 	}
-	//팔로우 선택 삭제
+	
+	
+	//팔로우 선택 삭제 정세희
 	@Secured("ROLE_MEMBER")
 	@PostMapping("removeFollowing.do")
-	public ModelAndView removeFollowing() {
-		return new ModelAndView("member/user/followingList.tiles");
+	public ModelAndView removeFollowing(FollowVO fvo) {
+		System.out.println(fvo);
+		memberService.removeFollowing(fvo);
+		return new ModelAndView("redirect:followingList.do");
 		
 	}
 	

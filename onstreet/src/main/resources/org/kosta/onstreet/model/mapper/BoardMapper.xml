@@ -4,7 +4,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.onstreet.model.mapper.BoardMapper">
-	
+
+		<!-- artist has-a  -->
 	 <resultMap type="artistVO" id="artistList">
  		<result column="id" property="memberVO.id"/>
  		<result column="password" property="memberVO.password"/>
@@ -196,5 +197,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 공연삭제 -->
 	<delete id="deleteShow">
 		delete from OS_SHOW where show_no=#{value}
+	</delete>
+	
+	<!-- 오늘의 공연 - 진용현 -->
+	<select id="todayShow" resultMap="showListRM">
+		SELECT s.show_no,s.show_title, m.nickname FROM os_show s,os_member m,os_artist a
+		WHERE s.id=m.id AND m.id = a.id AND to_char(s.show_date,'yyyy-mm-dd') = to_char(sysdate,'yyyy-mm-dd') AND a.check_date IS NOT NULL
+	</select>
+	
+	<!-- 댓글수정 -->
+	<update id="updateComment">
+		update OS_COMMENT set comment_content=#{commentContent} where comment_no=#{commentNo}
+	</update>
+	<!-- 댓글삭제 -->
+	<delete id="deleteComment">
+		delete from OS_COMMENT where comment_no=#{value}
 	</delete>
 </mapper>
