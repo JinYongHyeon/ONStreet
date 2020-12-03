@@ -71,4 +71,8 @@ public interface BoardMapper {
 	void updateShow(ShowVO showVO);
 	// 공연삭제
 	void deleteShow(String showNo);
+	// 댓글수정
+	void updateComment(CommentVO commentVO);
+	// 댓글삭제
+	void deleteComment(String commentNo);
 }

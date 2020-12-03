@@ -9,6 +9,7 @@ import org.kosta.onstreet.model.mapper.AdminMapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
@@ -123,6 +124,13 @@ public class TestJUnit {
 		// 삭제 테스트
 //		String no = "3";
 //		bm.deleteShow(no);
+		// 댓글 수정테스트
+//		CommentVO cvo = new CommentVO();
+//		cvo.setCommentContent("테스트하기");
+//		cvo.setCommentNo("27");
+//		bm.updateComment(cvo);
+		// 댓글 삭제
+		//bm.deleteComment("27");
 	}
 	
 	@Test
@@ -180,10 +188,6 @@ public class TestJUnit {
 		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
-
-		/*
-		 * String id="user1"; System.out.println(mm.removeFollowing(id));
-		 */
 		
 	}
 	
@@ -195,6 +199,7 @@ public class TestJUnit {
 		 * pagin)); System.out.println(bm.getTotalShowCount());
 		 * System.out.println(bm.getShowList(pagin));
 		 */
+		//System.out.println(am.getTotalMemberCount());
 	}
 }
 
