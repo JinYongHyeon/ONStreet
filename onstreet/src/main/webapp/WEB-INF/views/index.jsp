@@ -35,7 +35,6 @@ $(document).ready(function(){
 
 var $slides = $("#todayShow .artistShow .artistShowList li");
 var max = $slides.length - 1;
-alert(max);
 var sno = 0;
 var timer = null;
 

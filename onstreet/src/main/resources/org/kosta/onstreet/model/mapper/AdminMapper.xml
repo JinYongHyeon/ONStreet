@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="email" property="memberVO.email"/>
 		<result column="name" property="memberVO.name"/>
 		<result column="age" property="memberVO.age"/>
+		<result column="remove_user_date" property="memberVO.removeUserDate"/>
 	</resultMap>
 	
 	<!-- 정지윤 -->
@@ -22,13 +23,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from os_member
 	</select>
 	
-	<!-- 회원 리스트 불러오기 -->
-	<select id="getManageMemberList" resultMap="memberList" parameterType="pagingBean">
+	<!-- 회원(ROLE_MEMBER) 리스트 불러오기 -->
+	<select id="getManageMemberList" resultMap="memberList" parameterType="map">
 		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,a.auth_name
 		FROM (SELECT row_number() over(order by id desc) as rnum,auth_name,id
 		FROM os_auth) a,os_member m
 		WHERE m.id=a.id
-		AND rnum between #{startRowNumber} and #{endRowNumber} 
-		ORDER BY a.auth_name DESC 
+		AND a.auth_name=#{authName}
+		AND m.remove_user_date IS NULL
+		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
 	</select>
+	
+		<!-- 회원(ROLE_ARTIST) 리스트 불러오기 -->
+	<select id="getManageMemberArtistList" resultMap="memberList" parameterType="map">
+		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,a.auth_name
+		FROM (SELECT row_number() over(order by id desc) as rnum,auth_name,id
+		FROM os_auth) a,os_member m, os_artist t
+		WHERE m.id=a.id AND m.id=t.id
+		AND a.auth_name=#{authName}
+		AND t.check_date IS NOT NULL
+		AND m.remove_user_date IS NULL
+		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
+	</select>
+	
 </mapper>

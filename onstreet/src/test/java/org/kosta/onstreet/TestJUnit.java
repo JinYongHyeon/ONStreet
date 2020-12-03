@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
@@ -180,14 +181,20 @@ public class TestJUnit {
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
 
-		String id="user1";
-		System.out.println(mm.removeFollowing(id));
+		/*
+		 * String id="user1"; System.out.println(mm.removeFollowing(id));
+		 */
 		
 	}
 	
 	@Test
 	public void admin() {
-		System.out.println(am.getTotalMemberCount());
+		/*
+		 * //System.out.println(am.getTotalMemberCount()); PagingBean pagin = new
+		 * PagingBean(10); //System.out.println(am.getManageMemberList("ROLE_MEMBER",
+		 * pagin)); System.out.println(bm.getTotalShowCount());
+		 * System.out.println(bm.getShowList(pagin));
+		 */
 	}
 }
 
