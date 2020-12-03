@@ -69,5 +69,9 @@ public interface BoardService {
 	void deleteShow(String showNo);
 	
 	Set<ShowVO> todayShow();
+	// 댓글 수정
+	void updateComment(CommentVO commentVO);
+	// 댓글 삭제
+	void deleteComment(String commentNo);
 }
 

@@ -77,4 +77,8 @@ public interface BoardMapper {
 	 * @return
 	 */
 	public	List<ShowVO> todayShow();
+	// 댓글수정
+	void updateComment(CommentVO commentVO);
+	// 댓글삭제
+	void deleteComment(String commentNo);
 }

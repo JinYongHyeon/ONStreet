@@ -1,20 +1,12 @@
 package org.kosta.onstreet;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.AdminMapper;
-//github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ShowVO;
-//github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -134,6 +126,13 @@ public class TestJUnit {
 //			set.add(list.get(num));
 //		}
 //		System.out.println(set); 오늘의 공연 -- 진용현
+		// 댓글 수정테스트
+//		CommentVO cvo = new CommentVO();
+//		cvo.setCommentContent("테스트하기");
+//		cvo.setCommentNo("27");
+//		bm.updateComment(cvo);
+		// 댓글 삭제
+		//bm.deleteComment("27");
 	}
 	
 	@Test
@@ -191,15 +190,18 @@ public class TestJUnit {
 		 * artistVO.setArtistInfo("3333"); artistVO.setMemberVO(memberVO);
 		 * System.out.println(artistVO); System.out.println(mm.updateArtist(artistVO));
 		 */
-
-		String id="user1";
-		System.out.println(mm.removeFollowing(id));
 		
 	}
 	
 	@Test
 	public void admin() {
-		System.out.println(am.getTotalMemberCount());
+		/*
+		 * //System.out.println(am.getTotalMemberCount()); PagingBean pagin = new
+		 * PagingBean(10); //System.out.println(am.getManageMemberList("ROLE_MEMBER",
+		 * pagin)); System.out.println(bm.getTotalShowCount());
+		 * System.out.println(bm.getShowList(pagin));
+		 */
+		//System.out.println(am.getTotalMemberCount());
 	}
 }
 

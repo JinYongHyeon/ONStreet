@@ -1,7 +1,7 @@
 package org.kosta.onstreet.model.service;
 
-import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.MemberListVO;
+import org.kosta.onstreet.model.vo.ShowListVO;
 
 public interface AdminService {
 	
@@ -12,11 +12,12 @@ public interface AdminService {
 	 * @param artistVO
 	 * @return
 	 */
-	int manageMember(String password,ArtistVO artistVO);
+	void manageMember(String[] checkMember);
 	
 	/**
 	 * 정지윤
 	 * 회원 리스트 불러오기
 	 */
 	MemberListVO getMemberList(String pageNo);
+	MemberListVO getMemberArtistList(String pageNo);
 }

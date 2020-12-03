@@ -21,7 +21,7 @@
 		<div class="artistShow">
 			<ul class="artistShowList">
 				<c:forEach items="${requestScope.todayShow}" var="show">
-					<li><a href="${pageContext.request.contextPath}/">
+					<li><a href="${pageContext.request.contextPath}">
 						<div class="todayShowInfo">
 						<h1>${show.showTitle}</h1>
 						<h2>${show.artistVO.memberVO.nickName}</h2>
@@ -98,6 +98,7 @@
 	var max = $slides.length - 1;
 	var sno = 0;
 	var timer = null;
+
 
 	function todayShowSlide() {
 		timer = setTimeout(function() {

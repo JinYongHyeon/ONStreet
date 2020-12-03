@@ -3,8 +3,11 @@ package org.kosta.onstreet.model.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.kosta.onstreet.model.PagingBean;
+import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 
 @Mapper
 public interface AdminMapper {
@@ -14,5 +17,6 @@ public interface AdminMapper {
 	 * @return
 	 */
 	int getTotalMemberCount();
-	List<AuthVO> getManageMemberList(PagingBean pagingBean);
+	List<AuthVO> getManageMemberList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
+	List<AuthVO> getManageMemberArtistList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
 }

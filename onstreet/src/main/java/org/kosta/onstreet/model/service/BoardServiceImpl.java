@@ -184,5 +184,15 @@ private BoardMapper boardMapper;
 			set.add(list.get(num));
 		}
 		return set;
+}
+	// 댓글 수정
+	@Override
+	public void updateComment(CommentVO commentVO) {
+		boardMapper.updateComment(commentVO);
+	}
+	// 댓글 삭제
+	@Override
+	public void deleteComment(String commentNo) {
+		boardMapper.deleteComment(commentNo);
 	}
 }
