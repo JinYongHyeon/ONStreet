@@ -25,10 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="nickname" property="memberVO.nickName"/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
- 	
- 	<resultMap type="followVO" id="follow">
- 		<result column="id" property="memberVO.id"/>
- 	</resultMap>
+	
  	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
@@ -135,13 +132,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id=#{memberVO.id} and following_id=#{followingId}
 	</delete>
 	
-	<!-- 이벤트승인현황 정세희 -->
+	<!-- 이벤트승인현황 정세희 
  	<select id="artistCheckEventList" resultMap="eventList" parameterType="pagingBean">
  		SELECT event_no, event_title, event_image, event_date
 		FROM (SELECT row_number() over(order by event_check_date desc) as rnum, event_check_date, event_no,
 		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event)
 		WHERE event_check_date IS NOT NULL
 		AND rnum between #{startRowNumber} and #{endRowNumber} 
- 	</select>
+ 	</select>-->
  	
 </mapper>
