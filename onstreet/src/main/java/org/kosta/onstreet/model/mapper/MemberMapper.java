@@ -102,6 +102,6 @@ public interface MemberMapper {
 	/**
 	 * 이벤트승인현황 정세희
 	 */
-	ArrayList<EventListVO> artistCheckEventList(EventVO evo);
+	//ArrayList<EventListVO> artistCheckEventList(EventVO evo);
 }
 	

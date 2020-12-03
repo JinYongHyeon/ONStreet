@@ -1,5 +1,9 @@
 package org.kosta.onstreet;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -7,9 +11,6 @@ import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
-import org.kosta.onstreet.model.vo.EventVO;
-import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
@@ -127,13 +128,14 @@ public class TestJUnit {
 //		String no = "3";
 //		bm.deleteShow(no);
 		
-//		List<ShowVO> list = bm.todayShow();
-//		Set<ShowVO> set = new HashSet<ShowVO>();
-//		while(set.size() < 5) {
-//			int num  = (int)(Math.random()*(list.size()-1)+1);
-//			set.add(list.get(num));
-//		}
-//		System.out.println(set); 오늘의 공연 -- 진용현
+		List<ShowVO> list = bm.todayShow();
+		System.out.println(list);
+		Set<ShowVO> set = new HashSet<ShowVO>();
+		while(set.size() < 5) {
+			int num  = (int)(Math.random()*(list.size()-1)+1);
+			set.add(list.get(num));
+		}
+		System.out.println(set); //오늘의 공연 -- 진용현
 		// 댓글 수정테스트
 //		CommentVO cvo = new CommentVO();
 //		cvo.setCommentContent("테스트하기");
