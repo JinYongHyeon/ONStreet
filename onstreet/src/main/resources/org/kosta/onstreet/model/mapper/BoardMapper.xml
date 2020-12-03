@@ -193,4 +193,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteShow">
 		delete from OS_SHOW where show_no=#{value}
 	</delete>
+	
+	<!-- 오늘의 공연 - 진용현 -->
+	<select id="todayShow" resultMap="showListRM">
+		SELECT s.show_no,s.show_title, m.nickname FROM os_show s,os_member m,os_artist a
+		WHERE s.id=m.id AND m.id = a.id AND to_char(s.show_date,'yyyy-mm-dd') = to_char(sysdate,'yyyy-mm-dd') AND a.check_date IS NOT NULL
+	</select>
+	
 </mapper>

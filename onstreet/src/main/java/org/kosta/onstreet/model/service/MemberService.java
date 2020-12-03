@@ -1,11 +1,13 @@
 package org.kosta.onstreet.model.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 
 public interface MemberService {
 	
@@ -32,4 +34,6 @@ public interface MemberService {
 	int registerFollowing(FollowVO followVO);
 	
 	int removeFollowing();
+	
+	
 }

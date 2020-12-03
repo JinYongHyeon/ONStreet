@@ -2,6 +2,7 @@ package org.kosta.onstreet.model.service;
 
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.CommentListVO;
@@ -66,5 +67,7 @@ public interface BoardService {
 	void updateShow(ShowVO showVO);
 	// 공연삭제 
 	void deleteShow(String showNo);
+	
+	Set<ShowVO> todayShow();
 }
 

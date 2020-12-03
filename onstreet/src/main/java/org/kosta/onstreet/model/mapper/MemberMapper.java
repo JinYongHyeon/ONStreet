@@ -8,6 +8,7 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 
 @Mapper
 public interface MemberMapper {
@@ -89,6 +90,7 @@ public interface MemberMapper {
 	int followingCheckList(FollowVO followVO);
 	
 	public int removeFollowing(String id);
+	
 	
 }
 	

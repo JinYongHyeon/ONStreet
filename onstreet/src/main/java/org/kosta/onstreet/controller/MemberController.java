@@ -222,8 +222,16 @@ public class MemberController {
 		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		memberService.updateMember(memberVO);
+		
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(memberVO.getProfileFile().getOriginalFilename().equals(""))memberVO.setProfile(avo.getMemberVO().getProfile());
+		avo.setMemberVO(memberVO);
 		return "redirect:mypageForm.do";
 	}
+	
+	
+	
+	
 	
 		
 	
@@ -258,6 +266,16 @@ public class MemberController {
 		fileaUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.updateArtist(artistVO);
+		
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))artistVO.getMemberVO().setProfile(avo.getMemberVO().getProfile());
+		if(artistVO.getSns() != null)
+			avo.setSns(artistVO.getSns());
+		if(artistVO.getAccount() != null)
+			avo.setAccount(artistVO.getAccount());
+		avo.setArtistInfo(artistVO.getArtistInfo());
+		avo.setMemberVO(artistVO.getMemberVO());
+		
 		return "redirect:mypageForm.do";
 	}
 	

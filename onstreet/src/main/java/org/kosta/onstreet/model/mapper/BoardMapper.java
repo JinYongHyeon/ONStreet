@@ -71,4 +71,10 @@ public interface BoardMapper {
 	void updateShow(ShowVO showVO);
 	// 공연삭제
 	void deleteShow(String showNo);
+	
+	/**
+	 * 오늘의 공연 - 진용현
+	 * @return
+	 */
+	public	List<ShowVO> todayShow();
 }

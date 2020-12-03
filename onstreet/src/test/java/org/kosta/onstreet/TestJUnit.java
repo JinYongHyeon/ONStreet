@@ -1,5 +1,10 @@
 package org.kosta.onstreet;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -8,7 +13,6 @@ import org.kosta.onstreet.model.mapper.AdminMapper;
 //github.com/JinYongHyeon/ONStreet.git
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
@@ -122,6 +126,14 @@ public class TestJUnit {
 		// 삭제 테스트
 //		String no = "3";
 //		bm.deleteShow(no);
+		
+//		List<ShowVO> list = bm.todayShow();
+//		Set<ShowVO> set = new HashSet<ShowVO>();
+//		while(set.size() < 5) {
+//			int num  = (int)(Math.random()*(list.size()-1)+1);
+//			set.add(list.get(num));
+//		}
+//		System.out.println(set); 오늘의 공연 -- 진용현
 	}
 	
 	@Test
