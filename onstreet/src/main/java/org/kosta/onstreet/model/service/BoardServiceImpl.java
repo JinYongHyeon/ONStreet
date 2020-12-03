@@ -183,7 +183,9 @@ private BoardMapper boardMapper;
 	public Set<ShowVO> todayShow() {
 		List<ShowVO> list = boardMapper.todayShow();
 		Set<ShowVO> set = new HashSet<ShowVO>();
-		while(set.size() < 5) {
+		int max = 5;
+		if(max>list.size())max=list.size();
+		while(set.size() < max) {
 			int num  = (int)(Math.random()*(list.size()-1)+1);
 			set.add(list.get(num));
 		}

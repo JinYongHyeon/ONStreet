@@ -235,7 +235,7 @@ body{
 	border-radius: 5px;
 	border:3px solid #e5e5e5;
 	display: none;
-	z-index:2;
+	z-index:3;
 }
 
 #login .loginTitle {
