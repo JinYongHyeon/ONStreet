@@ -1,5 +1,11 @@
 package org.kosta.onstreet;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -7,10 +13,6 @@ import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
-import org.kosta.onstreet.model.vo.EventVO;
-import org.kosta.onstreet.model.vo.NoticeVO;
-import org.kosta.onstreet.model.vo.ShowVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -209,8 +211,7 @@ public class TestJUnit {
 		 * ArtistVO artistVO=new ArtistVO(); artistVO.setMemberVO(memberVO);
 		 * eventVO.setArtistVO(artistVO); System.out.println(mm.);
 		 */
-		
-	}
+	}	
 	
 	@Test
 	public void admin() {

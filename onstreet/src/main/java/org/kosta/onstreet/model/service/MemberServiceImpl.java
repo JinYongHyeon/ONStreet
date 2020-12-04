@@ -1,6 +1,9 @@
 package org.kosta.onstreet.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -88,13 +91,10 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	@Override
 	public void registerArtist(ArtistVO artistVO) {
-		//if(artistVO.getMemberVO().getProfile() == null)artistVO.getMemberVO().setProfile("default.png");
 		artistVO.getMemberVO().setPassword(passwordEncoder.encode(artistVO.getMemberVO().getPassword()));//암호화처리
 		if(artistVO.getMemberVO().getProfileFile().getOriginalFilename().equals(""))
 		artistVO.getMemberVO().setProfile(artistVO.getMemberVO().getProfileFile().getOriginalFilename());
 		memberMapper.registerMember(artistVO.getMemberVO());
-		//if(artistVO.getSns() == null)artistVO.setSns("미입력");
-		//if(artistVO.getAccount() == null)artistVO.setAccount("미입력");
 		memberMapper.registerArtist(artistVO);
 		AuthVO authVO = new AuthVO();
 		authVO.setAuthName("ROLE_MEMBER");
@@ -171,5 +171,5 @@ public class MemberServiceImpl implements MemberService {
 		fvo.setMemberVO(avo.getMemberVO());
 		return memberMapper.removeFollowing(fvo);
 	}
-	
+
 }

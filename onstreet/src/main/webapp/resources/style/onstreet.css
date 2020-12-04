@@ -24,15 +24,48 @@ body{
 	border-bottom: 4px solid #999;
 }
 
+/* 로고 */
 #header .bitLog {
 	width: 30%;
 	float: left;
 }
 
+#header .bitLog img{
+	width:80%;
+	float:left;
+}
+
+
+/* 검색 */
 #header .bitMainSearch {
 	width: 70%;
 	float: left;
 }
+#header .bitMainSearch form{
+	width:100%;
+	position: relative;	
+	margin-top:30px;
+}
+#header .bitMainSearch form input{
+	position: absolute;
+	left:0;
+	border:1px solid #e5e5e5;
+}
+#header .bitMainSearch form input[type=text]{
+	left:100px;
+	width:50%;
+	height: 40px;
+	padding:15px;
+	border-left:none;
+}
+#header .bitMainSearch form input[type=submit]{
+	width:100px;
+	height: 40px;
+	border-right:none;
+}
+
+
+
 
 /* header 메뉴 */
 #header .navigation ul li {

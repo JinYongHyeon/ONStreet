@@ -186,7 +186,7 @@ private BoardMapper boardMapper;
 		int max = 5;
 		if(max>list.size())max=list.size();
 		while(set.size() < max) {
-			int num  = (int)(Math.random()*(list.size()-1)+1);
+			int num  = (int)(Math.random()*(list.size()-1+1));
 			set.add(list.get(num));
 		}
 		return set;

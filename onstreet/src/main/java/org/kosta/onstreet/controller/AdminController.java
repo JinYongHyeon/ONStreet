@@ -27,6 +27,7 @@ public class AdminController {
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("adminPageForm.do")
 	public String adminPageForm() {
+		
 		return "member/admin/manageForm.tiles";
 	}
 	
