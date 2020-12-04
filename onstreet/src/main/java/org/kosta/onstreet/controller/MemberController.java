@@ -308,6 +308,7 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("artistCheckEventList.do")
 	public ModelAndView artistCheckEventList(String pageNo) {
+		System.out.println(pageNo);
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
 		return new ModelAndView("member/artist/artistCheckEventList.tiles","eventVO",memberService.artistCheckEventList(id,pageNo));
