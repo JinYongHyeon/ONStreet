@@ -421,35 +421,6 @@ body{
 
 }
 
-/* 아티스트 리스트 */
-#artist {
-	width: 100%;
-	float: left;
-	margin-left: 150px;
-}
-
-.artistList {
-	float: left;
-	width: 400px;
-	margin-bottom: 40px;
-}
-
-.artistList img {
-	border: 2px solid #000000;
-	border-radius: 5px;
-	width: 250px;
-	height: 320px;
-}
-
-.artistList a {
-	text-decoration: none;
-    color: black;
-    padding: 5px 90px 5px 90px;
-    display:inline-block;
-    border-radius: 5px;
-    border: 2px solid #000000;
-}
-
 /* 회원가입 체크 */
 #choiceRegister{
 	width:100%;
@@ -570,23 +541,71 @@ body{
 	color:#fff; 
 }
 
+/* 아티스트 리스트 */
+#artist {
+	width: 100%;
+	float: left;
+	margin-left: 150px;
+}
+
+#artistTitle {
+	font-size: 40px;
+	font-weight: bolder;
+	border-bottom: 4px solid #999;
+}
+
+.artistList {
+	float: left;
+	width: 400px;
+	margin-bottom: 40px;
+}
+
+.artistList img {
+	border: 2px solid #000000;
+	border-radius: 5px;
+	width: 250px;
+	height: 320px;
+}
+
+.artistList a {
+    color: black;
+    padding: 5px 5px;
+    width: 63%;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+}
+
 /*아티스트 상세보기*/
 .artistProfileImg img {
 	float: left;
-	margin-left: 250px;
-	border: 2px solid #000000;
-	border-radius: 5px;
+	margin-left: 150px;
+}
+
+.artistProfile {
+	font-size: medium;
+	margin-left: 50px;
+	text-align: left;
+}
+
+.artistProfile img {
+	width: 5%;
+	height: 5%;
+}
+
+.artistProfile #artistName {
+	font-size: x-large;
+	font-weight: bold;
+	float: left;
 }
 
 #follow input[type=button] {
-	text-decoration: none;
     color: black;
     padding: 5px 10px 5px 10px;
     display:inline-block;
     border-radius: 5px;
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     float: right;
-    margin-right: 300px;
 }
 
 /*이벤트 리스트*/

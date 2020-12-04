@@ -48,6 +48,7 @@
 	</thead>
 
 	<tbody>
+	<c:set var="pb" value="${requestScope.authVO.pagingBean}" />
 		<c:forEach var="avo" items="${requestScope.authVO.memberList}">
 			<tr>
 				<td><form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
@@ -65,3 +66,28 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+<div class="pagingInfo">
+	<ul class="pagination">
+	<c:if test="${pb.previousPageGroup}">	
+	<li><a href="${pageContext.request.contextPath}/manageMemberForm.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+	</c:if>
+	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
+	end="${pb.endPageOfPageGroup}">
+	<c:choose>
+	<c:when test="${pb.nowPage!=i}">
+	<li><a href="${pageContext.request.contextPath}/manageMemberForm.do?pageNo=${i}">${i}</a></li> 
+	</c:when>
+	<c:otherwise>
+	<li class="active"><a href="#" >${i}</a></li>
+	</c:otherwise>
+	</c:choose>
+	&nbsp;
+	</c:forEach>
+	<c:if test="${pb.nextPageGroup}">	
+	<li><a href="${pageContext.request.contextPath}/manageMemberForm.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+	</c:if>
+	</ul>	 		
+	</div>
+	</div>
+<div class="col-sm-2"></div>

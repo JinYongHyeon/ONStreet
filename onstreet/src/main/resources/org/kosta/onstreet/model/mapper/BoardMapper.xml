@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
+ 	<!-- eventVO has a -->
  	<resultMap type="eventVO" id="eventList">
  		<result column="id" property="artistVO.memberVO.id"/>
  		<result column="nickname" property="artistVO.memberVO.nickName"/>

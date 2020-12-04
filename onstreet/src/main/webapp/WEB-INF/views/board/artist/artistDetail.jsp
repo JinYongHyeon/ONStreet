@@ -3,26 +3,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <br>
-<h1>
-	<b>${requestScope.artistVO.memberVO.nickName}</b>
-</h1>
-<br>
-<div class="artistProfileImg">
+<span id="artistTitle">ARITST</span>
+<br><br><br>
+
+<div class="col-sm-4 artistProfileImg">
 	<img
 		src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
 	<br>
 </div>
-<div class="artistProfile">
-	${requestScope.artistVO.artistInfo} <br>
+<div class="col-sm-1"></div>
+<div class="col-sm-5 artistProfile">
+    <span id="artistName">${requestScope.artistVO.memberVO.nickName}</span>
+    <form id="follow">
+	<input type="button" value="팔로우">
+</form>
+    <hr>
+    <br>
+	${requestScope.artistVO.artistInfo}
 	<c:if test="${requestScope.artistVO.sns!=null}">
-		SNS : ${requestScope.artistVO.sns} <br>
+	<hr>
+	<img src="${pageContext.request.contextPath}/resources/img/content/social-media.png">
+	<b>공식계정</b> 
+		${requestScope.artistVO.sns}<hr>
 	</c:if>
 	<c:if test="${requestScope.artistVO.account!=null}">
-		후원계좌 : ${requestScope.artistVO.account} <br>
+	<img src="${pageContext.request.contextPath}/resources/img/content/money.png">
+	<b>후원계좌</b> 
+		${requestScope.artistVO.account} <hr>
 	</c:if>
 	<br>
 	<br>
 </div>
+<div class="col-sm-1"></div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -51,7 +63,3 @@
 		});
 	});//ready
 </script>
-
-<form id="follow">
-	<input type="button" value="팔로우">
-</form>
