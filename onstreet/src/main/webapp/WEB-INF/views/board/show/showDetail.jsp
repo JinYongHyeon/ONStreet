@@ -3,10 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
+	$(document).ready(function() { 
+	      
+	   });
 
 $(function(){
-	 
 	$('#btn-update').click(function(){
 		if(confirm("수정하시겠습니까?")){
 			self.location.href = "updateShowForm.do?showNo="+${svo.showNo};
@@ -20,13 +23,6 @@ $(function(){
 		return false;
 	});
 
-	if(${requestScope.likeCheck==1}) {
-		   $(document).ready(function() { 
-		      $("#heartBlank").hide();
-		      $("#heart").html("<i class='fa fa-heart' style='color:red'></i>")
-		   });
-		}
-
 
 $(document).ready(function() {
 	$("#commentUpdate input[type=button]").click(function() {
@@ -36,9 +32,6 @@ $(document).ready(function() {
 		url: "${pageContext.request.contextPath}/commentUpdateForm.do",
 		dataType: "json",
 		data: "showNo=${svo.showNo}&commentNo="+$(this).parent().children("input[name=commentNo]").val()+"&countNo="+$(this).parent().children("input[name=countNo]").val(),
-		<%-- beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-             xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-            }, --%>
 		success: function(data) {
 			$("#commentUpdate"+data[2]).hide();
 			$("#commentDelete"+data[2]).hide();
@@ -55,36 +48,31 @@ $(document).ready(function() {
 		});//ajax
 	});
 	
+	<%-- 좋아요 --%>
 	 $("#likeBtn").click(function(){
-         if(${sessionScope.memberVO==null}) {
-            alert("로그인 후 사용할 수 있습니다.");
-            return;
-         }
+		 var id = $('#loginId').val();
          $.ajax({
-            type:"get",
-            url:"front",
-            data:"command=likeCount&loginId=${sessionScope.memberVO.id}&postNo=${requestScope.postVO.postNo}&postId=${requestScope.postVO.memberVO.id}",
-            success: function(result){ 
-               if(result==="좋아요한 게시물") {
-                  if(confirm("이미 좋아요를 누른 게시물입니다.\n좋아요를 취소하시겠습니까?")) {
-                        $.ajax({
-                           type:"get",
-                           url:"front",
-                           data:"command=likeCancel&loginId=${sessionScope.memberVO.id}&postNo=${requestScope.postVO.postNo}&postId=${requestScope.postVO.memberVO.id}",
-                           success: function(result){
-                              $("#heartBlank").show();
-                              $("#heart").hide();
-                           }
-                        }); // ajax
-                  } 
-                  $("#heart").html("<i class='fa fa-heart' style='color:red'></i>");
-               }
-               $("#heartBlank").hide();
-               $("#heart").show().html("<i class='fa fa-heart' style='color:red'></i>");            
+            type:"post",
+            url:"${pageContext.request.contextPath}/addLike.do",
+            dataType: "text",
+            data:"showNo=${svo.showNo}&id="+id,
+            beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+               },
+            success: function(result){
+             if(result==0) {
+            	 $("#likeBtn span:nth-child(1)").attr("id","heart");
+            	 $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart-o");
+            	 $("#likeBtn span:nth-child(1)").addClass("fa fa-heart");
+            }
+             if(result==1) {
+            	 $("#likeBtn span:nth-child(1)").attr("id","heart");
+            	 $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart");
+            	 $("#likeBtn span:nth-child(1)").addClass("fa fa-heart-o");
+            }
             }
          }); // ajax
       }); // click
-	
 	
 	
 });//ready
@@ -93,6 +81,7 @@ $(document).ready(function() {
 <c:set var="svo" value="${requestScope.svo}" />
 <div style="float: left; width: 15%; height: 100px"></div>
 <div style="float: left; width: 40%;">
+
 <table border="1" id="showDetail">
 		<tr>
 			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
@@ -109,6 +98,7 @@ $(document).ready(function() {
 		<tr>
 			<td colspan="2">
 			<sec:authentication property="principal.memberVO" var="member"/>
+			<input type="hidden" id="loginId" value="${member.id}"> 
 			<c:if test="${member.id==svo.artistVO.memberVO.id}">
 				<button type="button" id="btn-update" class="btn btn-warning" style="float: left; width: 50%">수정</button>
 				<form action="deleteShow.do" method="post">
@@ -121,13 +111,37 @@ $(document).ready(function() {
 		</tr>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default btn-sm" onclick="like()" id="likeBtn"> <span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span id="heart"></span>좋아요</button>
-                <span id="likeView"></span>
+				<%-- 좋아요 버튼 --%>
+				<button type="button" class="btn btn-default btn-sm" id="likeBtn">
+				<c:set var="ok" value="1"/>
+				<c:forEach items="${requestScope.likeId}" var="likeCheck">
+						<c:if test="${likeCheck==member.id}">
+							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요
+							<c:set var="ok" value="0"/>
+						</c:if>
+				</c:forEach>
+				<c:if test="${requestScope.likeId.size()==0}">
+					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+				</c:if>
+				<c:if test="${ok==1}">
+				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
+						<c:if test="${unLikeCheck!=member.id}">
+							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+						</c:if>
+				</c:forEach>
+				</c:if>
+				</button>
+			</td>
+			<td>
+				<div class="w3-light-grey">
+					<div id="myBar" class="w3-container w3-red" style="width:20%">20%</div>
+				</div>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2"><pre>${svo.showContent}</pre></td>
 		</tr>
+				
 </table>
 </div>
 <%-- 댓글 리스트 --%>

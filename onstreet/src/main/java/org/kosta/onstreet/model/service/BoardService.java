@@ -9,6 +9,7 @@ import org.kosta.onstreet.model.vo.CommentListVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.LikeVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
@@ -74,5 +75,13 @@ public interface BoardService {
 	void updateComment(CommentVO commentVO);
 	// 댓글 삭제
 	void deleteComment(String commentNo);
+	// 좋아요 추가
+	void addLike(LikeVO likeVO);
+	// 좋아요한 사람들 아이디리스트
+	ArrayList<String> getLikeListByShowNo(String showNo);
+	// 좋아요 유무 체크
+	int likeCheck(LikeVO likeVO);
+	// 좋아요 제거
+	void minusLike(LikeVO likeVO);
 }
 

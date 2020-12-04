@@ -7,10 +7,8 @@ import org.junit.runner.RunWith;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
-import org.kosta.onstreet.model.vo.EventVO;
-import org.kosta.onstreet.model.vo.NoticeVO;
-import org.kosta.onstreet.model.vo.ShowVO;
+import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 //github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -126,6 +124,17 @@ public class TestJUnit {
 		// 삭제 테스트
 //		String no = "3";
 //		bm.deleteShow(no);
+		// 좋아요 리스트 불러오기
+//		String no ="25";
+//		System.out.println(bm.getLikeListByShowNo(no));
+		// 좋아요 유무 체크 
+//		LikeVO lvo = new LikeVO();
+//		MemberVO mvo = new MemberVO();
+//		mvo.setId("donguk");
+//		lvo.setshowNo("25");
+//		lvo.setMemberVO(mvo);
+//		System.out.println(bm.likeCheck(lvo));
+		
 		
 //		List<ShowVO> list = bm.todayShow();
 //		Set<ShowVO> set = new HashSet<ShowVO>();
@@ -133,7 +142,7 @@ public class TestJUnit {
 //			int num  = (int)(Math.random()*(list.size()-1)+1);
 //			set.add(list.get(num));
 //		}
-//		System.out.println(set); 오늘의 공연 -- 진용현
+//		System.out.println(set); //오늘의 공연 -- 진용현
 		// 댓글 수정테스트
 //		CommentVO cvo = new CommentVO();
 //		cvo.setCommentContent("테스트하기");
