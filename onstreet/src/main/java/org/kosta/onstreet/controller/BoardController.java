@@ -11,13 +11,14 @@ import org.kosta.onstreet.model.service.BoardService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -184,6 +185,7 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		mv.setViewName("board/show/showDetail.tiles");
 		mv.addObject("svo", boardService.getShowDetail(showNo));
 		mv.addObject("clvo", boardService.getCommentList(showNo, pageNo));
+		mv.addObject("likeId",boardService.getLikeListByShowNo(showNo));
 		return mv;
 	}
 
@@ -281,6 +283,24 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		boardService.deleteComment(commentNo);
 		ra.addAttribute("showNo", showNo);
 		return "redirect:getShowDetail.do";
+	}
+	// 좋아요 
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@PostMapping("addLike.do")
+	public String addLike(LikeVO likeVO, String id, RedirectAttributes ra) {
+		MemberVO mvo = new MemberVO();
+		mvo.setId(id);
+		likeVO.setMemberVO(mvo);
+		int likeCheck = boardService.likeCheck(likeVO);
+		ra.addAttribute("showNo", likeVO.getshowNo());
+		if(likeCheck==1) {
+			boardService.minusLike(likeVO);
+			return "1";
+		} else{
+			boardService.addLike(likeVO);
+			return "0";
+		}
 	}
 }
 

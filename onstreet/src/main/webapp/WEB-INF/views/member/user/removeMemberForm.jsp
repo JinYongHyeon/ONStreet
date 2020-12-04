@@ -18,6 +18,8 @@
 				success: function(event){
 					if(event==="0"){
 						alert("비밀번호가 일치하지 않습니다");
+						$('#removePass').val('');
+						 $('#removePass').focus();
 					}else{
 						alert("성공적으로 탈퇴되었습니다");						
 						$("#logoutForm").submit();					
@@ -45,7 +47,7 @@
 
 	<tr>
 		<td>비밀번호</td>
-		<td><input type="password" id="removePass" name="password"></td>
+		<td><input type="password" id="removePass" name="password" autofocus></td>
 	</tr>
 </table>
 <input type="button" value="탈퇴하기" id="removeBtn">

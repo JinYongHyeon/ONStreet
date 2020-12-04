@@ -1,6 +1,7 @@
 package org.kosta.onstreet.model.service;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ import org.kosta.onstreet.model.vo.CommentListVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.LikeVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
@@ -189,7 +191,7 @@ private BoardMapper boardMapper;
 		int max = 5;
 		if(max>list.size())max=list.size();
 		while(set.size() < max) {
-			int num  = (int)(Math.random()*(list.size()-1)+1);
+			int num  = (int)(Math.random()*(list.size()-1+1));
 			set.add(list.get(num));
 		}
 		return set;
@@ -203,5 +205,25 @@ private BoardMapper boardMapper;
 	@Override
 	public void deleteComment(String commentNo) {
 		boardMapper.deleteComment(commentNo);
+	}
+	// 좋아요 추가
+	@Override
+	public void addLike(LikeVO likeVO) {
+		boardMapper.addLike(likeVO);
+	}
+	// 좋아요한 사람들 아이디
+	@Override
+	public ArrayList<String> getLikeListByShowNo(String showNo) {
+		return boardMapper.getLikeListByShowNo(showNo);
+	}
+	// 좋아요 유무 체크
+	@Override
+	public int likeCheck(LikeVO likeVO) {
+		return boardMapper.likeCheck(likeVO);
+	}
+	// 좋아요 제거
+	@Override
+	public void minusLike(LikeVO likeVO) {
+		boardMapper.minusLike(likeVO);
 	}
 }

@@ -1,5 +1,6 @@
 package org.kosta.onstreet.model.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +9,7 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.LikeVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -82,4 +84,13 @@ public interface BoardMapper {
 	void updateComment(CommentVO commentVO);
 	// 댓글삭제
 	void deleteComment(String commentNo);
+	// 좋아요 추가
+	void addLike(LikeVO likeVO);
+	// 좋아요 누른 사람들 아이디 리스트
+	ArrayList<String> getLikeListByShowNo(String showNo);
+	// 좋아요 유무 체크
+	int likeCheck(LikeVO likeVO);
+	// 좋아요 제거
+	void minusLike(LikeVO likeVO);
+	
 }

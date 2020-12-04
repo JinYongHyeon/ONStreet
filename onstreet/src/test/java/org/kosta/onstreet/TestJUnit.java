@@ -4,14 +4,10 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
-import org.kosta.onstreet.model.vo.ArtistVO;
-import org.kosta.onstreet.model.vo.EventVO;
-import org.kosta.onstreet.model.vo.NoticeVO;
-import org.kosta.onstreet.model.vo.ShowVO;
-//github.com/JinYongHyeon/ONStreet.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -126,15 +122,16 @@ public class TestJUnit {
 		// 삭제 테스트
 //		String no = "3";
 //		bm.deleteShow(no);
-		
-//		List<ShowVO> list = bm.todayShow();
-//		Set<ShowVO> set = new HashSet<ShowVO>();
-//		while(set.size() < 5) {
-//			int num  = (int)(Math.random()*(list.size()-1)+1);
-//			set.add(list.get(num));
-//		}
-//		System.out.println(set); 오늘의 공연 -- 진용현
-		// 댓글 수정테스트
+		// 좋아요 리스트 불러오기
+//		String no ="25";
+//		System.out.println(bm.getLikeListByShowNo(no));
+		// 좋아요 유무 체크 
+//		LikeVO lvo = new LikeVO();
+//		MemberVO mvo = new MemberVO();
+//		mvo.setId("donguk");
+//		lvo.setshowNo("25");
+//		lvo.setMemberVO(mvo);
+//		System.out.println(bm.likeCheck(lvo));
 //		CommentVO cvo = new CommentVO();
 //		cvo.setCommentContent("테스트하기");
 //		cvo.setCommentNo("27");
@@ -201,15 +198,18 @@ public class TestJUnit {
 
 		//String id="user1";
 		//System.out.println(mm.removeFollowing(id));
-		
 		/*
-		 * 세희~~~~~~~
-		 * EventVO eventVO=new EventVO();
-		 * 
-		 * ArtistVO artistVO=new ArtistVO(); artistVO.setMemberVO(memberVO);
-		 * eventVO.setArtistVO(artistVO); System.out.println(mm.);
+		String id="zarta1"; 
+		System.out.println(mm.getTotalEventCount(id));
+		int artistTotalEventCount=mm.getTotalEventCount(id);
+		PagingBean pb=new PagingBean(artistTotalEventCount);
+		List<EventVO> list=mm.artistCheckEventList(id,pb);
+		//System.out.println(list.size());
+		for(EventVO vo:list)
+			System.out.println(vo);
+		 System.out.println(pb.getStartRowNumber());
+		 System.out.println(pb.getEndRowNumber());
 		 */
-		
 	}
 	
 	@Test
@@ -221,6 +221,11 @@ public class TestJUnit {
 		 * System.out.println(bm.getShowList(pagin));
 		 */
 		//System.out.println(am.getTotalMemberCount());
+		//System.out.println(am.getTotalCheckArtist());
+		 PagingBean pagin = new PagingBean(3);
+		 //System.out.println(am.getCheckArtistList(pagin));
+		 //System.out.println(am.getTotalCheckEvent());
+		 //System.out.println(am.getCheckEventList(pagin));
 	}
 	
 }
