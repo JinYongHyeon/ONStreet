@@ -24,19 +24,6 @@
 	}//check
 		
 		
-		  
-			
-		/*.is(":checked")==true
-		*/	
-	/*
- 	$(document).ready(function(){
-		$("#removefollowBtn").submit(function(){
-			$( "input[name='checkbox']:checked" ).each(function () {
-			confirm("삭제하시겠습니까?");
-			});
-		});//click
-	});//ready 
-	*/
 
 </script>
 

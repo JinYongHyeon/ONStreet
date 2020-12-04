@@ -1,18 +1,13 @@
 package org.kosta.onstreet.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.executor.ReuseExecutor;
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.MemberService;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -300,5 +295,16 @@ public class MemberController {
 		return new ModelAndView("redirect:followingList.do");
 		
 	}
+	
+	//이벤트승인현황 정세희
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("artistCheckEventList.do")
+	public ModelAndView artistCheckEventList(String pageNo) {
+		System.out.println(pageNo);
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String id=avo.getMemberVO().getId();
+		return new ModelAndView("member/artist/artistCheckEventList.tiles","eventVO",memberService.artistCheckEventList(id,pageNo));
+	}
+	
 	
 }

@@ -198,15 +198,18 @@ public class TestJUnit {
 
 		//String id="user1";
 		//System.out.println(mm.removeFollowing(id));
-		
 		/*
-		 * 세희~~~~~~~
-		 * EventVO eventVO=new EventVO();
-		 * 
-		 * ArtistVO artistVO=new ArtistVO(); artistVO.setMemberVO(memberVO);
-		 * eventVO.setArtistVO(artistVO); System.out.println(mm.);
+		String id="zarta1"; 
+		System.out.println(mm.getTotalEventCount(id));
+		int artistTotalEventCount=mm.getTotalEventCount(id);
+		PagingBean pb=new PagingBean(artistTotalEventCount);
+		List<EventVO> list=mm.artistCheckEventList(id,pb);
+		//System.out.println(list.size());
+		for(EventVO vo:list)
+			System.out.println(vo);
+		 System.out.println(pb.getStartRowNumber());
+		 System.out.println(pb.getEndRowNumber());
 		 */
-		
 	}
 	
 	@Test

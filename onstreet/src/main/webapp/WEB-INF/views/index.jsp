@@ -20,7 +20,12 @@
 		</div>
 		<div class="artistShow">
 			<ul class="artistShowList">
-				<c:forEach items="${requestScope.todayShow}" var="show">
+			<c:choose>
+				<c:when test="${requestScope.todayShow.size() == 0}">
+					<li><div class="todayShowInfo"><h1>오늘의 공연이 없습니다.</h1></div></li>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${requestScope.todayShow}" var="show" varStatus="index">
 					<li><a href="${pageContext.request.contextPath}">
 						<div class="todayShowInfo">
 						<h1>${show.showTitle}</h1>
@@ -29,7 +34,8 @@
 						</a>
 					</li>	
 				</c:forEach>
-				
+				</c:otherwise>
+			</c:choose>
 			</ul>
 		</div>
 		<div class="artistShowRightBtn">
@@ -67,7 +73,7 @@
 				<ul>
 					<li><img src="${pageContext.request.contextPath}/resources/img/profile/4.jpg"></li>
 					<li><img src="${pageContext.request.contextPath}/resources/img/profile/5.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/6.png"></li>
+					<li><img src="${pageContext.request.contextPath}/resources/img/profile/6.jpg"></li>
 				</ul>
 			</div>
 			<div class="artistRecommendationList">
@@ -108,7 +114,7 @@
 	}
 
 	function startShowSlide(a) {
-		if ($slides.is(":animated") || a == sno)
+		if ($slides.is(":animated") || a == sno || max==0)
 			return;
 		var no, type;
 		clearTimeout(timer);

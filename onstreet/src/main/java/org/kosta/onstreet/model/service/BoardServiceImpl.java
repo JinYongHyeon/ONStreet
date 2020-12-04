@@ -57,8 +57,11 @@ private BoardMapper boardMapper;
 		boardMapper.updateNotice(noticeVO);
 	}
 	//공지사항 삭제:김수민
-	public void deleteNotice(String noticeNo) {
-		boardMapper.deleteNotice(noticeNo);
+	public void deleteNotice(String[] noticeNo) {
+       for(int i=0; i<noticeNo.length; i++) {
+    	   System.out.println(noticeNo[i]);
+		boardMapper.deleteNotice(noticeNo[i]);
+       }
 	}
 	/**
 	 * 정지윤
@@ -188,7 +191,7 @@ private BoardMapper boardMapper;
 		int max = 5;
 		if(max>list.size())max=list.size();
 		while(set.size() < max) {
-			int num  = (int)(Math.random()*(list.size()-1)+1);
+			int num  = (int)(Math.random()*(list.size()-1+1));
 			set.add(list.get(num));
 		}
 		return set;

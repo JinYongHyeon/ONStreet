@@ -1,10 +1,14 @@
 package org.kosta.onstreet.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.EventListVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -35,4 +39,5 @@ public interface MemberService {
 	
 	int removeFollowing(FollowVO fvo);
 	
+	EventListVO artistCheckEventList(String pageNo,String id);
 }
