@@ -97,7 +97,7 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	//공지사항 삭제 :김수민
 	@Secured("ROLE_MEMBER")
 	@PostMapping("deleteNotice.do")
-	public String deleteNotice(String noticeNo){
+	public String deleteNotice(String[] noticeNo){
 		boardService.deleteNotice(noticeNo);
 		return "redirect:getNoticeList.do";
 	}

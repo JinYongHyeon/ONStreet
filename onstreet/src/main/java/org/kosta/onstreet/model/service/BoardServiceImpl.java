@@ -55,8 +55,11 @@ private BoardMapper boardMapper;
 		boardMapper.updateNotice(noticeVO);
 	}
 	//공지사항 삭제:김수민
-	public void deleteNotice(String noticeNo) {
-		boardMapper.deleteNotice(noticeNo);
+	public void deleteNotice(String[] noticeNo) {
+       for(int i=0; i<noticeNo.length; i++) {
+    	   System.out.println(noticeNo[i]);
+		boardMapper.deleteNotice(noticeNo[i]);
+       }
 	}
 	/**
 	 * 정지윤

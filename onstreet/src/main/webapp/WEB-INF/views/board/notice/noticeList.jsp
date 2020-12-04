@@ -4,11 +4,21 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <script type="text/javascript">
 $(document).ready(function() {
-	var noticeNo=$("#deleteNoticeForm [input name=noticeNo]").val();
-	$("#deleteNoticeForm [input name=noticeNo]:checked").submit(function(){
-		for(var i=0; i<noticeNo.length; i++){
-		    alert(noticeNo);
-	    }
+	$("#deleteNoticecheck").submit(function(){
+		var no=$("#deleteNoticecheck input[type:checkbox]");
+		var info=false;
+		//jQuery 반복문 체크박스 동일한 name 갯수만큼 반복
+		no.each(function(){
+			if($(this).is(":checked")){
+				info= true;
+				return;
+			}
+		});
+			if(info===false){
+			alert("번호를 선택해주세요");
+			return false;
+			}
+				return confirm("삭제 하시겠습니까?"); 
      });//submit
 });//ready
 </script>
@@ -22,20 +32,24 @@ $(document).ready(function() {
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<form action="deleteNotice.do" method="post" id="deleteNoticecheck">
+<sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.lvo.noList}">
 <tr>
 <td>
-<form action="deleteNotice.do" method="post" id="deleteNoticeForm" >
- <sec:csrfInput/>
+<input type="hidden" name="noticeNo" value="${list.noticeNo}">
 <input type="checkbox" name="noticeNo" value="${list.noticeNo}">${list.noticeNo}
- </form>
-</td>
-<td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">
-  ${list.noticeTitle}</a></td>
+<td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
 <td>${list.noticeWriteDate}</td>
 <td>${list.memberVO.nickName}</td>
+<td>
 </tr>
-</c:forEach>	
+</c:forEach>
+</form>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="pagingInfo">
@@ -63,5 +77,5 @@ $(document).ready(function() {
  <form action="addNoticeForm.do" method="get">
  <input type="submit" value="등록">
  </form>
- <button form="deleteNoticeForm" type="submit">삭제</button>
- </div>
+ <input type="submit" id="">
+ </div> 
