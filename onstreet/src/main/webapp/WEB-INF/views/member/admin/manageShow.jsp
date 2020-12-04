@@ -2,9 +2,33 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#removeShow").click(function() {
+			var flag = false;
+			$(".checkShow").each(function(){
+				if($(this).is(":checked")){
+					flag = true;
+					return;
+				}
+			});
+				if(flag === true){
+					if(confirm("정말로 삭제하시겠습니까?"))
+						$("#removeShowForm").submit();
+				}else if(flag === false){
+					alert("삭제시킬 게시물을 선택해주세요!"); 
+					return;
+				}
+		});//click
+	});//ready
+</script>
+
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 <h1><b>MANAGE</b></h1> <br><br>
+<input type="button" id="removeShow" value="삭제하기">
+<sec:csrfInput />
 <table border="1">
 	<thead>
 		<tr>
@@ -22,7 +46,9 @@
 		<c:forEach items="${requestScope.slvo.list}" var="list" varStatus="status">
 			<tr>
 				<td>
-				<input type="checkbox">
+				<form action="${pageContext.request.contextPath}/manageShow.do" method="post" id="removeShowForm">
+					<input type="checkbox" name="checkShow" value="${list.showNo}" class="checkShow"><sec:csrfInput/>
+				</form>
 				</td>
 				<td>
 				${list.showTitle}

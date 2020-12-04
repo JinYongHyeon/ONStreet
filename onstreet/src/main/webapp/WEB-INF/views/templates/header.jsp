@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		<div class="bitLog">
-			<h1>아이콘</h1>
+			<a href="${pageContext.request.contextPath}/home.do"><img src="${pageContext.request.contextPath}/resources/img/profile/default image2.png" alt="log"></a>
 		</div>
 		<div class="bitMainSearch">
 			<form action="" method="get">

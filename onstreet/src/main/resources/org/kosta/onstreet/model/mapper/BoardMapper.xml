@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
+ 	<!-- eventVO has a -->
  	<resultMap type="eventVO" id="eventList">
  		<result column="id" property="artistVO.memberVO.id"/>
  		<result column="nickname" property="artistVO.memberVO.nickName"/>
@@ -123,6 +124,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="artistVO.memberVO.id" column="id" />
 		<result property="artistVO.memberVO.nickName" column="nickname" />
 	</resultMap>
+	<resultMap type="likeVO" id="likeListRM">
+		<result property="memberVO.id" column="id" />
+	</resultMap>
 	<resultMap type="commentVO" id="commentListRM">
 		<result property="memberVO.id" column="id" />
 		<result property="showVO.showNo" column="showNo" />
@@ -212,5 +216,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글삭제 -->
 	<delete id="deleteComment">
 		delete from OS_COMMENT where comment_no=#{value}
+	</delete>
+	<!-- 좋아요 추가 -->
+	<insert id="addLike">
+		insert into OS_LIKE(show_no,id) values(#{showNo},#{memberVO.id})
+	</insert>
+	<!-- 좋아요 누른 사람들 아이디 리스트 by showNo-->
+	<select id="getLikeListByShowNo" resultType="string">
+		select id from os_like where show_no=#{value}
+	</select>
+	<!-- 좋아요 유무 체크 -->
+	<select id="likeCheck" resultType="int">
+		select count(*) from OS_LIKE where show_no=#{showNo} and id=#{memberVO.id}
+	</select>
+	<!-- 좋아요 제거 -->
+	<delete id="minusLike">
+		delete from OS_LIKE where id=#{memberVO.id} and show_no=#{showNo}
 	</delete>
 </mapper>

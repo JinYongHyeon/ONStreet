@@ -6,10 +6,13 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.MemberListVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -67,5 +70,72 @@ public class AdminServiceImpl implements AdminService {
 			pagingBean = new PagingBean(memberTotalCount,Integer.parseInt(pageNo));
 		MemberListVO memberListVO = new MemberListVO(adminMapper.getManageMemberArtistList("ROLE_ARTIST", pagingBean),pagingBean);
 		return memberListVO;
+	}
+	
+	/**
+	 * 정지윤
+	 * 게시물 삭제
+	 */
+	@Override
+	public void manageShow(String[] checkShow) {
+		ShowVO showVO = new ShowVO();
+		for(String showNo:checkShow) {
+			showVO.setShowNo(showNo);
+			boardMapper.deleteShow(showNo);
+		}
+	}
+
+	/**
+	 * 정지윤
+	 * 미승인 아티스트 리스트 불러오기
+	 */
+	@Override
+	public ArtistListVO getCheckArtistList(String pageNo) {
+		int checkArtistTotalCount = adminMapper.getTotalCheckArtist();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(checkArtistTotalCount);
+		else
+			pagingBean = new PagingBean(checkArtistTotalCount,Integer.parseInt(pageNo));
+		ArtistListVO artistListVO = new ArtistListVO(adminMapper.getCheckArtistList(pagingBean),pagingBean);
+		return artistListVO;
+	}
+
+	/**
+	 * 정지윤
+	 * 아티스트 승인
+	 */
+	@Override
+	public void checkArtist(String[] checkArtist) {
+		for(String id:checkArtist) {
+			adminMapper.checkArtist(id);
+		}
+	}
+
+	/**
+	 * 정지윤
+	 * 미승인 이벤트 리스트 불러오기
+	 */
+	@Override
+	public EventListVO getCheckEventList(String pageNo) {
+		int checkEventTotalCount = adminMapper.getTotalCheckEvent();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(checkEventTotalCount);
+		else
+			pagingBean = new PagingBean(checkEventTotalCount,Integer.parseInt(pageNo));
+		EventListVO eventListVO = new EventListVO(adminMapper.getCheckEventList(pagingBean),pagingBean);
+		return eventListVO;
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 승인
+	 */
+	@Override
+	public void checkEvent(String[] checkEvent) {
+		for(String eventNo:checkEvent) {
+			adminMapper.checkEvent(eventNo);
+		}
 	}
 }
