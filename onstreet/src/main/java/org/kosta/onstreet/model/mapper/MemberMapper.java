@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
@@ -102,6 +103,10 @@ public interface MemberMapper {
 	/**
 	 * 이벤트승인현황 정세희
 	 */
-	ArrayList<EventListVO> artistCheckEventList(EventVO evo);
+	int getTotalEventCount(String id);
+	
+	List<EventVO> artistCheckEventList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
+
+
 }
 	

@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
+import org.kosta.onstreet.model.vo.EventListVO;
+import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -164,12 +167,27 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return count;
 	}
-
+	/**
+	 * 정세희
+	 * 1.팔로우삭제
+	 * 2.이벤트승인현황
+	 */
 	@Override
 	public int removeFollowing(FollowVO fvo) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		fvo.setMemberVO(avo.getMemberVO());
 		return memberMapper.removeFollowing(fvo);
+	}
+	@Override
+	public EventListVO artistCheckEventList(String id,String pageNo) {
+		int artisteventTotalCount = memberMapper.getTotalEventCount(id);
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(artisteventTotalCount);
+		else
+			pagingBean = new PagingBean(artisteventTotalCount,Integer.parseInt(pageNo));
+		EventListVO eventListVO = new EventListVO(memberMapper.artistCheckEventList(id,pagingBean),pagingBean);
+		return eventListVO;
 	}
 	
 }

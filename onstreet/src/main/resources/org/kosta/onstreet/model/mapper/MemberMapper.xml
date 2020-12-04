@@ -26,6 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
 	
+	<!--  EventListVO has a -->
+ 	<resultMap type="EventVO" id="eventlist">
+ 	<result column="id" property="memberVO.id"/>
+ 	</resultMap>
+ 	
  	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
@@ -132,13 +137,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id=#{memberVO.id} and following_id=#{followingId}
 	</delete>
 	
-	<!-- 이벤트승인현황 정세희 
- 	<select id="artistCheckEventList" resultMap="eventList" parameterType="pagingBean">
- 		SELECT event_no, event_title, event_image, event_date
-		FROM (SELECT row_number() over(order by event_check_date desc) as rnum, event_check_date, event_no,
-		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event)
-		WHERE event_check_date IS NOT NULL
-		AND rnum between #{startRowNumber} and #{endRowNumber} 
- 	</select>-->
+	<!-- 아티스트 개인별이벤트 개수 -->
+	<select id="getTotalEventCount" resultType="int">
+	select count(*) 
+	from os_event
+	where id=#{value}
+	</select>
+	
+	<!-- 이벤트승인현황 정세희 -->
+ 	<select id="artistCheckEventList" resultType="eventVO" parameterType="map">
+ 		SELECT event_no, event_title,event_date,event_check_date
+		FROM (SELECT row_number() 
+		over(order by event_check_date desc) as rnum, event_check_date, event_no,
+		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') 
+		as event_date,id FROM os_event)
+		WHERE id=#{id}
+		AND rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
+ 	</select>
  	
 </mapper>
