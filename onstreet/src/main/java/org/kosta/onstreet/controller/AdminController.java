@@ -4,13 +4,10 @@ import javax.annotation.Resource;
 
 import org.kosta.onstreet.model.service.AdminService;
 import org.kosta.onstreet.model.service.BoardService;
-import org.kosta.onstreet.model.service.MemberService;
-import org.kosta.onstreet.model.vo.ArtistVO;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -74,5 +71,58 @@ public class AdminController {
 		mv.addObject("slvo", boardService.getShowList(pageNo));
 		mv.addObject("totalPostCount", boardService.getTotalShowCount());
 		return mv;
+	}
+	
+	/**
+	 * 정지윤
+	 * 게시물 삭제
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("manageShow.do")
+	public String manageShow(String[] checkShow) {
+		adminService.manageShow(checkShow);
+		return "redirect:getManageShowList.do";
+	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 승인 폼
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("getCheckArtistList.do")
+	public ModelAndView getCheckArtistList(String pageNo) {
+		return new ModelAndView("member/admin/manageArtist.tiles","artistVO",adminService.getCheckArtistList(pageNo));
+	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 승인
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("checkArtist.do")
+	public String checkArtist(String[] checkArtist) {
+		adminService.checkArtist(checkArtist);
+		return "redirect:getCheckArtistList.do";
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 승인 폼
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("getCheckEventList.do")
+	public ModelAndView getCheckEventList(String pageNo) {
+		return new ModelAndView("member/admin/manageEvent.tiles","eventVO",adminService.getCheckEventList(pageNo));
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 승인
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("checkEvent.do")
+	public String checkEvent(String[] checkEvent) {
+		adminService.checkEvent(checkEvent);
+		return "redirect:getCheckEventList.do";
 	}
 }

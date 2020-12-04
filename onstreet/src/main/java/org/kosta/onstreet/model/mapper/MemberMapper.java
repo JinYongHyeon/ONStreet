@@ -114,5 +114,6 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public Map<String,Object> artistAVGLike(Map<String,Object> artistMap);
+	//ArrayList<EventListVO> artistCheckEventList(EventVO evo);
 }
 	
