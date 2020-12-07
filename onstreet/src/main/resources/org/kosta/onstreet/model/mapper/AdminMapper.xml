@@ -43,23 +43,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원(ROLE_MEMBER) 리스트 불러오기 -->
 	<select id="getManageMemberList" resultMap="memberList" parameterType="map">
 		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,a.auth_name
-		FROM (SELECT row_number() over(order by id desc) as rnum,auth_name,id
-		FROM os_auth) a,os_member m
+		FROM (SELECT row_number() over(order by id desc) as rnum,id,nickname,address,phone,email,name,age,
+		remove_user_date FROM os_member WHERE remove_user_date IS NULL) m,os_auth a
 		WHERE m.id=a.id
 		AND a.auth_name=#{authName}
-		AND m.remove_user_date IS NULL
 		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
 	</select>
 	
 		<!-- 회원(ROLE_ARTIST) 리스트 불러오기 -->
 	<select id="getManageMemberArtistList" resultMap="memberList" parameterType="map">
 		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,a.auth_name
-		FROM (SELECT row_number() over(order by id desc) as rnum,auth_name,id
-		FROM os_auth) a,os_member m, os_artist t
+		FROM (SELECT row_number() over(order by id desc) as rnum,id,nickname,address,phone,email,name,age,
+		remove_user_date FROM os_member WHERE remove_user_date IS NULL) m,os_artist t, os_auth a
 		WHERE m.id=a.id AND m.id=t.id
 		AND a.auth_name=#{authName}
 		AND t.check_date IS NOT NULL
-		AND m.remove_user_date IS NULL
 		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
 	</select>
 	
@@ -71,11 +69,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 아티스트 미승인 리스트 불러오기 -->
 	<select id="getCheckArtistList" resultMap="artistList" parameterType="pagingBean">
 		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,t.artist_info
-		FROM (SELECT row_number() over(order by nickname desc) AS rnum, id,nickname,address,phone,email,name
-		FROM os_member) m,os_artist t
-		WHERE check_date is null
-		AND m.id=t.id
-		AND rnum between #{startRowNumber} and #{endRowNumber}+1
+		FROM (SELECT row_number() over(order by check_date desc) AS rnum, id, check_date,artist_info
+		FROM os_artist WHERE check_date is null) t,os_member m
+		WHERE m.id=t.id
+		AND rnum between #{startRowNumber} and #{endRowNumber} 
 	</select>
 	
 	<!-- 아티스트 승인 -->
@@ -104,4 +101,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="checkEvent" parameterType="eventVO">
 		update os_event set event_check_date=sysdate where event_no=#{eventNo}
 	</update>
+	
+	<!-- 게시된 이벤트 수 불러오기 -->
+	<select id="manageEventListCount" resultType="int">
+		select count(*) from os_event where event_check_date is not null
+	</select>
+	
+	<!-- 게시된 이벤트 리스트 불러오기 -->
+	<select id="manageEventList" resultMap="eventList" parameterType="pagingBean">
+		select m.nickname,e.event_no, e.event_title, e.event_date, e.event_write_date, e.event_check_date, m.id
+		from (select row_number() over(order by event_check_date) as rnum, event_no, event_title, event_date, event_write_date, 
+		event_check_date,id from os_event where event_check_date is not null) e, os_member m
+		where m.id=e.id
+		and rnum between #{startRowNumber} and #{endRowNumber} 
+	</select>
 </mapper>

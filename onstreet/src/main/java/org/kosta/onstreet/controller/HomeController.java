@@ -15,6 +15,7 @@ public class HomeController {
 		
 	@RequestMapping(value= {"home.do","/"})
 	public String home(Model model){
+		model.addAttribute("recommendation",boardService.getArtistRecommendation());
 		model.addAttribute("todayShow",boardService.todayShow());
 		return "index.tiles";
 	}

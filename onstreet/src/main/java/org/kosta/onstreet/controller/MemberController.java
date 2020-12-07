@@ -277,11 +277,12 @@ public class MemberController {
 	//팔로우리스트 불러오기 정세희 
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
-	public ModelAndView getfollowingList() {
+	public ModelAndView getfollowingList(String pageNo) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String id=avo.getMemberVO().getId();
 		ModelAndView mv=new ModelAndView();
+		mv.addObject("list",memberService.getfollowingList(id,pageNo));
 		mv.setViewName("member/user/followingList.tiles");
-		mv.addObject("list",memberService.getfollowingList(avo));
 		return mv;
 	}
 	

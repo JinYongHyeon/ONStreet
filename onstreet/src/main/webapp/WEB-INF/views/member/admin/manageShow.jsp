@@ -29,6 +29,7 @@
 <h1><b>MANAGE</b></h1> <br><br>
 <input type="button" id="removeShow" value="삭제하기">
 <sec:csrfInput />
+	<form action="${pageContext.request.contextPath}/manageShow.do" method="post" id="removeShowForm">
 <table border="1">
 	<thead>
 		<tr>
@@ -46,9 +47,7 @@
 		<c:forEach items="${requestScope.slvo.list}" var="list" varStatus="status">
 			<tr>
 				<td>
-				<form action="${pageContext.request.contextPath}/manageShow.do" method="post" id="removeShowForm">
 					<input type="checkbox" name="checkShow" value="${list.showNo}" class="checkShow"><sec:csrfInput/>
-				</form>
 				</td>
 				<td>
 				${list.showTitle}
@@ -63,7 +62,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-
+</form>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
