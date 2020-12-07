@@ -32,6 +32,7 @@
 <input type="button" id="removeMember" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageMemberForm.do">회원 전체  목록 보기</a>
 <sec:csrfInput />
+<form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
 <table border="1">
 	<thead>
 		<tr>
@@ -51,9 +52,9 @@
 		<c:set var="pb" value="${requestScope.authVO.pagingBean}" />
 		<c:forEach var="avo" items="${requestScope.authVO.memberList}">
 			<tr>
-				<td><form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
+				<td>
 				<input type="checkbox" name="checkMember" value="${avo.memberVO.id}" class="checkMember"><sec:csrfInput/>>
-				</form></td>
+				</td>
 				<td>${avo.memberVO.id}</td>
 				<td>${avo.memberVO.nickName}</td>
 				<td>${avo.memberVO.address}</td>
@@ -66,7 +67,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-
+</form>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	

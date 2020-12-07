@@ -136,6 +136,23 @@ public class AdminServiceImpl implements AdminService {
 	public void checkEvent(String[] checkEvent) {
 		for(String eventNo:checkEvent) {
 			adminMapper.checkEvent(eventNo);
+			System.out.println(checkEvent);
 		}
+	}
+
+	/**
+	 * 정지윤
+	 * 게시된 이벤트 리스트 불러오기
+	 */
+	@Override
+	public EventListVO manageEventList(String pageNo) {
+		int manageEventCount = adminMapper.manageEventListCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(manageEventCount);
+		else
+			pagingBean = new PagingBean(manageEventCount,Integer.parseInt(pageNo));
+		EventListVO eventListVO = new EventListVO(adminMapper.manageEventList(pagingBean),pagingBean);
+		return eventListVO;
 	}
 }

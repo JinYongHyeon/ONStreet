@@ -1,6 +1,7 @@
 package org.kosta.onstreet.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.onstreet.model.service.AdminService;
 import org.kosta.onstreet.model.service.BoardService;
@@ -121,8 +122,18 @@ public class AdminController {
 	 */
 	@Secured("ROLE_ADMIN")
 	@PostMapping("checkEvent.do")
-	public String checkEvent(String[] checkEvent) {
+	public String checkEvent(String[] checkEvent,String test) {
 		adminService.checkEvent(checkEvent);
 		return "redirect:getCheckEventList.do";
+	}
+	
+	/**
+	 * 정지윤
+	 * 게시된 이벤트 리스트 불러오기
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("manageEventList.do")
+	public ModelAndView manageEventList(String pageNo) {
+		return new ModelAndView("member/admin/manageEventDelete.tiles","eventVO",adminService.manageEventList(pageNo));
 	}
 }
