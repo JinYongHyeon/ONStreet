@@ -1,6 +1,9 @@
 package org.kosta.onstreet.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -186,6 +189,8 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		mv.addObject("svo", boardService.getShowDetail(showNo));
 		mv.addObject("clvo", boardService.getCommentList(showNo, pageNo));
 		mv.addObject("likeId",boardService.getLikeListByShowNo(showNo));
+		mv.addObject("likeCount", (boardService.getLikeCount(showNo))/2);
+		mv.addObject("validity", boardService.getDateValidity(showNo));
 		return mv;
 	}
 

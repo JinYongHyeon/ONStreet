@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/editor/js/HuskyEZCreator.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/editor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
+
+ 
+
 	var oEditors = [];
 	$(function() {
 		nhn.husky.EZCreator
