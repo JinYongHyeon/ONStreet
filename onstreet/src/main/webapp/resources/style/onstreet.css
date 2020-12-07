@@ -880,6 +880,24 @@ color: #31708f;
 	border-left:1px solid #b5b5b5;
 }
 
+/*공지시항리스트 UI 김수민 */
+#noticeList{
+	width:700px;
+	height:15%;
+	border-collapse:collapse;
+	border:2px solid;
+	font-size:20px;
+}
+#noticeList tr th{
+	border:2px solid #d1fffc;
+	text-align: center;
+	background-color: #d1fffc;
+}
+#noticeList tr td{
+	border:2px solid;
+	text-align: center;
+	border-color: #57cfc7;
+}
+/*공지사항 상세보기 UI 김수민  */
 
-
-
+ 

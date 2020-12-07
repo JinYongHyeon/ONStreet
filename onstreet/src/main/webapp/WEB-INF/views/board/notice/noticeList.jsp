@@ -22,13 +22,13 @@ $(document).ready(function() {
      });//submit
 });//ready
 </script>
-<table border="1">
+<table id="noticeList">
 <thead>
 <tr>
 <th>번호</th>
 <th>제목</th>
 <th>작성일시</th>
-<th>작성자닉네임</th>
+<th>작성자</th>
 </tr>
 </thead>
 <tbody>
@@ -39,12 +39,11 @@ $(document).ready(function() {
 <c:forEach var="list" items="${requestScope.lvo.noList}">
 <tr>
 <td>
-<input type="hidden" name="noticeNo" value="${list.noticeNo}">
+<%-- <input type="hidden" name="noticeNo" value="${list.noticeNo}">--%>
 <input type="checkbox" name="noticeNo" value="${list.noticeNo}">${list.noticeNo}
 <td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
 <td>${list.noticeWriteDate}</td>
 <td>${list.memberVO.nickName}</td>
-<td>
 </tr>
 </c:forEach>
 </form>
@@ -77,5 +76,5 @@ $(document).ready(function() {
  <form action="addNoticeForm.do" method="get">
  <input type="submit" value="등록">
  </form>
- <input type="submit" id="">
+ <button form="deleteNoticecheck" type="submit">삭제</button>
  </div> 

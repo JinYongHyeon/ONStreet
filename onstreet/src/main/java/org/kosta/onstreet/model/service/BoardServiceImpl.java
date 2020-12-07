@@ -59,7 +59,7 @@ private BoardMapper boardMapper;
 	//공지사항 삭제:김수민
 	public void deleteNotice(String[] noticeNo) {
        for(int i=0; i<noticeNo.length; i++) {
-    	   System.out.println(noticeNo[i]);
+    	   //System.out.println(noticeNo[i]);
 		boardMapper.deleteNotice(noticeNo[i]);
        }
 	}
