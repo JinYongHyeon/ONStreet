@@ -1,5 +1,7 @@
 package org.kosta.onstreet;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -8,6 +10,10 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.ArtistVO;
+import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.FollowVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -198,18 +204,26 @@ public class TestJUnit {
 
 		//String id="user1";
 		//System.out.println(mm.removeFollowing(id));
-		/*
-		String id="zarta1"; 
-		System.out.println(mm.getTotalEventCount(id));
-		int artistTotalEventCount=mm.getTotalEventCount(id);
-		PagingBean pb=new PagingBean(artistTotalEventCount);
-		List<EventVO> list=mm.artistCheckEventList(id,pb);
-		//System.out.println(list.size());
-		for(EventVO vo:list)
-			System.out.println(vo);
-		 System.out.println(pb.getStartRowNumber());
-		 System.out.println(pb.getEndRowNumber());
-		 */
+		
+		
+		 // String id="zarta1"; System.out.println(mm.getTotalEventCount(id));
+		 //int artistTotalEventCount=mm.getTotalEventCount(id); 
+		 // PagingBean pb=new PagingBean(artistTotalEventCount); 
+//		  List<EventVO> list=mm.artistCheckEventList(id,pb); //System.out.println(list.size());
+//		  for(EventVO vo:list) 
+//		  System.out.println(vo);
+//		  System.out.println(pb.getStartRowNumber());
+//		  System.out.println(pb.getEndRowNumber());
+		 
+		
+		 String id="user1";
+		 System.out.println(mm.followingTotalCount(id));
+		 int followingTotalCount=mm.followingTotalCount(id);
+		 PagingBean pagingbean=new PagingBean(followingTotalCount);
+		 
+		 List<FollowVO> list = mm.getfollowingList(id,pagingbean);
+		 for(FollowVO fvo:list)
+		System.out.println(fvo);
 	}
 	
 	@Test

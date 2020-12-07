@@ -109,11 +109,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id=#{memberVO.id}
 	</update>
 	
+	<!-- 팔로우리스트 갯수조회 정세희-->
+	<select id="followingTotalCount" resultType="int">
+		select count(*)
+		from  os_follow
+		where id=#{memberVO.id}
+	</select>
+	
 	<!-- 팔로우리스트가져오기 정세희 -->
-	<select id="getfollowingList" resultMap="followlist">
+	<select id="getfollowingList" resultMap="followlist" parameterType="map">
 		select m.nickname,m.profile,f.following_id
-		from os_follow f,os_member m
-		where m.id=f.id and f.id=#{value}
+		from(select row_number() over(order by id asc) as rnum,following_id,id
+		from os_follow) f,os_member m
+		where m.id=f.id and f.id=#{id}
+		and rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
 	</select>
 	
 	<!-- 정지윤 -->

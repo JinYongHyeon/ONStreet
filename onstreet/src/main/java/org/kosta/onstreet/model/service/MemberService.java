@@ -9,6 +9,7 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.ShowVO;
@@ -33,11 +34,16 @@ public interface MemberService {
 	
 	void updateArtist(ArtistVO artistVO);
 
-	List<FollowVO> getfollowingList(ArtistVO avo);
+	FollowListVO getfollowingList(String id,String pageNo);
 	
 	int registerFollowing(FollowVO followVO);
 	
 	int removeFollowing(FollowVO fvo);
 	
 	EventListVO artistCheckEventList(String pageNo,String id);
+
+	/**
+	 * 정세희
+	 * 팔로우리스트 불러오기
+	 */
 }

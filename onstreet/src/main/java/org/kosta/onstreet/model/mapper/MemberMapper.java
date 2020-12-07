@@ -11,6 +11,7 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 
@@ -81,10 +82,14 @@ public interface MemberMapper {
 	public int updateArtist(ArtistVO artistVO);
 	
 	/**
-	 * 팔로우리스트 불러오기 정세희
+	 * 1.팔로잉토탈카운트
+	 * 
+	 * 2.팔로우리스트 불러오기 정세희
 	 * 
 	 */
-	public List<FollowVO> getfollowingList(String id);
+	int followingTotalCount(String id);
+	
+	List<FollowVO> getfollowingList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
 	
 	/**
 	 * 정지윤

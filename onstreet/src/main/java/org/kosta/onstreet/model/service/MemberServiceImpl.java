@@ -13,6 +13,7 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -146,12 +147,18 @@ public class MemberServiceImpl implements MemberService {
 	 * 팔로우리스트 불러오기
 	 */
 	@Override
-	public List<FollowVO> getfollowingList(ArtistVO avo) {
-		 List<FollowVO> list=memberMapper.getfollowingList(avo.getMemberVO().getId());
-		return list;
-		
+	public FollowListVO getfollowingList(String id,String pageNo) {
+		int followingTotalCount = memberMapper.followingTotalCount(id);
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(followingTotalCount);
+		else
+			pagingBean = new PagingBean(followingTotalCount,Integer.parseInt(pageNo));
+		FollowListVO flv = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
+		return flv;
 	}
 
+	
 	/**
 	 * 정지윤
 	 * 1. 중복체크
@@ -167,10 +174,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return count;
 	}
+	
 	/**
 	 * 정세희
 	 * 팔로우삭제
-	 * 
 	 */
 	@Override
 	public int removeFollowing(FollowVO fvo) {
@@ -193,5 +200,6 @@ public class MemberServiceImpl implements MemberService {
 		EventListVO eventListVO = new EventListVO(memberMapper.artistCheckEventList(id,pagingBean),pagingBean);
 		return eventListVO;
 	}
+
 	
 }
