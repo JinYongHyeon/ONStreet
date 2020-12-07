@@ -210,6 +210,7 @@ private BoardMapper boardMapper;
 	@Override
 	public void addLike(LikeVO likeVO) {
 		boardMapper.addLike(likeVO);
+		boardMapper.addLikeCol(likeVO.getshowNo());
 	}
 	// 좋아요한 사람들 아이디
 	@Override
@@ -225,5 +226,16 @@ private BoardMapper boardMapper;
 	@Override
 	public void minusLike(LikeVO likeVO) {
 		boardMapper.minusLike(likeVO);
+		boardMapper.minusLikeCol(likeVO.getshowNo());
+	}
+	// 좋아요 수 가져오기
+	@Override
+	public int getLikeCount(String showNo) {
+		return boardMapper.getLikeCount(showNo);
+	}
+	// 공연일자 유효일 구하기
+	@Override
+	public int getDateValidity(String showNo) {
+		return boardMapper.getDateValidity(showNo);
 	}
 }

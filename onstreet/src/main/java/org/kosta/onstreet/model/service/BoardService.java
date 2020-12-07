@@ -83,5 +83,9 @@ public interface BoardService {
 	int likeCheck(LikeVO likeVO);
 	// 좋아요 제거
 	void minusLike(LikeVO likeVO);
+	// 좋아요 수 가져오기
+	int getLikeCount(String showNo);
+	// 공연일자 유효일 구하기
+	int getDateValidity(String showNo);
 }
 

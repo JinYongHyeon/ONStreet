@@ -217,7 +217,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteComment">
 		delete from OS_COMMENT where comment_no=#{value}
 	</delete>
-	<!-- 좋아요 추가 -->
+	<!-- 좋아요 테이블에 추가 -->
 	<insert id="addLike">
 		insert into OS_LIKE(show_no,id) values(#{showNo},#{memberVO.id})
 	</insert>
@@ -229,8 +229,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="likeCheck" resultType="int">
 		select count(*) from OS_LIKE where show_no=#{showNo} and id=#{memberVO.id}
 	</select>
-	<!-- 좋아요 제거 -->
+	<!-- 좋아요 테이블에서 제거 -->
 	<delete id="minusLike">
 		delete from OS_LIKE where id=#{memberVO.id} and show_no=#{showNo}
 	</delete>
+	<!-- 좋아요 컬럼에서 -1 -->
+	<update id="minusLikeCol">
+		update os_show set show_like=show_like-1 where show_no=#{value}
+	</update>
+	<!-- 좋아요 컬럼에서 +1 -->
+	<update id="addLikeCol">
+		update os_show set show_like=show_like+1 where show_no=#{value}
+	</update>
+	<!-- 좋아요 수 가져오기 -->
+	<select id="getLikeCount" resultType="int">
+		select show_like from os_show where show_no=#{value} 
+	</select>
+	<!-- 공연일자 유효일 구하기 -->
+	<select id="getDateValidity" resultType="int">
+		select sysdate-show_date from OS_SHOW where show_no=#{value}
+	</select>
 </mapper>

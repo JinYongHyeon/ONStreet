@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-	$(document).ready(function() { 
-	      
-	   });
 
 $(function(){
 	$('#btn-update').click(function(){
@@ -81,7 +78,6 @@ $(document).ready(function() {
 <c:set var="svo" value="${requestScope.svo}" />
 <div style="float: left; width: 15%; height: 100px"></div>
 <div style="float: left; width: 40%;">
-
 <table border="1" id="showDetail">
 		<tr>
 			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
@@ -100,7 +96,14 @@ $(document).ready(function() {
 			<sec:authentication property="principal.memberVO" var="member"/>
 			<input type="hidden" id="loginId" value="${member.id}"> 
 			<c:if test="${member.id==svo.artistVO.memberVO.id}">
-				<button type="button" id="btn-update" class="btn btn-warning" style="float: left; width: 50%">수정</button>
+				<c:choose>
+					<c:when test="${requestScope.validity>2}">
+						<button type="button" id="btn-update" class="btn" style="float: left; width: 50%; background-color:grey;" disabled="disabled">수정</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" id="btn-update" class="btn btn-warning" style="float: left; width: 50%;" >수정</button>
+					</c:otherwise>
+				</c:choose>
 				<form action="deleteShow.do" method="post">
 					<sec:csrfInput/>
 					<input type="hidden" name="showNo" value="${svo.showNo}">
@@ -112,6 +115,29 @@ $(document).ready(function() {
 		<tr>
 			<td>
 				<%-- 좋아요 버튼 --%>
+				<c:choose>
+				<c:when test="${requestScope.validity>2}">
+				<button type="button" class="btn btn-default btn-sm" id="likeBtn" style="background-color:grey;" disabled="disabled">
+					<c:set var="ok" value="1"/>
+				<c:forEach items="${requestScope.likeId}" var="likeCheck">
+						<c:if test="${likeCheck==member.id}">
+							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요
+							<c:set var="ok" value="0"/>
+						</c:if>
+				</c:forEach>
+				<c:if test="${requestScope.likeId.size()==0}">
+					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+				</c:if>
+				<c:if test="${ok==1}">
+				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
+						<c:if test="${unLikeCheck!=member.id}">
+							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+						</c:if>
+				</c:forEach>
+				</c:if>
+				</button>
+				</c:when>
+				<c:otherwise>
 				<button type="button" class="btn btn-default btn-sm" id="likeBtn">
 				<c:set var="ok" value="1"/>
 				<c:forEach items="${requestScope.likeId}" var="likeCheck">
@@ -131,11 +157,15 @@ $(document).ready(function() {
 				</c:forEach>
 				</c:if>
 				</button>
+				</c:otherwise>
+				</c:choose>
 			</td>
+			<%-- 온도 표시 --%>
 			<td>
-				<div class="w3-light-grey">
-					<div id="myBar" class="w3-container w3-red" style="width:20%">20%</div>
-				</div>
+   					<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
+  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
+    					${requestScope.likeCount}℃
+  					</div>
 			</td>
 		</tr>
 		<tr>
@@ -225,7 +255,14 @@ ${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}
                             <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
+                            <c:choose>
+                            	<c:when test="${requestScope.validity>2}">
+                                	<input type="submit" class="btn pull-right" value="등록" style="background-color:grey;" disabled="disabled">
+                            	</c:when>
+                            	<c:otherwise>
                                 <input type="submit" class="btn pull-right btn-success" value="등록">
+                            	</c:otherwise>
+                            </c:choose>
                             </div>
                         </td>
                     </tr>
