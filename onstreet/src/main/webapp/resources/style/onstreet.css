@@ -648,8 +648,8 @@ body{
 }
 
 #eventTitle {
+	font-size: medium;
 	font-weight: bolder;
-	font-size: large;
 }
 
 #eventDate {
@@ -665,6 +665,12 @@ body{
     border: 2px solid #000000;
     float: right;
     margin-right: 350px;
+}
+
+/*이벤트 상세보기*/
+#eventName {
+	font-weight: bold;
+	font-size: 50px;
 }
 
 /*이벤트 등록*/
@@ -726,6 +732,36 @@ body{
     width: 20%;
     padding-top: 100px;
     padding-bottom: 100px;
+}
+
+/*회원 관리*/
+#manageMemberTable td{
+	text-align: center;
+	padding: 6px;
+}
+
+#manageMemberTable th {
+	padding: 5px;
+	background-color: #999;
+	text-align: center;
+}
+
+#manageMemberBtn input[type=button] {
+	background-color: white;
+	border-radius: 5px;
+    border: 2px solid #000000;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+}
+
+#manageMemberBtn a {
+	text-decoration: none;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    margin-bottom: 10px;
 }
 
 /* 회원가입 성공 */

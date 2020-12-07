@@ -226,6 +226,8 @@ public class TestJUnit {
 		 //System.out.println(am.getCheckArtistList(pagin));
 		 //System.out.println(am.getTotalCheckEvent());
 		 //System.out.println(am.getCheckEventList(pagin));
+		 //System.out.println(am.manageEventListCount());
+		 System.out.println(am.manageEventList(pagin));
 	}
 	
 }

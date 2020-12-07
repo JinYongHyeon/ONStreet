@@ -46,4 +46,11 @@ public interface AdminMapper {
 	 * 이벤트 승인
 	 */
 	public int checkEvent(String eventNo);
+	
+	/**
+	 * 정지윤
+	 * 게시된 이벤트 리스트 불러오기
+	 */
+	int manageEventListCount();
+	List<EventVO> manageEventList(PagingBean pagingBean);
 }
