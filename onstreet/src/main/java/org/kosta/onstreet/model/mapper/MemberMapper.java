@@ -1,15 +1,13 @@
 package org.kosta.onstreet.model.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
-import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
@@ -112,19 +110,5 @@ public interface MemberMapper {
 	
 	List<EventVO> artistCheckEventList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
 
-
-	
-	/**
-	 * 추천 아티스트[총 게시물 수 가져오기] - 진용현
-	 * @return
-	 */
-	public List<Map<String,Object>> artistTotalShow();
-	
-	/**
-	 * 추천 아티스트[평균 좋아요] - 진용현
-	 * @return
-	 */
-	public Map<String,Object> artistAVGLike(Map<String,Object> artistMap);
-	//ArrayList<EventListVO> artistCheckEventList(EventVO evo);
 }
 	

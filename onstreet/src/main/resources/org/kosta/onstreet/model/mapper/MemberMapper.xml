@@ -163,21 +163,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id=#{id}
 		AND rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
  	</select>
- 	
- 	<!-- 추천 아티스트[총 좋아요 가져오기] - 진용현 -->
- 	<select id="artistAVGLike" resultType="map" parameterType="map">
- 		SELECT m.id, ROUND((count(*)/2)/#{TOTALSHOW},1) AS TOTALLIKE
-		FROM os_member m,os_show s,os_like l
-		WHERE s.show_no = l.show_no AND m.id = s.id 
-		GROUP BY m.id 
-		HAVING m.id = #{ID}
- 	</select>
- 	
- 	<!-- 추천 아티스트(총 게시물 수) - 진용현 -->
- 	<select id="artistTotalShow" resultType="map">
- 		select id , count(*) AS TOTALSHOW
-		from os_show	
-		GROUP BY id
- 	</select>
- 	
 </mapper>

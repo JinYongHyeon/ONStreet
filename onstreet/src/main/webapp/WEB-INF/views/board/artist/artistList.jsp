@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1><b>ARTIST</b></h1> <br>
+<span id="artistTitle">ARTIST</span> <br>
 <div id="artist">
 <c:forEach var="avo" items="${requestScope.artistVO.artistList}">
 <div class="artistList">

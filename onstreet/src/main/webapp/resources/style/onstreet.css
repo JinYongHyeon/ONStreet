@@ -51,9 +51,16 @@ body{
 	left:0;
 	border:1px solid #e5e5e5;
 }
+#header .bitMainSearch form select{
+	position:absolute;
+	width:15%;
+	height:40px;
+	border:1px solid #e5e5e5;
+	right:118px;
+}
 #header .bitMainSearch form input[type=text]{
 	left:100px;
-	width:50%;
+	width:60%;
 	height: 40px;
 	padding:15px;
 	border-left:none;
@@ -63,9 +70,6 @@ body{
 	height: 40px;
 	border-right:none;
 }
-
-
-
 
 /* header 메뉴 */
 #header .navigation ul li {
@@ -98,12 +102,39 @@ body{
 }
 #todayShow .artistShowTitle{
 	margin-left:45px;
-	margin-bottom:45px;
 }
 
 #todayShow .artistShowTitle h2{
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
+	position: relative;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+#todayShow .artistShowTitle h2::before{
+	content:"";
+	width:90%;
+	height: 1px;
+	float:left;
+	background-color:#e5e5e5;
+	position:absolute;
+	left:50%;
+	top:0;
+	transform:translate(-50%,0);
+	z-index: -1;
+}
+#todayShow .artistShowTitle h2::after{
+	content:"";
+	width:20%;
+	height: 5px;
+	float:left;
+	background-color:#eb4034;
+	position:absolute;
+	left:50%;
+	top:-5%;
+	transform:translate(-50%,0);
+	z-index: -1;
 }
 
 #todayShow .artistShowLeftBtn ,#todayShow .artistShowRightBtn{
@@ -112,6 +143,17 @@ body{
 	float:left;
 	position: relative;
 }
+
+#todayShow .artistShowLeftBtn::before ,#todayShow .artistShowRightBtn::before{
+	content:"";
+	position: absolute;
+	width:100%;
+	height: 100%;
+	background-color:#000;
+	opacity: 0.7;
+	left:0;
+}
+
 #todayShow .artistShowLeftBtn h1,#todayShow .artistShowRightBtn h1{
 	position: absolute;
 	top:50%;
@@ -120,8 +162,11 @@ body{
 	margin-top:0;
 	cursor: pointer;
 	font-weight: bold;
+	color:#fff;
 	
 }
+
+
 #todayShow .artistShowLeftBtn h1 svg,#todayShow .artistShowRightBtn h1 svg{
 	width:2em;
 	height: 2em;
@@ -190,8 +235,36 @@ body{
 }
 
 #artisStandardt .artistRecommendationTltle h2{
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
+	position: relative;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+#artisStandardt .artistRecommendationTltle h2::before{
+	content:"";
+	width:90%;
+	height: 1px;
+	float:left;
+	background-color:#e5e5e5;
+	position:absolute;
+	left:50%;
+	top:0;
+	transform:translate(-50%,0);
+	z-index: -1;
+}
+#artisStandardt .artistRecommendationTltle h2::after{
+	content:"";
+	width:20%;
+	height: 5px;
+	float:left;
+	background-color:#eb4034;
+	position:absolute;
+	left:50%;
+	top:-5%;
+	transform:translate(-50%,0);
+	z-index: -1;
 }
 
 #artisStandardt .artistRecommendationLeftBtn ,#artisStandardt .artistRecommendationRightBtn{
@@ -199,6 +272,16 @@ body{
 	height:300px;
 	float:left;
 	position: relative;
+}
+
+#artisStandardt .artistRecommendationLeftBtn::before ,#artisStandardt .artistRecommendationRightBtn::before{
+	content:"";
+	width:100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	background-color:#000;
+	opacity: 0.8;	
 }
 
 #artisStandardt .artistRecommendationLeftBtn h1,#artisStandardt .artistRecommendationRightBtn h1{
@@ -209,6 +292,7 @@ body{
 	margin-top:0;
 	cursor: pointer;
 	font-weight: bold;
+	color:#fff;
 	
 }
 #artisStandardt .artistRecommendationLeftBtn h1 svg,#artisStandardt .artistRecommendationRightBtn h1 svg{
@@ -221,7 +305,6 @@ body{
 	height:300px;
 	float:left;
 	position: relative;
-	border:1px solid #000;
 	overflow: hidden;
 }
 
@@ -239,21 +322,39 @@ body{
 }
 
 #artisStandardt .artistRecommendation .artistRecommendationList ul li{
-	width:30%;
+	width:30.045%;
 	height:100%;
 	float:left;
-	background-color:#000;
 	margin-right: 45px;
+	position: relative;
 	
 }
-#artisStandardt .artistRecommendation .artistRecommendationList ul li:nth-child(3){
+#artisStandardt .artistRecommendation .artistRecommendationList ul a:nth-child(3) li{
 	margin-right:0;
 }
 
 #artisStandardt .artistRecommendation .artistRecommendationList ul li img{
 	width:100%;
 	height: 100%;
-	
+}
+
+#artisStandardt .artistRecommendation .artistRecommendationList ul li span{
+	position: absolute;
+	bottom:1.5%;
+	left:50%;
+	transform:translate(-50%,0);
+	color:#fff;
+	font-weight: bold;
+	font-size:20px;
+}
+#artisStandardt .artistRecommendation .artistRecommendationList ul li::before{
+	content:"";
+	position:absolute;
+	bottom:0;
+	background-color:#000;
+	opacity: 0.7;
+	width:100%;
+	height: 40px;
 }
 
 /* 로그인  */
@@ -648,8 +749,8 @@ body{
 }
 
 #eventTitle {
+	font-size: medium;
 	font-weight: bolder;
-	font-size: large;
 }
 
 #eventDate {
@@ -665,6 +766,12 @@ body{
     border: 2px solid #000000;
     float: right;
     margin-right: 350px;
+}
+
+/*이벤트 상세보기*/
+#eventName {
+	font-weight: bold;
+	font-size: 50px;
 }
 
 /*이벤트 등록*/
@@ -728,6 +835,36 @@ body{
     padding-bottom: 100px;
 }
 
+/*회원 관리*/
+#manageMemberTable td{
+	text-align: center;
+	padding: 6px;
+}
+
+#manageMemberTable th {
+	padding: 5px;
+	background-color: #999;
+	text-align: center;
+}
+
+#manageMemberBtn input[type=button] {
+	background-color: white;
+	border-radius: 5px;
+    border: 2px solid #000000;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+}
+
+#manageMemberBtn a {
+	text-decoration: none;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    margin-bottom: 10px;
+}
+
 /* 회원가입 성공 */
 #registerResult{
 	width:500px;
@@ -765,6 +902,8 @@ height: 100%;
 .btn-comment form{
 	display: inline;
 }
+
+
 
 /* 사진 미리보기 */
 #multipartPreView{
@@ -879,7 +1018,3 @@ color: #31708f;
 	border-top:1px solid #b5b5b5;
 	border-left:1px solid #b5b5b5;
 }
-
-
-
-

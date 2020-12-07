@@ -23,16 +23,18 @@
 		});//click
 	});//ready
 </script>
-
-<h1>
-	<b>MANAGE</b>
-</h1>
+<br><br>
+<span id="artistTitle">MANAGE</span>
 <br>
 <br>
+<div class="col-sm-7"></div>
+<form id="manageMemberBtn">
 <input type="button" id="removeMember" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageMemberArtistForm.do">아티스트 목록 보기</a>
+</form>
 <sec:csrfInput />
-<table border="1">
+<form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
+<table border="1" id="manageMemberTable">
 	<thead>
 		<tr>
 		    <th></th>
@@ -51,9 +53,9 @@
 	<c:set var="pb" value="${requestScope.authVO.pagingBean}" />
 		<c:forEach var="avo" items="${requestScope.authVO.memberList}">
 			<tr>
-				<td><form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
+				<td>
 				<input type="checkbox" name="checkMember" value="${avo.memberVO.id}" class="checkMember"><sec:csrfInput/>
-				</form></td>
+				</td>
 				<td>${avo.memberVO.id}</td>
 				<td>${avo.memberVO.nickName}</td>
 				<td>${avo.memberVO.address}</td>
@@ -66,6 +68,7 @@
 		</c:forEach>
 	</tbody>
 </table>
+</form>
 
 <div class="pagingInfo">
 	<ul class="pagination">
@@ -88,6 +91,5 @@
 	<li><a href="${pageContext.request.contextPath}/manageMemberForm.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
 	</ul>	 		
-	</div>
 	</div>
 <div class="col-sm-2"></div>

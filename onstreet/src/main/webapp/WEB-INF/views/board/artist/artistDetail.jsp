@@ -7,8 +7,7 @@
 <br><br><br>
 
 <div class="col-sm-4 artistProfileImg">
-	<img
-		src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
+	<img src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
 	<br>
 </div>
 <div class="col-sm-1"></div>

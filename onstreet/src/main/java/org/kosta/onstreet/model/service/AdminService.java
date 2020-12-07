@@ -52,4 +52,10 @@ public interface AdminService {
 	 * 이벤트 승인
 	 */
 	void checkEvent(String[] checkEvent);
+	
+	/**
+	 * 정지윤
+	 * 게시된 이벤트 리스트 불러오기
+	 */
+	EventListVO manageEventList(String pageNo);
 }

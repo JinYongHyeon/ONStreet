@@ -81,9 +81,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="getArtistList" resultMap="artistList" parameterType="pagingBean">
  		SELECT m.id, m.nickname, m.profile
  		FROM(SELECT row_number() over(order by check_date desc) as rnum, check_date, id
- 		FROM os_artist) t, os_member m, os_auth a
+ 		FROM os_artist WHERE check_date is not null) t, os_member m, os_auth a
 		WHERE m.id=a.id AND m.id=t.id 
-		AND a.auth_name='ROLE_ARTIST' AND t.check_date is not null
+		AND a.auth_name='ROLE_ARTIST'
+		AND m.remove_user_date is null
 		AND rnum between #{startRowNumber} and #{endRowNumber} 
 		ORDER BY t.check_date DESC 
  	</select>
@@ -97,14 +98,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="getEventList" resultMap="eventList" parameterType="pagingBean">
  		SELECT event_no, event_title, event_image, event_date
 		FROM (SELECT row_number() over(order by event_check_date desc) as rnum, event_check_date, event_no,
-		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event)
-		WHERE event_check_date IS NOT NULL
-		AND rnum between #{startRowNumber} and #{endRowNumber} 
+		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event
+		WHERE event_check_date IS NOT NULL)
+		WHERE rnum between #{startRowNumber} and #{endRowNumber} 
  	</select>
  	
  	<!-- 이벤트 상세보기 -->
  	<select id="findEventByNo" resultMap="eventList">
- 		SELECT e.event_no, e.event_title, e.event_content, e.event_date, m.nickname
+ 		SELECT e.event_no, e.event_title, e.event_content, to_char(e.event_date,'yyyy"년" mm"월" dd"일"') as event_date, m.nickname
 		FROM os_event e, os_member m
 		WHERE m.id=e.id AND event_no=#{value}
  	</select>
@@ -217,7 +218,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteComment">
 		delete from OS_COMMENT where comment_no=#{value}
 	</delete>
-	<!-- 좋아요 추가 -->
+	<!-- 좋아요 테이블에 추가 -->
 	<insert id="addLike">
 		insert into OS_LIKE(show_no,id) values(#{showNo},#{memberVO.id})
 	</insert>
@@ -229,8 +230,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="likeCheck" resultType="int">
 		select count(*) from OS_LIKE where show_no=#{showNo} and id=#{memberVO.id}
 	</select>
-	<!-- 좋아요 제거 -->
+	<!-- 좋아요 테이블에서 제거 -->
 	<delete id="minusLike">
 		delete from OS_LIKE where id=#{memberVO.id} and show_no=#{showNo}
 	</delete>
+	
+	 	
+ 	<!-- 추천 아티스트 아이디 가져오기 - 진용현 -->
+ 	<select id="getArtistRecommendation" resultType="string">
+ 		SELECT s.id
+		FROM (SELECT ROW_NUMBER() OVER(order by id asc) AS rnum, id,count(show_no) AS TOTALSHOW , 
+		ROUND((SUM(show_like)/2)/count(show_no),1) AS AVGLIKE , SUM(show_like) AS TOTALLIKE FROM os_show
+		GROUP BY id)s, os_member m,os_artist a
+		WHERE rnum between 1 and 9 and s.id = m.id AND m.remove_user_date IS NULL AND s.id = a.id AND a.check_date IS NOT NULL
+		ORDER BY avglike DESC
+ 	</select>
+ 	
+ 	<!-- 추천 아티스트 부족 시 사용되는 [전체 아티스트 조회] - 진용현 -->
+ 	<select id="getArtistAll" resultType="string">
+ 	SELECT m.id
+	FROM os_artist a ,os_member m
+	WHERE m.id= a.id AND m.remove_user_date IS NULL AND  a.check_date IS NOT NULL
+ 	</select>
+ 	
+ 	 <!-- 최종 추천 아티스트 정보 조회 -->
+ 	<select id="getArtistRecommendationList" resultType="memberVO">
+ 	SELECT m.id,m.nickName ,m.profile
+	FROM os_member m,os_artist a
+	WHERE m.id=a.id
+	AND m.remove_user_date IS NULL AND a.check_date IS NOT NULL
+	AND m.id = #{value}
+ 	</select>
+	
+	<!-- 좋아요 컬럼에서 -1 -->
+	<update id="minusLikeCol">
+		update os_show set show_like=show_like-1 where show_no=#{value}
+	</update>
+	<!-- 좋아요 컬럼에서 +1 -->
+	<update id="addLikeCol">
+		update os_show set show_like=show_like+1 where show_no=#{value}
+	</update>
+	<!-- 좋아요 수 가져오기 -->
+	<select id="getLikeCount" resultType="int">
+		select show_like from os_show where show_no=#{value} 
+	</select>
+	<!-- 공연일자 유효일 구하기 -->
+	<select id="getDateValidity" resultType="int">
+		select sysdate-show_date from OS_SHOW where show_no=#{value}
+	</select>
 </mapper>

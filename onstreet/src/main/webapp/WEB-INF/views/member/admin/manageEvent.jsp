@@ -31,6 +31,7 @@
 <sec:csrfInput />
 
 <input type="button" id="checkEvent" value="승인하기">
+<form action="${pageContext.request.contextPath}/checkEvent.do" method="post" id="checkEventForm">
 <table border="1">
 	<thead>
 		<tr>
@@ -42,17 +43,16 @@
 			<th>이벤트 날짜</th>
 		</tr>
 	</thead>
-
 	<tbody>
 
 		<c:set var="pb" value="${requestScope.eventVO.pagingBean}" />
-
+	
 		<c:forEach items="${requestScope.eventVO.eventList}" var="evo">
 			<tr>
 				<td>
-					<form action="${pageContext.request.contextPath}/checkEvent.do" method="post" id="checkEventForm">
-					<input type="checkbox" name="checkEvent" value="${evo.eventNo}" class="checkEvent"><sec:csrfInput/>
-				</form>
+					<sec:csrfInput/>
+					<input type="hidden" name="test" value="바보">
+					<input type="checkbox" name="checkEvent" value="${evo.eventNo}" class="checkEvent">
 				</td>
 				<td>
 				${evo.eventNo}
@@ -71,8 +71,10 @@
 				</td>
 			</tr>
 		</c:forEach>
+
 	</tbody>
 </table>
+	</form>
 
 <div class="pagingInfo">
 	<ul class="pagination">
