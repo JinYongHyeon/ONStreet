@@ -26,7 +26,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${requestScope.todayShow}" var="show" varStatus="index">
-					<li><a href="${pageContext.request.contextPath}">
+					<li><a href="${pageContext.request.contextPath}/getShowDetail.do?showNo=${show.showNo}">
 						<div class="todayShowInfo">
 						<h1>${show.showTitle}</h1>
 						<h2>${show.artistVO.memberVO.nickName}</h2>
@@ -61,28 +61,28 @@
 </svg></h1>
 		</div>
 		<div class="artistRecommendation">
-		
-			<div class="artistRecommendationList">
-				<ul>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/1.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/2.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/3.jpg"></li>
-				</ul>
-			</div>
-			<div class="artistRecommendationList">
-				<ul>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/4.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/5.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/6.jpg"></li>
-				</ul>
-			</div>
-			<div class="artistRecommendationList">
-				<ul>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/7.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/8.jpg"></li>
-					<li><img src="${pageContext.request.contextPath}/resources/img/profile/9.jpg"></li>
-				</ul>
-			</div>
+			<c:choose>
+				<c:when test="${requestScope.recommendation.size()==0}">
+					<h1>추천할 아티스트가 없습니다.</h1>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${requestScope.recommendation}" var="rt" varStatus="point">
+						<c:if test="${point.first || point.index ==  3 || point.index == 6}"><div class="artistRecommendationList"><ul></c:if>
+						<c:choose>
+							<c:when test="${rt.profile==null}">
+							<li><img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
+								</li>
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${rt.id}"><li><img src="${pageContext.request.contextPath}/resources/img/profile/${rt.profile}">
+								<span>${rt.nickName}</span>
+							</li></a>
+							</c:otherwise>
+						</c:choose>
+						<c:if test="${point.index == 2 || point.index ==  5 || point.index == 8 || point.last}"></ul></div></c:if>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<%-- artistRecommendation END  --%>
 		<div class="artistRecommendationRightBtn">
@@ -163,7 +163,7 @@
 	 }*/
 
 	function artistRecommendationSlide(a) {
-		if ($artistSlides.is(":animated") || a == artistSno)
+		if ($artistSlides.is(":animated") || a == artistSno || artistMax<1)
 			return;
 		var no, type;
 		//clearTimeout(timer);

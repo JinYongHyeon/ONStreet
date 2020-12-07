@@ -7,8 +7,12 @@
 			<a href="${pageContext.request.contextPath}/home.do"><img src="${pageContext.request.contextPath}/resources/img/profile/default image2.png" alt="log"></a>
 		</div>
 		<div class="bitMainSearch">
-			<form action="" method="get">
+			<form action="${pageContext.request.contextPath}/mainSearch.do" method="get">
 				<input type="text" name=""> <input type="submit" value="검색">
+				<select name="">
+					<option value="">공연</option>
+					<option value="">아티스트</option>
+				</select>
 			</form>
 		</div>
 

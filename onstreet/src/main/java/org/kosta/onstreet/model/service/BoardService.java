@@ -2,6 +2,7 @@ package org.kosta.onstreet.model.service;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.kosta.onstreet.model.vo.ArtistListVO;
@@ -10,6 +11,7 @@ import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
@@ -83,5 +85,7 @@ public interface BoardService {
 	int likeCheck(LikeVO likeVO);
 	// 좋아요 제거
 	void minusLike(LikeVO likeVO);
+
+	List<MemberVO> getArtistRecommendation();
 }
 

@@ -233,4 +233,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="minusLike">
 		delete from OS_LIKE where id=#{memberVO.id} and show_no=#{showNo}
 	</delete>
+	
+	 	
+ 	<!-- 추천 아티스트 아이디 가져오기 - 진용현 -->
+ 	<select id="getArtistRecommendation" resultType="string">
+ 		SELECT s.id
+		FROM (SELECT ROW_NUMBER() OVER(order by id asc) AS rnum, id,count(show_no) AS TOTALSHOW , 
+		ROUND((SUM(show_like)/2)/count(show_no),1) AS AVGLIKE , SUM(show_like) AS TOTALLIKE FROM os_show
+		GROUP BY id)s, os_member m,os_artist a
+		WHERE rnum between 1 and 9 and s.id = m.id AND m.remove_user_date IS NULL AND s.id = a.id AND a.check_date IS NOT NULL
+		ORDER BY avglike DESC
+ 	</select>
+ 	
+ 	<!-- 추천 아티스트 부족 시 사용되는 [전체 아티스트 조회] - 진용현 -->
+ 	<select id="getArtistAll" resultType="string">
+ 	SELECT m.id
+	FROM os_artist a ,os_member m
+	WHERE m.id= a.id AND m.remove_user_date IS NULL AND  a.check_date IS NOT NULL
+ 	</select>
+ 	
+ 	 <!-- 최종 추천 아티스트 정보 조회 -->
+ 	<select id="getArtistRecommendationList" resultType="memberVO">
+ 	SELECT m.id,m.nickName ,m.profile
+	FROM os_member m,os_artist a
+	WHERE m.id=a.id
+	AND m.remove_user_date IS NULL AND a.check_date IS NOT NULL
+	AND m.id = #{value}
+ 	</select>
+	
 </mapper>

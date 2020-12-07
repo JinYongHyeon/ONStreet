@@ -1,5 +1,12 @@
 package org.kosta.onstreet;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -8,6 +15,8 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.mapper.AdminMapper;
 import org.kosta.onstreet.model.mapper.BoardMapper;
 import org.kosta.onstreet.model.mapper.MemberMapper;
+import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -138,6 +147,31 @@ public class TestJUnit {
 //		bm.updateComment(cvo);
 		// 댓글 삭제
 		//bm.deleteComment("27");
+		
+		System.out.println("추천 아티스트 : "+bm.getArtistRecommendation());
+		
+		List<String> artistIdList = bm.getArtistRecommendation();
+		List<MemberVO> artistList = new ArrayList<MemberVO>();
+		int max= 9;
+		if (artistIdList.size() < max) {
+			LinkedHashSet<String> addArtistList = new LinkedHashSet<String>();
+			// 추천 아티스트
+			for (String id : artistIdList) {
+				addArtistList.add(id);
+			}//for
+
+			List<String> artistAll = bm.getArtistAll();
+			//추천 아티스트 부족 시 전체 아티스트 랜덤추가
+			if(max>artistAll.size())max=artistAll.size();
+			while(addArtistList.size()<max) {
+				addArtistList.add(artistAll.get((int)Math.floor(Math.random()*artistAll.size())));
+			}//while
+			Iterator<String> iterator = addArtistList.iterator();
+			while(iterator.hasNext()) {
+				artistList.add(bm.getArtistRecommendationList(iterator.next()));
+			}
+			System.out.println(artistList);
+		}
 	}
 	
 	@Test
@@ -188,6 +222,8 @@ public class TestJUnit {
 //		memberVO.setId("shking");
 //		memberVO.setProfile(null);
 //		System.out.println(mm.updateMember(memberVO)); 회원수정 - 진용현
+	
+	
 		
 		/*
 		 * ArtistVO artistVO= new ArtistVO(); MemberVO memberVO = new MemberVO();
