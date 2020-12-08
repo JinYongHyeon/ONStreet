@@ -136,4 +136,15 @@ public class AdminController {
 	public ModelAndView manageEventList(String pageNo) {
 		return new ModelAndView("member/admin/manageEventDelete.tiles","eventVO",adminService.manageEventList(pageNo));
 	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 삭제
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("deleteEvent.do")
+	public String deleteEvent(String[] deleteEvent) {
+		adminService.deleteEvent(deleteEvent);
+		return "redirect:manageEventList.do";
+	}
 }

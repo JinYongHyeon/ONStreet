@@ -34,7 +34,7 @@
 </form>
 <sec:csrfInput />
 <form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
-<table border="1" id="manageMemberTable">
+<table id="manageMemberTable">
 	<thead>
 		<tr>
 		    <th></th>

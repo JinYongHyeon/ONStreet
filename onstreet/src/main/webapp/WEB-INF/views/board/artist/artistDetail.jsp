@@ -17,6 +17,12 @@
 	<input type="button" value="팔로우">
 </form>
     <hr>
+     <form action="${pageContext.request.contextPath}/getArtistTemperture.do?id=${requestScope.artistVO.memberVO.id}" id="memberCountCon">
+     	<c:if test="${requestScope.map==null}">
+     		🔥현재 ${requestScope.artistVO.memberVO.nickName}의 온도는 0°C🔥
+     	</c:if>
+	</form>
+<hr>
     <br>
 	${requestScope.artistVO.artistInfo}
 	<c:if test="${requestScope.artistVO.sns!=null}">
@@ -54,11 +60,28 @@
 					return;
 				} else {
 					if(confirm("팔로우 리스트로 이동하시겠습니까?"))
-						location.href="mypageForm.do";
+						location.href="followingList.do";
 				}
 			}
 			});//ajax
-		}
+		}//confirm
 		});
+		
+		var memberCountConTxt= ${requestScope.map.AVGLIKE};
+		$({ val : 0 }).animate({ val : memberCountConTxt }, {
+			   duration: 3000,
+			  step: function() {
+			    var num = numberWithCommas(Math.floor(this.val));
+			    $("#memberCountCon").text("🔥현재 ${requestScope.artistVO.memberVO.nickName}의 온도는 "+num+"°C🔥");
+			  },
+			  complete: function() {
+			    var num = numberWithCommas(Math.floor(this.val));
+			    $("#memberCountCon").text("🔥현재 ${requestScope.artistVO.memberVO.nickName}의 온도는 "+num+"°C🔥");
+			  }
+			});
+
+			function numberWithCommas(x) {
+			    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 	});//ready
 </script>

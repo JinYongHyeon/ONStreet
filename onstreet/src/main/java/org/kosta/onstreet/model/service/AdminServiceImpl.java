@@ -155,4 +155,14 @@ public class AdminServiceImpl implements AdminService {
 		EventListVO eventListVO = new EventListVO(adminMapper.manageEventList(pagingBean),pagingBean);
 		return eventListVO;
 	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 삭제
+	 */
+	public void deleteEvent(String[] deleteEvent) {
+		for(String eventNo:deleteEvent) {
+			adminMapper.deleteEvent(eventNo);
+		}
+	}
 }

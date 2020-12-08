@@ -5,8 +5,12 @@
 	prefix="sec"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/editor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
-
- 
+/* let today = new Date();  
+let year = today.getFullYear(); // 년도
+let month = today.getMonth() + 1;  // 월
+let date = today.getDate();  // 날짜
+today = year+'-'+month+'-'+date;
+alert(today) */
 
 	var oEditors = [];
 	$(function() {
@@ -222,11 +226,11 @@
 			</tr>
 			<tr>
 				<td>공연날짜</td>
-				<td><input type="date" name="showDate" required="required"></td>
+				<td><input type="date" name="showDate" required="required" min="${today}"></td>
 			</tr>
 		</table>
 		<input type="button" id="postWrite" class="btn btn-primary"
-			value="등록하기" />
+			value="등록하기"  />
 	</form>
 </div>
 <div class="col-sm-2"></div>

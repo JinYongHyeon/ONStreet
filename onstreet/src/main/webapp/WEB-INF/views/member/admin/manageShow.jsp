@@ -28,6 +28,7 @@
 <div class="col-sm-8">
 <h1><b>MANAGE</b></h1> <br><br>
 <input type="button" id="removeShow" value="삭제하기">
+<a href="${pageContext.request.contextPath}/manageEventList.do">이벤트 목록 보기</a>
 <sec:csrfInput />
 	<form action="${pageContext.request.contextPath}/manageShow.do" method="post" id="removeShowForm">
 <table border="1">

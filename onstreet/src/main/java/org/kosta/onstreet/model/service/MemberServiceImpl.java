@@ -1,8 +1,7 @@
 package org.kosta.onstreet.model.service;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,7 +10,6 @@ import org.kosta.onstreet.model.mapper.MemberMapper;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventListVO;
-import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
@@ -156,7 +154,9 @@ public class MemberServiceImpl implements MemberService {
 
 	
 	/**
-	 * 정지윤 1. 중복체크 2. 중복 아니면 팔로잉 등록
+	 * 정지윤 
+	 * 1. 중복체크
+	 * 2. 중복 아니면 팔로잉 등록
 	 */
 	@Override
 	public int registerFollowing(FollowVO followVO) {
@@ -168,6 +168,17 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return count;
 	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 온도
+	 */
+	@SuppressWarnings("null")
+	@Override
+	public Map<String, String> getArtistTemperture(String id) {
+		return memberMapper.getArtistTemperture(id);
+	}
+	
 	/**
 	 * 정세희
 	 * 팔로우삭제
@@ -194,5 +205,4 @@ public class MemberServiceImpl implements MemberService {
 		EventListVO eventListVO = new EventListVO(memberMapper.artistCheckEventList(id, pagingBean), pagingBean);
 		return eventListVO;
 	}
-
 }
