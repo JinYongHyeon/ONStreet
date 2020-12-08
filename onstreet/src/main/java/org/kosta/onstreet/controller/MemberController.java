@@ -119,7 +119,7 @@ public class MemberController {
 	public int removeMember(String password) {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int pointcount=memberService.removeMember(password,avo);
-			return pointcount;
+		return pointcount;
 		}
 		
 	/**
