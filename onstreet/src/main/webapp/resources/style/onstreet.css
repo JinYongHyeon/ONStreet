@@ -56,11 +56,11 @@
 }
 
 #header .bitLog a img{
-	width:70%;
+	width:95%;
 	float:left;
 	position: absolute;
 	top:50%;
-	left:50%;
+	left:55%;
 	transform:translate(-50%,-50%);
 	margin-top: 7px;
 }
@@ -129,8 +129,6 @@
 	color: white;
 }
 
-
-
 /* 검색 */
 
 #header .bitMainSearch {
@@ -172,15 +170,21 @@
 	background-color: #d03535;
 }
 
-
-
 /*footer*/
 #footer {
 	width: 100%;
 	float:left;
-	border-top: 4px solid #999;
+	border-top: 1px solid white;
 	padding: 25px;
 	height: 100px;
+	background-color: #FAFAFA;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+#footer img {
+	width: 50px;
+	margin-right: 20px;
 }
 
 .showMain {

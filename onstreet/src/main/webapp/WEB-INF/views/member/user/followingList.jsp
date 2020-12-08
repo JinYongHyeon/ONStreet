@@ -18,7 +18,7 @@
 			if(!confirm("정말 삭제하시겠습니까?"))
 				return false;
 			}else{//if1
-				alert("삭제할 게시물을 선택해 주세요");
+				alert("삭제할 아티스트를 선택해주세요");
 			return false;
 			}//if2
 	}//check
