@@ -252,7 +252,7 @@ public class TestJUnit {
 		 
 		
 		 String id="user1";
-		 System.out.println(mm.followingTotalCount(id));
+	//	 System.out.println(mm.followingTotalCount(id));
 		 int followingTotalCount=mm.followingTotalCount(id);
 		 PagingBean pagingbean=new PagingBean(followingTotalCount);
 		 
@@ -271,12 +271,12 @@ public class TestJUnit {
 		 */
 		//System.out.println(am.getTotalMemberCount());
 		//System.out.println(am.getTotalCheckArtist());
-		 PagingBean pagin = new PagingBean(3);
+///		 PagingBean pagin = new PagingBean(3);
 		 //System.out.println(am.getCheckArtistList(pagin));
 		 //System.out.println(am.getTotalCheckEvent());
 		 //System.out.println(am.getCheckEventList(pagin));
 		 //System.out.println(am.manageEventListCount());
-		 System.out.println(am.manageEventList(pagin));
+//		 System.out.println(am.manageEventList(pagin));
 	}
 	
 }

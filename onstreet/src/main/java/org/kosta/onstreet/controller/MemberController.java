@@ -281,9 +281,7 @@ public class MemberController {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("list",memberService.getfollowingList(id,pageNo));
-		mv.setViewName("member/user/followingList.tiles");
-		return mv;
+		return new ModelAndView("member/user/followingList.tiles","list",memberService.getfollowingList(id,pageNo));
 	}
 	
 	

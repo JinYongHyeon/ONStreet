@@ -150,8 +150,8 @@ public class MemberServiceImpl implements MemberService {
 			pagingBean = new PagingBean(followingTotalCount);
 		else
 			pagingBean = new PagingBean(followingTotalCount,Integer.parseInt(pageNo));
-		FollowListVO flv = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
-		return flv;
+		FollowListVO followListVO = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
+		return followListVO;
 	}
 
 	
