@@ -3,10 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <div class="col-sm-12">
-<table border="1">
+<table id="noticeDetail">
 <tr>
-<td>번호:${requestScope.nvo.noticeNo}</td>
-<td>제목:${requestScope.nvo.noticeTitle}</td>
+<th colspan="1">번호:${requestScope.nvo.noticeNo}</th>
+<th>제목:${requestScope.nvo.noticeTitle}</th>
 </tr>
 <tr>
 <td colspan="2">작성일시:${requestScope.nvo.noticeWriteDate}</td>
