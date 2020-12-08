@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 		<div class="bitLog">
-			<a href="${pageContext.request.contextPath}/home.do"><img src="${pageContext.request.contextPath}/resources/img/profile/default image2.png" alt="log"></a>
+			<a href="${pageContext.request.contextPath}/home.do"><img src="${pageContext.request.contextPath}/resources/img/content/logo.png" alt="log"></a>
 		</div>
 
 <div class="navigation">

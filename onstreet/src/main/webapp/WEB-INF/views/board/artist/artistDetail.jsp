@@ -22,6 +22,7 @@
      		🔥현재 ${requestScope.artistVO.memberVO.nickName}의 온도는 0°C🔥
      	</c:if>
 	</form>
+
 <hr>
     <br>
 	${requestScope.artistVO.artistInfo}
@@ -67,7 +68,15 @@
 		}//confirm
 		});
 		
-		var memberCountConTxt= ${requestScope.map.AVGLIKE};
+		<c:choose>
+		<c:when test="${requestScope.map!=null}">
+			var memberCountConTxt=${requestScope.map.AVGLIKE};
+		</c:when>
+		<c:otherwise>
+			var memberCountConTxt=0;
+		</c:otherwise>
+	</c:choose>
+	
 		$({ val : 0 }).animate({ val : memberCountConTxt }, {
 			   duration: 3000,
 			  step: function() {

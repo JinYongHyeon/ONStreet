@@ -31,7 +31,7 @@
 <div id="thumbnail alert-info">
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()">
 <sec:csrfInput/>
-<c:forEach var="list" items="${requestScope.list}">
+<c:forEach var="list" items="${requestScope.list.followList}">
 <input type="checkbox" name="followingId" value="${list.followingId}" > 
 
 <div class="artistList">
