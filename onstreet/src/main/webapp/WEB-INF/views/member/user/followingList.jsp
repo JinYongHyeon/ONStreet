@@ -23,8 +23,6 @@
 			}//if2
 	}//check
 		
-		
-
 </script>
 
 
@@ -32,7 +30,7 @@
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()">
 <sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.list.followList}">
-<input type="checkbox" name="followingId" value="${list.followingId}" > 
+<input type="checkbox" name="followingId" value="${list.followingId}"> 
 
 <div class="artistList">
 <c:choose>
