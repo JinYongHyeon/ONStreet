@@ -18,6 +18,7 @@ import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberListVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
@@ -62,7 +63,7 @@ private BoardMapper boardMapper;
 	//공지사항 삭제:김수민
 	public void deleteNotice(String[] noticeNo) {
        for(int i=0; i<noticeNo.length; i++) {
-    	   System.out.println(noticeNo[i]);
+    	   //System.out.println(noticeNo[i]);
 		boardMapper.deleteNotice(noticeNo[i]);
        }
 	}
@@ -279,5 +280,55 @@ private BoardMapper boardMapper;
 		}
 
 		return artistList;
+	}
+	
+	/**
+	 * 아티스트 검색 - 진용현
+	 */
+	@Override
+	public ArtistListVO getSearchArtist(String nowPage, String artistName) {
+		int totalCount = boardMapper.getSearchArtistTotalCount(artistName);
+		PagingBean pagingBean = null;
+		if(nowPage != null) {
+			pagingBean = new PagingBean(totalCount,Integer.parseInt(nowPage));
+		}else {
+			pagingBean = new PagingBean(totalCount);
+		}
+		ArtistListVO artistListVO = new ArtistListVO(boardMapper.getSearchArtist(artistName, pagingBean),pagingBean);
+		return artistListVO;
+	}
+	
+	/**
+	 * 공연 검색[카운트] - 진용현
+	 * @param showTitle
+	 * @return
+	 */
+	@Override
+	public int getSearchShowTotalCount(String showTitle) {
+		return boardMapper.getSearchShowTotalCount(showTitle);
+	}
+	/**
+	 * 공연 검색 - 진용현
+	 * @param nowPage
+	 * @param showTitle
+	 * @return
+	 */
+	@Override
+	public ShowListVO getSearchShow(String nowPage, String showTitle) {
+		int totalCount = boardMapper.getSearchShowTotalCount(showTitle);
+		PagingBean pagingBean = null;
+		if(nowPage != null) {
+			pagingBean = new PagingBean(totalCount,Integer.parseInt(nowPage));
+		}else {
+			pagingBean = new PagingBean(totalCount);
+		}
+			ShowListVO showListVO =  new ShowListVO(boardMapper.getSearchShow(showTitle, pagingBean),pagingBean);
+		return showListVO;
+	}
+	
+	// 오늘날짜 가져오기
+	@Override
+	public String getToday() {
+		return boardMapper.getToday();
 	}
 }

@@ -4,13 +4,14 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
-<table border="1">
+<br><br>
+<table class="table table-striped table-condensed">
 	<thead>
-		<tr>
-			<th align="center">번호</th>
-			<th>제목</th>
-			<th align="center">작성자</th>
-			<th align="center">공연일시</th>
+		<tr class="success">
+			<th style="text-align: center;">번호</th>
+			<th style="text-align: center;">제목</th>
+			<th style="text-align: center;">작성자</th>
+			<th style="text-align: center;">공연일시</th>
 		</tr>
 	</thead>
 
@@ -38,17 +39,34 @@
 		</c:forEach>
 	</tbody>
 </table>
-
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+				<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${pb.startPageOfPageGroup-1}&searchContent=${requestScope.searchContent}">&laquo;</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
+		</c:otherwise>
+	</c:choose>
+	</li>
 	</c:if>
 	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
 	end="${pb.endPageOfPageGroup}">
 	<c:choose>
 	<c:when test="${pb.nowPage!=i}">
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${i}">${i}</a></li> 
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+			<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${i}&searchContent=${requestScope.searchContent}">${i}</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${i}">${i}</a>
+		</c:otherwise>
+	</c:choose>
+	</li> 
 	</c:when>
 	<c:otherwise>
 	<li class="active"><a href="#" >${i}</a></li>
@@ -57,7 +75,16 @@
 	&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+			<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${pb.endPageOfPageGroup+1}&searchContent=${requestScope.searchContent}">&raquo;</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a>
+		</c:otherwise>
+	</c:choose>
+	</li>
 	</c:if>
 	</ul>	 		
 	</div>

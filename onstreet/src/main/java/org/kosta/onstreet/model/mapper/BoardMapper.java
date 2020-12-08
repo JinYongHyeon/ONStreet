@@ -114,6 +114,43 @@ public interface BoardMapper {
 	 */
 	public List<String> getArtistAll();
 	
+	/**
+	 * 추천아티스트(닉네임,프로필 조회) - 진용현
+	 * @param id
+	 * @return
+	 */
 	public MemberVO getArtistRecommendationList(String id);
+	// 오늘날짜 가져오기
+	String getToday();
+	
+	/**
+	 * 검색 아티스트[카운트] - 진용현
+	 * @param artistName
+	 * @return
+	 */
+	public int getSearchArtistTotalCount(String artistName);
+	
+	/**
+	 * 검색 아티스트 - 진용현
+	 * @param artistName
+	 * @param pagingBean
+	 * @return
+	 */
+	public List<ArtistVO> getSearchArtist(@Param("artistName") String artistName,@Param("pagingBean") PagingBean pagingBean);
+	
+	/**
+	 * 검색 공연[카운트] - 진용현
+	 * @param showTitle
+	 * @return
+	 */
+	public int getSearchShowTotalCount(String showTitle);
+	
+	/**
+	 * 검색 공연 - 진용현
+	 * @param showTitle
+	 * @param pagingBean
+	 * @return
+	 */
+	public List<ShowVO> getSearchShow(@Param("showTitle")String showTitle,@Param("pagingBean") PagingBean pagingBean);
 	
 }

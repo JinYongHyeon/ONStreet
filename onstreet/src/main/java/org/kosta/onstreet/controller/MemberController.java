@@ -188,6 +188,7 @@ public class MemberController {
 	@RequestMapping("getArtistDetail.do")
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));
+		model.addAttribute("map", memberService.getArtistTemperture(id));
 		return "board/artist/artistDetail.tiles";
 	}
 	

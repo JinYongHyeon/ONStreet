@@ -11,17 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.onstreet.model.FileUploadBean;
 import org.kosta.onstreet.model.service.BoardService;
+import org.kosta.onstreet.model.vo.ArtistListVO;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberListVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
+import org.kosta.onstreet.model.vo.ShowListVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -208,7 +212,8 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	// 공연일정 등록폼 메서드
 	@Secured("ROLE_ARTIST")
 	@RequestMapping("addShowForm.do")
-	public String addShowForm() {
+	public String addShowForm(Model model) {
+		model.addAttribute("today", boardService.getToday());
 		return "board/show/showRegister.tiles";
 	}
 
@@ -306,6 +311,36 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 			boardService.addLike(likeVO);
 			return "0";
 		}
+	}
+	
+	/**
+	 * 아티스트 검색 - 진용현
+	 * @param searchContent
+	 * @param nowPage
+	 * @param model
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getAristSearchList.do")
+	public String getSearchList(String searchContent,String pageNo,Model model) {
+		ArtistListVO artistList = boardService.getSearchArtist(pageNo, searchContent.trim());
+		model.addAttribute("artistVO",artistList);
+		model.addAttribute("searchContent",searchContent);
+		return "board/artist/artistList.tiles";
+		
+	}
+	/**
+	 * 공연 검색 - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getShowSearchList.do")
+	public String getSearchShow(String searchContent,String pageNo,Model model) {
+		ShowListVO showListVO = boardService.getSearchShow(pageNo, searchContent.trim());
+		model.addAttribute("slvo",showListVO);
+		model.addAttribute("searchContent",searchContent);
+		model.addAttribute("totalPostCount",boardService.getSearchShowTotalCount(searchContent));
+		return "board/show/showList.tiles";
 	}
 }
 

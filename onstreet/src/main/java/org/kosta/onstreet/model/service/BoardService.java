@@ -11,6 +11,7 @@ import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.LikeVO;
+import org.kosta.onstreet.model.vo.MemberListVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeListVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
@@ -91,5 +92,13 @@ public interface BoardService {
 	int getLikeCount(String showNo);
 	// 공연일자 유효일 구하기
 	int getDateValidity(String showNo);
+	
+	ArtistListVO getSearchArtist(String nowPage, String artistName);
+	
+	ShowListVO getSearchShow(String nowPage, String showTitle);
+	
+	int getSearchShowTotalCount(String showTitle);
+	// 오늘날짜 가져오기
+	String getToday();
 }
 

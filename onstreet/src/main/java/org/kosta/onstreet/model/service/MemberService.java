@@ -1,6 +1,7 @@
 package org.kosta.onstreet.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
@@ -37,4 +38,6 @@ public interface MemberService {
 	int removeFollowing(FollowVO fvo);
 	
 	EventListVO artistCheckEventList(String pageNo,String id);
+	
+	Map<String, String> getArtistTemperture(String id);
 }

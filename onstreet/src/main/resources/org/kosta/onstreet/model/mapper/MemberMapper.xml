@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		SELECT auth_name,id FROM os_auth WHERE id=#{value}
  	</select>
  	
- 	<!-- 아티스트 승인조회-진용현 -->
+ 	<!-- [로그인]아티스트 승인조회-진용현 -->
  	<select id="artistCheckDate" resultType="string">
  		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>
@@ -137,6 +137,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM os_follow 
 		WHERE following_id=#{followingId} 
 		AND id=#{memberVO.id}
+	</select>
+	
+	<!-- 아티스트 온도 -->
+	<select id="getArtistTemperture" resultType="map">
+		SELECT id,round(sum(show_like/2)/count(show_no),1) as avglike
+		FROM os_show
+		GROUP BY id
+		HAVING id=#{value}
 	</select>
 	
 	<!-- 팔로우리스트 삭제하기 정세희 -->
