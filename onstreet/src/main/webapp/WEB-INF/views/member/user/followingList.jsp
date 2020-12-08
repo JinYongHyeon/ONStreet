@@ -7,7 +7,7 @@
 	function check(){
 		var flag = false;
 		$("input:checkbox[name='followingId']").each(function(){
-			//checkbox check -- > flag = true;
+			//checkbox checked -- > flag = true;
 			if($(this).is(":checked")){
 			flag=true;
 			return ;//반복문 빠져나오게
@@ -31,7 +31,7 @@
 <div id="thumbnail alert-info">
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()">
 <sec:csrfInput/>
-<c:forEach var="list" items="${requestScope.list}">
+<c:forEach var="list" items="${requestScope.list.followList}">
 <input type="checkbox" name="followingId" value="${list.followingId}" > 
 
 <div class="artistList">
@@ -55,7 +55,7 @@ ${list.memberVO.nickName}<br>
 <!-- 페이징빈시작 -->
 <c:set var="pb" value="${requestScope.list.pagingBean}" />
 <div class="pagingInfo">
-   <ul class="pagination">
+   <ol class="pagination">
    <c:if test="${pb.previousPageGroup}">   
    <li><a href="${pageContext.request.contextPath}/followingList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
    </c:if>
@@ -74,6 +74,6 @@ ${list.memberVO.nickName}<br>
    <c:if test="${pb.nextPageGroup}">   
    <li><a href="${pageContext.request.contextPath}/followingList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
    </c:if>
-   </ul>          
+   </ol>          
    </div> 
 
