@@ -91,5 +91,7 @@ public interface BoardService {
 	int getLikeCount(String showNo);
 	// 공연일자 유효일 구하기
 	int getDateValidity(String showNo);
+	// 오늘날짜 가져오기
+	String getToday();
 }
 
