@@ -326,4 +326,9 @@ private BoardMapper boardMapper;
 		return showListVO;
 	}
 	
+	// 오늘날짜 가져오기
+	@Override
+	public String getToday() {
+		return boardMapper.getToday();
+	}
 }

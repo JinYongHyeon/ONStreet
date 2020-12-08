@@ -58,4 +58,10 @@ public interface AdminService {
 	 * 게시된 이벤트 리스트 불러오기
 	 */
 	EventListVO manageEventList(String pageNo);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 삭제
+	 */
+	void deleteEvent(String[] deleteEvent);
 }

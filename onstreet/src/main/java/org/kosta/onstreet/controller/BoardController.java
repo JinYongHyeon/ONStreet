@@ -212,7 +212,8 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	// 공연일정 등록폼 메서드
 	@Secured("ROLE_ARTIST")
 	@RequestMapping("addShowForm.do")
-	public String addShowForm() {
+	public String addShowForm(Model model) {
+		model.addAttribute("today", boardService.getToday());
 		return "board/show/showRegister.tiles";
 	}
 

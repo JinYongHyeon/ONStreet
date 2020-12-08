@@ -120,6 +120,8 @@ public interface BoardMapper {
 	 * @return
 	 */
 	public MemberVO getArtistRecommendationList(String id);
+	// 오늘날짜 가져오기
+	String getToday();
 	
 	/**
 	 * 검색 아티스트[카운트] - 진용현

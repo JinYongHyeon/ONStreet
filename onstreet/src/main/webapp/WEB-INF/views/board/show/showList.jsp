@@ -4,13 +4,14 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
-<table border="1">
+<br><br>
+<table class="table table-striped table-condensed">
 	<thead>
-		<tr>
-			<th align="center">번호</th>
-			<th>제목</th>
-			<th align="center">작성자</th>
-			<th align="center">공연일시</th>
+		<tr class="success">
+			<th style="text-align: center;">번호</th>
+			<th style="text-align: center;">제목</th>
+			<th style="text-align: center;">작성자</th>
+			<th style="text-align: center;">공연일시</th>
 		</tr>
 	</thead>
 
@@ -38,7 +39,6 @@
 		</c:forEach>
 	</tbody>
 </table>
-
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	

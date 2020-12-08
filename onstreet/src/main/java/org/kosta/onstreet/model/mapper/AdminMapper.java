@@ -53,4 +53,10 @@ public interface AdminMapper {
 	 */
 	int manageEventListCount();
 	List<EventVO> manageEventList(PagingBean pagingBean);
+	
+	/**
+	 * 정지윤
+	 * 이벤트 삭제
+	 */
+	public int deleteEvent(String eventNo);
 }

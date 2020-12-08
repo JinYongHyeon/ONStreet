@@ -98,5 +98,7 @@ public interface BoardService {
 	ShowListVO getSearchShow(String nowPage, String showTitle);
 	
 	int getSearchShowTotalCount(String showTitle);
+	// 오늘날짜 가져오기
+	String getToday();
 }
 
