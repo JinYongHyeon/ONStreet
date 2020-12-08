@@ -115,5 +115,7 @@ public interface BoardMapper {
 	public List<String> getArtistAll();
 	
 	public MemberVO getArtistRecommendationList(String id);
+	// 오늘날짜 가져오기
+	String getToday();
 	
 }

@@ -20,59 +20,97 @@ $(function(){
 		return false;
 	});
 
+	$(document).ready(function() {
+		
+		 /* 댓글 작성 시 길이 체크 공간 */
+        var checkTitle='';
+		
+        // 댓글 작성 시 길이 체크
+        $('#comment').keyup(function() {
+           checkTitle = '';
+           var titleValue= $(this).val().trim();
+           if(titleValue.length >50){
+              $('#commentCheckResult').html(titleValue.length).css('color','red');
+              return;
+           //제목 길이 평소에는 grey로
+           } else {
+              $('#commentCheckResult').html(titleValue.length).css('color','grey');
+              checkTitle = titleValue;
+           }	
+        });//keyup
+        
+        
+		   $("#commentUpdate input[type=button]").click(function() {
+		      /* alert($(this).parent().children("input[name=commentNo]").val()); */
+		      $.ajax({
+		      type: "get",
+		      url: "${pageContext.request.contextPath}/commentUpdateForm.do",
+		      dataType: "json",
+		      data: "showNo=${svo.showNo}&commentNo="+$(this).parent().children("input[name=commentNo]").val()+"&countNo="+$(this).parent().children("input[name=countNo]").val(),
+		      success: function(data) {
+		         $("#commentUpdate"+data[2]).hide();
+		         $("#commentDelete"+data[2]).hide();
+		         var html = "<form action='updateComment.do' method='post' id='commentUpdateForm'>";
+		            html += '<sec:csrfInput/>';
+		            html += "<textarea id='commentContent' name='commentContent' style='width: 440px; height: 60px' rows='3' cols='30' maxlength='50' placeholder='수정할 댓글을 입력하세요'></textarea>";
+		            html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}'>";
+		            html+= "<input type='hidden' name='commentNo' value="+data[1]+">";
+		            html+= "<span id='commentUpdateCheckResult'></span>/50";
+		            html += "<input type='submit' value='수정하기'>";
+		            html += "<input type='button' value='취소'>";
+		            html += "</form>";
+		         $("#div-comment"+data[2]).append(html);
+		         $("#commentUpdateForm input[type=button]").click(function() {
+		        	 window.location = window.location;
+				   });
+		         
+		      }
+		      });//ajax
+		   });
+		   
+		   <%-- 좋아요 --%>
+		    $("#likeBtn").click(function(){
+		       var id = $('#loginId').val();
+		         $.ajax({
+		            type:"post",
+		            url:"${pageContext.request.contextPath}/addLike.do",
+		            dataType: "text",
+		            data:"showNo=${svo.showNo}&id="+id,
+		            beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+		                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		               },
+		            success: function(result){
+		             if(result==0) {
+		                $("#likeBtn span:nth-child(1)").attr("id","heart");
+		                $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart-o");
+		                $("#likeBtn span:nth-child(1)").addClass("fa fa-heart");
+		            }
+		             if(result==1) {
+		                $("#likeBtn span:nth-child(1)").attr("id","heart");
+		                $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart");
+		                $("#likeBtn span:nth-child(1)").addClass("fa fa-heart-o");
+		            }
+		            }
+		         }); // ajax
+		      }); // click
+		   
+		   // 댓글수정 시 길이 체크
+		        $(document).on('keyup', '#commentUpdateForm textarea', function() {
+		           checkTitle = '';
+		           var titleValue= $(this).val().trim();
+		           if(titleValue.length >50){
+		              $('#commentUpdateCheckResult').html(titleValue.length).css('color','red');
+		              return;
+		           //제목 길이 평소에는 grey로
+		           } else {
+		              $('#commentUpdateCheckResult').html(titleValue.length).css('color','grey');
+		              checkTitle = titleValue;
+		           }	
+		        });//keyup
+		      
+		      
+		});//ready
 
-$(document).ready(function() {
-	$("#commentUpdate input[type=button]").click(function() {
-		/* alert($(this).parent().children("input[name=commentNo]").val()); */
-		$.ajax({
-		type: "get",
-		url: "${pageContext.request.contextPath}/commentUpdateForm.do",
-		dataType: "json",
-		data: "showNo=${svo.showNo}&commentNo="+$(this).parent().children("input[name=commentNo]").val()+"&countNo="+$(this).parent().children("input[name=countNo]").val(),
-		success: function(data) {
-			$("#commentUpdate"+data[2]).hide();
-			$("#commentDelete"+data[2]).hide();
-			var html = "<form action='updateComment.do' method='post'>";
-				html += '<sec:csrfInput/>';
-				html += "<input type='text' name='commentContent'>";
-				html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}'>";
-				html+= "<input type='hidden' name='commentNo' value="+data[1]+">";
-				html += "<input type='submit' value='수정하기'>";
-				html += "</form>";
-			$("#div-comment"+data[2]).append(html);
-			
-		}
-		});//ajax
-	});
-	
-	<%-- 좋아요 --%>
-	 $("#likeBtn").click(function(){
-		 var id = $('#loginId').val();
-         $.ajax({
-            type:"post",
-            url:"${pageContext.request.contextPath}/addLike.do",
-            dataType: "text",
-            data:"showNo=${svo.showNo}&id="+id,
-            beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-               },
-            success: function(result){
-             if(result==0) {
-            	 $("#likeBtn span:nth-child(1)").attr("id","heart");
-            	 $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart-o");
-            	 $("#likeBtn span:nth-child(1)").addClass("fa fa-heart");
-            }
-             if(result==1) {
-            	 $("#likeBtn span:nth-child(1)").attr("id","heart");
-            	 $("#likeBtn span:nth-child(1)").removeClass("fa fa-heart");
-            	 $("#likeBtn span:nth-child(1)").addClass("fa fa-heart-o");
-            }
-            }
-         }); // ajax
-      }); // click
-	
-	
-});//ready
 });
 </script>
 <c:set var="svo" value="${requestScope.svo}" />
@@ -180,15 +218,22 @@ $(document).ready(function() {
 <c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
 	<div align="left" id="div-comment${order.count}" class="btn-comment">
-		<span>${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}
+		<span>${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
 		<br>${cvo.commentWriteDate}
 		<c:if test="${member.id==cvo.memberVO.id}">
 			<form id="commentUpdate" action="deleteComment.do" method="post">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
 				<input type="hidden" name="countNo" value="${order.count}"> 
-				<input type="hidden" name="showNo" value="${svo.showNo}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<c:choose>
+				<c:when test="${requestScope.validity>2}">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" style="background-color:grey;">
+				</c:when>
+				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
+				</c:otherwise>
+				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
 			</form>
 		</c:if>
@@ -198,7 +243,7 @@ $(document).ready(function() {
 <c:otherwise>
 <div align="right" id="div-comment${order.count}" class="btn-comment">
 <span>
-${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}
+${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
 <br>${cvo.commentWriteDate}
 <c:if test="${member.id==cvo.memberVO.id}">
 			<form id="commentUpdate" action="deleteComment.do" method="post">
@@ -247,12 +292,14 @@ ${cvo.memberVO.nickName}:&nbsp;${cvo.commentContent}
         <div>
             <div>
                 <span><strong>Comments</strong></span> <span id="cCnt"></span>
+                            	<span id="commentCheckResult"></span>/50
             </div>
             <div>
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
+                            
                             <br>
                             <div>
                             <c:choose>

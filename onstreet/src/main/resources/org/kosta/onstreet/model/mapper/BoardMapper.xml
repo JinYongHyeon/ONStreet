@@ -278,4 +278,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getDateValidity" resultType="int">
 		select sysdate-show_date from OS_SHOW where show_no=#{value}
 	</select>
+	<!-- 오늘날짜 가져오기 -->
+	<select id="getToday" resultType="string">
+		select to_char(sysdate,'yyyy-mm-dd') from dual
+	</select>
 </mapper>
