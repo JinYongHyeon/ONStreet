@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		SELECT auth_name,id FROM os_auth WHERE id=#{value}
  	</select>
  	
- 	<!-- 아티스트 승인조회-진용현 -->
+ 	<!-- [로그인]아티스트 승인조회-진용현 -->
  	<select id="artistCheckDate" resultType="string">
  		SELECT check_date FROM os_artist WHERE id=#{value}
  	</select>

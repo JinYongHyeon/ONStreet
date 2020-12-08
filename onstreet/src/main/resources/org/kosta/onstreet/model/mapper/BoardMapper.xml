@@ -278,4 +278,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getDateValidity" resultType="int">
 		select sysdate-show_date from OS_SHOW where show_no=#{value}
 	</select>
+	
+	<!-- 검색[아티스트] 카운트 - 진용현 -->
+	<select id="getSearchArtistTotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM os_member m, os_artist a
+		WHERE m.id = a.id AND a.check_date IS NOT NULL 
+		AND m.nickname LIKE '%'||#{value}||'%'
+	</select>
+	
+	<!-- 검색[아티스트] - 진용현 -->
+	<select id="getSearchArtist" resultMap="artistList" parameterType="map">
+		SELECT rnum, m.id, m.nickname, m.profile
+	 	FROM(SELECT row_number() over(order by id desc) as rnum, id, nickname,profile,remove_user_date
+	 	FROM os_member WHERE nickname LIKE '%'||#{artistName}||'%')m , os_artist t, os_auth a
+		WHERE m.id=a.id AND m.id=t.id 
+		AND a.auth_name='ROLE_ARTIST'
+		AND m.remove_user_date is null
+		AND t.check_date is not null
+		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
+	</select>
+	
+	<!-- 검색[공연] 카운트 -진용현 -->
+	<select id="getSearchShowTotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM os_show
+		WHERE show_title LIKE '%'||#{value}||'%'
+	</select>
+	<!-- 검색[공연] - 진용현  -->
+	<select id="getSearchShow" resultMap="showListRM" parameterType="map">
+		SELECT s.show_no,s.rnum,s.show_title,m.nickname,s.show_date
+		FROM(
+		SELECT row_number() over(order by show_date desc) as
+		rnum,show_no,show_title,
+		to_char(show_date,'YYYY-MM-DD') as
+		show_date,id
+		FROM os_show
+		WHERE show_title LIKE '%'||#{showTitle}||'%'
+		) s,os_member m where s.id = m.id and rnum
+		between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
+		order by show_date desc
+	</select>
 </mapper>

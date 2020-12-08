@@ -3,6 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+  <div id="mainVideo">
+  	<div class="mainVideoLoginForm">
+  		<span>로그인</span>
+  		<span>회원가입</span>
+  	</div>
+	<video autoplay="autoplay" loop muted>
+		<source src="${pageContext.request.contextPath}/resources/img/main.mp4" type="video/mp4">
+	</video>
+  </div>
 <div class="container">
 	<%-- 오늘으 공연 - 진용현 --%>
 	<div id="todayShow">
@@ -70,7 +79,7 @@
 						<c:if test="${point.first || point.index ==  3 || point.index == 6}"><div class="artistRecommendationList"><ul></c:if>
 						<c:choose>
 							<c:when test="${rt.profile==null}">
-							<li><img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
+						<li><img src="${pageContext.request.contextPath}/resources/img/profile/default.png"><span>${rt.nickName}</span>
 								</li>
 							</c:when>
 							<c:otherwise>

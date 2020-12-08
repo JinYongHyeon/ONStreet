@@ -42,13 +42,31 @@
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+				<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${pb.startPageOfPageGroup-1}&searchContent=${requestScope.searchContent}">&laquo;</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
+		</c:otherwise>
+	</c:choose>
+	</li>
 	</c:if>
 	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
 	end="${pb.endPageOfPageGroup}">
 	<c:choose>
 	<c:when test="${pb.nowPage!=i}">
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${i}">${i}</a></li> 
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+			<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${i}&searchContent=${requestScope.searchContent}">${i}</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${i}">${i}</a>
+		</c:otherwise>
+	</c:choose>
+	</li> 
 	</c:when>
 	<c:otherwise>
 	<li class="active"><a href="#" >${i}</a></li>
@@ -57,7 +75,16 @@
 	&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+	<li>
+	<c:choose>
+		<c:when test="${requestScope.searchContent != null}">
+			<a href="${pageContext.request.contextPath}/getShowSearchList.do?pageNo=${pb.endPageOfPageGroup+1}&searchContent=${requestScope.searchContent}">&raquo;</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/getShowList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a>
+		</c:otherwise>
+	</c:choose>
+	</li>
 	</c:if>
 	</ul>	 		
 	</div>
