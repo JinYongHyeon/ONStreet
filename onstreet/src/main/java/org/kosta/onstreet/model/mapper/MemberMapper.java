@@ -1,7 +1,7 @@
 package org.kosta.onstreet.model.mapper;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,7 +9,6 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventVO;
-import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 
@@ -97,6 +96,14 @@ public interface MemberMapper {
 	int followingCheckList(FollowVO followVO);
 	
 	/**
+	 * 정지윤
+	 * 아티스트 온도
+	 * @return 
+	 * @return 
+	 */
+	 public Map<String,String> getArtistTemperture(String id);
+	
+	/**
 	 * 팔로우삭제 정세희
 	 * @param fvo
 	 * @return
@@ -109,6 +116,7 @@ public interface MemberMapper {
 	int getTotalEventCount(String id);
 	
 	List<EventVO> artistCheckEventList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
+	
 
 }
 	

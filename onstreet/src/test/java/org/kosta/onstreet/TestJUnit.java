@@ -153,30 +153,6 @@ public class TestJUnit {
 		// 댓글 삭제
 		//bm.deleteComment("27");
 		
-		System.out.println("추천 아티스트 : "+bm.getArtistRecommendation());
-		
-		List<String> artistIdList = bm.getArtistRecommendation();
-		List<MemberVO> artistList = new ArrayList<MemberVO>();
-		int max= 9;
-		if (artistIdList.size() < max) {
-			LinkedHashSet<String> addArtistList = new LinkedHashSet<String>();
-			// 추천 아티스트
-			for (String id : artistIdList) {
-				addArtistList.add(id);
-			}//for
-
-			List<String> artistAll = bm.getArtistAll();
-			//추천 아티스트 부족 시 전체 아티스트 랜덤추가
-			if(max>artistAll.size())max=artistAll.size();
-			while(addArtistList.size()<max) {
-				addArtistList.add(artistAll.get((int)Math.floor(Math.random()*artistAll.size())));
-			}//while
-			Iterator<String> iterator = addArtistList.iterator();
-			while(iterator.hasNext()) {
-				artistList.add(bm.getArtistRecommendationList(iterator.next()));
-			}
-			System.out.println(artistList);
-		}
 	}
 	
 	@Test
@@ -251,14 +227,14 @@ public class TestJUnit {
 //		  System.out.println(pb.getEndRowNumber());
 		 
 		
-		 String id="user1";
-		 System.out.println(mm.followingTotalCount(id));
-		 int followingTotalCount=mm.followingTotalCount(id);
-		 PagingBean pagingbean=new PagingBean(followingTotalCount);
-		 
-		 List<FollowVO> list = mm.getfollowingList(id,pagingbean);
-		 for(FollowVO fvo:list)
-		System.out.println(fvo);
+			/*
+			 * String id="user1"; System.out.println(mm.followingTotalCount(id)); int
+			 * followingTotalCount=mm.followingTotalCount(id); PagingBean pagingbean=new
+			 * PagingBean(followingTotalCount);
+			 * 
+			 * List<FollowVO> list = mm.getfollowingList(id,pagingbean); for(FollowVO
+			 * fvo:list) System.out.println(fvo);
+			 */
 	}
 	
 	@Test
@@ -271,12 +247,13 @@ public class TestJUnit {
 		 */
 		//System.out.println(am.getTotalMemberCount());
 		//System.out.println(am.getTotalCheckArtist());
-		 PagingBean pagin = new PagingBean(3);
+		 //PagingBean pagin = new PagingBean(3);
 		 //System.out.println(am.getCheckArtistList(pagin));
 		 //System.out.println(am.getTotalCheckEvent());
 		 //System.out.println(am.getCheckEventList(pagin));
 		 //System.out.println(am.manageEventListCount());
-		 System.out.println(am.manageEventList(pagin));
+		 //System.out.println(am.manageEventList(pagin));
+		//System.out.println(mm.getArtistTemperture("wjdwldbs"));
 	}
 	
 }

@@ -142,17 +142,17 @@ $(document).ready(function() {
 				<c:set var="ok" value="1"/>
 				<c:forEach items="${requestScope.likeId}" var="likeCheck">
 						<c:if test="${likeCheck==member.id}">
-							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요
+							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요1
 							<c:set var="ok" value="0"/>
 						</c:if>
 				</c:forEach>
 				<c:if test="${requestScope.likeId.size()==0}">
-					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요2</span>
 				</c:if>
 				<c:if test="${ok==1}">
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
 						<c:if test="${unLikeCheck!=member.id}">
-							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요3</span>
 						</c:if>
 				</c:forEach>
 				</c:if>
