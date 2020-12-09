@@ -10,6 +10,7 @@ import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 
 public interface MemberService {
 	
@@ -101,6 +102,12 @@ public interface MemberService {
 	 * @return
 	 */
 	Map<String, String> getArtistTemperture(String id);
+	
+	/**
+	 * 정지윤
+	 * 아티스트 공연일정 불러오기
+	 */
+	List<ShowVO> getArtistShowDate(String id);
 	
 	/**
 	 * 이벤트 승인현황 - 정세희

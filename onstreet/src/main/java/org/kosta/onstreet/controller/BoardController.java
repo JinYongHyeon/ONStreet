@@ -1,9 +1,6 @@
 package org.kosta.onstreet.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,7 +13,6 @@ import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.CommentVO;
 import org.kosta.onstreet.model.vo.EventVO;
 import org.kosta.onstreet.model.vo.LikeVO;
-import org.kosta.onstreet.model.vo.MemberListVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.NoticeVO;
 import org.kosta.onstreet.model.vo.ShowListVO;
@@ -25,7 +21,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -145,8 +140,8 @@ public class BoardController {
 	}
 
 	/**
-	 * 정지윤 아티스트 리스트 메서드
-	 * 
+	 * 정지윤 
+	 * 아티스트 리스트 메서드
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
@@ -156,8 +151,8 @@ public class BoardController {
 	}
 
 	/**
-	 * 정지윤 이벤트 리스트 메서드
-	 * 
+	 * 정지윤 
+	 * 이벤트 리스트 메서드
 	 * @param pageNo
 	 * @return
 	 */

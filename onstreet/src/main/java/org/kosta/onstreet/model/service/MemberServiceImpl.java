@@ -13,6 +13,7 @@ import org.kosta.onstreet.model.vo.EventListVO;
 import org.kosta.onstreet.model.vo.FollowListVO;
 import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
+import org.kosta.onstreet.model.vo.ShowVO;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -193,7 +194,15 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.getArtistTemperture(id);
 	}
 	
-	
+	/**
+	 * 정지윤
+	 * 아티스트 공연일정 불러오기
+	 */
+	@Override
+	public List<ShowVO> getArtistShowDate(String id) {
+		List<ShowVO> showVO = memberMapper.getArtistShowDate(id);
+		return showVO;
+	}
 
 	/**
 	 * 이벤트 승인현황 - 정세희 
