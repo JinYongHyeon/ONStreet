@@ -194,11 +194,11 @@ public class BoardController {
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		FileUploadBean eventFileUploadBean = new FileUploadBean();
 		eventVO.setArtistVO(artistVO);
-		if (!eventVO.getEventImageFile().getOriginalFilename().equals(""))
-			eventVO.setEventImage(System.currentTimeMillis() + eventVO.getEventImageFile().getOriginalFilename()
-					.substring(eventVO.getEventImageFile().getOriginalFilename().indexOf(".")));
+		if (!eventVO.getEventImageFile().getOriginalFilename().equals("")) {
+			eventVO.setEventImage(System.currentTimeMillis() + eventVO.getEventImageFile().getOriginalFilename().substring(eventVO.getEventImageFile().getOriginalFilename().lastIndexOf(".")));
+		}
 		eventFileUploadBean.eventBannerUpload(eventVO, request);
-
+		System.out.println(eventVO);
 		boardService.addEvent(eventVO);
 		return "redirect:getEventDetail.do?eventNo=" + eventVO.getEventNo();
 	}

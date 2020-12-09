@@ -123,7 +123,11 @@ input[type=password]{
 	height:100%;
 	float:right;
 }
-#header .navigation .loginbar a{
+#header .navigation .loginbar span{
+	cursor: pointer;
+}
+
+#header .navigation .loginbar a,#header .navigation .loginbar span{
 	width:30%;
 	float:left;
 	text-align:center;
@@ -678,7 +682,7 @@ input[type=password]{
 }
 
 #registerForm table tr td #registerId,#registerForm table tr td #registerAddress,#registerForm table tr td input[name=phone],#registerForm table tr td input[name=nickName],
-#updateForm table tr td #registerId,#updateForm table tr td #registerAddress,#updateForm table tr td input[name=phone],#updateForm table tr td input[name=nickName]{
+#updateForm table tr td #registerId,#updateForm table tr td #registerAddress,#updateForm table tr td input[name=phone],#updateForm table tr td input[name=nickName],#registerForm table tr td input[name=password]{
 	width:50%;
 	float:left;
 }
