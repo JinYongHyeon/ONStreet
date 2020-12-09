@@ -147,10 +147,14 @@ public class BoardServiceImpl implements BoardService {
 	public ShowListVO getShowList(String pageNo) {
 		int showTotalCount = boardMapper.getTotalShowCount();
 		PagingBean pagingBean = null;
-		if(pageNo==null)
+		if(pageNo==null) {
 			pagingBean = new PagingBean(showTotalCount);
-		else 
+			
+		}
+		else { 
 			pagingBean	=new PagingBean(showTotalCount, Integer.parseInt(pageNo));
+			
+		}
 		ShowListVO showListVO =new ShowListVO(boardMapper.getShowList(pagingBean),pagingBean);
 		return showListVO;
 	}

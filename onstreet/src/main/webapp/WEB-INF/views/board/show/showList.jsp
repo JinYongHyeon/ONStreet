@@ -39,7 +39,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-<div class="pagingInfo">
+<div class="pagingInfo" align="center">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
 	<li>

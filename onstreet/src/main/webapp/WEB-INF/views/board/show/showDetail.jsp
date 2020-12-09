@@ -262,7 +262,7 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
 </c:forEach>
 <%-- 댓글 페이징 --%>
 <c:set var="pb" value="${requestScope.clvo.pagingBean}" />
-	<div class="pagingInfo">
+	<div class="pagingInfo" align="center">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
 	<li><a href="${pageContext.request.contextPath}/getShowDetail.do?showNo=${svo.showNo}&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
@@ -298,7 +298,7 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
+                            <textarea style="width: 450px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
                             
                             <br>
                             <div>
