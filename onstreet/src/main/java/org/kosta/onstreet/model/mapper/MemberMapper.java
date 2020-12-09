@@ -16,46 +16,39 @@ import org.kosta.onstreet.model.vo.MemberVO;
 public interface MemberMapper {
 	
 	/**
-	 * 로그인 - 진용현
+	 * 로그인,아티스트 상세페이지 - 진용현
 	 * @param id
 	 * @return ArtisVO 
 	 */
 	public ArtistVO login(String id);
 	
 	/**
-	 * 권한조회 - 진용현
+	 *[로그인]권한조회 - 진용현
 	 * @param id
 	 * @return List<AuthVO>
 	 */
 	public List<AuthVO> selectAuthorityByUsername(String id);
 	
+	/**
+	 * [로그인]아티스트 승인 조회 - 진용현 
+	 * @param id
+	 * @return
+	 */
 	public String artistCheckDate(String id);
 	
 	/**
-	 * 닉네임중복검사 - 진용현
+	 * [회원가입,회원수정] 닉네임중복검사 - 진용현
 	 * @param nickName
 	 * @return
 	 */
 	public int nickNameCheck(String nickName);
 	
 	/**
-	 * 정세희 회원탈퇴
-	 * @param 
-	 */
-	public int removeMember(ArtistVO avo);
-	/**
-	 * 회원가입 - 진용현
+	 * 회원가입[관객] - 진용현
 	 * @param memberVO
 	 * @return
 	 */
 	public int registerMember(MemberVO memberVO);
-	
-	/**
-	 * 회원가입 권한등록 - 진용현
-	 * @param authVO
-	 * @return
-	 */
-	public int registerAuth(AuthVO authVO);
 	
 	/**
 	 * 회원가입[아티스트] - 진용현
@@ -65,7 +58,14 @@ public interface MemberMapper {
 	public int registerArtist(ArtistVO artistVO);
 	
 	/**
-	 * 회원수정 - 진용현
+	 * 회원가입 권한등록 - 진용현
+	 * @param authVO
+	 * @return
+	 */
+	public int registerAuth(AuthVO authVO);
+	
+	/**
+	 * 회원수정[관객] - 진용현
 	 * @param memberVO
 	 * @return
 	 */
@@ -79,13 +79,23 @@ public interface MemberMapper {
 	public int updateArtist(ArtistVO artistVO);
 	
 	/**
-	 * 1.팔로잉토탈카운트
-	 * 
-	 * 2.팔로우리스트 불러오기 정세희
-	 * 
+	 * 정세희 회원탈퇴
+	 * @param 
+	 */
+	public int removeMember(ArtistVO avo);
+	
+	
+	/**
+	 * 1.팔로잉토탈카운트 - 정세희
 	 */
 	int followingTotalCount(String id);
 	
+	/**
+	 * 팔로우리스트 불러오기 - 정세희
+	 * @param id
+	 * @param pagningbean
+	 * @return
+	 */
 	List<FollowVO> getfollowingList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
 	
 	/**
@@ -93,7 +103,20 @@ public interface MemberMapper {
 	 * 팔로잉 등록
 	 */
 	int registerFollowing(FollowVO followVO);
+	
+	/**
+	 * 팔로우 중복 검사 - 정지윤 
+	 * @param followVO
+	 * @return
+	 */
 	int followingCheckList(FollowVO followVO);
+	
+	/**
+	 * 팔로우삭제 정세희
+	 * @param fvo
+	 * @return
+	 */
+	public int removeFollowing(FollowVO fvo);
 	
 	/**
 	 * 정지윤
@@ -104,17 +127,16 @@ public interface MemberMapper {
 	 public Map<String,String> getArtistTemperture(String id);
 	
 	/**
-	 * 팔로우삭제 정세희
-	 * @param fvo
-	 * @return
-	 */
-	public int removeFollowing(FollowVO fvo);
-	
-	/**
-	 * 이벤트승인현황 정세희
+	 * 이벤트승인현황[페이징 카운트] 정세희
 	 */
 	int getTotalEventCount(String id);
 	
+	/**
+	 * 이벤트 승인현황 - 정세희
+	 * @param id
+	 * @param pagningbean
+	 * @return
+	 */
 	List<EventVO> artistCheckEventList(@Param("id")String id,@Param("pagingbean")PagingBean pagningbean);
 	
 

@@ -37,6 +37,7 @@
 		</sec:authorize>
 
 	</div>
+	<%--
 		<div class="bitMainSearch">
 			<form action="${pageContext.request.contextPath}/getShowSearchList.do" method="get" id="searchForm">
 				<input type="text" name="searchContent" required="required"> <input type="submit" value="검색">
@@ -46,6 +47,7 @@
 				</select>
 			</form>
 		</div>
+	 --%>
 </div>
 
 <script type="text/javascript">

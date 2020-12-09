@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	/**
-	 * 로그인 - 진용현
+	 * 로그인,아티스트 상세페이지 - 진용현
 	 */
 	@Override
 	public ArtistVO findMemberById(String id) {
@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * 권한조회 -진용현
+	 * [로그인]권한조회 -진용현
 	 */
 	@Override
 	public List<AuthVO> selectAuthorityByUsername(String id) {
@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * 아티스트 승인 조회 - 진용현
+	 * [로그인]아티스트 승인 조회 - 진용현
 	 */
 	@Override
 	public String artistCheckDate(String id) {
@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * 닉네임 중복검사 - 진용현
+	 * [회원가입,회원수정]닉네임 중복검사 - 진용현
 	 */
 	@Override
 	public int nickNameCheck(String nickName) {
@@ -84,7 +84,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * 회원가입[아티스트] - 진용현 1.아티스트 등록 2.권한등록 : ROLE_MEMBER[관객] + ROLE_ARTIST[아트스트]
+	 * 회원가입[아티스트] - 진용현 1.아티스트 등록 2.권한등록 : ROLE_MEMBER[관객] + ROLE_ARTIST[아티스트]
 	 */
 	@Transactional
 	@Override
@@ -102,23 +102,7 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.registerAuth(authVO);
 
 	}
-
-	// 회원 탈퇴재확인 정세희
-	@Override
-	public int removeMember(String password, ArtistVO avo) {
-		int point = 0;
-		String encodepassowrd = passwordEncoder.encode(avo.getMemberVO().getPassword());
-		System.out.println(avo.getMemberVO().getPassword());
-		System.out.println(encodepassowrd);
-		System.out.println(password);
-
-		if (passwordEncoder.matches(password, avo.getMemberVO().getPassword())) {
-			point = memberMapper.removeMember(avo);
-		}
-		return point;
-
-	}
-
+	
 	/**
 	 * 회원수정[관객] - 진용현
 	 */
@@ -136,6 +120,26 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.updateMember(artistVO.getMemberVO());
 		memberMapper.updateArtist(artistVO);
 	}
+
+	/**
+	 *  회원 탈퇴재확인 - 정세희
+	 */
+	@Override
+	public int removeMember(String password, ArtistVO avo) {
+		int point = 0;
+		String encodepassowrd = passwordEncoder.encode(avo.getMemberVO().getPassword());
+		System.out.println(avo.getMemberVO().getPassword());
+		System.out.println(encodepassowrd);
+		System.out.println(password);
+
+		if (passwordEncoder.matches(password, avo.getMemberVO().getPassword())) {
+			point = memberMapper.removeMember(avo);
+		}
+		return point;
+
+	}
+
+
 
 	/**
 	 * 정세희 팔로우리스트 불러오기
@@ -170,18 +174,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	/**
-	 * 정지윤
-	 * 아티스트 온도
-	 */
-	@SuppressWarnings("null")
-	@Override
-	public Map<String, String> getArtistTemperture(String id) {
-		return memberMapper.getArtistTemperture(id);
-	}
-	
-	/**
-	 * 정세희
-	 * 팔로우삭제
+	 * 내 팔로우 삭제 - 정세희
 	 * 
 	 */
 	@Override
@@ -190,9 +183,20 @@ public class MemberServiceImpl implements MemberService {
 		fvo.setMemberVO(avo.getMemberVO());
 		return memberMapper.removeFollowing(fvo);
 	}
+	
+	/**
+	 * 아티스트 온도 - 정지윤
+	 */
+	@SuppressWarnings("null")
+	@Override
+	public Map<String, String> getArtistTemperture(String id) {
+		return memberMapper.getArtistTemperture(id);
+	}
+	
+	
 
 	/**
-	 * 정세희 이벤트승인현황
+	 * 이벤트 승인현황 - 정세희 
 	 */
 	@Override
 	public EventListVO artistCheckEventList(String id, String pageNo) {
