@@ -31,6 +31,7 @@
 <form id="manageMemberBtn">
 <input type="button" id="removeMember" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageMemberArtistForm.do">아티스트 목록 보기</a>
+<a href="${pageContext.request.contextPath}/getRemoveMemberListForm.do">탈퇴 회원 목록 보기</a>
 </form>
 <sec:csrfInput />
 <form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">

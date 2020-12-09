@@ -23,6 +23,13 @@ public interface AdminMapper {
 	
 	/**
 	 * 정지윤
+	 * 탈퇴 회원 수 불러오기
+	 */
+	int getTotalRemoveMemberCount();
+	List<AuthVO> getRemoveMemberList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
+	
+	/**
+	 * 정지윤
 	 * 미승인 아티스트 리스트 불러오기
 	 */
 	int getTotalCheckArtist();
@@ -36,6 +43,12 @@ public interface AdminMapper {
 	
 	/**
 	 * 정지윤
+	 * 아티스트 반려
+	 */
+	public int uncheckArtist(String id);
+	
+	/**
+	 * 정지윤
 	 * 미승인 이벤트 리스트 불러오기
 	 */
 	int getTotalCheckEvent();
@@ -46,6 +59,12 @@ public interface AdminMapper {
 	 * 이벤트 승인
 	 */
 	public int checkEvent(String eventNo);
+	
+	/**
+	 * 정지윤 
+	 * 이벤트 반려
+	 */
+	public int uncheckEvent(String eventNo);
 	
 	/**
 	 * 정지윤
