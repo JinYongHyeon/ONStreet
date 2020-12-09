@@ -8,6 +8,17 @@ public class PagingBean {
 
 	public PagingBean() {
 	}
+	
+
+	public int getContentNumberPerPage() {
+		return contentNumberPerPage;
+	}
+
+
+	public void setContentNumberPerPage(int contentNumberPerPage) {
+		this.contentNumberPerPage = contentNumberPerPage;
+	}
+
 
 	public PagingBean(int totalContents) {
 		this.totalContents = totalContents;
