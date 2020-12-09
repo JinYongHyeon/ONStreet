@@ -19,7 +19,7 @@
 		<input type="button" value="팔로우">
 	</form>
     <hr>
-     <form action="${pageContext.request.contextPath}/getArtistTemperture.do?id=${requestScope.artistVO.memberVO.id}" id="memberCountCon">
+     <form id="memberCountCon">
      	<c:if test="${requestScope.map==null}">
      		🔥현재 ${requestScope.artistVO.memberVO.nickName}의 온도는 0°C🔥
      	</c:if>
@@ -57,7 +57,6 @@
 </svg>
 		</div>
 		<div class="loginMain">
-			<form action="${pageContext.request.contextPath}/getArtistShowDate.do?id=${requestScope.showVO.artistVO.memberVO.id}">
 			<table class="table table-striped table-condensed">
 	<thead>
 		<tr class="success">
@@ -67,17 +66,18 @@
 	</thead>
 
 	<tbody>
+	<c:forEach items="${requestScope.showVO}" var="showVO" varStatus="status">
 			<tr>
 				<td>
-				werx	
+				${showVO.showTitle}
 				</td>
 				<td>
-				sdf
+				${showVO.showDate}
 				</td>
 			</tr>
+			</c:forEach>
 	</tbody>
 </table>
-			</form>
 		</div>
 	</div>
 </sec:authorize>

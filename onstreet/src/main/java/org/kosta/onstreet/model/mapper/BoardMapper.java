@@ -67,12 +67,6 @@ public interface BoardMapper {
 	
 	/**
 	 * 정지윤
-	 * 아티스트 공연일정 불러오기
-	 */
-	List<ShowVO> getArtistShowDate(String id);
-	
-	/**
-	 * 정지윤
 	 * 이벤트 리스트 불러오기
 	 * @return
 	 */

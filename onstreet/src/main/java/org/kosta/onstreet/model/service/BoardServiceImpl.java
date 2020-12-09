@@ -107,17 +107,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	/**
 	 * 정지윤
-	 * 아티스트 공연일정 불러오기
-	 */
-	@Override
-	public ShowVO getArtistShowDate(String id) {
-		ShowVO showVO = new ShowVO();
-		showVO = (ShowVO) boardMapper.getArtistShowDate(id);
-		return showVO;
-	}
-	
-	/**
-	 * 정지윤
 	 * 이벤트 리스트 불러오기
 	 */
 	@Override

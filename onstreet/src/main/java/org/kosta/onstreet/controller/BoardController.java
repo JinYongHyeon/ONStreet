@@ -149,17 +149,6 @@ public class BoardController {
 	public ModelAndView getArtistList(String pageNo) {
 		return new ModelAndView("board/artist/artistList.tiles", "artistVO", boardService.getArtistList(pageNo));
 	}
-	
-	/**
-	 * 정지윤
-	 * 아티스트 공연일정 불러오기
-	 */
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("getArtistShowDate.do")
-	public String getArtistShowDate(String id,Model model) {
-		model.addAttribute("showVO",boardService.getArtistShowDate(id));
-		return "board/artist/artistDetail.tiles";
-	}
 
 	/**
 	 * 정지윤 

@@ -64,12 +64,6 @@ public interface BoardService {
 	 * 아티스트 리스트 불러오기
 	 */
 	ArtistListVO getArtistList(String pageNo);
-    
-	/**
-	 * 정지윤
-	 * 아티스트 공연일정 불러오기
-	 */
-	ShowVO getArtistShowDate(String id);
 	
 	/**
 	 * 정지윤
