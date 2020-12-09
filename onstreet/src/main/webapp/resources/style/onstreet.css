@@ -1254,3 +1254,49 @@ color: #31708f;
 	border-collapse: collapse;
 	border: 2px  solid;
 }
+/* 회원탈퇴 페이지 ui 정세희*/
+.remove-member{
+    padding: 76px 100px 100px 65px;
+    border: 1px solid #ededed;
+    width:70%;
+    text-align: center;
+    font-size: 19px;
+ }
+ 
+fieldset {
+    border: none;
+    vertical-align: top;
+}
+
+.removBtn{
+    background: #1f1f1f;
+    border: 1px solid rgba(31,31,31,0.5);
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 0 !important;
+    margin : 10px;
+}
+
+
+
+} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
