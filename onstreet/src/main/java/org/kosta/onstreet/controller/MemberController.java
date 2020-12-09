@@ -226,11 +226,12 @@ public class MemberController {
 	@RequestMapping("mypageForm.do")
 	public ModelAndView mypageForm() {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String id=avo.getMemberVO().getId();
 		//System.out.println(avo==null);
 		if(avo.getCheckDate() == null) {
 		return new ModelAndView("member/user/memberMypage.tiles");	
 		}else {
-		return new ModelAndView("member/artist/artistMypage.tiles");	
+		return new ModelAndView("member/artist/artistMypage.tiles","map", memberService.getArtistTemperture(id));	
 			
 		}
 	}
@@ -306,9 +307,8 @@ public class MemberController {
 	 */
 	@Secured("ROLE_MEMBER")
 	@PostMapping("removeFollowing.do")
-	public ModelAndView removeFollowing(FollowVO fvo) {
-		System.out.println(fvo);
-		memberService.removeFollowing(fvo);
+	public ModelAndView removeFollowing(String[] followingId) {
+		memberService.removeFollowing(followingId);
 		return new ModelAndView("redirect:followingList.do");
 		
 	}

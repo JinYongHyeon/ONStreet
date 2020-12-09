@@ -1255,7 +1255,15 @@ fieldset {
     border-radius: 0 !important;
     margin : 10px;
 }
+/*회원탈퇴 페이지 ui 끝*/
 
+/*팔로우리스트 ui 정세희*/
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+/*팔로우리스트 ui 끝*/
 
 
 } 

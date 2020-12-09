@@ -94,7 +94,7 @@ public interface MemberService {
 	 * @param fvo
 	 * @return
 	 */
-	int removeFollowing(FollowVO fvo);
+	int removeFollowing(String[] followingId);
 	
 	/**
 	 * 아티스트 온도 - 정지윤 

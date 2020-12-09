@@ -3,7 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <script type="text/javascript">
+
+function check_all(){
+	for(i=0; i< form.followingId.length; i++){
+		form.followingId[i].checked = true;
+	}
+}
+	function uncheck_all(){
+		for(i=0; i< form.followingId.length; i++){
+			form.followingId[i].checked = false;
+		}
+	}
 	
+	
+	
+
+
 	function check(){
 		var flag = false;
 		$("input:checkbox[name='followingId']").each(function(){
@@ -22,17 +37,20 @@
 			return false;
 			}//if2
 	}//check
+	
 		
 </script>
 
 
+
 <div id="thumbnail alert-info">
-<form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()">
+<form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form">
+<input type="button" value="모두 선택" onclick="check_all();"  class="btn btn-default select_all">
+<input type="button" value="모두 해제" onclick="uncheck_all();"  class="btn btn-default select_all">
 <sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.list.followList}">
 <input type="checkbox" name="followingId" value="${list.followingId}"> 
-
-<div class="artistList">
+<div>
 <c:choose>
 	<c:when test="${list.memberVO.profile!=null}">
 <img src="${pageContext.request.contextPath}/resources/img/profile/${list.memberVO.profile}"><br>
@@ -41,7 +59,8 @@
 <img src="${pageContext.request.contextPath}/resources/img/profile/default.png"><br>
 	</c:otherwise>
 </c:choose>
-${list.memberVO.nickName}<br>
+
+<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.memberVO.id}">${list.memberVO.nickName}</a><br>
 </div>
 </c:forEach>
 <div class="pull-left">
