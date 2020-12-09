@@ -238,6 +238,11 @@ public interface BoardService {
 	 * @return
 	 */
 	ShowListVO getSearchShow(String nowPage, String showTitle);
+	/**
+	 * 공지사항 리스트(공연일정 상단에) - 이동욱
+	 * @return
+	 */
+	ArrayList<NoticeVO> getNoticeListForShowList();
 	
 
 

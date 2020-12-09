@@ -5,6 +5,8 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+				
+		
 		$("#checkArtist").click(function() {
 			var flag = false;
 			$(".checkArtist").each(function(){
@@ -13,11 +15,30 @@
 					return;
 				}
 			});
+			$("#checkArtistForm").attr("action", "${pageContext.request.contextPath}/checkArtist.do");
 				if(flag === true){
 					if(confirm("승인하시겠습니까?"))
 						$("#checkArtistForm").submit();
 				}else if(flag === false){
 					alert("승인시킬 아티스트를 선택해주세요!"); 
+					return;
+				}
+		});//click
+		
+		$("#uncheckArtist").click(function() {
+			var flag = false;
+			$(".checkArtist").each(function(){
+				if($(this).is(":checked")){
+					flag = true;
+					return;
+				}
+			});
+			$("#checkArtistForm").attr("action", "${pageContext.request.contextPath}/uncheckArtist.do");
+				if(flag === true){
+					if(confirm("반려하시겠습니까?"))
+						$("#checkArtistForm").submit();
+				}else if(flag === false){
+					alert("반려하실 아티스트를 선택해주세요!"); 
 					return;
 				}
 		});//click
@@ -29,6 +50,7 @@
 <h1><b>MANAGE</b></h1> <br><br>
 
 <input type="button" id="checkArtist" value="승인하기">
+<input type="button" id="uncheckArtist" value="미승인하기">
 <sec:csrfInput />
 <table border="1">
 	<thead>
@@ -51,7 +73,7 @@
 		<c:forEach items="${requestScope.artistVO.artistList}" var="avo">
 			<tr>
 				<td>
-					<form action="${pageContext.request.contextPath}/checkArtist.do" method="post" id="checkArtistForm">
+					<form method="post" id="checkArtistForm">
 						<input type="checkbox" name="checkArtist" value="${avo.memberVO.id}" class="checkArtist"><sec:csrfInput/>
 					</form>
 				</td>

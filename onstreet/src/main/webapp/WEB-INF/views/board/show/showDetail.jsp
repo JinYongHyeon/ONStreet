@@ -53,10 +53,10 @@ $(function(){
 		         var html = "<form action='updateComment.do' method='post' id='commentUpdateForm'>";
 		            html += '<sec:csrfInput/>';
 		            html += "<textarea id='commentContent' name='commentContent' style='width: 440px; height: 60px' rows='3' cols='30' maxlength='50' placeholder='수정할 댓글을 입력하세요'></textarea>";
-		            html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}'>";
-		            html+= "<input type='hidden' name='commentNo' value="+data[1]+">";
+		            html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}' id='updateShowNo'>";
+		            html+= "<input type='hidden' name='commentNo' value="+data[1]+" id='updateCommentNo'>";
 		            html+= "<span id='commentUpdateCheckResult'></span>/50";
-		            html += "<input type='submit' value='수정하기'>";
+		            html += "<input type='button' value='수정하기' id='btnUpdate'>";
 		            html += "<input type='button' value='취소'>";
 		            html += "</form>";
 		         $("#div-comment"+data[2]).append(html);
@@ -67,6 +67,23 @@ $(function(){
 		      }
 		      });//ajax
 		   });
+        
+		   $(document).on('click', '#btnUpdate', function() {
+			      /* alert($(this).parent().children("input[name=commentNo]").val()); */
+			      $.ajax({
+			      type: "post",
+			      url: "${pageContext.request.contextPath}/updateComment.do",
+			      dataType: "text",
+ 			      data: "showNo=${svo.showNo}&commentNo="+$('#updateCommentNo').val()+"&commentContent="+$('#commentContent').val(),
+			      beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+		                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		               },
+			      success: function(data) {
+								         
+			      }
+			      });//ajax
+			   });
+        
 		   
 		   <%-- 좋아요 --%>
 		    $("#likeBtn").click(function(){
@@ -113,10 +130,11 @@ $(function(){
 
 });
 </script>
+<br><br>
 <c:set var="svo" value="${requestScope.svo}" />
 <div style="float: left; width: 15%; height: 100px"></div>
-<div style="float: left; width: 40%;">
-<table border="1" id="showDetail">
+<div style="float: left; width: 38%;">
+<table border="1" id="showDetail" style="width: 100%; height: 100%">
 		<tr>
 			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
 		</tr>
@@ -207,11 +225,12 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><pre>${svo.showContent}</pre></td>
+			<td colspan="2" style="height: 900px"><pre style="height: 100%">${svo.showContent}</pre></td>
 		</tr>
 				
 </table>
 </div>
+<div style="float: left; width: 2%; height: 100px"></div>
 <%-- 댓글 리스트 --%>
 <div style="float: left; width: 30%;">
 <c:forEach var="cvo" items="${requestScope.clvo.commentList}" varStatus="order">
@@ -262,7 +281,7 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
 </c:forEach>
 <%-- 댓글 페이징 --%>
 <c:set var="pb" value="${requestScope.clvo.pagingBean}" />
-	<div class="pagingInfo">
+	<div class="pagingInfo" align="center">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
 	<li><a href="${pageContext.request.contextPath}/getShowDetail.do?showNo=${svo.showNo}&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
@@ -298,7 +317,7 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
+                            <textarea style="width: 450px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
                             
                             <br>
                             <div>

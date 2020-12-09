@@ -269,5 +269,11 @@ public interface BoardMapper {
 	 * @return
 	 */
 	public List<ShowVO> getSearchShow(@Param("showTitle")String showTitle,@Param("pagingBean") PagingBean pagingBean);
+
 	
+	/**
+	 * 공지사항 리스트(공연일정 상단에) - 이동욱
+	 * @return
+	 */
+	public ArrayList<NoticeVO> getNoticeListForShowList();
 }

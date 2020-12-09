@@ -46,6 +46,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/notice/noticeList.tiles");
 		mv.addObject("lvo", boardService.getNoticeList(pageNo));
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
 		return mv;
 
 	}
@@ -176,8 +177,8 @@ public class BoardController {
 	}
 
 	/**
-	 * 정지윤 이벤트 등록
-	 * 
+	 * 정지윤 
+	 * 이벤트 등록 폼
 	 * @param pageNo
 	 * @return
 	 */
@@ -186,7 +187,13 @@ public class BoardController {
 	public String addEventForm() {
 		return "board/event/eventRegister.tiles";
 	}
-
+	
+	/**
+	 * 정지윤 이벤트 등록
+	 * @param eventVO
+	 * @param request
+	 * @return
+	 */
 	@Secured("ROLE_ARTIST")
 	@PostMapping("addEvent.do")
 	public String addEvent(EventVO eventVO, HttpServletRequest request) {
@@ -200,7 +207,19 @@ public class BoardController {
 		eventFileUploadBean.eventBannerUpload(eventVO, request);
 		System.out.println(eventVO);
 		boardService.addEvent(eventVO);
-		return "redirect:getEventDetail.do?eventNo=" + eventVO.getEventNo();
+		return "redirect:checkWaitEvent.do?eventNo=" + eventVO.getEventNo();
+	}
+	
+	/**
+	 * 정지윤 
+	 * 이벤트 등록 폼
+	 * @param pageNo
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("checkWaitEvent.do")
+	public String checkWaitEvent() {
+		return "board/event/checkWaitEvent.tiles";
 	}
 
 	/**
@@ -216,6 +235,8 @@ public class BoardController {
 		mv.setViewName("board/show/showList.tiles");
 		mv.addObject("slvo", boardService.getShowList(pageNo));
 		mv.addObject("totalPostCount", boardService.getTotalShowCount());
+		mv.addObject("nlvo", boardService.getNoticeListForShowList());
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
 		return mv;
 	}
 
@@ -354,6 +375,7 @@ public class BoardController {
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
+	@ResponseBody
 	@PostMapping("updateComment.do")
 	public String updateComment(String showNo, CommentVO commentVO, RedirectAttributes ra) {
 		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

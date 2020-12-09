@@ -73,6 +73,21 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	/**
+	 * 정지윤 
+	 * 탈퇴 회원 리스트 불러오기
+	 */
+	@Override
+	public MemberListVO getRemoveMemberList(String pageNo) {
+		int removeMemberTotal = adminMapper.getTotalRemoveMemberCount();
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(removeMemberTotal);
+		else
+			pagingBean = new PagingBean(removeMemberTotal,Integer.parseInt(pageNo));
+		MemberListVO memberListVO = new MemberListVO(adminMapper.getRemoveMemberList("ROLE_MEMBER", pagingBean),pagingBean);
+		return memberListVO;
+	}
+	/**
 	 * 정지윤
 	 * 게시물 삭제
 	 */
@@ -111,6 +126,16 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.checkArtist(id);
 		}
 	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 반려
+	 */
+	@Override
+	public void uncheckArtist(String[] uncheckArtist) {
+		for(String id:uncheckArtist)
+			adminMapper.uncheckArtist(id);
+	}
 
 	/**
 	 * 정지윤
@@ -136,7 +161,17 @@ public class AdminServiceImpl implements AdminService {
 	public void checkEvent(String[] checkEvent) {
 		for(String eventNo:checkEvent) {
 			adminMapper.checkEvent(eventNo);
-			System.out.println(checkEvent);
+		}
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 반려
+	 */
+	@Override
+	public void uncheckEvent(String[] uncheckEvent) {
+		for(String eventNo:uncheckEvent) {
+			adminMapper.uncheckEvent(eventNo);	
 		}
 	}
 
