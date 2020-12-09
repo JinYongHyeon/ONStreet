@@ -46,6 +46,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/notice/noticeList.tiles");
 		mv.addObject("lvo", boardService.getNoticeList(pageNo));
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
 		return mv;
 
 	}
@@ -234,6 +235,8 @@ public class BoardController {
 		mv.setViewName("board/show/showList.tiles");
 		mv.addObject("slvo", boardService.getShowList(pageNo));
 		mv.addObject("totalPostCount", boardService.getTotalShowCount());
+		mv.addObject("nlvo", boardService.getNoticeListForShowList());
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
 		return mv;
 	}
 
@@ -372,6 +375,7 @@ public class BoardController {
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
+	@ResponseBody
 	@PostMapping("updateComment.do")
 	public String updateComment(String showNo, CommentVO commentVO, RedirectAttributes ra) {
 		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -41,10 +41,15 @@ var oEditors = [];
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}
+			
+			if ($("#showDate").val() == "") {
+				alert("게시글 날짜 입력하세요.");
+				return;
+			}
 
 			oEditors.getById["showContent"].exec("UPDATE_CONTENTS_FIELD", []);
 
-			if ($("#showContent").val() == "") {
+			if ($("#showContent").val() == "<p>&nbsp;</p>") {
 				alert("게시글 내용을 입력하세요.");
 				return;
 			}
@@ -203,7 +208,7 @@ var oEditors = [];
 <sec:csrfInput/>
 <table border="1" id="showDetail">
 		<tr>
-			<td>공연제목</td><td><input type="text" name="showTitle" value="${svo.showTitle}" required="required"></td>
+			<td>공연제목</td><td><input type="text" name="showTitle" value="${svo.showTitle}" id="postTitle"></td>
 		</tr>
 		<tr>
 			<td>공연내용</td>
@@ -211,7 +216,7 @@ var oEditors = [];
 						name="showContent" id="showContent">${svo.showContent}</textarea></td>
 		</tr>
 		<tr>
-			<td>공연일정</td><td><input type="date" name="showDate" required="required" value="${svo.showDate}"></td>
+			<td>공연일정</td><td><input type="date" name="showDate" required="required" value="${svo.showDate}" id="showDate"></td>
 		</tr>
 </table>
 <input type="submit" value="수정하기" id="postUpdate" class="btn btn-warning">
