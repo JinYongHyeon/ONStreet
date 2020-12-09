@@ -1196,17 +1196,18 @@ color: #31708f;
 #noticeList{
 	width:700px;
 	height:15%;
-	border-collapse:collapse;
-	border:2px solid;
+	border:2px solid #d1fffc;
 	font-size:20px;
 }
-#noticeList tr th{
+#noticeList tr  th{
 	border:2px solid #d1fffc;
+	border-collapse:collapse;
 	text-align: center;
 	background-color: #d1fffc;
 }
 #noticeList tr td{
-	border:2px solid;
+	border-bottom:2px solid #d1fffc;
+	border-collapse:collapse;
 	text-align: center;
 	border-color: #91fff0;
 }
@@ -1218,7 +1219,7 @@ color: #31708f;
 	background-color: #ffffff;
 	position: relative;
 	float: right;
-	right: 560px;
+	right: 60px;
 	margin-top: 10px;
 }
 
@@ -1233,7 +1234,7 @@ color: #31708f;
 	background-color: #ffffff;
 	position: relative;
 	float: right;
-	right: 550px;
+	right: 600px;
 	margin-top: 10px;
 }
 
@@ -1246,6 +1247,7 @@ color: #31708f;
 .pagination{
     display: block;
     text-align: center;
+    margin-top: 50px;
 }
 .pagination>li>a{
 	float: none;
@@ -1254,28 +1256,38 @@ color: #31708f;
 /*공지사항 상세보기 UI 김수민  */
 
 #noticeDetail{
-	width: 450px;
-	height: 200px;
+	width: 560px;
+	height: 250px;
 	border-collapse: collapse;
 	border: 2px solid #d1fffc;
+	margin-top: 10px;
 }
 #noticeDetail tr th{
 	text-align: left;
+	font-size: 25px;
 	border-collapse: collapse;
 	border: 2px solid;
-	border-top:2px solid #d1fffc;
+	border-top:2px solid ;
 	background-color: #d1fffc; 
 }
 #noticeDetail tr td{
 	text-align:center;
-	font-size: 15px;
+	font-size: 25px;
 	border-collapse: collapse;
 	border: 2px  solid;
 }
 #noticeDetailButton{
+	width:50px;
+	height: 30px;
 	position: relative;
 	float: right;
 	right: 650px;
 	margin-top: 10px;
 	border: 1px solid #d03535;
+	background-color: #ffffff;
+}
+#noticeDetailButton:hover{
+	border: 1px solid #d03535;
+	background-color: #d03535;
+	color:#ffffff;
 }

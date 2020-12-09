@@ -53,11 +53,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="getNoticeList" parameterType="pagingBean" resultMap="noticeListRM">
  	select n.rnum,n.notice_no,n.notice_title,n.notice_write_date,m.nickname
     from (
-	select row_number() over(order by notice_no asc) as rnum,notice_no,notice_title,
+	select row_number() over(order by notice_no desc) as rnum,notice_no,notice_title,
 	to_char(notice_write_date,'YYYY.MM.DD')as notice_write_date,id
 	from os_notice) n,os_member m 
 	where n.id = m.id 
 	and rnum between #{startRowNumber} and #{endRowNumber} 
+	order by n.notice_no desc
  </select>
  <!-- 공지사항 상세보기 :김수민 -->
  	<select id="getNoticeDetail" resultMap="noticeListRM">
