@@ -41,7 +41,7 @@
    		default-target-url : 로그인 성공 후 이동될  url
     -->		
 		<security:form-login
-						login-page="/home.do"
+						login-page="/loginForm.do"
 						login-processing-url="/login.do"
 						username-parameter="id"
 						password-parameter="password"
