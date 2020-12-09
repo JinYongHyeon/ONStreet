@@ -51,6 +51,17 @@ public class AdminController {
 	
 	/**
 	 * 정지윤
+	 * 탈퇴 회원 관리 폼
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("getRemoveMemberListForm.do")
+	public ModelAndView getRemoveMemberListForm(String pageNo) {
+		return new ModelAndView("member/admin/manageRemoveMember.tiles", "authVO", adminService.getRemoveMemberList(pageNo));
+	}
+	
+	
+	/**
+	 * 정지윤
 	 * 회원관리 (회원탈퇴)
 	 */
 	@Secured("ROLE_ADMIN")
@@ -108,6 +119,17 @@ public class AdminController {
 	
 	/**
 	 * 정지윤
+	 * 아티스트 반려
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("uncheckArtist.do")
+	public String uncheckArtist(String[] checkArtist) {
+		adminService.uncheckArtist(checkArtist);
+		return "redirect:getCheckArtistList.do";
+	}
+	
+	/**
+	 * 정지윤
 	 * 이벤트 승인 폼
 	 */
 	@Secured("ROLE_ADMIN")
@@ -122,8 +144,19 @@ public class AdminController {
 	 */
 	@Secured("ROLE_ADMIN")
 	@PostMapping("checkEvent.do")
-	public String checkEvent(String[] checkEvent,String test) {
+	public String checkEvent(String[] checkEvent) {
 		adminService.checkEvent(checkEvent);
+		return "redirect:getCheckEventList.do";
+	}
+	
+	/**
+	 * 정지윤
+	 * 이벤트 반려
+	 */
+	@Secured("ROLE_ADMIN")
+	@PostMapping("uncheckEvent.do")
+	public String uncheckEvent(String[] checkEvent) {
+		adminService.uncheckEvent(checkEvent);
 		return "redirect:getCheckEventList.do";
 	}
 	

@@ -35,20 +35,19 @@ public class BoardController {
    @Resource
    private BoardService boardService;
 
-   /**
-    * 공지사항리스트-김수민
-    * 
-    * @return
-    */
-   @Secured("ROLE_MEMBER")
-   @RequestMapping("getNoticeList.do")
-   public ModelAndView getNoticeList(String pageNo) {
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("board/notice/noticeList.tiles");
-      mv.addObject("lvo", boardService.getNoticeList(pageNo));
-      mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
-      return mv;
-
+	/**
+	 * 공지사항리스트-김수민
+	 * 
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getNoticeList.do")
+	public ModelAndView getNoticeList(String pageNo) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/notice/noticeList.tiles");
+		mv.addObject("lvo", boardService.getNoticeList(pageNo));
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
+		return mv;
    }
 
    /**
@@ -188,9 +187,15 @@ public class BoardController {
       return "board/event/eventRegister.tiles";
    }
 
-   @Secured("ROLE_ARTIST")
-   @PostMapping("addEvent.do")
-   public String addEvent(EventVO eventVO, HttpServletRequest request) {
+	/**
+	 * 정지윤 이벤트 등록
+	 * @param eventVO
+	 * @param request
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@PostMapping("addEvent.do")
+	public String addEvent(EventVO eventVO, HttpServletRequest request) {
 
       ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       FileUploadBean eventFileUploadBean = new FileUploadBean();
@@ -204,21 +209,36 @@ public class BoardController {
       return "redirect:getEventDetail.do?eventNo=" + eventVO.getEventNo();
    }
 
-   /**
-    * 공연 리스트 - 이동욱
-    * 
-    * @param pageNo
-    * @return
-    */
-   @Secured("ROLE_MEMBER")
-   @RequestMapping("getShowList.do")
-   public ModelAndView getShowList(String pageNo) {
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("board/show/showList.tiles");
-      mv.addObject("slvo", boardService.getShowList(pageNo));
-      mv.addObject("totalPostCount", boardService.getTotalShowCount());
-      return mv;
-   }
+	
+	/**
+	 * 정지윤 
+	 * 이벤트 등록 폼
+	 * @param pageNo
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("checkWaitEvent.do")
+	public String checkWaitEvent() {
+		return "board/event/checkWaitEvent.tiles";
+	}
+
+	/**
+	 * 공연 리스트 - 이동욱
+	 * 
+	 * @param pageNo
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getShowList.do")
+	public ModelAndView getShowList(String pageNo) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/show/showList.tiles");
+		mv.addObject("slvo", boardService.getShowList(pageNo));
+		mv.addObject("totalPostCount", boardService.getTotalShowCount());
+		mv.addObject("nlvo", boardService.getNoticeListForShowList());
+		mv.addObject("totalNoticePostCount", boardService.getTotalNoticeCount());
+		return mv;
+	}
 
    /**
     * 공연 상세보기 - 이동욱
@@ -347,25 +367,27 @@ public class BoardController {
       return list;
    }
 
-   /**
-    * [공연]댓글 수정 - 이동욱
-    * @param showNo
-    * @param commentVO
-    * @param ra
-    * @return
-    */
-   @Secured("ROLE_MEMBER")
-   @PostMapping("updateComment.do")
-   public String updateComment(String showNo, CommentVO commentVO, RedirectAttributes ra) {
-      ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      ShowVO svo = new ShowVO();
-      svo.setShowNo(showNo);
-      commentVO.setShowVO(svo);
-      commentVO.setMemberVO(avo.getMemberVO());
-      boardService.updateComment(commentVO);
-      ra.addAttribute("showNo", showNo);
-      return "redirect:getShowDetail.do";
-   }
+	/**
+	 * [공연]댓글 수정 - 이동욱
+	 * @param showNo
+	 * @param commentVO
+	 * @param ra
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@PostMapping("updateComment.do")
+	public String updateComment(String showNo, CommentVO commentVO, RedirectAttributes ra) {
+		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		ShowVO svo = new ShowVO();
+		svo.setShowNo(showNo);
+		commentVO.setShowVO(svo);
+		commentVO.setMemberVO(avo.getMemberVO());
+		boardService.updateComment(commentVO);
+		ra.addAttribute("showNo", showNo);
+		return "redirect:getShowDetail.do";
+	}
+
 
    /**
     * 댓글 삭제 - 이동욱

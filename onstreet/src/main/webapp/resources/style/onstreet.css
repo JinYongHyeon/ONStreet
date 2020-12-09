@@ -123,7 +123,11 @@ input[type=password]{
 	height:100%;
 	float:right;
 }
-#header .navigation .loginbar a{
+#header .navigation .loginbar span{
+	cursor: pointer;
+}
+
+#header .navigation .loginbar a,#header .navigation .loginbar span{
 	width:30%;
 	float:left;
 	text-align:center;
@@ -678,7 +682,7 @@ input[type=password]{
 }
 
 #registerForm table tr td #registerId,#registerForm table tr td #registerAddress,#registerForm table tr td input[name=phone],#registerForm table tr td input[name=nickName],
-#updateForm table tr td #registerId,#updateForm table tr td #registerAddress,#updateForm table tr td input[name=phone],#updateForm table tr td input[name=nickName]{
+#updateForm table tr td #registerId,#updateForm table tr td #registerAddress,#updateForm table tr td input[name=phone],#updateForm table tr td input[name=nickName],#registerForm table tr td input[name=password]{
 	width:50%;
 	float:left;
 }
@@ -1291,3 +1295,56 @@ color: #31708f;
 	background-color: #d03535;
 	color:#ffffff;
 }
+/* 회원탈퇴 페이지 ui 정세희*/
+.remove-member{
+    padding: 76px 100px 100px 65px;
+    border: 1px solid #ededed;
+    width:70%;
+    text-align: center;
+    font-size: 19px;
+ }
+ 
+fieldset {
+    border: none;
+    vertical-align: top;
+}
+
+.removBtn{
+    background: #1f1f1f;
+    border: 1px solid rgba(31,31,31,0.5);
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 0 !important;
+    margin : 10px;
+}
+/*회원탈퇴 페이지 ui 끝*/
+
+/*팔로우리스트 ui 정세희*/
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+/*팔로우리스트 ui 끝*/
+
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

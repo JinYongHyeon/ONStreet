@@ -13,11 +13,30 @@
 					return;
 				}
 			});
+			$("#checkEventForm").attr("action", "${pageContext.request.contextPath}/checkEvent.do");
 				if(flag === true){
 					if(confirm("승인하시겠습니까?"))
 						$("#checkEventForm").submit();
 				}else if(flag === false){
 					alert("승인시킬 이벤트를 선택해주세요!"); 
+					return;
+				}
+		});//click
+		
+		$("#uncheckEvent").click(function() {
+			var flag = false;
+			$(".checkEvent").each(function(){
+				if($(this).is(":checked")){
+					flag = true;
+					return;
+				}
+			});
+			$("#checkEventForm").attr("action", "${pageContext.request.contextPath}/uncheckEvent.do");
+				if(flag === true){
+					if(confirm("반려하시겠습니까?"))
+						$("#checkEventForm").submit();
+				}else if(flag === false){
+					alert("반려하실 이벤트를 선택해주세요!"); 
 					return;
 				}
 		});//click
@@ -31,7 +50,8 @@
 <sec:csrfInput />
 
 <input type="button" id="checkEvent" value="승인하기">
-<form action="${pageContext.request.contextPath}/checkEvent.do" method="post" id="checkEventForm">
+<input type="button" id="uncheckEvent" value="미승인하기">
+<form method="post" id="checkEventForm">
 <table border="1">
 	<thead>
 		<tr>
@@ -51,7 +71,6 @@
 			<tr>
 				<td>
 					<sec:csrfInput/>
-					<input type="hidden" name="test" value="바보">
 					<input type="checkbox" name="checkEvent" value="${evo.eventNo}" class="checkEvent">
 				</td>
 				<td>

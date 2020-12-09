@@ -117,7 +117,7 @@ public interface MemberMapper {
 	 * @param fvo
 	 * @return
 	 */
-	public int removeFollowing(FollowVO fvo);
+	public int removeFollowing(@Param("id")String id,@Param("followingId") String[] followingId);
 	
 	/**
 	 * 정지윤

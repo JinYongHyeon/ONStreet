@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
-
 <br>
 <span id="artistTitle">ARITST</span>
 <br><br><br>
@@ -25,7 +22,7 @@
      	</c:if>
 	</form>
 	<form>
-    <a href="#" id="showDateList">공연일정보기</a>
+    <input type="button" id="showDateList" value="공연일정보기">
     </form>
 
 <hr>

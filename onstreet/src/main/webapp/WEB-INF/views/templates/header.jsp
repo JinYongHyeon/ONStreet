@@ -19,7 +19,7 @@
 		<%-- 비로그인 --%>
 		<sec:authorize access="!hasRole('ROLE_MEMBER')">
 
-			<a href="#" id="loginFormBtn">로그인</a>
+			<span id="loginFormBtn">로그인</span>
 			<a href="${pageContext.request.contextPath}/checkDocument.do">회원가입</a>
 		</sec:authorize>
 

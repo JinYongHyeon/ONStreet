@@ -163,10 +163,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
 	
 	<!-- 팔로우리스트 삭제하기 정세희 -->
-	<delete id="removeFollowing" parameterType="followVO">
+	<delete id="removeFollowing" parameterType="map">
 		delete 
 		from os_follow
-		where id=#{memberVO.id} and following_id=#{followingId}
+		where id=#{id} and following_id IN 
+		<!-- (user1,user2,user3) -->
+		<foreach collection="followingId" item="fid" open="(" close=")" separator=",">
+			#{fid}
+		</foreach>
 	</delete>
 	
 	<!-- 아티스트 개인별이벤트 개수 -->

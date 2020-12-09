@@ -179,10 +179,11 @@ public class MemberServiceImpl implements MemberService {
 	 * 
 	 */
 	@Override
-	public int removeFollowing(FollowVO fvo) {
+	public int removeFollowing(String[] followingId) {
 		ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		fvo.setMemberVO(avo.getMemberVO());
-		return memberMapper.removeFollowing(fvo);
+		
+	//	fvo.setMemberVO(avo.getMemberVO());
+		return memberMapper.removeFollowing(avo.getMemberVO().getId(),followingId);
 	}
 	
 	/**
