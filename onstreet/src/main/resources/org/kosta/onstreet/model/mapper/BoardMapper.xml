@@ -40,7 +40,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="showVO.showNo" column="showNo" />
 		<result property="memberVO.nickName" column="nickName" />
 	</resultMap>
- 	
+	
+ 	<!-- noticeVO has a -->
+ 	<resultMap type="noticeVO" id="noticeList">
+      <result property="memberVO.id" column="id"/>
+      <result property="memberVO.nickName" column="nickname"/>
+   </resultMap>
 <!-- 공지사항 총합 -김수민 -->
 <select id="getTotalNoticeCount" resultType="int">
 	select count(*) from os_notice
@@ -325,5 +330,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 오늘날짜 가져오기 -->
 	<select id="getToday" resultType="string">
 		select to_char(sysdate,'yyyy-mm-dd') from dual
+	</select>
+	<!-- 공지사항 리스트 불러오기(공연일정 상단에 필요) -->
+	<select id="getNoticeListForShowList" resultMap="noticeList">
+		select n.notice_no,n.notice_title,m.nickName from OS_NOTICE n, os_member m where n.id=m.id
 	</select>
 </mapper>

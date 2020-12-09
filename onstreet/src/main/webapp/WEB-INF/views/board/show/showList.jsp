@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<div class="col-sm-2"></div>
+<div class="col-sm-2"><h1><b>SHOW</b></h1> <br></div>
 <div class="col-sm-8">
 <br><br>
 <table class="table table-striped table-condensed">
@@ -13,10 +13,27 @@
 			<th style="text-align: center;">작성자</th>
 			<th style="text-align: center;">공연일시</th>
 		</tr>
+		
+		
 	</thead>
 
 	<tbody>
-
+	
+	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
+		<tr style="background: orange">
+		<td align="center">${requestScope.totalNoticePostCount}</td>
+		<td align="center"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
+		<td align="center">${requestScope.nlvo[0].memberVO.nickName}</td>		
+		<td></td>
+		</tr>
+		<tr style="background: orange">
+		<td align="center">${requestScope.totalNoticePostCount-1}</td>
+		<td align="center"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
+		<td align="center">${requestScope.nlvo[1].memberVO.nickName}</td>		
+		<td></td>		
+		</tr>
+		<%-- </c:forEach> --%>
+		
 		<c:set var="pb" value="${requestScope.slvo.pagingBean}" />
 
 		<c:forEach items="${requestScope.slvo.list}" var="list" varStatus="status">
@@ -24,15 +41,15 @@
 				<td align="center">
 				${requestScope.totalPostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 				</td>
-				<td>
+				<td align="center">
 				<a href="getShowDetail.do?showNo=${list.showNo}">
 				${list.showTitle}
 				</a>
 				</td>
-				<td>
+				<td align="center">
 				${list.artistVO.memberVO.nickName}
 				</td>
-				<td>
+				<td align="center">
 				${list.showDate}
 				</td>
 			</tr>

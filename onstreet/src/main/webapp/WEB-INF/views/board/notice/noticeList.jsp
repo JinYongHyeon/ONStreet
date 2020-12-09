@@ -20,6 +20,7 @@ $(document).ready(function() {
 <table id="noticeList">
 <thead>
 <tr>
+<th>선택</th>
 <th>번호</th>
 <th>제목</th>
 <th>작성일시</th>
@@ -29,11 +30,17 @@ $(document).ready(function() {
 <tbody>
 <tr>
 <td>
-<c:forEach var="list" items="${requestScope.lvo.noList}">
+<c:set var="pb" value="${requestScope.lvo.pagingBean}" />
+<c:forEach var="list" items="${requestScope.lvo.noList}" varStatus="status">
 <tr>
 <td>
 <%-- <input type="hidden" name="noticeNo" value="${list.noticeNo}">--%>
-<input type="checkbox" name="noticeNo" value="${list.noticeNo}">${list.noticeNo}</td>
+<input type="checkbox" name="noticeNo" value="${list.noticeNo}"></td>
+
+				<td align="center">
+				${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
+				</td>
+
 <td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
 <td>${list.noticeWriteDate}</td>
 <td>${list.memberVO.nickName}</td>

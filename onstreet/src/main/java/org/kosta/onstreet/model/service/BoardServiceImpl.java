@@ -150,11 +150,11 @@ public class BoardServiceImpl implements BoardService {
 		PagingBean pagingBean = null;
 		if(pageNo==null) {
 			pagingBean = new PagingBean(showTotalCount);
-			
+			pagingBean.setContentNumberPerPage(13);
 		}
 		else { 
 			pagingBean	=new PagingBean(showTotalCount, Integer.parseInt(pageNo));
-			
+			pagingBean.setContentNumberPerPage(13);
 		}
 		ShowListVO showListVO =new ShowListVO(boardMapper.getShowList(pagingBean),pagingBean);
 		return showListVO;
@@ -398,6 +398,14 @@ public class BoardServiceImpl implements BoardService {
 		}
 			ShowListVO showListVO =  new ShowListVO(boardMapper.getSearchShow(showTitle, pagingBean),pagingBean);
 		return showListVO;
+	}
+	/**
+	 * 공지사항 리스트(공연일정 상단에) - 이동욱
+	 * @return
+	 */
+	@Override
+	public ArrayList<NoticeVO> getNoticeListForShowList() {
+		return boardMapper.getNoticeListForShowList();
 	}
 	
 }
