@@ -25,13 +25,20 @@ public interface BoardMapper {
    void addNotice(NoticeVO noticeVO);//공지사항 작성 :김수민
    void updateNotice(NoticeVO noticeVO);//공지사항수정:김수민
    void deleteNotice(String noticeNo);//공지사항 삭제 :김수민
-	/**
+	
+   /**
 	 * 정지윤
 	 * 아티스트 수 불러오고 리스트 불러오기
 	 * @return
 	 */
 	int getTotalArtistCount();
 	List<ArtistVO> getArtistList(PagingBean pagingBean);
+	
+	/**
+	 * 정지윤
+	 * 아티스트 공연일정 불러오기
+	 */
+	List<ShowVO> getArtistShowDate(String id);
 	
 	/**
 	 * 정지윤

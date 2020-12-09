@@ -107,6 +107,7 @@ public class TestJUnit {
 		 /**
 		  * 정지윤 테스트
 		  */
+		//System.out.println(bm.getArtistShowDate("wjdwldbs"));
 		//System.out.println(bm.getTotalArtistCount());
 		//System.out.println(bm.findEventByNo("1"));
 		//int noticeTotalCount=bm.getTotalNoticeCount();
@@ -237,14 +238,14 @@ public class TestJUnit {
 //		  System.out.println(pb.getEndRowNumber());
 		 
 		
-		 String id="user1";
-	//	 System.out.println(mm.followingTotalCount(id));
-		 int followingTotalCount=mm.followingTotalCount(id);
-		 PagingBean pagingbean=new PagingBean(followingTotalCount);
-		 
-		 List<FollowVO> list = mm.getfollowingList(id,pagingbean);
-		 for(FollowVO fvo:list)
-		System.out.println(fvo);
+			/*
+			 * String id="user1"; // System.out.println(mm.followingTotalCount(id)); int
+			 * followingTotalCount=mm.followingTotalCount(id); PagingBean pagingbean=new
+			 * PagingBean(followingTotalCount);
+			 * 
+			 * List<FollowVO> list = mm.getfollowingList(id,pagingbean); for(FollowVO
+			 * fvo:list) System.out.println(fvo);
+			 */
 		 
 			/*
 			 * String id="user1"; System.out.println(mm.followingTotalCount(id)); int

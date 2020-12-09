@@ -67,6 +67,7 @@ private BoardMapper boardMapper;
 		boardMapper.deleteNotice(noticeNo[i]);
        }
 	}
+	
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기
@@ -81,6 +82,17 @@ private BoardMapper boardMapper;
 			pagingBean = new PagingBean(artistTotalCount,Integer.parseInt(pageNo));
 		ArtistListVO artistListVO = new ArtistListVO(boardMapper.getArtistList(pagingBean),pagingBean);
 		return artistListVO;
+	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 공연일정 불러오기
+	 */
+	@Override
+	public ShowVO getArtistShowDate(String id) {
+		ShowVO showVO = new ShowVO();
+		showVO = (ShowVO) boardMapper.getArtistShowDate(id);
+		return showVO;
 	}
 	
 	/**

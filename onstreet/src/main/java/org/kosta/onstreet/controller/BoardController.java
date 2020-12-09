@@ -109,9 +109,10 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 		boardService.deleteNotice(noticeNo);
 		return "redirect:getNoticeList.do";
 	}
+	
 	/**
-	 * 정지윤 아티스트 리스트 메서드
-	 * 
+	 * 정지윤 
+	 * 아티스트 리스트 메서드
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
@@ -119,10 +120,21 @@ public String addNotice(NoticeVO noticeVO,RedirectAttributes ra) {
 	public ModelAndView getArtistList(String pageNo) {
 		return new ModelAndView("board/artist/artistList.tiles", "artistVO", boardService.getArtistList(pageNo));
 	}
+	
+	/**
+	 * 정지윤
+	 * 아티스트 공연일정 불러오기
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getArtistShowDate.do")
+	public String getArtistShowDate(String id,Model model) {
+		model.addAttribute("showVO",boardService.getArtistShowDate(id));
+		return "board/artist/artistDetail.tiles";
+	}
 
 	/**
-	 * 정지윤 이벤트 리스트 메서드
-	 * 
+	 * 정지윤 
+	 * 이벤트 리스트 메서드
 	 * @param pageNo
 	 * @return
 	 */
