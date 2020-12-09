@@ -25,6 +25,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="nickname" property="artistVO.memberVO.nickName"/>
  	</resultMap>
  	
+ 	<!-- board resultmap 설정 -->
+	<resultMap type="showVO" id="showListRM">
+		<result property="artistVO.memberVO.id" column="id" />
+		<result property="artistVO.memberVO.nickName" column="nickname" />
+	</resultMap>
+	
+	<resultMap type="likeVO" id="likeListRM">
+		<result property="memberVO.id" column="id" />
+	</resultMap>
+	
+	<resultMap type="commentVO" id="commentListRM">
+		<result property="memberVO.id" column="id" />
+		<result property="showVO.showNo" column="showNo" />
+		<result property="memberVO.nickName" column="nickName" />
+	</resultMap>
+ 	
 <!-- 공지사항 총합 -김수민 -->
 <select id="getTotalNoticeCount" resultType="int">
 	select count(*) from os_notice
@@ -120,19 +136,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</insert>
 
 	<!-- 이동욱 시작 -->
-	<!-- board resultmap 설정 -->
-	<resultMap type="showVO" id="showListRM">
-		<result property="artistVO.memberVO.id" column="id" />
-		<result property="artistVO.memberVO.nickName" column="nickname" />
-	</resultMap>
-	<resultMap type="likeVO" id="likeListRM">
-		<result property="memberVO.id" column="id" />
-	</resultMap>
-	<resultMap type="commentVO" id="commentListRM">
-		<result property="memberVO.id" column="id" />
-		<result property="showVO.showNo" column="showNo" />
-		<result property="memberVO.nickName" column="nickName" />
-	</resultMap>
 	<!-- 공연일정글 전체 갯수 불러오는 sql -->
 	<select id="getTotalShowCount" resultType="int">
 		select count(*) from

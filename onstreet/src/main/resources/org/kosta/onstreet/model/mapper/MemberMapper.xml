@@ -31,6 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<result column="id" property="memberVO.id"/>
  	</resultMap>
  	
+ 	<!-- board resultmap 설정 -->
+	<resultMap type="showVO" id="showListRM">
+		<result property="artistVO.memberVO.id" column="id" />
+		<result property="artistVO.memberVO.nickName" column="nickname" />
+	</resultMap>
+ 	
  	
  	<!-- 권한 has-a -->
  	<resultMap type="authVO" id="memberAuth">
@@ -146,6 +152,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		GROUP BY id
 		HAVING id=#{value}
 	</select>
+	
+	<!-- 아티스트 공연 일정 -->
+ 	<select id="getArtistShowDate" resultMap="showListRM">
+ 		select s.show_title,s.show_date,m.id,s.show_no
+		from (select show_title, to_char(show_date,'yyyy"년" mm"월" dd"일"') as
+		show_date, id, show_no FROM os_show) s, os_member m
+		where m.id=s.id
+		and m.id=#{value}
+ 	</select>
 	
 	<!-- 팔로우리스트 삭제하기 정세희 -->
 	<delete id="removeFollowing" parameterType="followVO">

@@ -18,6 +18,11 @@
 	margin: 0 auto;
 	padding: 0;
 	list-style: none;
+	
+	
+}
+input[type=password]{
+	font-family: "맑은고딕";
 }
 
 #main{
@@ -37,7 +42,7 @@
 	z-index:3;
 	background-color: #d03535;
 	color: white;
-	font-family: MaplestoryOTF;
+	font-family: MaplestoryOTF!important;;
 }
 
 /* 로고 */
@@ -114,12 +119,12 @@
 }
 
 #header .navigation .loginbar{
-	width:20%;
+	width:30%;
 	height:100%;
 	float:right;
 }
 #header .navigation .loginbar a{
-	width:45%;
+	width:30%;
 	float:left;
 	text-align:center;
 	margin-top:20px;
@@ -180,6 +185,7 @@
 	background-color: #FAFAFA;
 	text-align: center;
 	margin-bottom: 50px;
+	font-family:JSDongkang-Regular;
 }
 
 #footer img {
@@ -194,7 +200,7 @@
 /* 메인페이지 -  비디오 */
 #mainVideo{
 	width:100%;
-	height:100vh;
+	height:92vh;
 	float:left;
 	position: relative;
 	overflow: hidden;
@@ -1041,6 +1047,11 @@
 	color:#fff;
 	text-decoration: none;
 }
+
+#registerResult img{
+	width:100%;
+}
+
 /* 이동욱 css */ 
 #showDetail img {
 width: 100%;
@@ -1183,58 +1194,24 @@ color: #31708f;
 
 /*공지시항리스트 UI 김수민 */
 #noticeList{
-	width:800px;
+	width:700px;
 	height:15%;
-	border-collapse: collapse;
-	border-top:2px solid #d1fffc;
-	border-bottom:2px solid #d1fffc;
+	border-collapse:collapse;
+	border:2px solid;
 	font-size:20px;
-	line-height: 1.5;
-	margin-top: 10px;
 }
 #noticeList tr th{
 	border:2px solid #d1fffc;
-	border-collapse:collapse;
 	text-align: center;
-	margin-bottom:20px;
-	font-size: 15px;
 	background-color: #d1fffc;
 }
 #noticeList tr td{
-	border-top:2px solid #d1fffc;
-	border-bottom:2px solid #d1fffc;
+	border:2px solid;
 	text-align: center;
-	border-color: #91fff0;
-}
-#noticeButton_1 input[type='submit']{
-	width: 50px;
-	height: 30px;
-	border:1px #0000a0 solid; 
-	background-color: #ffffff;
-	position: relative;
-	left: 80px;
-	margin-right: -950px;
-	margin-top: 10px;
-}
-#noticeButton_1 input[type='submit']:hover{
-	color:#ffffff;
-	background-color: rgba(0,0,225,1.0);
-}
-#noticeButton_2{
-	width: 50px;
-	height: 30px;
-	border:1px #ff1717 solid;
-	background-color: #ffffff;
-	position: relative;
-	left: 80px;
-	margin-top: 10px;
-	margin-left: -400px;
-}
-#noticeButton_2:hover{
-	color:#ffffff; 
-	background-color: rgba(225,0,0,1.0);
+	border-color: #57cfc7;
 }
 /*공지사항 상세보기 UI 김수민  */
+
 #noticeDetail{
 	width: 450px;
 	height: 200px;

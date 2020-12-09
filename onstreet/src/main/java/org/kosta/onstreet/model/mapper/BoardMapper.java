@@ -18,13 +18,45 @@ import org.kosta.onstreet.model.vo.ShowVO;
 
 @Mapper
 public interface BoardMapper {
-
+	
+	/**
+	 * 공지사항 리스트[페이징 카운트] - 김수민
+	 * @return
+	 */
 	int getTotalNoticeCount();
-   List<NoticeVO>  getNoticeList(PagingBean pagingBean);//공지사항 리스트 김수민
-   NoticeVO getNoticeDetail(String noticeNo);//공지사항 상세보기 :김수민
-   void addNotice(NoticeVO noticeVO);//공지사항 작성 :김수민
-   void updateNotice(NoticeVO noticeVO);//공지사항수정:김수민
-   void deleteNotice(String noticeNo);//공지사항 삭제 :김수민
+	
+	/**
+	 * 공지사항 리스트 - 김수민
+	 * @param pagingBean
+	 * @return
+	 */
+   List<NoticeVO>  getNoticeList(PagingBean pagingBean);
+   
+   /**
+    * 공지사항 상세보기 - 김수민
+    * @param noticeNo
+    * @return
+    */
+   NoticeVO getNoticeDetail(String noticeNo);
+   
+   /**
+    * 공지사항 작성 - 김수민
+    * @param noticeVO
+    */
+   void addNotice(NoticeVO noticeVO);
+   
+   /**
+    * 공지사항 수정 - 김수민
+    * @param noticeVO
+    */
+   void updateNotice(NoticeVO noticeVO);
+   
+   /**
+    * 공지사항 삭제 - 김수민
+    * @param noticeNo
+    */
+   void deleteNotice(String noticeNo);
+   
 	/**
 	 * 정지윤
 	 * 아티스트 수 불러오고 리스트 불러오기
@@ -55,52 +87,139 @@ public interface BoardMapper {
 	 */
 	void addEvent(EventVO eventVO);
 
-	//이동욱 시작
-	//공연일정글 전체개수 불러오는 메서드
+	/**
+	 * 공연 전체개수[페이징 카운트] - 이동욱
+	 * @return
+	 */
 	int getTotalShowCount();
-	//공연일정 전체 리스트 불러오는 메서드
+
+	/**
+	 * 공연 전체 리스트 불러오기 - 이동욱
+	 * @param pagingBean
+	 * @return
+	 */
 	List<ShowVO> getShowList(PagingBean pagingBean);
 
-	// 공연일정 상세보기
+	/**
+	 * 공연 상세보기 - 이동욱
+	 * @param showNo
+	 * @return
+	 */
 	ShowVO getShowDetail(String showNo);
-	// 댓글 리스트 불러오기
-	List<CommentVO> getCommentList(@Param("showNo")String showNo,@Param("pagingBean")PagingBean pagingBean);
-	// 댓글 총갯수 가져오기(페이징에 필요)
-	int getTotalCommentCount(String showNo);
-	// 댓글 등록하기
-	void addComment(CommentVO commentVO);
-	// 공연일정등록하기
+	
+	/**
+	 * 공연 등록 - 이동욱
+	 * @param showVO
+	 */
 	void addShow(ShowVO showVO);
-	// 공연일정 업데이트
+
+	/**
+	 * 공연 수정 - 이동욱
+	 * @param showVO
+	 */
 	void updateShow(ShowVO showVO);
-	// 공연삭제
+
+	/**
+	 * 공연 삭제 - 이동욱 
+	 * @param showNo
+	 */
 	void deleteShow(String showNo);
+	
+	/**
+	 * 공연일자 유효일 구하기 - 이동욱
+	 * @param showNo
+	 * @return
+	 */
+	int getDateValidity(String showNo);
 	
 	/**
 	 * 오늘의 공연 - 진용현
 	 * @return
 	 */
 	public	List<ShowVO> todayShow();
-	// 댓글수정
+	
+	/**
+	 * [공연]댓글 리스트 불러오기 - 이동욱
+	 * @param showNo
+	 * @param pagingBean
+	 * @return
+	 */
+	List<CommentVO> getCommentList(@Param("showNo")String showNo,@Param("pagingBean")PagingBean pagingBean);
+
+	/**
+	 * [공연]댓글 게시물별 갯수 불러오기[페이징 카운트] - 이동욱
+	 * @param showNo
+	 * @return
+	 */
+	int getTotalCommentCount(String showNo);
+
+	/**
+	 * [공연]댓글 등록하기 - 이동욱
+	 * @param commentVO
+	 */
+	void addComment(CommentVO commentVO);
+
+	/**
+	 * [공연]댓글 수정 - 이동욱
+	 * @param commentVO
+	 */
 	void updateComment(CommentVO commentVO);
-	// 댓글삭제
+	
+	/**
+	 * [공연]댓글 삭제 - 이동욱
+	 * @param commentNo
+	 */
 	void deleteComment(String commentNo);
-	// 좋아요 테이블에 추가
+	
+	/**
+	 * [공연]좋아요 추가 - 이동욱
+	 * @param likeVO
+	 */
 	void addLike(LikeVO likeVO);
-	// 좋아요 누른 사람들 아이디 리스트
+	
+	/**
+	 * [공연]좋아요 사람들 아이디 - 이동욱
+	 * @param showNo
+	 * @return
+	 */
 	ArrayList<String> getLikeListByShowNo(String showNo);
-	// 좋아요 유무 체크
+
+    /**
+	 * [공연]좋아요 유무 체크 - 이동욱 
+	 * @param likeVO
+	 * @return
+	 */
 	int likeCheck(LikeVO likeVO);
-	// 좋아요 테이블에서 제거
+	
+	/**
+	 * [공연]좋아요 제거 -이동욱
+	 * @param likeVO
+	 */
 	void minusLike(LikeVO likeVO);
-	// 좋아요 컬럼에서 -1
+	
+	/**
+	 * [공연]공연 테이블 좋아요 컬럼 - 1 - 이동욱
+	 * @param showNo
+	 */
 	void minusLikeCol(String showNo);
-	// 좋아요 컬럼에서 +1
+	
+	/**
+	 * [공연]공연 테이블 좋아요 컬럼 - +1 - 이동욱
+	 * @param showNo
+	 */
 	void addLikeCol(String showNo);
-	// 좋아요 수 가져오기
+	/**
+	 * [공연]좋아요 수 가져오기 - 이동욱
+	 * @param showNo
+	 * @return
+	 */
 	int getLikeCount(String showNo);
-	// 공연일자 유효일 구하기
-	int getDateValidity(String showNo);
+	
+	/**
+	 * [공연]오늘날짜 가져오기 - 이동욱
+	 * @return
+	 */
+	String getToday();
 	
 	/**
 	 *  추천 아티스트 아이디 가져오기 - 진용현
@@ -120,8 +239,6 @@ public interface BoardMapper {
 	 * @return
 	 */
 	public MemberVO getArtistRecommendationList(String id);
-	// 오늘날짜 가져오기
-	String getToday();
 	
 	/**
 	 * 검색 아티스트[카운트] - 진용현
