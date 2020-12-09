@@ -88,6 +88,7 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteNotice(noticeNo[i]);
        }
 	}
+	
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기

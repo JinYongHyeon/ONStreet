@@ -58,13 +58,13 @@ public interface BoardService {
      * @param noticeNo
      */
     void deleteNotice(String[] noticeNo);
-    
+
 	/**
 	 * 정지윤
 	 * 아티스트 리스트 불러오기
 	 */
 	ArtistListVO getArtistList(String pageNo);
-    
+	
 	/**
 	 * 정지윤
 	 * 이벤트 리스트 불러오기

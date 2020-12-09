@@ -268,6 +268,7 @@ public class MemberController {
 	public String getArtistDetail(String id,Model model) {
 		model.addAttribute("artistVO", memberService.findMemberById(id));
 		model.addAttribute("map", memberService.getArtistTemperture(id));
+		model.addAttribute("showVO", memberService.getArtistShowDate(id));
 		return "board/artist/artistDetail.tiles";
 	}
 	
