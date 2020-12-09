@@ -83,12 +83,14 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		}
 		
 		//아티스트인 경우 아티스트 승인조회
+		if(!member.getMemberVO().getId().equals("admin")) {
 		for(int i=0;i<list.size();i++) {
 			if(list.get(i).getAuthName().equals("ROLE_ARTIST")) {
 				if(memberService.artistCheckDate(id) == null) {
 					throw new UsernameNotFoundException("미승인 아티스트입니다.");
 				}
 			}
+		}
 		}
 		
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();

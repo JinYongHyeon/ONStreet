@@ -99,7 +99,7 @@ public class MemberController {
 	public String registerMember(MemberVO mvo,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
 		if(!mvo.getProfileFile().getOriginalFilename().equals(""))
-		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().indexOf(".")));
+		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().lastIndexOf(".")));
 		fileUploadBean.profileUpload(mvo, request);
 		memberService.registerMember(mvo);
 		return "redirect:registerMemberResult.do";
@@ -116,7 +116,7 @@ public class MemberController {
 	public String registerArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
 		FileUploadBean fileUploadBean = new FileUploadBean();
 		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().lastIndexOf(".")));
 		fileUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.registerArtist(artistVO);
@@ -172,7 +172,7 @@ public class MemberController {
 	public String updateMember(MemberVO memberVO,HttpServletRequest request) {
 		FileUploadBean fileaUploadBean = new FileUploadBean();
 		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().lastIndexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		memberService.updateMember(memberVO);
 		
@@ -191,7 +191,7 @@ public class MemberController {
 	public String updateArtist(MemberVO memberVO,ArtistVO artistVO,HttpServletRequest request) {
 		FileUploadBean fileaUploadBean = new FileUploadBean();
 		if(!memberVO.getProfileFile().getOriginalFilename().equals(""))
-		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().indexOf(".")));
+		memberVO.setProfile(System.currentTimeMillis()+memberVO.getProfileFile().getOriginalFilename().substring(memberVO.getProfileFile().getOriginalFilename().lastIndexOf(".")));
 		fileaUploadBean.profileUpload(memberVO, request);
 		artistVO.setMemberVO(memberVO);
 		memberService.updateArtist(artistVO);
@@ -207,7 +207,16 @@ public class MemberController {
 		
 		return "redirect:mypageForm.do";
 	}
-	
+	/**
+	 * 회원수정 비밀번호폼 - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("passwordUpdateForm.do")
+	public String passwordUpdateForm() {
+		return "member/passwordUpdateForm.tiles";
+	}
+
 	/**
 	 * 로그인 실패 - 진용현
 	 * @return
@@ -255,6 +264,7 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("removeMember.do")
 	public int removeMember(String password) {
+		System.out.println(password+"ㅁㅁㅁㅁㅁ");
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int pointcount=memberService.removeMember(password,avo);
 		return pointcount;
@@ -321,7 +331,6 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("artistCheckEventList.do")
 	public ModelAndView artistCheckEventList(String pageNo) {
-		System.out.println(pageNo);
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
 		return new ModelAndView("member/artist/artistCheckEventList.tiles","eventVO",memberService.artistCheckEventList(id,pageNo));

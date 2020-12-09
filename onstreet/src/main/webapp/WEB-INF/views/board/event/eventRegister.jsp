@@ -48,6 +48,16 @@
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}
+			
+			if($("#eventDate").val() == "") {
+				alert("이벤트 날짜를 선택해주세요.");
+				return;
+			}
+			
+			if($("#eventImageFile").val() == "") {
+				alert("배너사진을 선택해주세요.");
+				return;
+			}
 
 			oEditors.getById["eventContent"].exec("UPDATE_CONTENTS_FIELD", []);
 
@@ -165,8 +175,30 @@
 				
 			});
 		
+		let today = new Date();   
+
+		let year = today.getFullYear(); // 년도
+		let month = today.getMonth() + 1;  // 월
+		let date = today.getDate();  // 날짜
+		if(date<10) {
+			date='0'+date;
+		}
+		$("#eventDate").attr('min',year+'-'+month+'-'+date);
 		
-		
+		$("#eventImageFile").change(function() {
+			var file  = this.files[0];
+		    var _URL = window.URL || window.webkitURL;
+		    var img = new Image();
+		    
+		    img.src = _URL.createObjectURL(file);
+		    img.onload = function() {
+		        
+		        if(img.width != 800 || img.height != 150) {
+		            alert("이미지 가로 800px, 세로 150px로 맞춰서 올려주세요.");
+		            $("#eventImageFile").val("");
+		        } 
+		    }
+		});
 	});
 </script>
 <body>
@@ -206,8 +238,8 @@
 <sec:csrfInput />
 제목  <input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle"> <br><br>
 <textarea rows="25" cols="170" name="eventContent" id="eventContent"></textarea> <br><br>
-이벤트 날짜  <input type="date" name="eventDate" required="required"> 
-<input type="file" name="eventImageFile" id="eventImage"><br><br>
+이벤트 날짜  <input type="date" name="eventDate" required="required" id="eventDate"> 
+<input type="file" name="eventImageFile" id="eventImageFile" accept="image/*"><br><br>
 <input type="button" id="postWrite" value="등록하기"><br><br>
 </form>
 </div>

@@ -11,7 +11,7 @@ $(document).ready(function(){
 	
 	//로그인폼 열기 진용현
 	$(document).on("click","#loginFormBtn",function(){
-		$("#login").show();
+		$("#login").css("display","block");
 	});
 	
 	//로그인폼 창닫기 진용현 
@@ -22,6 +22,7 @@ $(document).ready(function(){
 	var idCoin = 0;
 	var nickCoin = 0;
 	var telCoin = 0;
+	var passCoin = 0;
 	$(document).ready(function(){
 		// 아이디 중복 진용현
 		$("#registerId").keyup(function(){
@@ -48,6 +49,18 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
+		//비밀번호 체크 - 진용현
+		$(document).on("keyup","#registerForm input[type=password]",function(){
+			if($(this).val().length<6 || $(this).val().length>14){
+				$("#passCheck").text("6자 이상 14자 이하로 입력해주세요").css("color","#ff0000");
+				passCoin = 0;
+			}else{
+				$("#passCheck").text("사용 가능한 비밀번호입니다.").css("color","#0000ff");
+				passCoin = 1;
+			}
+		});
+		
 		// 회원가입 체크 - 진용현
 		$("#registerForm").submit(function(){
 			var flag = false;
@@ -61,6 +74,13 @@ $(document).ready(function(){
 			if(password === passCheck){
 				flag  = true;
 			}
+			
+			if(passCoin == 0){
+				alert("비밀번호 다시 입력해주세요.");
+				$("#registerForm input[name=password]").focus();
+				return false;
+			}
+			
 			if(flag === false){
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#registerForm input[name=password]").focus();
@@ -136,6 +156,7 @@ $(document).ready(function(){
 			}
 		});
 		
+		
 		//이미지 확장자 체크 - 진용현
 		$(document).on("change","#registerForm input[name=profileFile],#updateForm input[name=profileFile]",function(){
 			//확장자 체크
@@ -191,6 +212,27 @@ $(document).ready(function(){
 				return false;
 			}
 	});
+	
+	$("#passwordUpdateForm").submit(function(){
+	var elementToken = document.querySelector('meta[name="_csrf"]');
+	var token = elementToken && elementToken.getAttribute("content");
+	var elementHeader = document.querySelector('meta[name="_csrf_header"]');
+	var header = elementHeader && elementHeader.getAttribute("content");
+	
+	$.ajax({
+		type:"post",
+			url:"removeMember.do",
+			dataType:"text",
+			data:"password="+$("#passwordUpdateForm input[name=password]").val(),
+			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+		    xhr.setRequestHeader(header, token);
+			},
+			success:function(event){
+			alert(event)
+		}
+	});
+	return false;
+});
 		
 });//ready end
 

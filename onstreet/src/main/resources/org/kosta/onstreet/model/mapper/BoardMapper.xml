@@ -102,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="getArtistList" resultMap="artistList" parameterType="pagingBean">
  		SELECT m.id, m.nickname, m.profile
  		FROM(SELECT row_number() over(order by check_date desc) as rnum, check_date, id
- 		FROM os_artist WHERE check_date is not null) t, os_member m, os_auth a
+ 		FROM os_artist WHERE check_date is not null AND id NOT IN ('admin')) t, os_member m, os_auth a
 		WHERE m.id=a.id AND m.id=t.id 
 		AND a.auth_name='ROLE_ARTIST'
 		AND m.remove_user_date is null

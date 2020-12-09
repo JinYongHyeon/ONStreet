@@ -177,8 +177,8 @@ public class BoardController {
 	}
 
 	/**
-	 * 정지윤 이벤트 등록
-	 * 
+	 * 정지윤 
+	 * 이벤트 등록 폼
 	 * @param pageNo
 	 * @return
 	 */
@@ -187,7 +187,13 @@ public class BoardController {
 	public String addEventForm() {
 		return "board/event/eventRegister.tiles";
 	}
-
+	
+	/**
+	 * 정지윤 이벤트 등록
+	 * @param eventVO
+	 * @param request
+	 * @return
+	 */
 	@Secured("ROLE_ARTIST")
 	@PostMapping("addEvent.do")
 	public String addEvent(EventVO eventVO, HttpServletRequest request) {
@@ -195,13 +201,25 @@ public class BoardController {
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		FileUploadBean eventFileUploadBean = new FileUploadBean();
 		eventVO.setArtistVO(artistVO);
-		if (!eventVO.getEventImageFile().getOriginalFilename().equals(""))
-			eventVO.setEventImage(System.currentTimeMillis() + eventVO.getEventImageFile().getOriginalFilename()
-					.substring(eventVO.getEventImageFile().getOriginalFilename().indexOf(".")));
+		if (!eventVO.getEventImageFile().getOriginalFilename().equals("")) {
+			eventVO.setEventImage(System.currentTimeMillis() + eventVO.getEventImageFile().getOriginalFilename().substring(eventVO.getEventImageFile().getOriginalFilename().lastIndexOf(".")));
+		}
 		eventFileUploadBean.eventBannerUpload(eventVO, request);
-
+		System.out.println(eventVO);
 		boardService.addEvent(eventVO);
-		return "redirect:getEventDetail.do?eventNo=" + eventVO.getEventNo();
+		return "redirect:checkWaitEvent.do?eventNo=" + eventVO.getEventNo();
+	}
+	
+	/**
+	 * 정지윤 
+	 * 이벤트 등록 폼
+	 * @param pageNo
+	 * @return
+	 */
+	@Secured("ROLE_ARTIST")
+	@RequestMapping("checkWaitEvent.do")
+	public String checkWaitEvent() {
+		return "board/event/checkWaitEvent.tiles";
 	}
 
 	/**

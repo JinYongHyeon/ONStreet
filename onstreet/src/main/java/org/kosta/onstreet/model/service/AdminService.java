@@ -21,6 +21,7 @@ public interface AdminService {
 	 * 회원 리스트 불러오기
 	 */
 	MemberListVO getMemberList(String pageNo);
+	
 	/**
 	 * 정지윤
 	 * 회원(ROLE_ARTIST) 리스트 불러오기
@@ -28,6 +29,12 @@ public interface AdminService {
 	 * @return
 	 */
 	MemberListVO getMemberArtistList(String pageNo);
+	
+	/**
+	 * 정지윤
+	 * 탈퇴 회원 리스트 불러오기
+	 */
+	MemberListVO getRemoveMemberList(String pageNo);
 	
 	/**
 	 * 정지윤
@@ -49,6 +56,12 @@ public interface AdminService {
 	
 	/**
 	 * 정지윤
+	 * 아티스트 반려
+	 */
+	void uncheckArtist(String[] uncheckArtist);
+	
+	/**
+	 * 정지윤
 	 * 미승인 이벤트 리스트 불러오기
 	 */
 	EventListVO getCheckEventList(String pageNo);
@@ -58,6 +71,12 @@ public interface AdminService {
 	 * 이벤트 승인
 	 */
 	void checkEvent(String[] checkEvent);
+	
+	/**
+	 * 정지윤 
+	 * 이벤트 반려
+	 */
+	void uncheckEvent(String[] uncheckEvent);
 	
 	/**
 	 * 정지윤

@@ -23,10 +23,10 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="password" required="required" placeholder="비밀번호 입력해주세요"></td>
+				<td><input type="password" name="password" required="required" placeholder="비밀번호 입력해주세요"><span id="passCheck"></span></td>
 			</tr>
 			<tr>
-				<th>비밀번호재확인</th>
+				<th>비밀번호재확인</th>	
 				<td><input type="password" name="passwordCheck" required="required" placeholder="비밀번호 재입력해주세요"></td>
 			</tr>
 			<tr>
