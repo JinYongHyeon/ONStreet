@@ -21,6 +21,12 @@ public interface AdminService {
 	 * 회원 리스트 불러오기
 	 */
 	MemberListVO getMemberList(String pageNo);
+	/**
+	 * 정지윤
+	 * 회원(ROLE_ARTIST) 리스트 불러오기
+	 * @param pageNo
+	 * @return
+	 */
 	MemberListVO getMemberArtistList(String pageNo);
 	
 	/**

@@ -24,35 +24,15 @@ public class MemberController {
 	private MemberService memberService;
 	
 	/**
-	 * 회원가입폼[관객] - 진용현
+	 * 회원가입 이용약관 - 진용현
+	 * @param url
+	 * @param model
 	 * @return
 	 */
-	@RequestMapping("registerMemberForm.do")
-	public String registerMemberForm() {
-
-		return "member/user/registerMemberForm.tiles";
-	}
-	
-	/**
-	 * 로그인 실패 - 진용현
-	 * @return
-	 */
-	@RequestMapping("login_fail.do")
-	public String loginFail() {
-		return "member/login-fail";
-	}
-	
-	//세희시작 //관객,아티스트 마이페이지
-	@RequestMapping("mypageForm.do")
-	public ModelAndView mypageForm() {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//System.out.println(avo==null);
-		if(avo.getCheckDate() == null) {
-		return new ModelAndView("member/user/memberMypage.tiles");	
-		}else {
-		return new ModelAndView("member/artist/artistMypage.tiles");	
-			
-		}
+	@RequestMapping("checkDocument.do")
+	public String checkDocument(String url,Model model) {
+		model.addAttribute("url", url);
+		return "member/checkDocument.tiles";
 	}
 	
 	/**
@@ -65,18 +45,22 @@ public class MemberController {
 	}
 	
 	/**
-	 * 회원가입[관객] - 진용현
-	 * @param memberVO
+	 * 회원가입폼[관객] - 진용현
 	 * @return
 	 */
-	@PostMapping("registerMember.do")
-	public String registerMember(MemberVO mvo,HttpServletRequest request) {
-		FileUploadBean fileUploadBean = new FileUploadBean();
-		if(!mvo.getProfileFile().getOriginalFilename().equals(""))
-		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().indexOf(".")));
-		fileUploadBean.profileUpload(mvo, request);
-		memberService.registerMember(mvo);
-		return "redirect:registerMemberResult.do";
+	@RequestMapping("registerMemberForm.do")
+	public String registerMemberForm() {
+
+		return "member/user/registerMemberForm.tiles";
+	}
+	
+	/**
+	 * 회원가입폼[아티스트] - 진용현
+	 * @return
+	 */
+	@RequestMapping("registerArtistForm.do")
+	public String registerMemberArtist() {
+		return "member/artist/registerArtistForm.tiles";
 	}
 	
 	/**
@@ -105,32 +89,23 @@ public class MemberController {
 	public int nickName(String nickName) {
 		return memberService.nickNameCheck(nickName);
 	}
-	//회원탈퇴폼으로 보내는메서드 정세희
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("removeMemberForm.do")
-	public ModelAndView removeMemberForm() {
-		return new ModelAndView("member/user/removeMemberForm.tiles");
-	}
 	
-	//회원탈퇴 메서드 정세희
-	@Secured("ROLE_MEMBER")
-	@ResponseBody
-	@PostMapping("removeMember.do")
-	public int removeMember(String password) {
-		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		int pointcount=memberService.removeMember(password,avo);
-		return pointcount;
-		}
-		
 	/**
-	 * 회원가입폼[아티스트] - 진용현
+	 * 회원가입[관객] - 진용현
+	 * @param memberVO
 	 * @return
 	 */
-	@RequestMapping("registerArtistForm.do")
-	public String registerMemberArtist() {
-		return "member/artist/registerArtistForm.tiles";
+	@PostMapping("registerMember.do")
+	public String registerMember(MemberVO mvo,HttpServletRequest request) {
+		FileUploadBean fileUploadBean = new FileUploadBean();
+		if(!mvo.getProfileFile().getOriginalFilename().equals(""))
+		mvo.setProfile(System.currentTimeMillis()+mvo.getProfileFile().getOriginalFilename().substring(mvo.getProfileFile().getOriginalFilename().indexOf(".")));
+		fileUploadBean.profileUpload(mvo, request);
+		memberService.registerMember(mvo);
+		return "redirect:registerMemberResult.do";
 	}
 	
+
 	/**
 	 * 회원가입[아티스트] - 진용현
 	 * @param memberVO
@@ -149,15 +124,21 @@ public class MemberController {
 	}
 	
 	/**
-	 * 이용약관 - 진용현
-	 * @param url
-	 * @param model
+	 * 회원가입완료[아티스트] - 진용현
 	 * @return
 	 */
-	@RequestMapping("checkDocument.do")
-	public String checkDocument(String url,Model model) {
-		model.addAttribute("url", url);
-		return "member/checkDocument.tiles";
+	@RequestMapping("registerMemberResult.do")
+	public String registerMemberResult() {
+		return "member/user/registerMemberResult.tiles";
+	}
+	
+	/**
+	 * 회원가입완료[아티스트] - 진용현
+	 * @return
+	 */
+	@RequestMapping("registerArtistResult.do")
+	public String registerArtistResult() {
+		return "member/artist/registerArtistResult.tiles";
 	}
 	
 	/**
@@ -179,30 +160,6 @@ public class MemberController {
 	public String updateArtistForm() {
 		return "member/artist/updateArtistForm.tiles";
 	}
-
-	/**
-	 * 정지윤
-	 * 아티스트 상세정보 불러오기
-	 */
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("getArtistDetail.do")
-	public String getArtistDetail(String id,Model model) {
-		model.addAttribute("artistVO", memberService.findMemberById(id));
-		model.addAttribute("map", memberService.getArtistTemperture(id));
-		return "board/artist/artistDetail.tiles";
-	}
-	
-	/**
-	 * 정지윤
-	 * 팔로잉 등록
-	 */
-	@Secured("ROLE_MEMBER")
-	@ResponseBody
-	@RequestMapping("registerFollowing.do")
-	public int registerFollowing(FollowVO followVO) {
-		int count = memberService.registerFollowing(followVO);
-		return count;
-	}
 	
 	/**
 	 * 회원수정[관객] - 진용현
@@ -223,30 +180,6 @@ public class MemberController {
 		if(memberVO.getProfileFile().getOriginalFilename().equals(""))memberVO.setProfile(avo.getMemberVO().getProfile());
 		avo.setMemberVO(memberVO);
 		return "redirect:mypageForm.do";
-	}
-	
-	
-	
-	
-	
-		
-	
-	/**
-	 * 회원가입완료[아티스트] - 진용현
-	 * @return
-	 */
-	@RequestMapping("registerMemberResult.do")
-	public String registerMemberResult() {
-		return "member/user/registerMemberResult.tiles";
-	}
-	
-	/**
-	 * 회원가입완료[아티스트] - 진용현
-	 * @return
-	 */
-	@RequestMapping("registerArtistResult.do")
-	public String registerArtistResult() {
-		return "member/artist/registerArtistResult.tiles";
 	}
 	
 	/**
@@ -275,7 +208,86 @@ public class MemberController {
 		return "redirect:mypageForm.do";
 	}
 	
-	//팔로우리스트 불러오기 정세희 
+	/**
+	 * 로그인 실패 - 진용현
+	 * @return
+	 */
+	@RequestMapping("login_fail.do")
+	public String loginFail() {
+		return "member/login-fail";
+	}
+	
+	
+	
+	/**
+	 * 마이페이지[관객,아티스트] - 정세희
+	 * @return
+	 */
+	@RequestMapping("mypageForm.do")
+	public ModelAndView mypageForm() {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//System.out.println(avo==null);
+		if(avo.getCheckDate() == null) {
+		return new ModelAndView("member/user/memberMypage.tiles");	
+		}else {
+		return new ModelAndView("member/artist/artistMypage.tiles");	
+			
+		}
+	}
+	
+	/**
+	 * 회원탈퇴폼 - 정세희
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("removeMemberForm.do")
+	public ModelAndView removeMemberForm() {
+		return new ModelAndView("member/user/removeMemberForm.tiles");
+	}
+	
+	/**
+	 * 회원탈퇴 - 정세희
+	 * @param password
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@PostMapping("removeMember.do")
+	public int removeMember(String password) {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int pointcount=memberService.removeMember(password,avo);
+		return pointcount;
+		}
+		
+	/**
+	 * 정지윤
+	 * 아티스트 상세정보 불러오기
+	 */
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("getArtistDetail.do")
+	public String getArtistDetail(String id,Model model) {
+		model.addAttribute("artistVO", memberService.findMemberById(id));
+		model.addAttribute("map", memberService.getArtistTemperture(id));
+		return "board/artist/artistDetail.tiles";
+	}
+	
+	/**
+	 * 정지윤
+	 * 팔로잉 등록
+	 */
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@RequestMapping("registerFollowing.do")
+	public int registerFollowing(FollowVO followVO) {
+		int count = memberService.registerFollowing(followVO);
+		return count;
+	}
+	
+	/**
+	 * 내 팔로우 리스트 - 정세희
+	 * @param pageNo
+	 * @return
+	 */
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("followingList.do")
 	public ModelAndView getfollowingList(String pageNo) {
@@ -286,7 +298,11 @@ public class MemberController {
 	}
 	
 	
-	//팔로우 선택 삭제 정세희
+	/**
+	 * 내 팔로우 삭제 - 정세희
+	 * @param fvo
+	 * @return
+	 */
 	@Secured("ROLE_MEMBER")
 	@PostMapping("removeFollowing.do")
 	public ModelAndView removeFollowing(FollowVO fvo) {
@@ -296,7 +312,11 @@ public class MemberController {
 		
 	}
 	
-	//이벤트승인현황 정세희
+	/**
+	 * 이벤트 승인현황 - 정세희
+	 * @param pageNo
+	 * @return
+	 */
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("artistCheckEventList.do")
 	public ModelAndView artistCheckEventList(String pageNo) {

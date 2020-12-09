@@ -30,10 +30,11 @@ import org.springframework.stereotype.Service;
 public class BoardServiceImpl implements BoardService {
 
 	@Resource
-private BoardMapper boardMapper;
+	private BoardMapper boardMapper;
 
-	//김수민시작
-	//공지사항리스트불러오기
+	/**
+	 * 공지사항 리스트불러오기 -김수민
+	 */
 	@Override
 	public NoticeListVO getNoticeList(String pageNo) {
 		int totalNoticeCount=boardMapper.getTotalNoticeCount();
@@ -46,21 +47,41 @@ private BoardMapper boardMapper;
 		NoticeListVO  list=new NoticeListVO(boardMapper.getNoticeList(pagingBean),pagingBean);
 		return list;
 	}
-	//공지사항 상세사항:김수민
+	
+	/**
+	 * 공지사항 총합게시물[페이징 카운트] - 김수민
+	 */
+	@Override
+	public int getTotalNoticeCount() {
+		return boardMapper.getTotalNoticeCount();
+	}
+	
+	/**
+	 * 공지사항 상세사항 - 김수민
+	 */
 	@Override
 	public NoticeVO getNoticeDetail(String noticeNo) {
 		return boardMapper.getNoticeDetail(noticeNo);
 	}
-	//공지사항 등록:김수민
+	
+	/**
+	 * 공지사항 등록 - 김수민
+	 */
 	@Override
 	public void addNotice(NoticeVO noticeVO) {
 		boardMapper.addNotice(noticeVO);
 	}
-	//공지사항 수정 :김수민
+	
+	/**
+	 * 공지사항 수정 - 김수민
+	 */
 	public void updateNotice(NoticeVO noticeVO) {
 		boardMapper.updateNotice(noticeVO);
 	}
-	//공지사항 삭제:김수민
+	
+	/**
+	 * 공지사항 삭제 - 김수민
+	 */
 	public void deleteNotice(String[] noticeNo) {
        for(int i=0; i<noticeNo.length; i++) {
     	   //System.out.println(noticeNo[i]);
@@ -131,8 +152,9 @@ private BoardMapper boardMapper;
 		boardMapper.addEvent(eventVO);
 	}
 
-	//이동욱시작
-	//전체리스트 불러오는 메서드
+	/**
+	 * 전체 공연리스트 불러오기 - 이동욱
+	 */
 	@Override
 	public ShowListVO getShowList(String pageNo) {
 		int showTotalCount = boardMapper.getTotalShowCount();
@@ -144,61 +166,56 @@ private BoardMapper boardMapper;
 		ShowListVO showListVO =new ShowListVO(boardMapper.getShowList(pagingBean),pagingBean);
 		return showListVO;
 	}
-	// 전체공연 갯수 불러오기(페이징에 필요)
+
+	/**
+	 * 전체공연 갯수 불러오기[페이징 카운트] - 이동욱
+	 */
 	@Override
 	public int getTotalShowCount() {
 		return boardMapper.getTotalShowCount();
 	}
-	// 공연일정 상세보기
+	
+	/**
+	 * 공연일정 상세보기 - 이동욱
+	 */
 	@Override
 	public ShowVO getShowDetail(String showNo) {
 		return boardMapper.getShowDetail(showNo);
 	}
-	//공지사항 총합게시물 :김수민
-	@Override
-	public int getTotalNoticeCount() {
-		return boardMapper.getTotalNoticeCount();
-	}
-	// 댓글 리스트 불러오기
-	@Override
-	public CommentListVO getCommentList(String showNo, String pageNo) {
-		int commentTotalCount = boardMapper.getTotalCommentCount(showNo);
-		PagingBean pagingBean = null;
-		if(pageNo==null)
-			pagingBean = new PagingBean(commentTotalCount);
-		else 
-			pagingBean	=new PagingBean(commentTotalCount, Integer.parseInt(pageNo));
-		CommentListVO commListVO =new CommentListVO(boardMapper.getCommentList(showNo, pagingBean),pagingBean);
-		return commListVO;
-	}
-	// 댓글 게시물별 갯수불러오기
-	@Override
-	public int getTotalCommnetCount(String showNo) {
-		return boardMapper.getTotalCommentCount(showNo);
-	}
-	// 댓글등록하기
-	@Override
-	public void addComment(CommentVO commentVO) {
-		boardMapper.addComment(commentVO);
-	}
-	// 공연일정 등록하기
+	
+	/**
+	 *  공연일정 등록하기 - 이동욱
+	 */
 	@Override
 	public void addShow(ShowVO showVO) {
 		boardMapper.addShow(showVO);
 	}
 	// 공연일정 업데이트
+	/**
+	 * 공연일정 수정 - 이동욱
+	 */
 	@Override
 	public void updateShow(ShowVO showVO) {
 		boardMapper.updateShow(showVO);
 	}
-	// 공연삭제 메서드
+	/**
+	 * 공연삭제 - 이동욱
+	 */
 	@Override
 	public void deleteShow(String showNo) {
 		boardMapper.deleteShow(showNo);
 	}
 	
 	/**
-	 * 오늘의 공연 - 진용현
+	 * 공연일자 유효일 구하기 -이동욱
+	 */
+	@Override
+	public int getDateValidity(String showNo) {
+		return boardMapper.getDateValidity(showNo);
+	}
+	
+	/**
+	 *[메인] 오늘의 공연 - 진용현
 	 */
 	@Override
 	public Set<ShowVO> todayShow() {
@@ -211,49 +228,101 @@ private BoardMapper boardMapper;
 			set.add(list.get(num));
 		}
 		return set;
-}
-	// 댓글 수정
+	}
+	
+	
+	/**
+	 * [공연]댓글 리스트 불러오기 - 이동욱
+	 */
+	@Override
+	public CommentListVO getCommentList(String showNo, String pageNo) {
+		int commentTotalCount = boardMapper.getTotalCommentCount(showNo);
+		PagingBean pagingBean = null;
+		if(pageNo==null)
+			pagingBean = new PagingBean(commentTotalCount);
+		else 
+			pagingBean	=new PagingBean(commentTotalCount, Integer.parseInt(pageNo));
+		CommentListVO commListVO =new CommentListVO(boardMapper.getCommentList(showNo, pagingBean),pagingBean);
+		return commListVO;
+	}
+	
+	/**
+	 * [공연]댓글 게시물별 갯수불러오기[페이징 카운트] - 이동욱
+	 */
+	@Override
+	public int getTotalCommnetCount(String showNo) {
+		return boardMapper.getTotalCommentCount(showNo);
+	}
+	
+	/**
+	 * [공연]댓글 작성 - 이동욱
+	 */
+	@Override
+	public void addComment(CommentVO commentVO) {
+		boardMapper.addComment(commentVO);
+	}
+	
+	/**
+	 * [공연]댓글 수정 - 이동욱
+	 */
 	@Override
 	public void updateComment(CommentVO commentVO) {
 		boardMapper.updateComment(commentVO);
 	}
-	// 댓글 삭제
+	/**
+	 * [공연]댓글 삭제 - 이동욱
+	 */
 	@Override
 	public void deleteComment(String commentNo) {
 		boardMapper.deleteComment(commentNo);
 	}
-	// 좋아요 추가
+	
+	/**
+	 * [공연]좋아요 추가 - 이동욱
+	 */
 	@Override
 	public void addLike(LikeVO likeVO) {
 		boardMapper.addLike(likeVO);
 		boardMapper.addLikeCol(likeVO.getshowNo());
 	}
-	// 좋아요한 사람들 아이디
+	/**
+	 * [공연]좋아요한 사람들 아이디 - 이동욱
+	 */
 	@Override
 	public ArrayList<String> getLikeListByShowNo(String showNo) {
 		return boardMapper.getLikeListByShowNo(showNo);
 	}
-	// 좋아요 유무 체크
+	/**
+	 * [공연]좋아요 유무 체크 - 이동욱
+	 */
 	@Override
 	public int likeCheck(LikeVO likeVO) {
 		return boardMapper.likeCheck(likeVO);
 	}
-	// 좋아요 제거
+	/**
+	 * [공연]좋아요 제거 - 이동욱
+	 */
 	@Override
 	public void minusLike(LikeVO likeVO) {
 		boardMapper.minusLike(likeVO);
 		boardMapper.minusLikeCol(likeVO.getshowNo());
 	}
-	// 좋아요 수 가져오기
+	/**
+	 * [공연]좋아요 수 가져오기 - 이동욱
+	 */
 	@Override
 	public int getLikeCount(String showNo) {
 		return boardMapper.getLikeCount(showNo);
 	}
-	// 공연일자 유효일 구하기
+	
+	/**
+	 * [공연]오늘날짜 가져오기 - 이동욱
+	 */
 	@Override
-	public int getDateValidity(String showNo) {
-		return boardMapper.getDateValidity(showNo);
+	public String getToday() {
+		return boardMapper.getToday();
 	}
+	
 	
 	/**
 	 * 추천아티스트 - 진용현 
@@ -338,9 +407,4 @@ private BoardMapper boardMapper;
 		return showListVO;
 	}
 	
-	// 오늘날짜 가져오기
-	@Override
-	public String getToday() {
-		return boardMapper.getToday();
-	}
 }

@@ -19,6 +19,12 @@ public class HomeController {
 		model.addAttribute("todayShow",boardService.todayShow());
 		return "index.tiles";
 	}
+	
+	@RequestMapping("loginForm.do")
+	public String loginForm() {
+		return "member/login.tiles";
+	}
+	
 	@RequestMapping("error.do")
 	public String error() {
 		return "/error/error";
