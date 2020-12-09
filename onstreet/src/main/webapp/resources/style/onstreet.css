@@ -1206,16 +1206,18 @@ color: #31708f;
 	text-align: center;
 	border-color: #91fff0;
 }
+
 #noticeButton_1 input[type='submit']{
 	width: 50px;
 	height: 30px;
 	border:1px #0000a0 solid; 
 	background-color: #ffffff;
 	position: relative;
-	left: 80px;
-	margin-right: 1700px;
+	float: right;
+	right: 560px;
 	margin-top: 10px;
 }
+
 #noticeButton_1 input[type='submit']:hover{
 	color:#ffffff;
 	background-color: rgba(0,0,225,1.0);
@@ -1226,14 +1228,24 @@ color: #31708f;
 	border:1px #ff1717 solid;
 	background-color: #ffffff;
 	position: relative;
-	left: 80px;
+	float: right;
+	right: 550px;
 	margin-top: 10px;
-	margin-left: -400px;
 }
+
 #noticeButton_2:hover{
 	color:#ffffff; 
 	background-color: rgba(225,0,0,1.0);
 }
+
+.pagination{
+    display: block;
+    text-align: center;
+}
+.pagination>li>a{
+	float: none;
+}
+
 /*공지사항 상세보기 UI 김수민  */
 #noticeDetail{
 	width: 450px;
@@ -1253,4 +1265,11 @@ color: #31708f;
 	font-size: 15px;
 	border-collapse: collapse;
 	border: 2px  solid;
+}
+#noticeDetailButton{
+	position: relative;
+	float: right;
+	right: 650px;
+	margin-top: 10px;
+	border: 1px solid #d03535;
 }

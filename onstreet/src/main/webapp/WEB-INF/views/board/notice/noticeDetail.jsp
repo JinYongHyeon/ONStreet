@@ -5,7 +5,7 @@
 <div class="col-sm-12">
 <table id="noticeDetail">
 <tr>
-<th colspan="1">번호:${requestScope.nvo.noticeNo}</th>
+<th>번호:${requestScope.nvo.noticeNo}</th>
 <th>제목:${requestScope.nvo.noticeTitle}</th>
 </tr>
 <tr>
@@ -13,14 +13,14 @@
 </tr>
 <tr>
 <td colspan="5" class="content">
-<pre>작성내용:${requestScope.nvo.noticeContent}</pre>
+<span>작성내용:${requestScope.nvo.noticeContent}</span>
 </td>
 </tr>
 <tr>
 <td colspan="2">작성자닉네임:${requestScope.nvo.memberVO.nickName}</td>
 </tr>
 </table>
-<button form="nopdateNoticeForm" type="submit">수정</button>
+<button form="nopdateNoticeForm" type="submit" id="noticeDetailButton">수정</button>
 <form action="updateNoticeForm.do" id="nopdateNoticeForm" method="get">
 <input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
 </form>
