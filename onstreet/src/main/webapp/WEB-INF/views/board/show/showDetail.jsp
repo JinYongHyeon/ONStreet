@@ -52,7 +52,7 @@ $(function(){
 		         $("#commentDelete"+data[2]).hide();
 		         var html = "<form action='updateComment.do' method='post' id='commentUpdateForm'>";
 		            html += '<sec:csrfInput/>';
-		            html += "<textarea id='commentContent' name='commentContent' style='width: 440px; height: 60px' rows='3' cols='30' maxlength='50' placeholder='수정할 댓글을 입력하세요'></textarea>";
+		            html += "<textarea id='commentContent' name='commentContent' rows='3' cols='30' maxlength='50' placeholder='수정할 댓글을 입력하세요'></textarea>";
 		            html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}' id='updateShowNo'>";
 		            html+= "<input type='hidden' name='commentNo' value="+data[1]+" id='updateCommentNo'>";
 		            html+= "<span id='commentUpdateCheckResult'></span>/50";
@@ -130,62 +130,37 @@ $(function(){
 
 });
 </script>
-<br><br>
+<!-- <br><br> -->
 <c:set var="svo" value="${requestScope.svo}" />
-<div style="float: left; width: 15%; height: 100px"></div>
-<div style="float: left; width: 38%;">
-<table border="1" id="showDetail" style="width: 100%; height: 100%">
-		<tr>
-			<td>작성자</td><td>${svo.artistVO.memberVO.nickName}</td>
-		</tr>
-		<tr>
-			<td>작성일시</td><td>${svo.showWriteDate}</td>
-		</tr>
-		<tr>
-			<td>공연제목</td><td>${svo.showTitle}</td>
-		</tr>
-		<tr>
-			<td>공연일정</td><td>${svo.showDate}</td>
-		</tr>
-		<tr>
-			<td colspan="2">
+<div id="showDetailLeftSide"></div>
+<div id="showDetailContentSide">
 			<sec:authentication property="principal.memberVO" var="member"/>
-			<input type="hidden" id="loginId" value="${member.id}"> 
-			<c:if test="${member.id==svo.artistVO.memberVO.id}">
-				<c:choose>
-					<c:when test="${requestScope.validity>2}">
-						<button type="button" id="btn-update" class="btn" style="float: left; width: 50%; background-color:grey;" disabled="disabled">수정</button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" id="btn-update" class="btn btn-warning" style="float: left; width: 50%;" >수정</button>
-					</c:otherwise>
-				</c:choose>
-				<form action="deleteShow.do" method="post">
-					<sec:csrfInput/>
-					<input type="hidden" name="showNo" value="${svo.showNo}">
-					<input type="submit" id="btn-delete" class="btn btn-danger" style="float: left; width: 50%" value="삭제">
-				</form>
-			</c:if>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%-- 좋아요 버튼 --%>
+			<h1>${svo.showTitle}</h1><br>
+				<div style="width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;"><img src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px" style="position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);"></div>
+			&nbsp;${svo.artistVO.memberVO.nickName}<br>
+			<span style="font-size: 12px; color: #c4b3b3;">&nbsp;${svo.showWriteDate}</span>
+			<hr>
+			<h4>공연일정:${svo.showDate}</h4>
+			<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
+  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
+    					${requestScope.likeCount}℃
+  					</div><br>
+  					<%-- 좋아요 버튼 --%>
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<button type="button" class="btn btn-default btn-sm" id="likeBtn" style="background-color:grey;" disabled="disabled">
+				<button type="button" class="btn btn-default btn-sm btn-disabled" id="likeBtn" disabled="disabled">
 				<c:forEach items="${requestScope.likeId}" var="likeCheck">
 						<c:if test="${likeCheck==member.id}">
-							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요
+							<span id="heart" class='fa fa-heart'></span>좋아요
 						</c:if>
 				</c:forEach>
 				<c:if test="${requestScope.likeId.size()==0}">
-					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+					<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 				</c:if>
 				<c:if test="${ok==1}">
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
 						<c:if test="${unLikeCheck!=member.id}">
-							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+							<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 						</c:if>
 				</c:forEach>
 				</c:if>
@@ -196,30 +171,56 @@ $(function(){
 				<button type="button" class="btn btn-default btn-sm" id="likeBtn">
 				<c:forEach items="${requestScope.likeId}" var="likeCheck">
 						<c:if test="${likeCheck==member.id}">
-							<span id="heart" class='fa fa-heart' style='color:red'></span>좋아요
+							<span id="heart" class='fa fa-heart' ></span>좋아요
 							<c:set var="check" value="true"/>
 						</c:if>
 				</c:forEach>
 				<c:if test="${requestScope.likeId.size()==0}">
-					<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+					<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 				</c:if>
 				<c:if test="${not check}">
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
+				<c:if test="${not check}">
 						<c:if test="${unLikeCheck!=member.id}">
-							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+							<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
+							<c:set var="check" value="true"/>
+						</c:if>
 						</c:if>
 				</c:forEach>
 				</c:if>
 				</button>
 				</c:otherwise>
 				</c:choose>
+<table border="1" id="showDetail" style="width: 100%; height: 100%">
+			
+		<tr>
+			<td colspan="2">
+			
+			<input type="hidden" id="loginId" value="${member.id}"> 
+			<c:if test="${member.id==svo.artistVO.memberVO.id}">
+				<c:choose>
+					<c:when test="${requestScope.validity>2}">
+						<button type="button" id="btn-update" class="btn-disabled btn" disabled="disabled">수정</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" id="btn-update" class="btn btn-warning" >수정</button>
+					</c:otherwise>
+				</c:choose>
+				<form action="deleteShow.do" method="post">
+					<sec:csrfInput/>
+					<input type="hidden" name="showNo" value="${svo.showNo}">
+					<input type="submit" id="btn-delete" class="btn btn-danger" value="삭제">
+				</form>
+			</c:if>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				
 			</td>
 			<%-- 온도 표시 --%>
 			<td>
-   					<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
-  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
-    					${requestScope.likeCount}℃
-  					</div>
+   					
 			</td>
 		</tr>
 		<tr>
@@ -228,15 +229,44 @@ $(function(){
 				
 </table>
 </div>
-<div style="float: left; width: 2%; height: 100px"></div>
+<div id="showDetailBlankSide"></div>
 <%-- 댓글 리스트 --%>
-<div style="float: left; width: 30%;">
+<!-- <br><br><br><br><br><br><br><br><br><br><br> -->
+<div id="showDetailCommentSide">
+
+<%-- 댓글 --%>
+    <section class="chat-window">
 <c:forEach var="cvo" items="${requestScope.clvo.commentList}" varStatus="order">
 <c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
-	<div align="left" id="div-comment${order.count}" class="btn-comment">
-		<span>${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
-		<br>${cvo.commentWriteDate}
+<div id="div-comment${order.count}" class="showDetailArtistComment">
+		
+		<article class="msg-container msg-remote" id="msg-0">
+        <div class="msg-box">
+        <c:choose>
+        <c:when test="${cvo.memberVO.profile==null}">
+        	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
+        </c:when>
+        <c:otherwise>
+        <div style="width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;">
+			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
+			</div>
+        </c:otherwise>
+        </c:choose>
+          <div class="flr">
+         <span style="align-content: center" >${cvo.memberVO.nickName}</span>
+            <div class="messages">
+              <p class="msg" id="msg-0">
+               ${cvo.commentContent}
+              </p>
+            </div>
+            <span class="timestamp"><span class="username"></span>&bull;<span class="posttime">${cvo.commentWriteDate}</span></span>
+          </div>
+        </div>
+      </article>
+		
+		
+		<br>
 		<c:if test="${member.id==cvo.memberVO.id}">
 			<form id="commentUpdate" action="deleteComment.do" method="post">
 				<sec:csrfInput/>
@@ -245,7 +275,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" style="background-color:grey;">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
@@ -254,31 +284,73 @@ $(function(){
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
 			</form>
 		</c:if>
-		<br></span>
+		<br>
 	</div>
 	</c:when>
-<c:otherwise>
-<div align="right" id="div-comment${order.count}" class="btn-comment">
-<span>
-${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
-<br>${cvo.commentWriteDate}
+      
+      
+      
+      <c:otherwise>
+<div id="div-comment${order.count}" class="showDetailMemberComment" >
+<br>
 <c:if test="${member.id==cvo.memberVO.id}">
+
 			<form id="commentUpdate" action="deleteComment.do" method="post">
 			<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
 				<input type="hidden" name="countNo" value="${order.count}"> 
 				<input type="hidden" name="showNo" value="${svo.showNo}"> 
+				<c:choose>
+				<c:when test="${requestScope.validity>2}">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				</c:when>
+				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
+				</c:otherwise>
+				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
 			</form>
 		</c:if>
-<br></span>
+<br>
 </div>
+
+      
+      <article class="msg-container msg-self" id="msg-0">
+        <div class="msg-box">
+        	
+          <div class="flr">
+          <span style="align-content: center" >${cvo.memberVO.nickName}</span>
+            <div class="messages">
+    			<p class="msg" id="msg-0">
+                ${cvo.commentContent}
+              </p>
+            </div>
+            <span class="timestamp"><span class="username"></span>&bull;<span class="posttime">${cvo.commentWriteDate}</span></span>
+          </div>
+          <c:choose>
+        <c:when test="${cvo.memberVO.profile==null}">
+        	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
+        </c:when>
+        <c:otherwise>
+        <div style="width:35px; height: 35px; overflow: hidden; position: relative; float:right; border-radius:100%;">
+			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
+			</div>
+        </c:otherwise>
+        </c:choose>
+        </div>
+      </article>
 </c:otherwise>
 </c:choose>
-</c:forEach>
-<%-- 댓글 페이징 --%>
-<c:set var="pb" value="${requestScope.clvo.pagingBean}" />
+</c:forEach> 
+      
+      
+      
+      
+      
+      
+      
+      <%-- 페이징 처리 --%>
+      <c:set var="pb" value="${requestScope.clvo.pagingBean}" />
 	<div class="pagingInfo" align="center">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -313,15 +385,16 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
             </div>
             <div>
                 <table class="table">                    
+           	 
                     <tr>
-                        <td>
-                            <textarea style="width: 450px" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
+                        <td id="commentRegisterTd">
+                            <textarea style="background: #40434e; border: #2f323b" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
                             
                             <br>
                             <div>
                             <c:choose>
                             	<c:when test="${requestScope.validity>2}">
-                                	<input type="submit" class="btn pull-right" value="등록" style="background-color:grey;" disabled="disabled">
+                                	<input type="submit" class="btn pull-right btn-disabled" value="등록" disabled="disabled">
                             	</c:when>
                             	<c:otherwise>
                                 <input type="submit" class="btn pull-right btn-success" value="등록">
@@ -335,6 +408,25 @@ ${cvo.memberVO.nickName} 님의 댓글<br>&nbsp;${cvo.commentContent}
         </div>
         
     </form>
+      
+      </section>
+  </div>
+      
+      
+    
+<%-- 채팅테스트 끝 --%>
 
-</div>
-<div style="float: left; width: 15% height: 100px;"></div>
+
+
+
+
+	
+		
+
+<%-- 댓글 페이징 --%>
+
+<div id="showDetailrightSide">
+
+
+
+</div> 
