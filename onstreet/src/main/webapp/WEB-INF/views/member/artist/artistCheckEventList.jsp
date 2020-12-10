@@ -2,28 +2,57 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<script type="text/javascript">
+
+function check_all(){
+	for(i=0; i<form.checkboxBtn.length; i++){
+		form.checkboxBtn[i].checked = !form.checkboxBtn[i].checked;
+	}
+} 
+
+function check(){
+	var flag = false;
+	$("input:checkbox[name='checkboxBtn']").each(function(){
+		//checkbox checked -- > flag = true;
+		if($(this).is(":checked")){
+		flag=true;
+		$("#deleteEventBtn").show();
+		return ;//반복문 빠져나오게
+		}//if1
+	});//each
+}
+//삭제 버튼id명  deleteEventBtn
+
+
+
+</script>
+
+
+
+
 <div class="container">
   <h2>이벤트승인현황</h2>
-  <p class="evetext">반려상태인 이벤트만 삭제 가능합니다.</p>            
-<sec:csrfInput/>
+  <p class="evetext">*반려상태인 이벤트만 삭제 가능합니다.</p>            
+
 
 <table class="table">
+<thead>
 <tr>
 	<th>이벤트번호</th>
 	<th>이벤트제목</th>
 	<th>이벤트내용</th>
 	<th>이벤트날짜</th>
-	<th>승인상태  <input type="checkbox"></th>
+	<th>승인상태  <input type="checkbox" onclick="check_all()"/></th>
 </tr>
+</thead>
 
 <tbody>
+<form action="${pageContext.request.contextPath}/deleteEvent2.do?deleteEvent=${evtlist.eventNo}" method="post" onsubmit="return check()" name="form">
+<input type="submit" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title >
+<small>
+<span class="count">1 item</span>
+</small>
+<sec:csrfInput/>
 <c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
 <tr>
 	<td>${evtlist.eventNo}</td>
@@ -38,7 +67,8 @@
 승인
 </c:when> 
 <c:when test="${eventCheckDate  == '0001-01-02'}">
-반려  <input type="checkbox">
+
+반려  <input type="checkbox" name="checkboxBtn" value="${evtlist.eventNo}">
 </c:when>
 <c:otherwise>
 미승인
@@ -47,6 +77,7 @@
 </td>
 </tr>
 </c:forEach>
+</form>
 </tbody> 
 </table>
 
@@ -64,7 +95,7 @@
    <li><a href="${pageContext.request.contextPath}/artistCheckEventList.do?pageNo=${i}">${i}</a></li> 
    </c:when>
    <c:otherwise>
-   <li class="active"><a href="#" >${i}</a></li>
+   <li class="active"><a href="#">${i}</a></li>
    </c:otherwise>
    </c:choose>
    &nbsp;
@@ -75,5 +106,3 @@
    </ul>          
    </div>  
    </div>
-</body>
-</html>

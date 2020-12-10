@@ -64,7 +64,7 @@ function check_all(){
 </div>
 </c:forEach>
 <div class="pull-left">
-<input type="submit" id="removefollowBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title >
+<input type="submit" id="removefollowBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
 </div>
 </form>
 </div>

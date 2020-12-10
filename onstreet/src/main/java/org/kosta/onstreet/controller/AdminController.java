@@ -7,6 +7,7 @@ import org.kosta.onstreet.model.service.AdminService;
 import org.kosta.onstreet.model.service.BoardService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -180,4 +181,17 @@ public class AdminController {
 		adminService.deleteEvent(deleteEvent);
 		return "redirect:manageEventList.do";
 	}
+	/**
+	 * 정세희
+	 * 반려된 이벤트삭제 
+	 */
+	@Secured("ROLE_ARTIST")
+	@PostMapping("deleteEvent2.do")
+	public ModelAndView uncheckDeleteEvent(String[] checkboxBtn) {
+		System.out.println(checkboxBtn);
+		adminService.deleteEvent(checkboxBtn);
+		return new  ModelAndView("redirect:artistCheckEventList.do");
+	}
+	
+	
 }
