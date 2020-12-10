@@ -19,16 +19,23 @@
 <span id="eventContent">${evtlist.eventContent}</span> <br>
 <span id="eventDate">${evtlist.eventDate}</span> <br>
 <c:set var="eventCheckDate" value="${evtlist.eventCheckDate}"/>
+<!-- null이 아니면 승인 아니면 미승인 -->
 <c:choose>
-<c:when test="${!empty eventCheckDate}">
+
+<c:when test="${!empty eventCheckDate && eventCheckDate!='0001-01-02'}">
 승인
+</c:when> 
+<c:when test="${eventCheckDate  == '0001-01-02'}">
+반려
 </c:when>
 <c:otherwise>
 미승인
 </c:otherwise>
+
 </c:choose>
 </div>
 </c:forEach>
+
 
 
 <c:set var="pb" value="${requestScope.eventVO.pagingBean}" />

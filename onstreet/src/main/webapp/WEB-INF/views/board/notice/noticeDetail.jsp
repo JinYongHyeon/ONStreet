@@ -6,10 +6,8 @@
 <sec:csrfInput/>
 <table id="noticeDetail">
 <tr>
-<th>제목: ${requestScope.nvo.noticeTitle}</th>
-</tr>
-<tr>
-<td colspan="2">작성일시:${requestScope.nvo.noticeWriteDate}</td>
+<th width="90px" height="20px">제목: ${requestScope.nvo.noticeTitle}</th>
+<th  width="25px" height="20px"> 작성일시: ${requestScope.nvo.noticeWriteDate}</th>
 </tr>
 <tr>
 <td colspan="5" class="content">
@@ -17,7 +15,7 @@
 </td>
 </tr>
 <tr>
-<td colspan="2">작성자닉네임:${requestScope.nvo.memberVO.nickName}</td>
+<td colspan="2" height="20px">작성자:${requestScope.nvo.memberVO.nickName}</td>
 </tr>
 </table>
 <sec:authorize access="hasRole('ROLE_ADMIN')">

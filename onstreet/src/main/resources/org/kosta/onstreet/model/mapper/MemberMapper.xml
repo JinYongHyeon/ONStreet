@@ -192,7 +192,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 이벤트승인현황 정세희 -->
  	<select id="artistCheckEventList" resultType="eventVO" parameterType="map">
- 		SELECT event_no, event_title,event_date,event_check_date
+ 		SELECT event_no, event_title,event_date,TO_CHAR(event_check_date,'YYYY-MM-DD') AS eventCheckDate
 		FROM (SELECT row_number() 
 		over(order by event_check_date desc) as rnum, event_check_date, event_no,
 		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') 
