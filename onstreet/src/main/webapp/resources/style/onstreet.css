@@ -1261,11 +1261,11 @@ color: #31708f;
 /*공지사항 상세보기 UI 김수민  */
 
 #noticeDetail{
-	width: 560px;
+	width: 490px;
 	height: 250px;
 	border-collapse: collapse;
-	border: 2px solid #d1fffc;
-	margin-top: 10px;
+	border: 2px solid;
+	margin-top: 20px;
 }
 #noticeDetail tr th{
 	text-align: left;
