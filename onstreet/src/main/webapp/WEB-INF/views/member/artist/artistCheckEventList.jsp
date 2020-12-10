@@ -9,33 +9,46 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>이벤트승인현황</h1>
+<div class="container">
+  <h2>이벤트승인현황</h2>
+  <p class="evetext">반려상태인 이벤트만 삭제 가능합니다.</p>            
 <sec:csrfInput/>
 
-<c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
-<div class="eventList">
-<span id="eventNo">${evtlist.eventNo}</span> <br>
-<span id="eventTitle">${evtlist.eventTitle}</span>
-<span id="eventContent">${evtlist.eventContent}</span> <br>
-<span id="eventDate">${evtlist.eventDate}</span> <br>
-<c:set var="eventCheckDate" value="${evtlist.eventCheckDate}"/>
-<!-- null이 아니면 승인 아니면 미승인 -->
-<c:choose>
+<table class="table">
+<tr>
+	<th>이벤트번호</th>
+	<th>이벤트제목</th>
+	<th>이벤트내용</th>
+	<th>이벤트날짜</th>
+	<th>승인상태  <input type="checkbox"></th>
+</tr>
 
+<tbody>
+<c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
+<tr>
+	<td>${evtlist.eventNo}</td>
+	<td>${evtlist.eventTitle}</td>
+	<td>${evtlist.eventContent}</td>
+	<td>${evtlist.eventDate}</td>
+<!-- null이 아니면 승인 아니면 미승인 -->
+<td>
+<c:set var="eventCheckDate" value="${evtlist.eventCheckDate}"/>
+<c:choose>
 <c:when test="${!empty eventCheckDate && eventCheckDate!='0001-01-02'}">
 승인
 </c:when> 
 <c:when test="${eventCheckDate  == '0001-01-02'}">
-반려
+반려  <input type="checkbox">
 </c:when>
 <c:otherwise>
 미승인
 </c:otherwise>
-
 </c:choose>
-</div>
+</td>
+</tr>
 </c:forEach>
-
+</tbody> 
+</table>
 
 
 <c:set var="pb" value="${requestScope.eventVO.pagingBean}" />
@@ -61,5 +74,6 @@
    </c:if>
    </ul>          
    </div>  
+   </div>
 </body>
 </html>

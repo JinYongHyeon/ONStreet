@@ -1330,10 +1330,13 @@ fieldset {
 }
 /*팔로우리스트 ui 끝*/
 
- 
+ /* 이벤트승인현황 ui 정세희*/
+.evetext{
+	text-align: right;
+} 
     
     
-    
+ /* 이벤트승인현황 ui 끝 정세희*/
     
     
     
