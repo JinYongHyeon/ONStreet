@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -212,9 +213,21 @@ public class MemberController {
 	 * @return
 	 */
 	@Secured("ROLE_MEMBER")
-	@RequestMapping("passwordUpdateForm.do")
+	@RequestMapping("updatePasswordForm.do")
 	public String passwordUpdateForm() {
 		return "member/passwordUpdateForm.tiles";
+	}
+	
+	/**
+	 * 회원수정 - 진용현
+	 * @return
+	 */
+	@Secured("ROLE_MEMBER")
+	@ResponseBody
+	@RequestMapping(value = "updatePassword.do",method = RequestMethod.POST)
+	public int updatePassword(String password,String passwordChange) {
+		ArtistVO member =(ArtistVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return memberService.updatePassword(password, passwordChange, member);
 	}
 
 	/**
@@ -264,7 +277,6 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("removeMember.do")
 	public int removeMember(String password) {
-		System.out.println(password+"ㅁㅁㅁㅁㅁ");
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int pointcount=memberService.removeMember(password,avo);
 		return pointcount;
