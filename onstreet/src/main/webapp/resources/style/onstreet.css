@@ -1199,7 +1199,7 @@ color: #31708f;
 
 /*공지시항리스트 UI 김수민 */
 #noticeList{
-	width:700px;
+	width:1300px;
 	height:15%;
 	border:2px solid #d1fffc;
 	font-size:20px;
@@ -1223,8 +1223,8 @@ color: #31708f;
 	border:1px #0000a0 solid; 
 	background-color: #ffffff;
 	position: relative;
-	float: right;
-	right: 60px;
+	float:right;
+	right:380px;
 	margin-top: 10px;
 }
 
@@ -1239,7 +1239,7 @@ color: #31708f;
 	background-color: #ffffff;
 	position: relative;
 	float: right;
-	right: 600px;
+	right: 250px;
 	margin-top: 10px;
 }
 
@@ -1261,32 +1261,38 @@ color: #31708f;
 /*공지사항 상세보기 UI 김수민  */
 
 #noticeDetail{
-	width: 490px;
-	height: 250px;
+	width: 1000px;
+	height: 640px;
 	border-collapse: collapse;
-	border: 2px solid;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 #noticeDetail tr th{
+	width:100px;
+	height:50px;
 	text-align: left;
-	font-size: 25px;
+	font-size: 20px;
 	border-collapse: collapse;
-	border: 2px solid;
-	border-top:2px solid ;
-	background-color: #d1fffc; 
+	border: 1px solid;
+	background-color: #d03535;
+	color: white;
 }
 #noticeDetail tr td{
-	text-align:center;
+	text-align:left;
 	font-size: 25px;
 	border-collapse: collapse;
-	border: 2px  solid;
+	border: 1px solid;
+}
+#noticeContent{
+	vertical-align:text-top;
+	background-color: #ff4a4a;
+	color:white; 
 }
 #noticeDetailButton{
-	width:50px;
-	height: 30px;
+	width:60px;
+	height:35px;
 	position: relative;
 	float: right;
-	right: 650px;
+	right: 433px;
 	margin-top: 10px;
 	border: 1px solid #d03535;
 	background-color: #ffffff;
@@ -1296,10 +1302,83 @@ color: #31708f;
 	background-color: #d03535;
 	color:#ffffff;
 }
+/*공지사항 등록 UI 김수민*/
+#registerNoticeTitle{
+	width: 1800px;
+	height:30px;
+	font-size:20px;
+	margin: 5px;
+	border: 1px solid;
+}
+#content{
+	font-size: 25px;
+}
+#submitButton{
+	width: 70px;
+	height:40px;
+	border: 1px solid  blue;
+	background-color: white;
+	color: blue;
+	position: relative;
+	float:right;
+	right: 50px;
+}
+#resetButton{
+	width: 70px;
+	height:40px;
+	border: 1px solid red;
+	background-color: white;
+	color: red;
+	position:relative;
+	float: right;
+	right: 23px;
+}
+#resetButton:hover{
+	background-color: red;
+	color: white;
+}
+#submitButton:hover{
+	background-color: blue;
+	color: white;
+}
+/*회원정보 수정 UI 김수민  */
+#updateTitle{
+	width: 1860px;
+	font-size: 20px;
+}
+#updateContent{
+	font-size: 25px;
+}
+#updateButton{
+	width: 70px;
+	height:40px;
+	background-color: white;
+	border-color: blue;
+	position: relative;
+	 float:right;
+	right: 150px;
+}
+#updateButton:hover{
+	background-color: blue;
+	color: white;
+}
+#backButton{
+	width: 70px;
+	height:40px;
+	background-color: white;
+	border-color: red;
+	position: relative;
+	float:left;
+	left: 1808px;
+}
+#backButton:hover{
+	background-color:red;
+	color:white;
+}
 /* 회원탈퇴 페이지 ui 정세희*/
 .remove-member{
     padding: 76px 100px 100px 65px;
-    border: 1px solid #ededed;
+    border: 2px solid #ededed;
     width:70%;
     text-align: center;
     font-size: 19px;
