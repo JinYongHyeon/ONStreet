@@ -203,8 +203,6 @@
 			"left" : -leftVal + "%"
 		}, 1000);
 		artistSno = no;
-
-		//todayArtistSlide();
 	}
 </script>
 

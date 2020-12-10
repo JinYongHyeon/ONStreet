@@ -16,7 +16,7 @@ alert(today) */
 	$(function() {
 		nhn.husky.EZCreator
 				.createInIFrame({
-					oAppRef : oEditors,
+					oAppRef : oEditors,	
 					elPlaceHolder : "showContent", //text area id 
 					//SmartEditor2Skin.html 파일이 존재하는 경로
 					sSkinURI : "${pageContext.request.contextPath}/resources/editor/SmartEditor2Skin.html",

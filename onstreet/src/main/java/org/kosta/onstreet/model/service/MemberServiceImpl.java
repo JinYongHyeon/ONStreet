@@ -39,7 +39,16 @@ public class MemberServiceImpl implements MemberService {
 
 		return memberMapper.login(id);
 	}
-
+	
+	/**
+	 * [로그인]아티스트 승인 취소 후 액션  - 진용현
+	 */
+	@Override
+	public void cancelArtist(String id) {
+		memberMapper.cancelArtist(id);
+		
+	}
+	
 	/**
 	 * [로그인]권한조회 -진용현
 	 */
@@ -121,6 +130,26 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.updateMember(artistVO.getMemberVO());
 		memberMapper.updateArtist(artistVO);
 	}
+	/**
+	 * 회원수정[비밀번호] - 진용현
+	 * 1.현 비밀번호 체크
+	 * 2. true = 1(정상) 비밀번호 변경 / false = 0은 현 비밀번호가 같지 않을경우 or 2 현 비밀번호와 같을 경우
+	 *  */
+	@Override
+	public int updatePassword(String password,String passwordChange,ArtistVO avo) {
+		System.out.println(password);
+		System.out.println(passwordChange);
+			ArtistVO member= memberMapper.login(avo.getMemberVO().getId());
+			if(passwordEncoder.matches(password, member.getMemberVO().getPassword())) {
+				if(passwordEncoder.matches(passwordChange, member.getMemberVO().getPassword())) {
+					return 2;
+				}
+			avo.getMemberVO().setPassword(passwordEncoder.encode(passwordChange));
+			memberMapper.updatePassword(avo.getMemberVO());
+				return 1;
+			}
+		return 0;
+	}
 
 	/**
 	 *  회원 탈퇴재확인 - 정세희
@@ -129,9 +158,6 @@ public class MemberServiceImpl implements MemberService {
 	public int removeMember(String password, ArtistVO avo) {
 		int point = 0;
 		String encodepassowrd = passwordEncoder.encode(avo.getMemberVO().getPassword());
-		System.out.println(avo.getMemberVO().getPassword());
-		System.out.println(encodepassowrd);
-		System.out.println(password);
 
 		if (passwordEncoder.matches(password, avo.getMemberVO().getPassword())) {
 			point = memberMapper.removeMember(avo);

@@ -213,25 +213,40 @@ $(document).ready(function(){
 			}
 	});
 	
-	$("#passwordUpdateForm").submit(function(){
+	//[회원수정] 비밀번호 변경 기능 - 진용현
+	$("#passwordUpdateForm button").click(function(){
 	var elementToken = document.querySelector('meta[name="_csrf"]');
 	var token = elementToken && elementToken.getAttribute("content");
 	var elementHeader = document.querySelector('meta[name="_csrf_header"]');
 	var header = elementHeader && elementHeader.getAttribute("content");
 	
+	if($("#passwordUpdateForm input[name=passwordChange]").val() !== $("#passwordUpdateForm input[name=passwordCheck]").val()){
+		$("#passwordUpdateForm input[name=passwordChange]"). focus();
+		alert("변경될 비밀번호가 일치하지 않습니다.");
+		return;
+	}
 	$.ajax({
 		type:"post",
-			url:"removeMember.do",
+			url:"updatePassword.do",
 			dataType:"text",
-			data:"password="+$("#passwordUpdateForm input[name=password]").val(),
+			data:"password="+$("#passwordUpdateForm input[name=password]").val()+"&passwordChange="+$("#passwordUpdateForm input[name=passwordChange]").val(),
 			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
 		    xhr.setRequestHeader(header, token);
 			},
 			success:function(event){
-			alert(event)
+			// 0 : 현 비밀번호 불일치  1 : 정상 2 : 현 비밀번호와 변경 비밀번호와 일치
+			if(event === "0"){
+				alert("현 비밀번호가 일치하지 않습니다.");
+				$("#passwordUpdateForm input[name=password]").focus();
+			}else if(event === "1"){
+				alert("비밀번호 수정완료");
+				location.href="home.do";
+			}else if(event === "2"){
+				alert("현 비밀번호와 동일한 비밀번호입니다. 다시 입력해주세요");
+				$("#passwordUpdateForm input[name=passwordChange]").focus();
+			}
 		}
 	});
-	return false;
 });
 		
 });//ready end

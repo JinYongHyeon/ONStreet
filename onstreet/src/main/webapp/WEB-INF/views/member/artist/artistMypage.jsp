@@ -54,7 +54,7 @@
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
 	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a><br>
 	<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a><br>
-	<a href="${pageContext.request.contextPath}/.do">비밀번호수정</a>
+	<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
 
 
 

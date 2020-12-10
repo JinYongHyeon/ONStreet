@@ -24,6 +24,11 @@ public interface MemberMapper {
 	public ArtistVO login(String id);
 	
 	/**
+	 * [로그인]아티스트 승인 취소 후 액션  - 진용현
+	 */
+	public void cancelArtist(String id);
+	
+	/**
 	 *[로그인]권한조회 - 진용현
 	 * @param id
 	 * @return List<AuthVO>
@@ -78,6 +83,12 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public int updateArtist(ArtistVO artistVO);
+	
+	/**
+	 * 회원수정[비밀번호] - 진용현
+	 * @return
+	 */
+	public int updatePassword(MemberVO memberVO);
 	
 	/**
 	 * 정세희 회원탈퇴

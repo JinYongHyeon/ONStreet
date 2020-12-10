@@ -22,6 +22,12 @@ public interface MemberService {
 	ArtistVO findMemberById(String id);
 	
 	/**
+	 * [로그인]아티스트 승인 취소 후 액션  - 진용현
+	 * @param id
+	 */
+	void cancelArtist(String id);
+	
+	/**
 	 * [로그인]권한조회 - 진용현
 	 * @param id
 	 * @return
@@ -65,6 +71,13 @@ public interface MemberService {
 	 * @param artistVO
 	 */
 	void updateArtist(ArtistVO artistVO);
+	
+	/**
+	 * 회원수정[비밀번호] - 진용현
+	 * @param password
+	 * @return
+	 */
+	int updatePassword(String password,String passwordChange,ArtistVO avo);
 
 	/**
 	 * 회원 탈퇴재확인 - 정세희
