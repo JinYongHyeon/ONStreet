@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="showVO" id="showListRM">
 		<result property="artistVO.memberVO.id" column="id" />
 		<result property="artistVO.memberVO.nickName" column="nickname" />
+		<result property="artistVO.memberVO.profile" column="profile" />
 	</resultMap>
 	
 	<resultMap type="likeVO" id="likeListRM">
@@ -39,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="memberVO.id" column="id" />
 		<result property="showVO.showNo" column="showNo" />
 		<result property="memberVO.nickName" column="nickName" />
+		<result property="memberVO.profile" column="profile" />
 	</resultMap>
 	
  	<!-- noticeVO has a -->
@@ -165,9 +167,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getShowDetail" parameterType="String"
 		resultMap="showListRM">
 		select
-		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY-MM-DD')
+		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY-MM-DD HH:MM')
 		as show_write_date,s.show_content,to_char(s.show_date,'YYYY-MM-DD') as
-		show_date,m.nickname
+		show_date,m.nickname,m.profile
 		from OS_SHOW s, OS_member m
 		where s.id= m.id and show_no=#{value}
 	</select>
@@ -179,9 +181,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where c.show_no=#{showNo} and c.id=m.id and
 		c.comment_no between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
 		order by comment_write_date asc -->
-		select cm.comment_no,cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname
+		select cm.comment_no,cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname,cm.profile
 		from (
-			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname
+			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname,m.profile
 			from OS_COMMENT c, OS_MEMBER m
 			where c.show_no=#{showNo} and c.id=m.id
 		) cm
