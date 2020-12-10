@@ -17,7 +17,7 @@
 </td>
 </tr>
 <tr>
-<td colspan="2">작성자닉네임:${requestScope.nvo.memberVO.nickName}</td>
+<td colspan="2">작성자:${requestScope.nvo.memberVO.nickName}</td>
 </tr>
 </table>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
