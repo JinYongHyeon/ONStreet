@@ -16,6 +16,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/onstreet.js"></script>
 </head>
 <body>
+	<div id="loginBlind"></div>
 	<div id="header">
 		<!-- Tiles header 영역 -->
 		<tiles:insertAttribute name="header" />

@@ -59,7 +59,6 @@ public class FileUploadBean {
 					files.get(i).transferTo(new File(realPath+fileName));
 					FileUtil.copyFile(new File(realPath+fileName), new File(copyPath+fileName));
 					fileUrls.add(fileName);
-					System.out.println(fileName+"업로드 완료");
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

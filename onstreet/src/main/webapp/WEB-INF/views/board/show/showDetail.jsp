@@ -205,10 +205,13 @@ $(function(){
 				</c:if>
 				<c:if test="${not check}">
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
-						<c:if test="${unLikeCheck!=member.id}">
-							<span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
-						</c:if>
-				</c:forEach>
+            <c:if test="${not check}">
+                  <c:if test="${unLikeCheck!=member.id}">
+                     <span class="fa fa-heart-o" style="color:red" id="heartBlank"></span><span>좋아요</span>
+                     <c:set var="check" value="true"/>
+                  </c:if>
+                  </c:if>
+            </c:forEach>
 				</c:if>
 				</button>
 				</c:otherwise>
