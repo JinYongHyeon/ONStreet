@@ -244,6 +244,7 @@ input[type=password]{
 	padding:15px;
 	color:#fff;
 	background-color: #d03535;
+	text-align: center;
 }
 
 #mainVideo .mainVideoLoginForm span::before{

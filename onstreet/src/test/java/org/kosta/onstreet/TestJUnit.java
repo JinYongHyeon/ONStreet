@@ -22,6 +22,8 @@ import org.kosta.onstreet.model.vo.FollowVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.ShowVO;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -55,6 +57,9 @@ public class TestJUnit {
 	private BoardMapper bm;
 	@Resource
 	private AdminMapper am;
+	
+	@Resource
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Test
 	public void board(){
@@ -255,7 +260,17 @@ public class TestJUnit {
 			 * List<FollowVO> list = mm.getfollowingList(id,pagingbean); for(FollowVO
 			 * fvo:list) System.out.println(fvo);
 			 */
-	}
+		
+			String password= "1234";
+			
+			String encoding =  passwordEncoder.encode(password);
+			
+			MemberVO mvo = new MemberVO();
+			mvo.setId("yong");
+			mvo.setPassword(encoding);
+			System.out.println(mm.updatePassword(mvo));
+			//System.out.println(mvo.getPassword().equals(encoding));
+	}	
 	
 	@Test
 	public void admin() {

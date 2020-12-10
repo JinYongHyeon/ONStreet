@@ -27,11 +27,6 @@
 				<td><input type="password" name="passwordCheck" required="required"></td>
 			</tr>
 		</table>	
-		<button>비밀번호 변경</button>	
+		<button type="button">비밀번호 변경</button>	
 	</form>
 </div>
-<script type="text/javascript">
-
- 
-
-</script>

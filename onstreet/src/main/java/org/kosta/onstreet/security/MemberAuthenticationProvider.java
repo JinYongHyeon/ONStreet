@@ -73,8 +73,8 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		 */
 		
 		
-			//if (passwordEncoder.matches(password, member.getMemberVO().getPassword()) == false)
-			//throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
+			if (passwordEncoder.matches(password, member.getMemberVO().getPassword()) == false)
+				throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
 		
 		// 사용자 권한 조회 ( 회원가입시 권한 부여 , 관리자는 시스템 상에서 권한 부여 )
 		List<AuthVO> list = memberService.selectAuthorityByUsername(id);
@@ -91,6 +91,11 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 				}
 			}
 		}
+		}
+		//아티스트 승인취소 
+		if(member.getCheckDate().equals("0001-01-01")) {
+			memberService.cancelArtist(id);
+			throw new UsernameNotFoundException("승인취소 된 아티스트입니다. 다시 가입해주십시오.");
 		}
 		
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();

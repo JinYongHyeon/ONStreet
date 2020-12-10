@@ -40,7 +40,7 @@
         <a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
         <a href="${pageContext.request.contextPath}/updateMemberForm.do">회원정보수정</a><br>
         <a href="${pageContext.request.contextPath}/followingList.do">팔로잉목록보기</a><br>
-        <a href="${pageContext.request.contextPath}/.do">비밀번호수정</a>
+        <a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
 </div>
 
 

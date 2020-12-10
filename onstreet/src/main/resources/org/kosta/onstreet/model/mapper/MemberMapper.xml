@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<!-- 로그인-진용현  -->
  	<select id ="login" resultMap="memberList">
  		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
-		a.sns,a.account,a.artist_info,a.check_date
+		a.sns,a.account,a.artist_info,TO_CHAR(a.check_date,'YYYY-MM-DD') as checkDate
 		FROM os_member m, os_artist a
 		WHERE m.id = a.id(+) AND m.id=#{value}
  	</select>
@@ -55,6 +55,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="selectAuthorityByUsername" resultMap="memberAuth">
  		SELECT auth_name,id FROM os_auth WHERE id=#{value}
  	</select>
+ 	
+ 	<!-- [로그인]아티스트 승인 취소 후 액션 - 진용현 -->
+ 	<delete id="cancelArtist" parameterType="string">
+ 		DELETE FROM os_member WHERE id=#{value}
+ 	</delete>
  	
  	<!-- [로그인]아티스트 승인조회-진용현 -->
  	<select id="artistCheckDate" resultType="string">
@@ -113,6 +118,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="artistInfo != null">artist_info=#{artistInfo}</if>
 		</set>
 		WHERE id=#{memberVO.id}
+	</update>
+	
+	<!-- 회원수정[비밀번호] - 진용현 -->
+	<update id="updatePassword" parameterType="memberVO">
+		UPDATE os_member SET password =#{password} WHERE id = #{id}
 	</update>
 	
 	<!-- 팔로우리스트 갯수조회 정세희-->
