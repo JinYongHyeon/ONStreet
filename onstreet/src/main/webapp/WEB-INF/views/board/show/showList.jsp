@@ -5,13 +5,13 @@
 <div class="col-sm-2"><h1><b>SHOW</b></h1> <br></div>
 <div class="col-sm-8">
 <br><br>
-<table class="table table-striped table-condensed">
+<table id="showListTable" class="table table-striped table-condensed" >
 	<thead>
 		<tr class="success">
-			<th style="text-align: center;">번호</th>
-			<th style="text-align: center;">제목</th>
-			<th style="text-align: center;">작성자</th>
-			<th style="text-align: center;">공연일시</th>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>공연일시</th>
 		</tr>
 		
 		
@@ -20,16 +20,16 @@
 	<tbody>
 	
 	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
-		<tr style="background: orange">
-		<td align="center">${requestScope.totalNoticePostCount}</td>
-		<td align="center"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
-		<td align="center">${requestScope.nlvo[0].memberVO.nickName}</td>		
+		<tr id="showListTableNotice">
+		<td>${requestScope.totalNoticePostCount}</td>
+		<td><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
+		<td>${requestScope.nlvo[0].memberVO.nickName}</td>		
 		<td></td>
 		</tr>
-		<tr style="background: orange">
-		<td align="center">${requestScope.totalNoticePostCount-1}</td>
-		<td align="center"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
-		<td align="center">${requestScope.nlvo[1].memberVO.nickName}</td>		
+		<tr id="showListTableNotice">
+		<td>${requestScope.totalNoticePostCount-1}</td>
+		<td><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
+		<td>${requestScope.nlvo[1].memberVO.nickName}</td>		
 		<td></td>		
 		</tr>
 		<%-- </c:forEach> --%>
@@ -38,15 +38,15 @@
 
 		<c:forEach items="${requestScope.slvo.list}" var="list" varStatus="status">
 			<tr>
-				<td align="center">
+				<td>
 				${requestScope.totalPostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 				</td>
-				<td align="center">
+				<td>
 				<a href="getShowDetail.do?showNo=${list.showNo}">
 				${list.showTitle}
 				</a>
 				</td>
-				<td align="center">
+				<td>
 				${list.artistVO.memberVO.nickName}
 				</td>
 				<td align="center">
@@ -56,7 +56,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-<div class="pagingInfo" align="center">
+<div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
 	<li>
