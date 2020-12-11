@@ -58,9 +58,7 @@
 			</h1>
 		</div>
 	</div>
-</div>
 <%-- 추천 아티스트 - 진용현 --%>
-<div class="container">
 	<div id="artisStandardt">
 		<div class="artistRecommendationTltle">
 			<h2>추천 아티스트</h2>

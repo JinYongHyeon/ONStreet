@@ -226,7 +226,7 @@ input[type=password] {
 /* 메인페이지 -  비디오 */
 #mainVideo {
 	width: 100%;
-	height: 92vh;
+	height: 93vh;
 	float: left;
 	position: relative;
 	overflow: hidden;
@@ -1404,6 +1404,7 @@ float: left;
 	z-index: 2;
 	display: none;
 	opacity: 0;
+	text-align: center;
 }
 
 #multipartPreView .preViewImg {
@@ -1468,7 +1469,7 @@ float: left;
 #multipartPreViewForm input[type=button] {
 	width: 150px;
 	height: 50px;
-	background-color: #999;
+	background-color: #d03535;
 	color: #fff;
 	border: none;
 	margin-right: 10px;
@@ -1736,3 +1737,122 @@ fieldset {
 	border-color: #ccc;
 }
 /*팔로우리스트 ui 끝*/
+
+
+/* 아티스트 일정 디자인 - 진용현 */
+#calendar{
+	width:1100px;
+	position: absolute;
+	top:60%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	z-index: -3;
+	background-color:#fff;
+	padding:15px;
+	text-align: center;
+    opacity: 0; 
+}
+
+#calendar .calendarTitle{
+	background-color:#d03535;
+	color:#fff;
+	height: 100px;
+	position: relative;
+}
+#calendar .calendarTitle svg{
+	color:#fff;
+	position: absolute;
+	right:0;
+	top:0;
+	margin: 10px;
+	cursor: pointer;
+}
+
+#calendar .calendarTitle h1{
+	line-height: 100px;
+	margin:0;
+}
+#calendar #artistCalendar{
+	padding:15px
+}
+#calendar #artistCalendar a{
+	text-decoration: none;
+	color:#d03535;
+}
+#calendar #artistCalendar table tr th{
+	background-color:#d03535;
+}
+#calendar #artistCalendar table tr th a{
+	color:#fff;
+}
+
+#calendar #artistCalendar button{
+	background-color:#d03535 !important;
+	border:none !important;
+	opacity: 1;
+}
+
+/* fullcalendar css */
+.fc-h-event{
+	background-color:#d03535 !important	;
+	border:none !important;
+}
+
+/* 비밀번호 변경 css  - 진용현*/
+#passwordUpdate{
+	width:50%;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	text-align: center;
+	border:1px solid #d03535;
+}
+#passwordUpdate form table{
+	margin:0 auto;
+	width:100%;
+}
+#passwordUpdate form table th{
+	width:30%;
+}
+#passwordUpdate form table td{
+	width:70%;
+}
+
+#passwordUpdate form table td input{
+	width:100%;
+	border:none;
+	padding:15px;
+}
+#passwordUpdate .passwordUpdateTitle{
+	background-color:#d03535;
+	height: 70px;
+}
+#passwordUpdate .passwordUpdateTitle h1{
+	line-height: 70px;
+	margin:0;
+	color:#fff;
+}
+
+/* #passwordUpdate .passwordUpdateTitle h1::before {
+	content: "";
+	width: 7%;
+	height: 2px;
+	background-color: #d03535;
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	transform: translate(-50%, 0);
+} */
+
+#passwordUpdate #passwordUpdateForm{
+	margin-top:15px;	
+}
+
+#passwordUpdate #passwordUpdateForm button{
+	width:100%;
+	height: 40px;
+	color:#fff;
+	background-color:#d03535;
+	border:none;
+}
