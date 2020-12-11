@@ -1167,9 +1167,9 @@ input[type=password] {
 }
 
 /* 이동욱 board/show css */ 
-#showDetail img {
-width: 100%;
-height: 100%;
+#showDetailContent img {
+max-width: 100%;
+max-height: 100%;
 float: left;
 }
 
@@ -1189,17 +1189,17 @@ float: left;
 	float: left; width: 15%; height: 100px;
 }
 #showDetailContentSide {
-	float: left; width: 38%;
+	float: left; /* width: 38%; */ height: 942px;
 }
 #showDetailBlankSide {
-	float: left; width: 2%; height: 100px;
+	float: left; width: 2%; height: 1000px;
 }
 #showDetailCommentSide {
-	 float: right; width: 30%; height: 1700px;
+	 float: left; width: 33%; height: 942px;
 }
 
 #showDetailrightSide {
-	float: right; width: 15%; height: 1700px;
+	float: right; width: 12%; height: 100px;
 }
 .showDetailArtistComment {
 	text-align: left;
@@ -1214,10 +1214,10 @@ float: left;
 	background: grey;
 }
 #btn-update {
-	float: left; width: 50%;
+	float: left;
 }
 #btn-delete {
-	float: left; width: 50%
+	float: left; 
 }
 #heart {
 	color:red;
@@ -1231,6 +1231,10 @@ float: left;
 #commentContent {
 	width: 440px; height: 60px;
 }
+#showDetailContent {
+	max-width: 500px;
+	max-height: 907px;
+}
 
 /* 채팅 테스트 */
 
@@ -1238,13 +1242,17 @@ float: left;
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #4c4c6a;
+  background-color: #d03535;
   border-radius: 2px;
+}
+.test{
+    max-height: 942px;
+	overflow: scroll;
 }
 .chatbox {
     width: 300px;
-    height: 950px;
-    max-height: 950px;
+    height: 907px;
+    max-height: 907px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1252,9 +1260,9 @@ float: left;
 }
 .chat-window {
     flex: auto;
-    height: 100%;
-    /* max-height: 942px; */
-    background: #2f323b;
+    /* height: 100%; */
+    max-height: 907px;
+    background: #f6f9f6;
     overflow: auto;
 }
 #commentRegisterTd {
@@ -1317,7 +1325,7 @@ float: left;
 }
 .msg-box {
     display: flex;
-    background: #5b5e6c;
+    background: #d03535;
     padding: 10px 10px 0 10px;
     border-radius: 0 6px 6px 0;
     max-width: 80%;
@@ -1362,15 +1370,16 @@ float: left;
 }
 .posttime {
     margin-left: 3px;
+    color: #c4b3b3;
 }
 .msg-self .msg-box {
     border-radius: 6px 0 0 6px;
-    background: #2671ff;
+    background: white;
     float: right;
     word-break:break-all;
 }
 .msg-self .user-img {
-    margin: 0 0 10px 10px;
+   /*  margin: 0 0 10px 10px; */
 }
 .msg-self .msg {
     text-align: right;

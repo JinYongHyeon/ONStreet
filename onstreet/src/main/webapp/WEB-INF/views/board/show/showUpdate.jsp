@@ -206,17 +206,17 @@ var oEditors = [];
 <form action="updateShow.do" method="post" id="frm">
 <input type="hidden" name="showNo" value="${svo.showNo}">
 <sec:csrfInput/>
+<br><br>
 <table border="1" id="showDetail">
 		<tr>
-			<td>공연제목</td><td><input type="text" name="showTitle" value="${svo.showTitle}" id="postTitle"></td>
+			<td colspan="2"><input style="width: 1000px; height: 35px" type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45"></td>
 		</tr>
 		<tr>
-			<td>공연내용</td>
-			<td style="width: 1300px"><textarea rows="25" cols="100"
+			<td style="width: 1000px"><textarea rows="25" cols="100"
 						name="showContent" id="showContent">${svo.showContent}</textarea></td>
 		</tr>
 		<tr>
-			<td>공연일정</td><td><input type="date" name="showDate" required="required" value="${svo.showDate}" id="showDate"></td>
+			<td colspan="2"><span>공연날짜:</span><input style="border: 0" type="date" name="showDate" required="required" min="${today}" id="showDate"></td>
 		</tr>
 </table>
 <input type="submit" value="수정하기" id="postUpdate" class="btn btn-warning">

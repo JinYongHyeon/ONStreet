@@ -210,14 +210,8 @@ alert(today) */
 
 	<form method="post" action="addShow.do" id="frm">
 		<sec:csrfInput />
-		<table border="1">
-			<tr>
-				<td>공연제목</td>
-				<td><input type="text" name="showTitle" required="required" id="showTitle"></td>
-			</tr>
-			<tr>
-				<td>공연내용</td>
-				<td style="width: 1300px">
+		<br><br>
+				<input style="width: 944px; height: 35px" type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
 					<div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
@@ -227,16 +221,13 @@ alert(today) */
 							</svg></button>
 						</div><textarea rows="25" name="showContent" id="showContent" ></textarea>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>공연날짜</td>
-				<td><input type="date" name="showDate" required="required" min="${today}" id="showDate"></td>
-			</tr>
-		</table>
+					<div style="width: 944px">
+				<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input style="border: 0" type="date" name="showDate" required="required" min="${today}" id="showDate">
 		<input type="button" id="postWrite" class="btn btn-primary"
-			value="등록하기"  />
+			value="등록하기"  style="float: right"/>
+			</div>
 	</form>
+<br>
 </div>
 <div class="col-sm-2"></div>
 <script type="text/javascript">
