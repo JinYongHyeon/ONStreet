@@ -8,7 +8,7 @@
 <div class="container">
   <h2>My page</h2>
   <p>The .table-bordered class adds borders to a table:</p>            
-  <table class="table table-bordered" align="center">
+  <table class="table table-bordered">
     <thead align="center">
       <tr>
         <th>아이디</th>

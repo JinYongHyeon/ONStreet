@@ -21,12 +21,26 @@
 					return;
 				}
 		});//click
+		
+		$(document).on("submit","#searchManageForm",function(){
+			var content = $("#searchManageForm input[name=searchShow]").val();
+			if(content.trim()===""){
+				alert("공백은 검색이 제한됩니다. 다시 입력해 주십시오.");
+				$("#searchManageForm input[name=searchShow]").val("");
+				$("#searchManageForm input[name=searchShow]").focus();
+				return false;
+			}
+		});
+		
 	});//ready
 </script>
 
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 <h1><b>MANAGE</b></h1> <br><br>
+<form action="${pageContext.request.contextPath}/manageSearchShow.do" method="get" id="searchManageForm">
+				<input type="text" name="searchShow"> <input type="submit" value="검색">
+			</form>
 <input type="button" id="removeShow" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageEventList.do">이벤트 목록 보기</a>
 <sec:csrfInput />
@@ -43,9 +57,9 @@
 
 	<tbody>
 
-		<c:set var="pb" value="${requestScope.slvo.pagingBean}" />
+		<c:set var="pb" value="${requestScope.showListVO.pagingBean}" />
 
-		<c:forEach items="${requestScope.slvo.list}" var="list" varStatus="status">
+		<c:forEach items="${requestScope.showListVO.list}" var="list" varStatus="status">
 			<tr>
 				<td>
 					<input type="checkbox" name="checkShow" value="${list.showNo}" class="checkShow"><sec:csrfInput/>

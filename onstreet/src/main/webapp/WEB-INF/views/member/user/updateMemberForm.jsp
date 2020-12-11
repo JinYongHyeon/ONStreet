@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<div class="container">
 <div class="registerMember">
 	<sec:authentication property="principal.memberVO" var="member" />
 	<c:set var="address" value="${fn:split(member.address,',')}"></c:set>
@@ -79,6 +79,7 @@
 		</table>
 		<input type="submit" value="회원수정">
 	</form>
+</div>
 </div>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

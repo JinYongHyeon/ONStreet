@@ -5,8 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.onstreet.model.service.AdminService;
 import org.kosta.onstreet.model.service.BoardService;
+import org.kosta.onstreet.model.vo.MemberListVO;
+import org.kosta.onstreet.model.vo.ShowListVO;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -73,6 +76,34 @@ public class AdminController {
 	
 	/**
 	 * 정지윤
+	 * 회원 검색
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("manageSearchMember.do")
+	public String manageSearchMember(String searchMember, String pageNo, Model model) {
+		MemberListVO memberListVO = adminService.manageSearchMember(pageNo, searchMember.trim());
+	    model.addAttribute("authVO", memberListVO);
+	    model.addAttribute("searchMember", searchMember);
+	    model.addAttribute("totalMemberCount", adminService.manageSearchMemberTotalCount(searchMember));
+	    return "member/admin/manageMember.tiles";
+	    }
+	
+	/**
+	 * 정지윤
+	 * 탈퇴 회원 검색
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("manageSearchRemoveMember.do")
+	public String manageSearchRemoveMember(String searchRemoveMember, String pageNo, Model model) {
+		MemberListVO memberListVO = adminService.manageSearchRemoveMember(pageNo, searchRemoveMember.trim());
+	    model.addAttribute("authVO", memberListVO);
+	    model.addAttribute("searchRemoveMember", searchRemoveMember);
+	    model.addAttribute("totalMemberCount", adminService.manageSearchRemoveMemberTotalCount(searchRemoveMember));
+	    return "member/admin/manageRemoveMember.tiles";
+	    }
+	
+	/**
+	 * 정지윤
 	 * 게시물관리 폼
 	 */
 	@Secured("ROLE_ADMIN")
@@ -80,7 +111,7 @@ public class AdminController {
 	public ModelAndView getShowList(String pageNo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/admin/manageShow.tiles");
-		mv.addObject("slvo", boardService.getShowList(pageNo));
+		mv.addObject("showListVO", boardService.getShowList(pageNo));
 		mv.addObject("totalPostCount", boardService.getTotalShowCount());
 		return mv;
 	}
@@ -95,6 +126,21 @@ public class AdminController {
 		adminService.manageShow(checkShow);
 		return "redirect:getManageShowList.do";
 	}
+	
+	/**
+	 * 정지윤
+	 * 공연 검색
+	 */
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("manageSearchShow.do")
+	public String manageSearchShow(String searchShow, String pageNo, Model model) {
+		ShowListVO showListVO = adminService.manageSearchShow(pageNo, searchShow.trim());
+		System.out.println(showListVO);
+	    model.addAttribute("showListVO", showListVO);
+	    model.addAttribute("searchContent", searchShow);
+	    model.addAttribute("totalPostCount", adminService.manageSearchShowTotalCount(searchShow));
+	    return "member/admin/manageShow.tiles";
+	    }
 	
 	/**
 	 * 정지윤
@@ -180,4 +226,17 @@ public class AdminController {
 		adminService.deleteEvent(deleteEvent);
 		return "redirect:manageEventList.do";
 	}
+	/**
+	 * 정세희
+	 * 반려된 이벤트삭제 
+	 */
+	@Secured("ROLE_ARTIST")
+	@PostMapping("deleteEvent2.do")
+	public ModelAndView uncheckDeleteEvent(String[] checkboxBtn) {
+		System.out.println(checkboxBtn);
+		adminService.deleteEvent(checkboxBtn);
+		return new  ModelAndView("redirect:artistCheckEventList.do");
+	}
+	
+	
 }

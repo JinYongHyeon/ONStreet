@@ -7,6 +7,9 @@
 <br>
 <br>
 <div class="col-sm-7"></div>
+<form action="${pageContext.request.contextPath}/manageSearchRemoveMember.do" method="get" id="searchManageForm">
+				<input type="text" name="searchRemoveMember"> <input type="submit" value="검색">
+			</form>
 <form id="manageMemberBtn">
 <a href="${pageContext.request.contextPath}/manageMemberForm.do">회원 전체  목록 보기</a>
 </form>
