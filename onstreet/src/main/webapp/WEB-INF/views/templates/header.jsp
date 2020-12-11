@@ -16,13 +16,15 @@
 			</ul>
 		</nav>
 	<div class="loginbar">
-		<%-- 비로그인 --%>
+		<%-- 비로그인 --%><%-- 
 		<sec:authorize access="!hasRole('ROLE_MEMBER')">
 
 			<span id="loginFormBtn">로그인</span>
 			<a href="${pageContext.request.contextPath}/checkDocument.do">회원가입</a>
-		</sec:authorize>
+		</sec:authorize> --%>
 
+
+	<div class="bitLogin">
 		<%-- 로그인 --%>
 		<sec:authorize access="hasRole('ROLE_MEMBER')">
 			<form id="logoutForm" action="${pageContext.request.contextPath}/logout.do" method="post">
@@ -31,14 +33,16 @@
 			<a href="#" id="logout">로그아웃</a>
 			<a href="${pageContext.request.contextPath}/mypageForm.do">마이페이지</a>
 
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<a href="${pageContext.request.contextPath}/adminPageForm.do">관리자페이지</a>
+			</sec:authorize>
 		</sec:authorize>
-		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a href="${pageContext.request.contextPath}/adminPageForm.do">관리자페이지</a>
-		</sec:authorize>
-
-	</div>
-	<%--
-		<div class="bitMainSearch">
+		</div>
+	<div class="bitMainSearch">
+			<svg id="asd" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+			  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+			</svg>
 			<form action="${pageContext.request.contextPath}/getShowSearchList.do" method="get" id="searchForm">
 				<input type="text" name="searchContent" required="required"> <input type="submit" value="검색">
 				<select name="kinds">
@@ -47,7 +51,8 @@
 				</select>
 			</form>
 		</div>
-	 --%>
+	</div>
+	
 </div>
 
 <script type="text/javascript">

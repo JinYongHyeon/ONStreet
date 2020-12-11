@@ -3,7 +3,6 @@
  */
 $(document).ready(function(){
 	
-	
 	//로그아웃 진용현
 	$(document).on("click","#logout",function(){
 		$("#logoutForm").submit();
@@ -11,12 +10,45 @@ $(document).ready(function(){
 	
 	//로그인폼 열기 진용현
 	$(document).on("click","#loginFormBtn",function(){
-		$("#login").css("display","block");
+		if($("#login").is(":animated")||$("#login").css("display")=="block")return;
+		$("#login").css({"display":"block","top":"60%"});
+		$("#loginBlind").css("display","block");
+		//$("body").css("overflow","hidden");
+		$("html").animate({scrollTop:0},1000,function(){
+			$(this).css("overflow","hidden");
+		});
+		$("#loginBlind").animate({
+			opacity:0.6
+		},1000);
+		$("#login").animate({
+			top:"50%",
+			opacity:1
+		},1000);
+
+	});
+	
+	$(document).on("click","#asd",function(){
+		$(this).css("display","none");
+		$("#header .bitMainSearch form").animate({
+			left:0
+		},1000);
 	});
 	
 	//로그인폼 창닫기 진용현 
 	$(document).on("click","#login .loginTitle svg",function(){
-		$("#login").hide();
+		if($("#login").is(":animated"))return;
+		$("#loginBlind").animate({
+			opacity:0
+		},1000,function(){
+			$(this).hide();
+		});
+		$("html").css("overflow-y","scroll");
+		$("#login").animate({
+			top:"40%",
+			opacity:0
+		},1000,function(){
+			$(this).hide();
+		});
 	});
 	
 	var idCoin = 0;

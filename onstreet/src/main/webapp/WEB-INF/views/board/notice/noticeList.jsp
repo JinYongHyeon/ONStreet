@@ -29,6 +29,7 @@ $(document).ready(function() {
 </script>
 <form action="deleteNotice.do" method="post" id="deleteNoticecheckForm">
 <sec:csrfInput/>
+<h1>공지사항</h1>
 <table id="noticeList">
 <thead>
 <tr>
@@ -67,11 +68,11 @@ ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.i
 </table>
 </form>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<div class="col-sm-8">
+<!-- <div class="col-sm-8"> -->
  <form action="addNoticeForm.do" method="get" id="noticeButton_1">
  <input type="submit" value="등록"  id="noticeButton_1">
  </form>
- </div> 
+<!--  </div> --> 
  <button form="deleteNoticecheckForm"  type="submit" id="noticeButton_2">삭제</button>
  <!-- <input type="checkbox" id="allNoticeCheck" value="전체선택">
   <input type="checkbox" id="allNotice" value="전체선택해제"> -->

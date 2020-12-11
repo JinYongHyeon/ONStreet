@@ -5,8 +5,8 @@
 	prefix="sec"%>
   <div id="mainVideo">
   	<div class="mainVideoLoginForm">
-  		<span>로그인</span>
-  		<span>회원가입</span>
+  		<span id="loginFormBtn">로그인</span>
+  		<span onclick="location.href='${pageContext.request.contextPath}/checkDocument.do'">회원가입</span>
   	</div>
 	<video autoplay="autoplay" loop muted>
 		<source src="${pageContext.request.contextPath}/resources/img/main.mp4" type="video/mp4">

@@ -15,12 +15,22 @@ function check(){
 	$("input:checkbox[name='checkboxBtn']").each(function(){
 		//checkbox checked -- > flag = true;
 		if($(this).is(":checked")){
+			alert("정말삭제하시겠습니까?");
 		flag=true;
-		$("#deleteEventBtn").show();
 		return ;//반복문 빠져나오게
 		}//if1
 	});//each
 }
+
+	$(function(){
+		$(document).on("click","#checkboxBtn",function(){
+			if($("#checkboxBtn").length>=1){
+			$("#deleteEventBtn").css("display","block");
+			}eles{
+			$("#deleteEventBtn").css("display","none");
+			}//else
+		});//function2
+	});//function1
 //삭제 버튼id명  deleteEventBtn
 
 
@@ -42,16 +52,18 @@ function check(){
 	<th>이벤트제목</th>
 	<th>이벤트내용</th>
 	<th>이벤트날짜</th>
-	<th>승인상태  <input type="checkbox" onclick="check_all()"/></th>
+	<th>승인상태  <input type="checkbox" id="checkboxBtn" name="checkboxBtn" onclick="check_all()" /></th>
 </tr>
 </thead>
 
 <tbody>
 <form action="${pageContext.request.contextPath}/deleteEvent2.do?deleteEvent=${evtlist.eventNo}" method="post" onsubmit="return check()" name="form">
-<input type="submit" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title >
+<div>
+<input type="submit" style="display:none;" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title >
 <small>
 <span class="count">1 item</span>
 </small>
+</div>
 <sec:csrfInput/>
 <c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
 <tr>
@@ -68,7 +80,7 @@ function check(){
 </c:when> 
 <c:when test="${eventCheckDate  == '0001-01-02'}">
 
-반려  <input type="checkbox" name="checkboxBtn" value="${evtlist.eventNo}">
+반려  <input type="checkbox" name="checkboxBtn" value="${evtlist.eventNo}" id="checkboxBtn">
 </c:when>
 <c:otherwise>
 미승인
