@@ -1516,63 +1516,66 @@ float: left;
 
 /*공지시항리스트 UI 김수민 */
 #noticeList {
-	width: 700px;
-	height: 15%;
-	border: 2px solid #d1fffc;
-	font-size: 20px;
+	width: 1100px;
+	height: 180px;	
+	border: 2px solid #F2DCE0;
+	font-size: 15px;
+	margin: 0 auto;
 }
 
 #noticeList tr  th {
-	border: 2px solid #d1fffc;
+	border: 2px solid #F2DCE0;
 	border-collapse: collapse;
 	text-align: center;
-	background-color: #d1fffc;
+	background-color: #F2DCE0;
 }
 
 #noticeList tr td {
-	border-bottom: 2px solid #d1fffc;
+	border-bottom: 2px solid #F2DCE0;
+	border-top:2px solid #F2DCE0;
 	border-collapse: collapse;
 	text-align: center;
-	border-color: #91fff0;
+	border-color: #F2DCE0;
 }
-
 #noticeButton_1 input[type='submit'] {
 	width: 50px;
 	height: 30px;
-	border: 1px #0000a0 solid;
-	background-color: #ffffff;
+	border: 1px blue solid;
+	background-color: blue;
 	position: relative;
 	float:right;
-	right:680px;
+	right:470px;
 	margin-top: 10px;
+	color: white;
 }
 
 #noticeButton_1 input[type='submit']:hover {
-	color: #ffffff;
-	background-color: rgba(0, 0, 225, 1.0);
+	color: black;
+	background-color: white;
 }
 
 #noticeButton_2 {
 	width: 50px;
 	height: 30px;
 	border: 1px #ff1717 solid;
-	background-color: #ffffff;
+	background-color: #ff1717;
 	position: relative;
 	float: right;
-	right: 550px;
+	right: 256px;
 	margin-top: 10px;
+	color: white;
 }
 
 #noticeButton_2:hover {
-	color: #ffffff;
-	background-color: rgba(225, 0, 0, 1.0);
-	border-color: #57cfc7;
+	background-color: white;
+	border-color: rgba(225, 0, 0, 1.0);
+	color: black;
 }
 
 .pagination {
 	display: block;
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 .pagination>li>a {
@@ -1581,58 +1584,89 @@ float: left;
 
 /*공지사항 상세보기 UI 김수민  */
 #noticeDetail {
-	width: 490px;
-	height: 250px;
+	width: 720px;
+	height: 270px;
 	border-collapse: collapse;
-	margin-top: 30px;
+	margin: 0 auto;
+	margin-top: 200px;
+	margin-right: 600px;
+}
+#noticeDetail #DetailTitle{
+	background-color:#f2A2A2; 
 }
 #noticeDetail tr th {
 	text-align: left;
 	font-size: 20px;
 	border-collapse: collapse;
 	border: 1px solid;
-	background-color: #d03535;
-	color: white;
+	background-color: #F2C9C9;
 	border: 2px solid;
+	border-color: #F2C9C9;
+	font-size: 20px;
 }
 #noticeDetail tr td {
 	text-align: center;
 	font-size: 25px;
 	border-collapse: collapse;
 	border: 1px solid;
+	border-color: #F2C9C9;
+	font-size: 25px;
 }
 #noticeContent{
-	vertical-align:text-top;
-	background-color: #ff4a4a;
-	color:white; 
+	height: 180px;
+	background-color: #F2DCE0;
 	border: 2px solid;
+	
 }
 #noticeDetailButton {
-	width: 50px;
+	width: 40px;
 	height: 30px;
 	position: relative;
 	float: right;
-	right: 433px;
+	right: 600px;
 	margin-top: 10px;
 	border: 1px solid #d03535;
-	background-color: #ffffff;
+	background-color: #d03535;
+	color: white;
 }
 
 #noticeDetailButton:hover {
 	border: 1px solid #d03535;
-	background-color: #d03535;
-	color: #ffffff;
+	background-color: white;
+	color: black;
 }
 /*공지사항 등록 UI 김수민*/
 #registerNoticeTitle{
-	width: 1800px;
+	width: 940px;
 	height:30px;
 	font-size:20px;
-	margin: 5px;
+	margin: 0 auto;
+	position: relative;
+	float: left;
+	left: 245px;
 	border: 1px solid;
+	margin-top: 100px;
+}
+#register{
+	font-size: 40px;
+	position: relative;
+	float: left;
+	left: 50px;
+	margin-bottom: 10px;
+}
+#textTitle{
+	position:relative;
+	float: left;
+	left: 220px;
+	font-size: 25px;
+	margin-top: 100px;
 }
 #content{
 	font-size: 25px;
+	position: relative;
+	float: left;
+	left: 225px;
+	margin-top: 30px;
 }
 #submitButton{
 	width: 70px;
@@ -1642,7 +1676,7 @@ float: left;
 	color: blue;
 	position: relative;
 	float:right;
-	right: 50px;
+	right: 500px;
 }
 #resetButton{
 	width: 70px;
@@ -1652,7 +1686,7 @@ float: left;
 	color: red;
 	position:relative;
 	float: right;
-	right: 23px;
+	right: 457px;
 }
 #resetButton:hover{
 	background-color: red;
@@ -1664,11 +1698,32 @@ float: left;
 }
 /*회원정보 수정 UI 김수민  */
 #updateTitle{
-	width: 1860px;
+	width: 760px;
 	font-size: 20px;
+	position: relative;
+	float: left;
+	left: 500px;
+	margin-bottom: 20px;
+}
+#titleUpdate{
+	font-size:25px;
+	position: relative;
+	float: left;
+	left: 480px; 
+	margin-bottom: 20px;
 }
 #updateContent{
 	font-size: 25px;
+	position: relative;
+	float: left;
+	left: 300px;
+	margin-top: 50px;
+}
+#update{
+	font-size: 25px;
+	position:relative;
+	float: left;
+	left: 480px;
 }
 #updateButton{
 	width: 70px;
@@ -1677,7 +1732,7 @@ float: left;
 	border-color: blue;
 	position: relative;
 	 float:right;
-	right: 150px;
+	right: 650px;
 }
 #updateButton:hover{
 	background-color: blue;
@@ -1689,8 +1744,8 @@ float: left;
 	background-color: white;
 	border-color: red;
 	position: relative;
-	float:left;
-	left: 1808px;
+	float:right;
+	right: 494px;
 }
 #backButton:hover{
 	background-color:red;

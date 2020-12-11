@@ -13,28 +13,19 @@ $(document).ready(function() {
       } 
       return confirm("삭제 하시겠습니까?");
      });//submit
-   /*   $("#allNoticeCheck").click(function() {
-    	 var anc=$("#deleteNoticecheckForm :checkbox[name=noticeNo]");
-    	 if($(this).prop("click")){
-    		 $(anc).prop("checked",true);
-    	 }
-	});
-     $("#allNotice").click(function() {
-    	 var ank=$("#deleteNoticecheckForm :checkbox[name=noticeNo]");
-    	 if($(this).prop("click")){
-    		 $(ank).prop("checked",false);
-    	 }
-	}); */
+  $("#allNoticeCheck").change(function() {
+    		 $("#deleteNoticecheckForm :checkbox[name=noticeNo]").prop("checked",$(this).prop("checked"))
+	});//click
 });//ready
 </script>
 <form action="deleteNotice.do" method="post" id="deleteNoticecheckForm">
 <sec:csrfInput/>
-<h1>공지사항</h1>
+<h1><b>NOTICE</b></h1>
 <table id="noticeList">
 <thead>
 <tr>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<th width="30px">선택</th>
+<th><input type="checkbox" id="allNoticeCheck"></th>
 </sec:authorize>
 <th>번호</th>
 <th>제목</th>
@@ -43,13 +34,11 @@ $(document).ready(function() {
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
 <c:set var="pb" value="${requestScope.lvo.pagingBean}" />
 <c:forEach var="list" items="${requestScope.lvo.noList}" varStatus="status">
 <tr>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<td width="30px">
+<td>
 <%-- <input type="hidden" name="noticeNo" value="${list.noticeNo}">--%>
 <input type="checkbox" name="noticeNo" value="${list.noticeNo}">
 </td>
@@ -62,8 +51,6 @@ ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.i
 <td>${list.memberVO.nickName}</td>
 </tr>
 </c:forEach>
-</td>
-</tr>
 </tbody>
 </table>
 </form>
@@ -74,8 +61,6 @@ ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.i
  </form>
 <!--  </div> --> 
  <button form="deleteNoticecheckForm"  type="submit" id="noticeButton_2">삭제</button>
- <!-- <input type="checkbox" id="allNoticeCheck" value="전체선택">
-  <input type="checkbox" id="allNotice" value="전체선택해제"> -->
  </sec:authorize> 
 <div class="pagingInfo">
    <c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
