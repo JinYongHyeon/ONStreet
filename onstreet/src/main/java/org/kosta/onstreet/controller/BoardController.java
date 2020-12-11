@@ -250,8 +250,8 @@ public class BoardController {
    @Secured("ROLE_MEMBER")
    @RequestMapping("getShowDetail.do")
    public ModelAndView getShowDetail(String showNo, String pageNo) {
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("board/show/showDetail.tiles");
+	  ModelAndView mv = new ModelAndView();
+	  mv.setViewName("board/show/showDetail.tiles");
       mv.addObject("svo", boardService.getShowDetail(showNo));
       mv.addObject("clvo", boardService.getCommentList(showNo, pageNo));
       mv.addObject("likeId", boardService.getLikeListByShowNo(showNo));

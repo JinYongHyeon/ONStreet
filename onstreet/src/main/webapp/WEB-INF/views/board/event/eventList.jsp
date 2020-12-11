@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,8 @@
 </head>
 <body>
 <h1><b>EVENT</b></h1> <br>
+<jsp:useBean id="toDay" class="java.util.Date" />
+<fmt:formatDate value='${toDay}' pattern='yyyy년 MM월 dd일' var="nowDate"/>
 
 <div id="event">
 <sec:authorize access="hasRole('ROLE_ARTIST')">
@@ -19,9 +23,19 @@
 <br><br>
 </div>
 <c:forEach var="evo" items="${requestScope.eventVO.eventList}">
+
 <div class="eventList">
-<a href="getEventDetail.do?eventNo=${evo.eventNo}">
-<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"></a> <br>
+
+<c:choose>
+	<c:when test="${nowDate>evo.eventDate}">
+		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"> <br>
+	</c:when>
+	<c:otherwise>
+		<a href="getEventDetail.do?eventNo=${evo.eventNo}">
+		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"></a> <br>
+	</c:otherwise>
+</c:choose>
+
 <span id="eventTitle">${evo.eventTitle}</span> <br>
 <span id="eventDate">${evo.eventDate}</span> <br><br>
 </div>
