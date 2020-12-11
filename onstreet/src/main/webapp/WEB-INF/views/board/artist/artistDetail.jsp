@@ -2,15 +2,24 @@
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <br>
-<span id="artistTitle">ARITST</span>
-<br><br><br>
+<span id="artistDetailTitle">ARITST</span>
+<div class="container con">
 
 <div class="col-sm-4 artistProfileImg">
-	<img src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
+
+<c:choose>
+	<c:when test="${requestScope.artistVO.memberVO.profile==null}">
+		<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
+	</c:when>
+	<c:otherwise>
+		<img src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
+	</c:otherwise>
+</c:choose>
+
 	<br>
 </div>
-<div class="col-sm-1"></div>
-<div class="col-sm-5 artistProfile">
+<div class="col-sm-2"></div>
+<div class="col-sm-6 artistProfile">
     <span id="artistName">${requestScope.artistVO.memberVO.nickName}</span>
     		<input type="button" value="팔로우" id="follow">
     <hr>
@@ -40,8 +49,8 @@
 	<br>
 	<br>
 </div>
-<div class="col-sm-1"></div>
 
+</div>
 <sec:authorize access="!hasRole('ROLE_MEMBER')">
 	<div id="login">
 		<div class="loginTitle">
@@ -115,8 +124,11 @@
 					$("#follow").attr("value", "팔로우 취소");
 					return;
 				} else {
-					if(confirm("팔로우 리스트로 이동하시겠습니까?"))
+					if(confirm("팔로우 리스트로 이동하시겠습니까?")) { 
 						location.href="followingList.do";
+					} else {
+						$("#follow").attr("value", "팔로우 취소");
+					}
 				}
 			}
 			});//ajax

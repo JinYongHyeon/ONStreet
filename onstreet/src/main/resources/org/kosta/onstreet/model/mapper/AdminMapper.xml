@@ -76,6 +76,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
 	</select>
 	
+	<!-- 회원 검색 카운트 -->
+	<select id="manageSearchMemberTotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM os_member
+		WHERE nickname LIKE '%'||#{value}||'%'
+	</select>
+	
+	<!-- 회원 검색  -->
+	<select id="manageSearchMember" resultMap="memberList" parameterType="map">
+		SELECT rnum, m.id, m.nickname, m.name,m.age,m.phone,m.email,m.address,m.remove_user_date,a.auth_name
+	 	FROM(SELECT row_number() over(order by id desc) as rnum, id, nickname,name,age,phone,email,address,remove_user_date
+	 	FROM os_member WHERE nickname LIKE '%'||#{nickName}||'%') m , os_auth a
+		WHERE m.id=a.id
+		AND a.auth_name='ROLE_MEMBER'
+		AND m.remove_user_date is null
+		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
+	</select>
+	
+	<!-- 탈퇴 회원 검색 카운트 -->
+	<select id="manageSearchRemoveMemberTotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM os_member
+		WHERE nickname LIKE '%'||#{value}||'%'
+		AND remove_user_date is not null
+	</select>
+	
+	<!-- 탈퇴 회원 검색  -->
+	<select id="manageSearchRemoveMember" resultMap="memberList" parameterType="map">
+		SELECT rnum, m.id, m.nickname, m.name,m.age,m.phone,m.email,m.address,m.remove_user_date,a.auth_name
+	 	FROM(SELECT row_number() over(order by id desc) as rnum, id, nickname,name,age,phone,email,address,remove_user_date
+	 	FROM os_member WHERE nickname LIKE '%'||#{nickName}||'%') m , os_auth a
+		WHERE m.id=a.id
+		AND a.auth_name='ROLE_MEMBER'
+		AND m.remove_user_date is not null
+		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
+	</select>
+	
 	<!-- 미승인 아티스트 수 -->
 	<select id="getTotalCheckArtist" resultType="int">
 		select count(*) from os_artist where check_date is null
