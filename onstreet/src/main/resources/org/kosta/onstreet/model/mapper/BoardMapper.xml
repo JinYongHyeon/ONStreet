@@ -147,21 +147,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 공연일정글 전체 갯수 불러오는 sql -->
 	<select id="getTotalShowCount" resultType="int">
 		select count(*) from
-		os_show
+		os_show where 
+		<![CDATA[show_date <= sysdate+14]]>
 	</select>
 	<!-- 공연일정 전체글 리스트 불러오기 -->
-	<select id="getShowList" parameterType="pagingBean"
-		resultMap="showListRM">
+	<select id="getShowList" parameterType="pagingBean" resultMap="showListRM">
 		SELECT s.show_no,s.rnum,s.show_title,m.nickname,s.show_date
 		FROM(
 		SELECT row_number() over(order by show_date desc) as
 		rnum,show_no,show_title,
 		to_char(show_date,'YYYY-MM-DD') as
 		show_date,id
-		FROM os_show
-		) s,os_member m where s.id = m.id and rnum
+		FROM os_show where <![CDATA[show_date <= sysdate+14]]> 
+		) s,os_member m where s.id = m.id and s.rnum
 		between #{startRowNumber} and #{endRowNumber}
-		order by show_date desc
+		order by s.show_date desc
 	</select>
 	<!-- 공연일정 상세보기 -->
 	<select id="getShowDetail" parameterType="String"
