@@ -87,6 +87,57 @@ public class AdminServiceImpl implements AdminService {
 		MemberListVO memberListVO = new MemberListVO(adminMapper.getRemoveMemberList("ROLE_MEMBER", pagingBean),pagingBean);
 		return memberListVO;
 	}
+	
+	/**
+	 * 정지윤
+	 * 회원 검색 카운트
+	 */
+	@Override
+	public int manageSearchMemberTotalCount(String nickName) {
+		return adminMapper.manageSearchMemberTotalCount(nickName);
+	}
+	
+	/**
+	 * 정지윤
+	 * 회원 검색
+	 */
+	@Override
+	public MemberListVO manageSearchMember(String pageNo, String nickName) {
+		int totalCount = adminMapper.manageSearchMemberTotalCount(nickName);
+		PagingBean pagingBean = null;
+		if(pageNo != null)
+			pagingBean = new PagingBean(totalCount, Integer.parseInt(pageNo));
+		else
+			pagingBean = new PagingBean(totalCount);
+		MemberListVO memberListVO = new MemberListVO(adminMapper.manageSearchMember(nickName, pagingBean),pagingBean);
+		return memberListVO;
+	}
+	
+	/**
+	 * 정지윤
+	 * 탈퇴 회원 검색 카운트
+	 */
+	@Override
+	public int manageSearchRemoveMemberTotalCount(String nickName) {
+		return adminMapper.manageSearchRemoveMemberTotalCount(nickName);
+	}
+	
+	/**
+	 * 정지윤
+	 * 탈퇴 회원 검색
+	 */
+	@Override
+	public MemberListVO manageSearchRemoveMember(String pageNo, String nickName) {
+		int totalCount = adminMapper.manageSearchRemoveMemberTotalCount(nickName);
+		PagingBean pagingBean = null;
+		if(pageNo != null)
+			pagingBean = new PagingBean(totalCount, Integer.parseInt(pageNo));
+		else
+			pagingBean = new PagingBean(totalCount);
+		MemberListVO memberListVO = new MemberListVO(adminMapper.manageSearchRemoveMember(nickName, pagingBean),pagingBean);
+		return memberListVO;
+	}
+	
 	/**
 	 * 정지윤
 	 * 게시물 삭제
@@ -98,6 +149,31 @@ public class AdminServiceImpl implements AdminService {
 			showVO.setShowNo(showNo);
 			boardMapper.deleteShow(showNo);
 		}
+	}
+	
+	/**
+	 * 정지윤
+	 * 공연 검색 카운트
+	 */
+	@Override
+	public int manageSearchShowTotalCount(String showTitle) {
+		return boardMapper.getSearchShowTotalCount(showTitle);
+	}
+	
+	/**
+	 * 정지윤
+	 * 공연 검색
+	 */
+	@Override
+	public ShowListVO manageSearchShow(String pageNo, String showTitle) {
+		int totalCount = boardMapper.getSearchShowTotalCount(showTitle);
+		PagingBean pagingBean = null;
+		if(pageNo != null)
+			pagingBean = new PagingBean(totalCount, Integer.parseInt(pageNo));
+		else
+			pagingBean = new PagingBean(totalCount);
+		ShowListVO showListVO = new ShowListVO(boardMapper.getSearchShow(showTitle, pagingBean),pagingBean);
+		return showListVO;
 	}
 
 	/**

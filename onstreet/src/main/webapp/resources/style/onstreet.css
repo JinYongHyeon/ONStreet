@@ -24,6 +24,30 @@ input[type=password] {
 	font-family: "맑은고딕";
 }
 
+a {
+	background-color: #d03535;
+	border-color: #d03535;
+	color: white;
+	border-radius: 5px;
+	border: 2px solid #d03535;
+}
+
+input[type=button] {
+	background-color: #d03535;
+	border-color: #d03535;
+	color: white;
+	border-radius: 5px;
+	border: 2px solid #d03535;
+}
+
+input[type=submit] {
+	background-color: #d03535;
+	border-color: #d03535;
+	color: white;
+	border-radius: 5px;
+	border: 2px solid #d03535;
+}
+
 #main {
 	width: 100%;
 	float: left;
@@ -31,6 +55,12 @@ input[type=password] {
 	min-height: 78vh;
 	padding: 0;
 	font-family: JSDongkang-Regular;
+}
+
+/*페이징*/
+.pagingInfo .pagination .active a {
+	background-color: #d03535;
+	border-color: #d03535;
 }
 
 /* header 로고 + 검색 */
@@ -957,41 +987,51 @@ input[type=password] {
 #artistTitle {
 	font-size: 40px;
 	font-weight: bolder;
-	border-bottom: 4px solid #999;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 730px;
 }
 
 .artistList {
 	float: left;
-	width: 400px;
+	width: 500px;
 	margin-bottom: 40px;
 }
 
 .artistList img {
-	border: 2px solid #000000;
+	margin-top: 50px;
+	border: 2px solid #d03535;
 	border-radius: 5px;
-	width: 250px;
-	height: 320px;
+	width: 300px;
+	height: 300px;
 }
 
 .artistList a {
-	color: black;
 	padding: 5px 5px;
-	width: 63%;
+	width: 60%;
 	display: inline-block;
-	border-radius: 5px;
-	border: 2px solid #000000;
+	text-align: center;
 }
 
 /*아티스트 상세보기*/
+#artistDetailTitle {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 927px;
+}
+
 .artistProfileImg img {
 	float: left;
-	margin-left: 150px;
+	width: 450px;
+	height: 450px;
+	margin-top: 50px;
 }
 
 .artistProfile {
 	font-size: medium;
-	margin-left: 50px;
+	margin-left: 150px;
 	text-align: left;
+	margin-top: 50px;
 }
 
 .artistProfile img {
@@ -1006,18 +1046,52 @@ input[type=password] {
 }
 
 .artistProfile #follow {
-	color: black;
 	padding: 5px 10px 5px 10px;
 	display: inline-block;
-	border-radius: 5px;
-	border: 2px solid #ffffff;
 	float: right;
 }
 
 /*이벤트 리스트*/
+#eventListTitle {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;	
+	margin-left: 500px;
+}
+
+.eventList{
+	width:800px;
+	height: 150px;
+	margin: 80px auto;
+	position: relative;
+	text-align: center;
+}
+
+.con {
+	margin-top: 30px;
+}
+
+.event a {
+    float: right;
+    margin-right: 170px;
+	font-size: 18px;
+}
+
 .eventList img {
 	width: 800px;
 	height: 150px;
+}
+
+#frontText {
+	background-color: #9999;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    float: left;
+    transform: translate(-50%, -50%);
 }
 
 #eventTitle {
@@ -1031,11 +1105,8 @@ input[type=password] {
 
 #event a {
 	text-decoration: none;
-	color: black;
 	padding: 5px 10px 5px 10px;
 	display: inline-block;
-	border-radius: 5px;
-	border: 2px solid #000000;
 	float: right;
 	margin-right: 350px;
 }
@@ -1174,9 +1245,9 @@ input[type=password] {
 }
 
 /* 이동욱 board/show css */ 
-#showDetail img {
-width: 100%;
-height: 100%;
+#showDetailContent img {
+max-width: 100%;
+max-height: 100%;
 float: left;
 }
 
@@ -1196,17 +1267,17 @@ float: left;
 	float: left; width: 15%; height: 100px;
 }
 #showDetailContentSide {
-	float: left; width: 38%;
+	float: left; /* width: 38%; */ height: 942px;
 }
 #showDetailBlankSide {
-	float: left; width: 2%; height: 100px;
+	float: left; width: 2%; height: 1000px;
 }
 #showDetailCommentSide {
-	 float: right; width: 30%; height: 1700px;
+	 float: left; width: 33%; height: 942px;
 }
 
 #showDetailrightSide {
-	float: right; width: 15%; height: 1700px;
+	float: right; width: 12%; height: 100px;
 }
 .showDetailArtistComment {
 	text-align: left;
@@ -1221,10 +1292,10 @@ float: left;
 	background: grey;
 }
 #btn-update {
-	float: left; width: 50%;
+	float: left;
 }
 #btn-delete {
-	float: left; width: 50%
+	float: left; 
 }
 #heart {
 	color:red;
@@ -1238,6 +1309,10 @@ float: left;
 #commentContent {
 	width: 440px; height: 60px;
 }
+#showDetailContent {
+	max-width: 500px;
+	max-height: 907px;
+}
 
 /* 채팅 테스트 */
 
@@ -1245,13 +1320,17 @@ float: left;
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #4c4c6a;
+  background-color: #d03535;
   border-radius: 2px;
+}
+.test{
+    max-height: 942px;
+	overflow: scroll;
 }
 .chatbox {
     width: 300px;
-    height: 950px;
-    max-height: 950px;
+    height: 907px;
+    max-height: 907px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1259,9 +1338,9 @@ float: left;
 }
 .chat-window {
     flex: auto;
-    height: 100%;
-    /* max-height: 942px; */
-    background: #2f323b;
+    /* height: 100%; */
+    max-height: 907px;
+    background: #f6f9f6;
     overflow: auto;
 }
 #commentRegisterTd {
@@ -1324,7 +1403,7 @@ float: left;
 }
 .msg-box {
     display: flex;
-    background: #5b5e6c;
+    background: #d03535;
     padding: 10px 10px 0 10px;
     border-radius: 0 6px 6px 0;
     max-width: 80%;
@@ -1369,15 +1448,16 @@ float: left;
 }
 .posttime {
     margin-left: 3px;
+    color: #c4b3b3;
 }
 .msg-self .msg-box {
     border-radius: 6px 0 0 6px;
-    background: #2671ff;
+    background: white;
     float: right;
     word-break:break-all;
 }
 .msg-self .user-img {
-    margin: 0 0 10px 10px;
+   /*  margin: 0 0 10px 10px; */
 }
 .msg-self .msg {
     text-align: right;

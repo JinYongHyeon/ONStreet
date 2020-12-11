@@ -3,15 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <br>
-<span id="artistTitle">ARITST</span>
-<br><br><br>
+<span id="artistDetailTitle">ARITST</span>
+<div class="container con">
 
 <div class="col-sm-4 artistProfileImg">
-	<img src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
+
+<c:choose>
+	<c:when test="${requestScope.artistVO.memberVO.profile==null}">
+		<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
+	</c:when>
+	<c:otherwise>
+		<img src="${pageContext.request.contextPath}/resources/img/profile/${requestScope.artistVO.memberVO.profile}">
+	</c:otherwise>
+</c:choose>
+
 	<br>
 </div>
-<div class="col-sm-1"></div>
-<div class="col-sm-5 artistProfile">
+<div class="col-sm-2"></div>
+<div class="col-sm-6 artistProfile">
     <span id="artistName">${requestScope.artistVO.memberVO.nickName}</span>
     		<input type="button" value="팔로우" id="follow">
     <hr>
@@ -41,12 +50,12 @@
 	<br>
 	<br>
 </div>
-<div class="col-sm-1"></div>
 
 	
 	<div id="calendar">
 		<div class="calendarTitle">
 			<h1>아티스트 일정</h1>
+
 			<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
   <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
@@ -116,8 +125,11 @@
 					$("#follow").attr("value", "팔로우 취소");
 					return;
 				} else {
-					if(confirm("팔로우 리스트로 이동하시겠습니까?"))
+					if(confirm("팔로우 리스트로 이동하시겠습니까?")) { 
 						location.href="followingList.do";
+					} else {
+						$("#follow").attr("value", "팔로우 취소");
+					}
 				}
 			}
 			});//ajax

@@ -8,6 +8,7 @@ import org.kosta.onstreet.model.PagingBean;
 import org.kosta.onstreet.model.vo.ArtistVO;
 import org.kosta.onstreet.model.vo.AuthVO;
 import org.kosta.onstreet.model.vo.EventVO;
+import org.kosta.onstreet.model.vo.MemberVO;
 import org.kosta.onstreet.model.vo.ShowVO;
 
 @Mapper
@@ -20,6 +21,30 @@ public interface AdminMapper {
 	int getTotalMemberCount();
 	List<AuthVO> getManageMemberList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
 	List<AuthVO> getManageMemberArtistList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
+	
+	/**
+	 * 정지윤 
+	 * 회원 검색 카운트
+	 */
+	int manageSearchMemberTotalCount(String nickName);
+	
+	/**
+	 * 정지윤
+	 * 회원 검색
+	 */
+	List<AuthVO> manageSearchMember(@Param("nickName") String nickName, @Param("pagingBean") PagingBean pagingBean);
+	
+	/**
+	 * 정지윤 
+	 * 탈퇴 회원 검색 카운트
+	 */
+	int manageSearchRemoveMemberTotalCount(String nickName);
+	
+	/**
+	 * 정지윤
+	 *  탈퇴 회원 검색
+	 */
+	List<AuthVO> manageSearchRemoveMember(@Param("nickName") String nickName, @Param("pagingBean") PagingBean pagingBean);
 	
 	/**
 	 * 정지윤

@@ -190,5 +190,6 @@ var oEditors = [];
 		<input type="submit" value="수정하기" id="postUpdate"
 			class="btn btn-warning">
 	</form>
+
 </div>
 <div style="float: left; width: 15%;"></div>
