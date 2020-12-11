@@ -104,72 +104,6 @@ alert(today) */
 
 									});//ajax
 						});//click
-		
-		$("#multipartPreViewForm input[value=취소]").click(function(){
-			if($("#multipartPreView").is(":animated"))return;
-			$("#multipartPreView").animate({
-					top:"40%",
-					opacity: 0
-			},1000,function(){
-				$(this).css({"display":"none"},
-				$("#multipartPreViewForm")[0].reset(),
-				$("#multipartPreView .preViewImg ul").html(""),
-				$("#multipartPreView .preViewImg .preViewDefault").show()
-				);
-				
-			});
-			
-		});//click
-						
-		$("#multipartPreViewForm input[type=file]").change(multipartPreView)
-		//멀티 파일 이미지 보기
-		function multipartPreView(e) {
-			$("#multipartPreView .preViewImg ul").html("");
-			var files = e.target.files;
-			var fileArr = Array.prototype.slice.call(files);
-			var index = 0;
-
-			fileArr.forEach(function(f) {
-						if (!f.type.match("image/.*")) {
-							alert("이미지 확장자만 업로드 가능합니다.");
-							$("#multipartPreView .preViewImg ul").html("");
-							$("#multipartPreViewForm input[type=file]").val("");
-							return;
-						}
-						
-						if (files.length < 11) {
-							//sel_files.push(f);
-							var reader = new FileReader();
-							reader.onload = function(e) {
-								var html = "<li><img src=\""+e.target.result+"\"/></li>";
-								//oEditors.getById["showContent"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문3332323222323구"]);
-								//oEditors.getById["showContent"].exec("PASTE_HTML", [html]);
-								$("#multipartPreView .preViewImg ul").append(
-										html);
-							}
-							reader.readAsDataURL(f);
-						}
-					})
-						if (files.length > 11) {
-								$("#multipartPreView .preViewImg ul").html("");
-								alert("최대 10장까지 업로드 할 수 있습니다.");
-								$(this).val("");
-								return;
-							}
-			$("#multipartPreView .preViewImg .preViewDefault").hide();
-			
-		}//다중 이미지 미리보기
-		$(".preView").click(function(){
-			if($("#multipartPreView").is(":animated"))return;
-			$("#multipartPreView").css({"top":"60%"});
-			$("#multipartPreView").css({"display":"block"});
-			$("#multipartPreView .preViewImg .preViewDefault").show();
-			$("#multipartPreView").animate({
-					top:"50%",
-					opacity: 1
-			},1000);
-				
-			});
 	});
 </script>
 
@@ -210,14 +144,8 @@ alert(today) */
 
 	<form method="post" action="addShow.do" id="frm">
 		<sec:csrfInput />
-		<table border="1">
-			<tr>
-				<td>공연제목</td>
-				<td><input type="text" name="showTitle" required="required" id="showTitle"></td>
-			</tr>
-			<tr>
-				<td>공연내용</td>
-				<td style="width: 1300px">
+		<br><br>
+				<input style="width: 944px; height: 35px" type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
 					<div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
@@ -227,16 +155,13 @@ alert(today) */
 							</svg></button>
 						</div><textarea rows="25" name="showContent" id="showContent" ></textarea>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>공연날짜</td>
-				<td><input type="date" name="showDate" required="required" min="${today}" id="showDate"></td>
-			</tr>
-		</table>
+					<div style="width: 944px">
+				<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input style="border: 0" type="date" name="showDate" required="required" min="${today}" id="showDate">
 		<input type="button" id="postWrite" class="btn btn-primary"
-			value="등록하기"  />
+			value="등록하기"  style="float: right"/>
+			</div>
 	</form>
+<br>
 </div>
 <div class="col-sm-2"></div>
 <script type="text/javascript">

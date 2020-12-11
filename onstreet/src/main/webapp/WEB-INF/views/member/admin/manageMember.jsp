@@ -28,6 +28,9 @@
 <br>
 <br>
 <div class="col-sm-7"></div>
+<form action="${pageContext.request.contextPath}/manageSearchMember.do" method="get" id="searchManageForm">
+				<input type="text" name="searchMember"> <input type="submit" value="검색">
+			</form>
 <form id="manageMemberBtn">
 <input type="button" id="removeMember" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageMemberArtistForm.do">아티스트 목록 보기</a>

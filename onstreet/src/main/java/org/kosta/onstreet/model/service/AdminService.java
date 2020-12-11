@@ -38,9 +38,45 @@ public interface AdminService {
 	
 	/**
 	 * 정지윤
+	 * 회원 검색 카운트
+	 */
+	int manageSearchMemberTotalCount(String nickName);
+	
+	/**
+	 * 정지윤
+	 * 회원 검색
+	 */
+	MemberListVO manageSearchMember(String pageNo, String nickName);
+	
+	/**
+	 * 정지윤
+	 * 탈퇴 회원 검색 카운트
+	 */
+	int manageSearchRemoveMemberTotalCount(String nickName);
+	
+	/**
+	 * 정지윤
+	 * 탈퇴회원 검색
+	 */
+	MemberListVO manageSearchRemoveMember(String pageNo, String nickName);
+	
+	/**
+	 * 정지윤
 	 * 게시물 삭제
 	 */
 	void manageShow(String[] checkShow);
+	
+	/**
+	 * 정지윤
+	 * 공연 검색 카운트
+	 */
+	int manageSearchShowTotalCount(String showTitle);
+	
+	/**
+	 * 정지윤
+	 * 공연 검색
+	 */
+	ShowListVO manageSearchShow(String pageNo, String showTitle);
 	
 	/**
 	 * 정지윤

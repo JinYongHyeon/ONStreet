@@ -280,6 +280,72 @@ $(document).ready(function(){
 		}
 	});
 });
+
+
+		$("#multipartPreViewForm input[type=file]").change(multipartPreView)
+		//멀티 파일 이미지 보기
+		function multipartPreView(e) {
+			$("#multipartPreView .preViewImg ul").html("");
+			var files = e.target.files;
+			var fileArr = Array.prototype.slice.call(files);
+			var index = 0;
+
+			fileArr.forEach(function(f) {
+						if (!f.type.match("image/.*")) {
+							alert("이미지 확장자만 업로드 가능합니다.");
+							$("#multipartPreViewForm input[type=file]").val("");
+							return;
+						}
+						
+						if (files.length < 11) {
+							//sel_files.push(f);
+							var reader = new FileReader();
+							reader.onload = function(e) {
+								var html = "<li><img src=\""+e.target.result+"\"/></li>";
+								//oEditors.getById["showContent"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문3332323222323구"]);
+								//oEditors.getById["showContent"].exec("PASTE_HTML", [html]);
+								$("#multipartPreView .preViewImg ul").append(
+										html);
+							}
+							reader.readAsDataURL(f);
+						}
+					})
+						if (files.length > 10) {
+								alert("최대 10장까지 업로드 할 수 있습니다.");
+								$(this).val("");
+								return;
+							}
+			$("#multipartPreView .preViewImg .preViewDefault").hide();
+			
+		}//다중 이미지 미리보기
+		$(".preView").click(function(){
+			if($("#multipartPreView").is(":animated"))return;
+			$("#multipartPreView").css({"top":"60%"});
+			$("#multipartPreView").css({"display":"block"});
+			$("#multipartPreView .preViewImg .preViewDefault").show();
+			$("#multipartPreView").animate({
+					top:"50%",
+					opacity: 1
+			},1000);
+				
+			});
+			
+		$("#multipartPreViewForm input[value=취소]").click(function(){
+		if($("#multipartPreView").is(":animated"))return;
+		$("#multipartPreView").animate({
+				top:"40%",
+				opacity: 0
+		},1000,function(){
+			$(this).css({"display":"none"},
+			$("#multipartPreViewForm")[0].reset(),
+			$("#multipartPreView .preViewImg ul").html(""),
+			$("#multipartPreView .preViewImg .preViewDefault").show()
+			);
+			
+		});
+		
+	});//click
+
 		
 });//ready end
 
@@ -336,6 +402,8 @@ $(document).ready(function(){
 			}
 		}).open();
 		}
+		
+		
 		
 
 		

@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<style>
+	.container{
+		width:1550px;
+	}
+</style>
+<div class="container con">
 <span id="artistTitle">ARTIST</span> <br>
 <div id="artist">
 <c:forEach var="avo" items="${requestScope.artistVO.artistList}">
 <div class="artistList">
-<img src="${pageContext.request.contextPath}/resources/img/profile/${avo.memberVO.profile}"> <br>
+<c:choose>
+	<c:when test="${avo.memberVO.profile == null}">
+		<img src="${pageContext.request.contextPath}/resources/img/profile/default.png"> <br>
+	</c:when>
+	<c:otherwise>
+		<img src="${pageContext.request.contextPath}/resources/img/profile/${avo.memberVO.profile}"> <br>
+	</c:otherwise>
+</c:choose>
 <a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${avo.memberVO.id}">${avo.memberVO.nickName}</a> <br>
 </div>
 </c:forEach>
@@ -62,4 +74,4 @@
    </c:if>
    </ul>          
    </div>    
-
+</div>

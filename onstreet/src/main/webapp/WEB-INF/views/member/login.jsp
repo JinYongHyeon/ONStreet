@@ -2,16 +2,17 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<sec:authorize access="hasRole('ROLE_MEMBER')">
+	<script type="text/javascript">
+		location.href="${pageContext.request.contextPath}/home.do";
+	</script>
+</sec:authorize>
 
 <%-- 로그인 폼 [용현] --%>
 <sec:authorize access="!hasRole('ROLE_MEMBER')">
-	<div id="login" style="display: block;">
+	<div id="login" style="opacity: 1; display: block; border:3px solid #d03535">
 		<div class="loginTitle">
 			<h3>LOGIN</h3>
-			<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-</svg>
 		</div>
 		<div class="loginMain">
 			<form action="${pageContext.request.contextPath}/login.do" method="post" class="loginForm">

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<div class="container">
 <div class="registerMember">
 	<sec:authorize access="hasRole('ROLE_MEMBER')">
 		<script type="text/javascript">
@@ -80,5 +81,6 @@
 		</table>
 		<input type="submit" value="회원가입">
 	</form>
+</div>
 </div>
 <script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
