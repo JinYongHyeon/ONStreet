@@ -112,6 +112,7 @@ public class TestJUnit {
 		 /**
 		  * 정지윤 테스트
 		  */
+		//System.out.println(bm.getEventValidity("21"));
 		//System.out.println(bm.getArtistShowDate("wjdwldbs"));
 		//System.out.println(bm.getTotalArtistCount());
 		//System.out.println(bm.findEventByNo("1"));
@@ -261,14 +262,14 @@ public class TestJUnit {
 			 * fvo:list) System.out.println(fvo);
 			 */
 		
-			String password= "1234";
-			
-			String encoding =  passwordEncoder.encode(password);
-			
-			MemberVO mvo = new MemberVO();
-			mvo.setId("yong");
-			mvo.setPassword(encoding);
-			System.out.println(mm.updatePassword(mvo));
+			/*
+			 * String password= "1234";
+			 * 
+			 * String encoding = passwordEncoder.encode(password);
+			 * 
+			 * MemberVO mvo = new MemberVO(); mvo.setId("yong"); mvo.setPassword(encoding);
+			 * System.out.println(mm.updatePassword(mvo));
+			 */
 			//System.out.println(mvo.getPassword().equals(encoding));
 	}	
 	
