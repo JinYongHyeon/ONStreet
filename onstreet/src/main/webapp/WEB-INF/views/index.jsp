@@ -3,11 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+	
   <div id="mainVideo">
+  <sec:authorize access="!hasRole('ROLE_MEMBER')">
   	<div class="mainVideoLoginForm">
   		<span id="loginFormBtn">로그인</span>
   		<span onclick="location.href='${pageContext.request.contextPath}/checkDocument.do'">회원가입</span>
   	</div>
+  	</sec:authorize>
 	<video autoplay="autoplay" loop muted>
 		<source src="${pageContext.request.contextPath}/resources/img/main.mp4" type="video/mp4">
 	</video>
