@@ -64,8 +64,11 @@ alert(today) */
 		});
 
 		$("#multipartPreViewForm input[value=전송]").click(
-			
-						function() {
+						function() { 
+							if($("#multipartPreViewForm .multipartPreViewFile input[type=file]").val()===""){
+								alert("이미지를 등록해주세요");
+								return;
+							}
 							var formData = new FormData($('#multipartPreViewForm')[0]);
 							$
 									.ajax({
@@ -164,10 +167,3 @@ alert(today) */
 <br>
 </div>
 <div class="col-sm-2"></div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(document).on("click",".photoPreViewBtn",function(){
-			alert(1);
-		});
-	});
-</script>
