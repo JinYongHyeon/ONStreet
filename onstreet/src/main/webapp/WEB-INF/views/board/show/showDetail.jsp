@@ -285,7 +285,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">

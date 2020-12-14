@@ -143,9 +143,9 @@ alert(today) */
 
 
 <div class="col-sm-2"></div>
-<div class="col-sm-8">
+<div class="col-sm-8" style="margin-left: 130px">
 
-	<form method="post" action="addShow.do" id="frm">
+	<form method="post" action="addShow.do" id="frm" >
 		<sec:csrfInput />
 		<br><br>
 				<input type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
