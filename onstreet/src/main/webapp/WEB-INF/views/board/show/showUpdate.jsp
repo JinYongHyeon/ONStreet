@@ -156,7 +156,7 @@ var oEditors = [];
 
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="col-sm-2"></div>
-<div class="col-sm-8">
+<div class="col-sm-8" style="margin-left: 130px">
 	<form action="updateShow.do" method="post" id="frm">
 		<input type="hidden" name="showNo" value="${svo.showNo}">
 		<sec:csrfInput />

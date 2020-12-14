@@ -297,13 +297,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM os_member m, os_artist a
 		WHERE m.id = a.id AND a.check_date IS NOT NULL 
 		AND m.nickname LIKE '%'||#{value}||'%'
+		AND id NOT IN('admin')
 	</select>
 	
 	<!-- 검색[아티스트] - 진용현 -->
 	<select id="getSearchArtist" resultMap="artistList" parameterType="map">
 		SELECT rnum, m.id, m.nickname, m.profile
 	 	FROM(SELECT row_number() over(order by id desc) as rnum, id, nickname,profile,remove_user_date
-	 	FROM os_member WHERE nickname LIKE '%'||#{artistName}||'%')m , os_artist t, os_auth a
+	 	FROM os_member WHERE nickname LIKE '%'||#{artistName}||'%'AND id NOT IN('admin'))m , os_artist t, os_auth a
 		WHERE m.id=a.id AND m.id=t.id 
 		AND a.auth_name='ROLE_ARTIST'
 		AND m.remove_user_date is null

@@ -188,6 +188,7 @@ input[type=submit] {
 }
 
 #header .bitMainSearch #asd {
+	width: 30px;
 	height: 80px;
 	float: right;
 	cursor: pointer;
@@ -237,10 +238,9 @@ input[type=submit] {
 	float: left;
 	border-top: 1px solid white;
 	padding: 25px;
-	height: 100px;
+	height: 150px;
 	background-color: #FAFAFA;
 	text-align: center;
-	margin-bottom: 50px;
 	font-family: JSDongkang-Regular;
 }
 
@@ -1178,7 +1178,6 @@ input[type=submit] {
 
 #eventTitle {
 	font-size: medium;
-	font-weight: bolder;
 }
 
 #eventDate {
@@ -1199,35 +1198,34 @@ input[type=submit] {
 }
 
 /*이벤트 등록*/
-#eventContent {
-	margin-left: 350px;
+#addEvent {
+	margin-left: 150px;
 }
 
 #addEvent input[type=text] {
-	width: 91%;
-	font-size: small;
-	border-radius: 5px;
-	border: 2px solid #000000;
+	width: 944px;
+	font-size: medium;
+	border: 1px solid #000000;
 	height: 30px;
+
 }
 
 #addEvent input[type=file] {
 	float: right;
-	border-radius: 5px;
-	border: 2px solid #000000;
+	border: 1px solid #000000;
 	margin-right: 300px;
-	width: 50%;
+	width: 40%;
 }
 
-#addEvent input[type=submit] {
-	text-decoration: none;
-	color: black;
+#addEvent input[type=button] {
+	background-color: #d03535;
+	color: white;
 	padding: 5px 10px 5px 10px;
 	display: inline-block;
 	border-radius: 5px;
-	border: 2px solid #000000;
+	border: 1px solid #d03535;
 	float: right;
-	margin-right: 30px;
+	margin-right: 45px;
 }
 
 /*관리자 페이지*/
@@ -1341,6 +1339,13 @@ input[type=submit] {
 }
 
 /* 이동욱 board/show css */
+#showListTitle {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 900px;
+}
+
 #showDetailContent img {
 	max-width: 100%;
 	max-height: 100%;
@@ -1437,14 +1442,15 @@ input[type=submit] {
 }
 
 #showDetailContentSide {
-	float: left; width: 38%; height: 942px; max-height: 942px;
+	float: left; /* width: 38%; */ height: 942px; max-height: 942px;
+	margin-left: 390px;
 }
 
-#showDetailBlankSide {
+/* #showDetailBlankSide {
 	float: left;
 	width: 2%;
 	height: 1000px;
-}
+} */
 
 #showDetailCommentSide {
 	float: left;
@@ -1860,7 +1866,8 @@ input[type=submit] {
 
 /*공지시항리스트 UI 김수민 */
 #noticeList {
-	width: 1100px;
+
+	width: 1300px;
 	height: 180px;
 	border: 2px solid #F2DCE0;
 	font-size: 15px;
@@ -1868,30 +1875,31 @@ input[type=submit] {
 }
 
 #noticeList tr  th {
-	border: 2px solid #F2DCE0;
+	border: 2px solid #d03535;
 	border-collapse: collapse;
 	text-align: center;
-	background-color: #F2DCE0;
+	background-color: #d03535;
+	padding: 5px;
+	color: white;
 }
 
 #noticeList tr td {
-	border-bottom: 2px solid #F2DCE0;
-	border-top: 2px solid #F2DCE0;
 	border-collapse: collapse;
 	text-align: center;
-	border-color: #F2DCE0;
+	padding: 5px;
 }
 
 #noticeButton_1 input[type='submit'] {
 	width: 50px;
 	height: 30px;
-	border: 1px blue solid;
-	background-color: blue;
+	border: 1px #d03535 solid;
+	background-color: #d03535;
 	position: relative;
-	float: right;
-	right: 470px;
+	float:right;
+	right:400px;
 	margin-top: 10px;
 	color: white;
+	border-radius:5px;
 }
 
 #noticeButton_1 input[type='submit']:hover {
@@ -1902,18 +1910,19 @@ input[type=submit] {
 #noticeButton_2 {
 	width: 50px;
 	height: 30px;
-	border: 1px #ff1717 solid;
-	background-color: #ff1717;
+	border: 1px #e33636 solid;
+	background-color: #d03535;
 	position: relative;
 	float: right;
-	right: 256px;
+	right: 260px;
 	margin-top: 10px;
 	color: white;
+	border-radius:5px; 
 }
 
 #noticeButton_2:hover {
 	background-color: white;
-	border-color: rgba(225, 0, 0, 1.0);
+	border-color: #d03535;
 	color: black;
 }
 
@@ -1932,23 +1941,22 @@ input[type=submit] {
 	width: 720px;
 	height: 270px;
 	border-collapse: collapse;
+	border: 1px solid #d03535;
 	margin: 0 auto;
-	margin-top: 200px;
+	margin-top: 150px;
 	margin-right: 600px;
 }
-
-#noticeDetail #DetailTitle {
-	background-color: #f2A2A2;
+#noticeDetail #DetailTitle{
+	background-color:#d03535;
+	color: white; 
+	border: 1px solid #d03535;
 }
 
 #noticeDetail tr th {
 	text-align: left;
 	font-size: 20px;
 	border-collapse: collapse;
-	border: 1px solid;
-	background-color: #F2C9C9;
-	border: 2px solid;
-	border-color: #F2C9C9;
+	border: 1px solid #d03535;
 	font-size: 20px;
 }
 
@@ -1956,27 +1964,24 @@ input[type=submit] {
 	text-align: center;
 	font-size: 25px;
 	border-collapse: collapse;
-	border: 1px solid;
-	border-color: #F2C9C9;
+	border: 1px solid #d03535;
 	font-size: 25px;
 }
-
-#noticeContent {
+#noticeContent{
 	height: 180px;
-	background-color: #F2DCE0;
-	border: 2px solid;
 }
 
 #noticeDetailButton {
-	width: 40px;
+	width: 50px;
 	height: 30px;
 	position: relative;
 	float: right;
 	right: 600px;
 	margin-top: 10px;
-	border: 1px solid #d03535;
 	background-color: #d03535;
 	color: white;
+	border-radius:5px; 
+	border: 1px solid #d03535;
 }
 
 #noticeDetailButton:hover {
@@ -1985,16 +1990,16 @@ input[type=submit] {
 	color: black;
 }
 /*공지사항 등록 UI 김수민*/
-#registerNoticeTitle {
-	width: 940px;
-	height: 30px;
-	font-size: 20px;
+#registerNoticeTitle{
+	width: 938px;
+	height:30px;
+	font-size:20px;
 	margin: 0 auto;
 	position: relative;
 	float: left;
 	left: 245px;
 	border: 1px solid;
-	margin-top: 100px;
+	margin-top: 150px;
 }
 
 #register {
@@ -2004,115 +2009,112 @@ input[type=submit] {
 	left: 50px;
 	margin-bottom: 10px;
 }
-
-#textTitle {
-	position: relative;
+#textTitle{
+	position:relative;
 	float: left;
 	left: 220px;
 	font-size: 25px;
-	margin-top: 100px;
+	margin-top: 150px;
 }
-
-#content {
+#content{
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 225px;
-	margin-top: 30px;
+	margin-top: 50px;
 }
-
-#submitButton {
+#submitButton{
 	width: 70px;
-	height: 40px;
-	border: 1px solid blue;
-	background-color: white;
-	color: blue;
+	height:40px;
+	border: 1px solid  #d03535;
+	background-color: #d03535;
+	color: white;
 	position: relative;
-	float: right;
+	float:right;
 	right: 500px;
+	margin-top: 10px;
 }
-
-#resetButton {
+#resetButton{
 	width: 70px;
-	height: 40px;
-	border: 1px solid red;
-	background-color: white;
-	color: red;
-	position: relative;
+	height:40px;
+	border: 1px solid #d03535;
+	background-color: #d03535;
+	color: white;
+	position:relative;
 	float: right;
 	right: 457px;
+	margin-top: 10px;
 }
 
-#resetButton:hover {
-	background-color: red;
-	color: white;
+#resetButton:hover{
+	background-color: white;
+	color: black;
 }
-
-#submitButton:hover {
-	background-color: blue;
-	color: white;
+#submitButton:hover{
+	background-color: white;
+	color: black;
 }
 /*회원정보 수정 UI 김수민  */
-#updateTitle {
-	width: 760px;
+#updateTitle{
+	width: 748px;
 	font-size: 20px;
 	position: relative;
 	float: left;
-	left: 500px;
+	left: 510px;
 	margin-bottom: 20px;
+	margin-top: 50px;
 }
-
-#titleUpdate {
-	font-size: 25px;
+#titleUpdate{
+	font-size:25px;
 	position: relative;
 	float: left;
-	left: 480px;
+	left: 490px; 
 	margin-bottom: 20px;
+	margin-top: 50px;
 }
-
-#updateContent {
+#updateContent{
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 300px;
-	margin-top: 50px;
+	margin-top: 60px;
 }
-
-#update {
+#update{
 	font-size: 25px;
-	position: relative;
+	position:relative;
 	float: left;
-	left: 480px;
+	left: 490px;
+	margin-top:40px;
 }
-
-#updateButton {
+#updateButton{
 	width: 70px;
-	height: 40px;
-	background-color: white;
-	border-color: blue;
+	height:40px;
+	background-color: #d03535;
+	border-color: #d03535;
+	color:white;
 	position: relative;
-	float: right;
-	right: 650px;
+	 float:right;
+	right: 670px;
+	margin-top: 10px;
 }
-
-#updateButton:hover {
-	background-color: blue;
-	color: white;
+#updateButton:hover{
+	background-color: white;
+	color: black;
 }
-
-#backButton {
+#backButton{
 	width: 70px;
-	height: 40px;
-	background-color: white;
-	border-color: red;
+	height:40px;
+	background-color: #d03535;
+	border-color: #d03535;
+	color:white;
 	position: relative;
-	float: right;
+	float:right;
 	right: 494px;
+	margin-top: 10px;
 }
-
-#backButton:hover {
-	background-color: red;
-	color: white;
+#backButton:hover{
+	background-color:white;
+	color:black;
 }
 /* 회원탈퇴 페이지 ui 정세희*/
 .remove-member{
@@ -2410,11 +2412,62 @@ input[type=submit] {
 @media screen and (max-width:480px) {
 	
 	.container{
-		width:430px;
+		width:360px;
+	}
+	
+	#login{
+		width:400px;
+		height: 300px;
+	}
+	
+	#header{
+		height: 30px;
+	}
+	
+	#header .navigation nav ul{
+		height: 30px;
+	}
+	#header .navigation nav ul li{
+		height: 30px;
+		line-height: 30px;
+		font-size:10px;
+	}
+	#header .bitLog a img{
+		margin-top:0;
+	}
+	#header .navigation .loginbar .bitLogin{
+		width:60%;
+		line-height: 30px;
+	}
+	#header .navigation .loginbar .bitLogin a{
+		font-size:10px;
+		margin-left:0;
+	}
+	#header .navigation .loginbar .bitMainSearch{
+		width:35%;
+	}
+	#header .bitMainSearch #asd{
+		width:9px;
+		height: 30px;
 	}
 	
 	#mainVideo{
 		height: 27vh;
+	}
+	
+	#mainVideo .mainContent h1{
+		font-size:24px;
+	}
+	#mainVideo .mainContent h3{
+		font-size:14px;
+		margin-top:0;
+	}
+	#mainVideo .mainMoveControl span{
+		bottom:15%;
+	}
+	#mainVideo .mainMoveControl span svg{
+		width:25px;
+		height: 25px;
 	}
 	
 	#mainVideo .mainVideoLoginForm span{
@@ -2426,7 +2479,7 @@ input[type=submit] {
 	}
 	#todayShow .artistShow{
 		width:90%;
-		height: 150px;
+		height: 120px;
 	}
 	#todayShow .artistShowTitle{
 		margin-left:0;
@@ -2438,11 +2491,72 @@ input[type=submit] {
 	
 	#todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn{
 		width:5%;
-		height:150px;
+		height:120px;
 	}
 	
 	#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span{
 		width:25px;
 		height: 25px;
+	}
+	
+	.todayShowInfo h1{
+		font-size:18px;	
+	}
+	.todayShowInfo h2{
+		font-size:16px;
+		margin-top:0;
+	}
+	
+	#artisStandardt .artistRecommendationTltle{
+		margin-left:0;
+	}
+	
+	#artisStandardt .artistRecommendationTltle h2{
+		font-size:18px;
+	}
+	#artisStandardt .artistRecommendation{
+		height: 100px;
+	}
+	#artisStandardt .artistRecommendationLeftBtn, #artisStandardt .artistRecommendationRightBtn{
+		height: 100px;
+	}
+	
+	#artisStandardt .artistRecommendation .artistRecommendationList ul li{
+		width:29%;
+		margin-right:15px;
+	}
+	
+	#artisStandardt .artistRecommendation .artistRecommendationList ul li span{
+		font-size:10px;
+	}
+	
+	#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span{
+		width:25px;
+		height: 25px;
+	}
+	
+	/* 이벤트 */
+	#eventListTitle{
+		margin-left:0;
+	}
+	
+	.eventList{
+		width:350px;
+		height: 70px;
+	}
+	.eventList img{
+		width:100%;
+		height: 70px;
+	}
+	
+	#eventListTitle{
+		width:320px;
+		float:left;
+		text-align: center;
+		box-shadow:inherit;
+	}
+	.event a{
+		margin-right:0;
+		font-size:12px;
 	}
 }

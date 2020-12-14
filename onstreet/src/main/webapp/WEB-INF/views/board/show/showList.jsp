@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<div class="col-sm-2"><h1><b>SHOW</b></h1> <br></div>
-<div class="col-sm-8">
 <br><br>
+<span id="showListTitle">SHOW</span>
+<br><br><br>
+<div class="container">
 <table id="showListTable" class="table table-striped table-condensed">
 	<thead>
 		<tr class="success">
@@ -115,4 +116,3 @@
 	</div>
 	</sec:authorize>
 	</div>
-<div class="col-sm-2"></div>
