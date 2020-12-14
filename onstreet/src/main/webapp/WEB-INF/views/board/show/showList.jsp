@@ -106,7 +106,7 @@
 	</ul>	 		
 	</div>
 	<sec:authorize access="hasRole('ROLE_ARTIST')">
-	<
+	
 	<div align="right">
 		<form method="get" action="addShowForm.do">
 			<sec:csrfInput/>

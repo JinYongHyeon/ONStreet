@@ -139,7 +139,6 @@ $(function(){
 				<div style="width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;"><img class="user-img" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px" style="position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);"></div>
 			&nbsp;${svo.artistVO.memberVO.nickName}<br>
 			<span style="font-size: 12px; color: #c4b3b3;">&nbsp;${svo.showWriteDate}</span>
-			<hr>
 			<h4>공연일정:${svo.showDate}</h4>
 			<%-- 온도 표시 --%>
 			<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
@@ -193,7 +192,7 @@ $(function(){
 				</c:otherwise>
 				</c:choose>
 			<br>
-			<div>
+			<div style="padding-top: 9px">
 			<input type="hidden" id="loginId" value="${member.id}"> 
 			<c:if test="${member.id==svo.artistVO.memberVO.id}">
 				<c:choose>
@@ -210,9 +209,10 @@ $(function(){
 					<input type="submit" id="btn-delete" class="btn btn-danger" value="삭제">
 				</form>
 			</c:if>
-			</div>
+			</div><br><br>
+			
 
-<div id="showDetailContentSide" style="max-height: 942px">
+<div id="showDetailContentSide" style="max-height: 942px;" >
 <section class="test">
 						<div id="showDetailContent">
 			<span>${svo.showContent}</span>

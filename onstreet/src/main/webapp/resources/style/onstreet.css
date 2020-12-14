@@ -1251,6 +1251,7 @@ max-height: 100%;
 float: left;
 }
 
+
 .btn-comment form {
 	display: inline;
 }
@@ -1264,10 +1265,10 @@ float: left;
 	background: orange;
 }
 #showDetailLeftSide {
-	float: left; width: 15%; height: 100px;
+	float: left; width: 15%; height: 1000px;
 }
 #showDetailContentSide {
-	float: left; /* width: 38%; */ height: 942px;
+	float: left; width: 38%; height: 942px;
 }
 #showDetailBlankSide {
 	float: left; width: 2%; height: 1000px;
