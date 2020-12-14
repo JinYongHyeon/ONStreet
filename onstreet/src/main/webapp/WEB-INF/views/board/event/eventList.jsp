@@ -6,8 +6,9 @@
 
 <jsp:useBean id="toDay" class="java.util.Date" />
 <fmt:formatDate value='${toDay}' pattern='yyyy년 MM월 dd일' var="nowDate"/>
+<br><br><br>
+<span id="eventDetailTitle">EVENT</span> <br><br><br>
 <div class="container con">
-<span id="eventListTitle">EVENT</span> <br>
 <div class="event">
 <sec:authorize access="hasRole('ROLE_ARTIST')">
 	<a href="${pageContext.request.contextPath}/addEventForm.do">이벤트 등록</a>
