@@ -20,13 +20,17 @@
 </td>
 </tr>
 </table>
-<button type="reset" class="btn" id="resetButton">취소</button>
+<input type="button" id="resetButton" value="취소 ">
 <button type="submit" class="btn" id="submitButton">확인</button>
 </form>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#noticeRegister").submit(function() {
 		return confirm("공지사항을 등록하시겠습니까?");
+	});
+	$("#resetButton").click(function() {
+		alert("공지사항등록을 취소했습니다.");
+		location.href="home.do";
 	});
 });
 </script>

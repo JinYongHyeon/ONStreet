@@ -1851,11 +1851,15 @@ input[type=submit] {
 }
 
 /*공지시항리스트 UI 김수민 */
+#logoNotice{
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0-6px #d03535 inset;
+	margin-top: 30px;
+	margin-left:850px;
+}
 #noticeList {
-
 	width: 1300px;
-	height: 180px;
-	border: 2px solid #F2DCE0;
 	font-size: 15px;
 	margin: 0 auto;
 }
@@ -1883,7 +1887,7 @@ input[type=submit] {
 	position: relative;
 	float:right;
 	right:400px;
-	margin-top: 10px;
+	margin-top: 20px;
 	color: white;
 	border-radius:5px;
 }
@@ -1901,7 +1905,7 @@ input[type=submit] {
 	position: relative;
 	float: right;
 	right: 260px;
-	margin-top: 10px;
+	margin-top: 20px;
 	color: white;
 	border-radius:5px; 
 }
@@ -1926,35 +1930,23 @@ input[type=submit] {
 #noticeDetail {
 	width: 720px;
 	height: 270px;
-	border-collapse: collapse;
-	border: 1px solid #d03535;
 	margin: 0 auto;
 	margin-top: 150px;
 	margin-right: 600px;
 }
 #noticeDetail #DetailTitle{
-	background-color:#d03535;
-	color: white; 
-	border: 1px solid #d03535;
+	font-size: 50px;
 }
 
 #noticeDetail tr th {
 	text-align: left;
-	font-size: 20px;
-	border-collapse: collapse;
-	border: 1px solid #d03535;
-	font-size: 20px;
 }
-
-#noticeDetail tr td {
-	text-align: center;
-	font-size: 25px;
-	border-collapse: collapse;
-	border: 1px solid #d03535;
-	font-size: 25px;
+#noticeDate{
+	padding-top:30px;
+	font-size: 20px;
 }
 #noticeContent{
-	height: 180px;
+	height: 200px;
 }
 
 #noticeDetailButton {
@@ -2030,6 +2022,7 @@ input[type=submit] {
 	float: right;
 	right: 457px;
 	margin-top: 10px;
+	border-radius:5px;
 }
 
 #resetButton:hover{
@@ -2070,7 +2063,7 @@ input[type=submit] {
 	position:relative;
 	float: left;
 	left: 490px;
-	margin-top:40px;
+	margin-top:20px;
 }
 #updateButton{
 	width: 70px;
@@ -2097,6 +2090,7 @@ input[type=submit] {
 	float:right;
 	right: 494px;
 	margin-top: 10px;
+	border-radius:5px;
 }
 #backButton:hover{
 	background-color:white;

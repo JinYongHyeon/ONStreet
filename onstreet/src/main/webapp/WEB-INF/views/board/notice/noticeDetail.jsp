@@ -6,12 +6,13 @@
 <sec:csrfInput/>
 <table id="noticeDetail">
 <tr>
-<th id="DetailTitle">&nbsp;&nbsp;&nbsp;제목:${requestScope.nvo.noticeTitle}</th>
+<th id="DetailTitle">&nbsp;제목:${requestScope.nvo.noticeTitle}</th>
 </tr>
 <tr>
-<th height="30px" style="text-align: left;" colspan="2">&nbsp;&nbsp;
-작성자:${requestScope.nvo.memberVO.nickName}
-&nbsp;&nbsp;작성일시:${requestScope.nvo.noticeWriteDate}</th>
+<th height="30px" style="text-align: left;" id="noticeDate">&nbsp;&nbsp;
+<img class="user-img" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px">
+작성자:${requestScope.nvo.memberVO.nickName}<br>
+&nbsp;&nbsp;&nbsp;작성일시:${requestScope.nvo.noticeWriteDate}</th>
 </tr>
 <tr>
 <td colspan="5" id="noticeContent"  style="text-align: left;">
