@@ -1852,7 +1852,8 @@ input[type=submit] {
 
 /*공지시항리스트 UI 김수민 */
 #noticeList {
-	width: 1100px;
+
+	width: 1300px;
 	height: 180px;
 	border: 2px solid #F2DCE0;
 	font-size: 15px;
@@ -1860,30 +1861,31 @@ input[type=submit] {
 }
 
 #noticeList tr  th {
-	border: 2px solid #F2DCE0;
+	border: 2px solid #d03535;
 	border-collapse: collapse;
 	text-align: center;
-	background-color: #F2DCE0;
+	background-color: #d03535;
+	padding: 5px;
+	color: white;
 }
 
 #noticeList tr td {
-	border-bottom: 2px solid #F2DCE0;
-	border-top: 2px solid #F2DCE0;
 	border-collapse: collapse;
 	text-align: center;
-	border-color: #F2DCE0;
+	padding: 5px;
 }
 
 #noticeButton_1 input[type='submit'] {
 	width: 50px;
 	height: 30px;
-	border: 1px blue solid;
-	background-color: blue;
+	border: 1px #d03535 solid;
+	background-color: #d03535;
 	position: relative;
-	float: right;
-	right: 470px;
+	float:right;
+	right:400px;
 	margin-top: 10px;
 	color: white;
+	border-radius:5px;
 }
 
 #noticeButton_1 input[type='submit']:hover {
@@ -1894,18 +1896,19 @@ input[type=submit] {
 #noticeButton_2 {
 	width: 50px;
 	height: 30px;
-	border: 1px #ff1717 solid;
-	background-color: #ff1717;
+	border: 1px #e33636 solid;
+	background-color: #d03535;
 	position: relative;
 	float: right;
-	right: 256px;
+	right: 260px;
 	margin-top: 10px;
 	color: white;
+	border-radius:5px; 
 }
 
 #noticeButton_2:hover {
 	background-color: white;
-	border-color: rgba(225, 0, 0, 1.0);
+	border-color: #d03535;
 	color: black;
 }
 
@@ -1924,23 +1927,22 @@ input[type=submit] {
 	width: 720px;
 	height: 270px;
 	border-collapse: collapse;
+	border: 1px solid #d03535;
 	margin: 0 auto;
-	margin-top: 200px;
+	margin-top: 150px;
 	margin-right: 600px;
 }
-
-#noticeDetail #DetailTitle {
-	background-color: #f2A2A2;
+#noticeDetail #DetailTitle{
+	background-color:#d03535;
+	color: white; 
+	border: 1px solid #d03535;
 }
 
 #noticeDetail tr th {
 	text-align: left;
 	font-size: 20px;
 	border-collapse: collapse;
-	border: 1px solid;
-	background-color: #F2C9C9;
-	border: 2px solid;
-	border-color: #F2C9C9;
+	border: 1px solid #d03535;
 	font-size: 20px;
 }
 
@@ -1948,27 +1950,24 @@ input[type=submit] {
 	text-align: center;
 	font-size: 25px;
 	border-collapse: collapse;
-	border: 1px solid;
-	border-color: #F2C9C9;
+	border: 1px solid #d03535;
 	font-size: 25px;
 }
-
-#noticeContent {
+#noticeContent{
 	height: 180px;
-	background-color: #F2DCE0;
-	border: 2px solid;
 }
 
 #noticeDetailButton {
-	width: 40px;
+	width: 50px;
 	height: 30px;
 	position: relative;
 	float: right;
 	right: 600px;
 	margin-top: 10px;
-	border: 1px solid #d03535;
 	background-color: #d03535;
 	color: white;
+	border-radius:5px; 
+	border: 1px solid #d03535;
 }
 
 #noticeDetailButton:hover {
@@ -1977,16 +1976,16 @@ input[type=submit] {
 	color: black;
 }
 /*공지사항 등록 UI 김수민*/
-#registerNoticeTitle {
-	width: 940px;
-	height: 30px;
-	font-size: 20px;
+#registerNoticeTitle{
+	width: 938px;
+	height:30px;
+	font-size:20px;
 	margin: 0 auto;
 	position: relative;
 	float: left;
 	left: 245px;
 	border: 1px solid;
-	margin-top: 100px;
+	margin-top: 150px;
 }
 
 #register {
@@ -1996,125 +1995,123 @@ input[type=submit] {
 	left: 50px;
 	margin-bottom: 10px;
 }
-
-#textTitle {
-	position: relative;
+#textTitle{
+	position:relative;
 	float: left;
 	left: 220px;
 	font-size: 25px;
-	margin-top: 100px;
+	margin-top: 150px;
 }
-
-#content {
+#content{
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 225px;
-	margin-top: 30px;
+	margin-top: 50px;
 }
-
-#submitButton {
+#submitButton{
 	width: 70px;
-	height: 40px;
-	border: 1px solid blue;
-	background-color: white;
-	color: blue;
+	height:40px;
+	border: 1px solid  #d03535;
+	background-color: #d03535;
+	color: white;
 	position: relative;
-	float: right;
+	float:right;
 	right: 500px;
+	margin-top: 10px;
 }
-
-#resetButton {
+#resetButton{
 	width: 70px;
-	height: 40px;
-	border: 1px solid red;
-	background-color: white;
-	color: red;
-	position: relative;
+	height:40px;
+	border: 1px solid #d03535;
+	background-color: #d03535;
+	color: white;
+	position:relative;
 	float: right;
 	right: 457px;
+	margin-top: 10px;
 }
 
-#resetButton:hover {
-	background-color: red;
-	color: white;
+#resetButton:hover{
+	background-color: white;
+	color: black;
 }
-
-#submitButton:hover {
-	background-color: blue;
-	color: white;
+#submitButton:hover{
+	background-color: white;
+	color: black;
 }
 /*회원정보 수정 UI 김수민  */
-#updateTitle {
-	width: 760px;
+#updateTitle{
+	width: 748px;
 	font-size: 20px;
 	position: relative;
 	float: left;
-	left: 500px;
+	left: 510px;
 	margin-bottom: 20px;
+	margin-top: 50px;
 }
-
-#titleUpdate {
-	font-size: 25px;
+#titleUpdate{
+	font-size:25px;
 	position: relative;
 	float: left;
-	left: 480px;
+	left: 490px; 
 	margin-bottom: 20px;
+	margin-top: 50px;
 }
-
-#updateContent {
+#updateContent{
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 300px;
-	margin-top: 50px;
+	margin-top: 60px;
 }
-
-#update {
+#update{
 	font-size: 25px;
-	position: relative;
+	position:relative;
 	float: left;
-	left: 480px;
+	left: 490px;
+	margin-top:40px;
 }
-
-#updateButton {
+#updateButton{
 	width: 70px;
-	height: 40px;
-	background-color: white;
-	border-color: blue;
+	height:40px;
+	background-color: #d03535;
+	border-color: #d03535;
+	color:white;
 	position: relative;
-	float: right;
-	right: 650px;
+	 float:right;
+	right: 670px;
+	margin-top: 10px;
 }
-
-#updateButton:hover {
-	background-color: blue;
-	color: white;
+#updateButton:hover{
+	background-color: white;
+	color: black;
 }
-
-#backButton {
+#backButton{
 	width: 70px;
-	height: 40px;
-	background-color: white;
-	border-color: red;
+	height:40px;
+	background-color: #d03535;
+	border-color: #d03535;
+	color:white;
 	position: relative;
-	float: right;
+	float:right;
 	right: 494px;
+	margin-top: 10px;
 }
-
-#backButton:hover {
-	background-color: red;
-	color: white;
+#backButton:hover{
+	background-color:white;
+	color:black;
 }
 /* 회원탈퇴 페이지 ui 정세희*/
-.remove-member {
-	padding: 76px 100px 100px 65px;
-	border: 2px solid #ededed;
-	width: 70%;
-	text-align: center;
-	font-size: 19px;
-}
-
+.remove-member{
+    padding: 76px 100px 100px 65px;
+    border: 2px solid #ededed;
+/*  width:70%;*/
+    text-align: center;
+    font-size: 19px;
+  /*  // margin-left: 50px; */
+ }
+ 
 fieldset {
 	border: none;
 	vertical-align: top;
@@ -2137,6 +2134,19 @@ fieldset {
 	color: #333;
 	background-color: #fff;
 	border-color: #ccc;
+}
+.followlist img{
+    margin-top: 50px;
+    border: 2px solid #d03535;
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+}	
+.followlist a{
+    padding: 5px 5px;
+    width: 20%;
+    display: inline-block;
+    text-align: center;
 }
 /*팔로우리스트 ui 끝*/
 
