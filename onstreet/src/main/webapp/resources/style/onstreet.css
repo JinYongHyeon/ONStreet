@@ -306,6 +306,8 @@ input[type=submit] {
    margin-right: 20px;
    color: #fff;
    background-color: #d03535;
+    border: 2px solid #d03535;
+  	border-radius: 5px;
    text-align: center;
    cursor: pointer;
    font-size: 16px;
@@ -732,6 +734,8 @@ input[type=submit] {
    font-weight: bold;
    font-size: 18px;
    line-height: 30px;
+   border: 2px solid #d03535;
+  border-radius: 5px;
 }
 
 #login .loginMain .loginForm svg {
@@ -815,6 +819,8 @@ input[type=submit] {
    height: 50px;
    border: none;
    background-color: #d03535;
+   border: 2px solid #d03535;
+   border-radius: 5px;
    color: #fff;
    float: left;
    margin-bottom: 15px;
@@ -895,7 +901,7 @@ input[type=submit] {
 }
 
 #choiceRegister .choiceTitle {
-   margin-top: 60px;
+   margin-top: 120px;
 }
 
 #choiceRegister .choiceTitle h1 {
@@ -914,19 +920,18 @@ input[type=submit] {
    transform: translate(-50%, 0);
 }
 
-#choiceRegister .choiceRegisterMemberText h3{
-   width: 100%;
-   border: 1px solid #e5e5e5;
-   padding: 15px;
-   background-color: #d03535;
-   margin-top: 45px;
-   color: #fff;
+#choiceRegister section{
+	width:650px;
+	margin:0 auto;
+	margin-top:100px;
 }
 
 #choiceRegister ul {
    width: 300px;
+   float:left;
    list-style: none;
-   margin-top: 50px;
+   margin-right: 25px;
+   
 }
 
 #choiceRegister ul li:nth-child(1) {
@@ -957,9 +962,10 @@ input[type=submit] {
 
 #choiceRegister ul li h3 {
    width: 100%;
-   border: 1px solid #e5e5e5;
    padding: 15px;
    background-color: #d03535;
+   border: 2px solid #d03535;
+   border-radius: 5px;
    margin-top: 0;
    color: #fff;
 }
@@ -980,7 +986,7 @@ input[type=submit] {
 
 /* 약관 동의서 */
 #checkDocument {
-   margin-top: 50px;
+   margin-top: 120px;
    text-align: center;
 }
 
@@ -1035,6 +1041,8 @@ input[type=submit] {
    border: none;
    margin-right: 15px;
    color: #fff;
+   border: 2px solid #d03535;
+   border-radius: 5px;
 }
 
 /* 아티스트 리스트 */
@@ -1613,6 +1621,8 @@ float: left;
    color: #fff;
    border: none;
    margin-right: 10px;
+   border: 2px solid #d03535;
+   border-radius: 5px;
 }
 
 /* 팔로우리스트 세희 */
@@ -2075,4 +2085,143 @@ fieldset {
    color:#fff;
    background-color:#d03535;
    border:none;
+   border: 2px solid #d03535;
+   border-radius: 5px;
+}
+
+/*480, 768, 1024, 1600*/
+/* 반응형 웹 mediaQuery */
+@media screen and (max-width:1600px) {
+	/* layout-header */
+	#header .navigation nav{
+		width:45%;
+	}
+	#header .navigation .loginbar{
+		width:55%;
+	}
+	#header .navigation .loginbar .bitLogin{
+		width:55%;
+	}
+	#header .navigation .loginbar .bitMainSearch{
+		width:42%;
+	}
+	/* 회원가입 - 이용약관*/
+	#checkDocument{
+		margin-top:100px;
+	}	
+}
+
+@media screen and (max-width:1024px) {
+	.container{
+		width:970px;
+	}
+	
+	#header{
+		height: 60px;
+	}
+	#header .navigation nav{
+		width:35%;
+	}
+	#header .navigation nav ul{
+		height: 60px;
+	}
+	#header .navigation nav ul li{
+		width:25%;
+		height: 60px;
+		line-height: 60px;
+		font-size:16px;
+	}
+	#header .navigation .loginbar{
+		width:65%;
+	}
+	#header .navigation .loginbar .bitLogin{
+		line-height: 60px;	
+	}
+	
+	#header .navigation .loginbar .bitLogin a{
+		font-size:16px;
+	}
+	
+	#header .bitMainSearch{
+		margin-right: 10px;
+	}
+	#header .bitMainSearch form input[type=text]{
+		left:70px;
+		width: 51%;
+	}
+	#header .bitMainSearch form input[type=submit]{
+		width:70px;
+	}	
+	
+	#header .bitMainSearch #asd{
+		height: 60px;
+	}
+
+	#mainVideo{
+		height: 57vh;
+	}
+	
+	#mainVideo .mainVideoLoginForm span{
+		width:200px;
+		height:40px;
+		line-height:40px;
+		font-size:14px;
+	}
+	
+	
+	#artisStandardt .artistRecommendation {
+		height: 250px;
+	}		
+	
+	#checkDocument{
+		margin-top:40px;
+	}
+	#choiceRegister .choiceTitle{
+		margin-top:80px;
+	}
+	#choiceRegister section{
+		margin-top:87px;
+	}
+}
+
+@media screen and (max-width:480px) {
+	
+	.container{
+		width:430px;
+	}
+	
+	#mainVideo{
+		height: 27vh;
+	}
+	
+	#mainVideo .mainVideoLoginForm span{
+		width:90px;
+		height:25px;
+		line-height:25px;
+		font-size:10px;
+		margin-right:10px;
+	}
+	#todayShow .artistShow{
+		width:90%;
+		height: 150px;
+	}
+	#todayShow .artistShowTitle{
+		margin-left:0;
+	}
+	
+	#todayShow .artistShowTitle h2{
+		font-size:18px;
+	}
+	
+	#todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn{
+		width:5%;
+		height:150px;
+	}
+	
+	#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span{
+		width:25px;
+		height: 25px;
+	}
+	
+	
 }
