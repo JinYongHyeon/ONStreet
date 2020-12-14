@@ -1605,7 +1605,6 @@ float: left;
 /*공지시항리스트 UI 김수민 */
 #noticeList {
 	width: 1100px;
-	height: 180px;	
 	border: 2px solid #F2DCE0;
 	font-size: 15px;
 	margin: 0 auto;
@@ -1632,7 +1631,7 @@ float: left;
 	background-color: blue;
 	position: relative;
 	float:right;
-	right:470px;
+	right:490px;
 	margin-top: 10px;
 	color: white;
 }
@@ -1649,9 +1648,10 @@ float: left;
 	background-color: #ff1717;
 	position: relative;
 	float: right;
-	right: 256px;
+	right: 358px;
 	margin-top: 10px;
 	color: white;
+	border-radius:5px; 
 }
 
 #noticeButton_2:hover {
