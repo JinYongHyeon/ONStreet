@@ -8,7 +8,7 @@
 <fmt:formatDate value='${toDay}' pattern='yyyy년 MM월 dd일' var="nowDate"/>
 <div class="container con">
 <span id="eventListTitle">EVENT</span> <br>
-<div id="event">
+<div class="event">
 <sec:authorize access="hasRole('ROLE_ARTIST')">
 	<a href="${pageContext.request.contextPath}/addEventForm.do">이벤트 등록</a>
 </sec:authorize>
