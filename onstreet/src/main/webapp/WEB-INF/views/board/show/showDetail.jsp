@@ -13,6 +13,13 @@ $(function(){
 		}
 	});
 	
+	$('#commentRegisterBtn').click(function(){
+		if ($("#comment").val() == "") {
+			alert("댓글을 입력하세요.");
+			return false;
+		}
+	});
+	
 	$('#btn-delete').click(function(){
 		if(confirm("삭제하시겠습니까?")){
 			return true;
@@ -56,9 +63,9 @@ $(function(){
 /* 		            html += "<textarea style='background: #40434e; border: #2f323b; color: white' name='commentContent' rows='3' cols='30' id='commentContent' name='commentContent' placeholder='댓글을 입력하세요' maxlength='50'></textarea>"; */
 		            html += "<input type='hidden' name='showNo' value='${requestScope.svo.showNo}' id='updateShowNo'>";
 		            html+= "<input type='hidden' name='commentNo' value="+data[1]+" id='updateCommentNo'>";
-		            html+= "<span id='commentUpdateCheckResult' style></span>/50";
+		            html+= "<span id='commentUpdateCheckResult'></span>/50";
 		            html += "<input type='button' value='수정하기' id='btnUpdate'>";
-		            html += "<input type='button' value='취소'>";
+		            html += "<input type='button' value='취소' id='btnUpdateCancel'>";
 		            html += "</form>";
 		         $("#div-comment"+data[2]).append(html);
 		         $("#commentUpdateForm input[type=button]").click(function() {
@@ -136,9 +143,9 @@ $(function(){
 <div id="showDetailLeftSide"></div>
 <sec:authentication property="principal.memberVO" var="member"/>
 			<h1>${svo.showTitle}</h1><br>
-				<div style="width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;"><img class="user-img" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px" style="position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);"></div>
-			&nbsp;${svo.artistVO.memberVO.nickName}<br>
-			<span style="font-size: 12px; color: #c4b3b3;">&nbsp;${svo.showWriteDate}</span>
+				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px"></div>
+			&nbsp;<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${svo.artistVO.memberVO.id}">${svo.artistVO.memberVO.nickName}</a><br>
+			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span>
 			<h4>공연일정:${svo.showDate}</h4>
 			<%-- 온도 표시 --%>
 			<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
@@ -192,7 +199,7 @@ $(function(){
 				</c:otherwise>
 				</c:choose>
 			<br>
-			<div style="padding-top: 9px">
+			<div id="showDetailUpdateDeleteDiv">
 			<input type="hidden" id="loginId" value="${member.id}"> 
 			<c:if test="${member.id==svo.artistVO.memberVO.id}">
 				<c:choose>
@@ -212,7 +219,7 @@ $(function(){
 			</div><br><br>
 			
 
-<div id="showDetailContentSide" style="max-height: 942px;" >
+<div id="showDetailContentSide" >
 <section class="test">
 						<div id="showDetailContent">
 			<span>${svo.showContent}</span>
@@ -221,7 +228,7 @@ $(function(){
 </div>
 <div id="showDetailBlankSide"></div>
 <%-- 댓글 리스트 --%>
-<br><br><br><br><br><br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 <div id="showDetailCommentSide">
 
 <%-- 댓글 --%>
@@ -238,13 +245,15 @@ $(function(){
         	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
         </c:when>
         <c:otherwise>
-        <div style="width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;">
+        <div id="showDetailCommentArtistProfile">
 			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
 			</div>
         </c:otherwise>
         </c:choose>
           <div class="flr">
-         <span style="align-content: center" >${cvo.memberVO.nickName}</span>
+          <div id="showDetailCommentNickName">
+         <span>${cvo.memberVO.nickName}</span>
+         </div>
             <div class="messages">
               <p class="msg" id="msg-0">
                ${cvo.commentContent}
@@ -285,10 +294,10 @@ $(function(){
       <article class="msg-container msg-self" id="msg-0">
         <div class="msg-box">
         	
-          <div class="flr">
-          <span style="align-content: center" >${cvo.memberVO.nickName}</span>
+          <div class="flr" id="showDetailCommentNickName">
+          <span>${cvo.memberVO.nickName}</span>
             <div class="messages">
-    			<p class="msg" id="msg-0" style="color: black">
+    			<p class="msg" id="msg-1">
                 ${cvo.commentContent}
               </p>
             </div>
@@ -299,7 +308,7 @@ $(function(){
         	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
         </c:when>
         <c:otherwise>
-        <div style="width:35px; height: 35px; overflow: hidden; position: relative; float:right; border-radius:100%;">
+        <div id="showDetailCommentArtistProfile">
 			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
 			</div>
         </c:otherwise>
@@ -307,7 +316,7 @@ $(function(){
         </div>
       </article>
       
-      <div id="div-comment${order.count}" class="showDetailMemberComment" >
+      <div id="div-comment${order.count}" class="showDetailMemberComment">
 <br>
 <c:if test="${member.id==cvo.memberVO.id}">
 
@@ -365,24 +374,24 @@ $(function(){
     <br><br>
         <div>
             <div>
-                <span style="color: #d03535"><strong>Comments</strong></span> <span id="cCnt"></span>
-                            	<span style="color: black" id="commentCheckResult"></span><span style="color: grey">/50</span>
+                <span id="commentSpan"><strong>Comments</strong></span> <span id="cCnt"></span>
+                            	<span id="commentCheckResult"></span><span id="commentCheckLimit">/50</span>
             </div>
             <div>
                 <table class="table">                    
            	 
                     <tr>
                         <td id="commentRegisterTd">
-                            <textarea style="background: white; border: #2f323b; color: black" rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
+                            <textarea rows="3" cols="30" id="comment" name="commentContent" placeholder="댓글을 입력하세요" maxlength="50"></textarea>
                             
                             <br>
                             <div>
                             <c:choose>
                             	<c:when test="${requestScope.validity>2}">
-                                	<input type="submit" class="btn pull-right btn-disabled" value="등록" disabled="disabled">
+                                	<input id="commentRegisterBtn" type="submit" class="btn pull-right btn-disabled" value="등록" disabled="disabled">
                             	</c:when>
                             	<c:otherwise>
-                                <input type="submit" class="btn pull-right btn-success" value="등록">
+                                <input id="commentRegisterBtn" type="submit" class="btn pull-right btn-success" value="등록">
                             	</c:otherwise>
                             </c:choose>
                             </div>

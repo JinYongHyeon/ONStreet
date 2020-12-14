@@ -1310,33 +1310,92 @@ max-width: 100%;
 max-height: 100%;
 float: left;
 }
-
-
+#commentRegisterBtn{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showListRegisterBtn input[type=submit]{
+	border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#commentUpdate input[type=button]{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    color: white;
+}
+#commentUpdate input[type=submit]{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+    color: white;
+}
+#btnUpdate{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    margin-right: 5px;
+    color: white;
+}
+#btnUpdateCancel{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#showDate {
+	border: 0
+}
+#postWrite {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#postUpdate {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showTitle {
+	width: 944px; height: 35px
+}
+#postTitle {
+	width: 944px; height: 35px
+}
+#showRegisterShowDate {
+	width: 944px
+}
+#showUpdateShowDate {
+	width: 944px
+}
 .btn-comment form {
    display: inline;
 }
 #showListTable th{
-   text-align: center;
+   text-align: center; color: white;
 }
 #showListTable td{
    text-align: center;
 }
 #showListTable #showListTableNotice{
-   background: orange;
+   color: red;
+   font-weight: bold;
+}
+#showListTableNotice a{
+   color: red;
+   font-weight: bold;
 }
 #showDetailLeftSide {
-<<<<<<< HEAD
 	float: left; width: 15%; height: 1000px;
-=======
-   float: left; width: 15%; height: 100px;
->>>>>>> branch 'main' of https://github.com/JinYongHyeon/ONStreet.git
 }
 #showDetailContentSide {
-<<<<<<< HEAD
-	float: left; width: 38%; height: 942px;
-=======
-   float: left; /* width: 38%; */ height: 942px;
->>>>>>> branch 'main' of https://github.com/JinYongHyeon/ONStreet.git
+	float: left; width: 38%; height: 942px; max-height: 942px;
 }
 #showDetailBlankSide {
    float: left; width: 2%; height: 1000px;
@@ -1350,9 +1409,6 @@ float: left;
 }
 .showDetailArtistComment {
    text-align: left;
-   
-   
-   
 }
 .showDetailMemberComment {
    text-align: right;
@@ -1362,6 +1418,7 @@ float: left;
 }
 #btn-update {
    float: left;
+   margin-right: 5px;
 }
 #btn-delete {
    float: left; 
@@ -1374,6 +1431,7 @@ float: left;
 }
 #comment {
    width: 450px;
+   background: white; border: #2f323b; color: black
 }
 #commentContent {
    width: 440px; height: 60px;
@@ -1381,6 +1439,18 @@ float: left;
 #showDetailContent {
    max-width: 500px;
    max-height: 907px;
+}
+#showListTable th{
+	background: #d03535;
+}
+#showDetailProfile{
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentArtistProfile {
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentNickName {
+	  text-align: center;
 }
 
 /* 채팅 테스트 */
@@ -1480,6 +1550,15 @@ float: left;
     float: left;
     box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
 }
+#showDetailProfileImg {
+	 position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);
+}
+#showDetailShowWriteDate{
+	font-size: 12px; color: #c4b3b3;
+}
+#showDetailUpdateDeleteDiv {
+	padding-top: 9px
+}
 .user-img {
     display: inline-block;
     border-radius: 50%;
@@ -1496,6 +1575,7 @@ float: left;
 }
 .messages {
     flex: 1 0 auto;
+    text-align: center;
 }
 .msg {
     display: inline-block;
@@ -1503,6 +1583,9 @@ float: left;
     line-height: 13pt;
     color: rgba(255,255,255,.7);
     margin: 0 0 4px 0;
+}
+#msg-1{
+	color: black;
 }
 .msg:first-of-type {
     margin-top: 8px;
@@ -1533,6 +1616,15 @@ float: left;
 }
 .msg-self .timestamp {
     text-align: right;
+}
+#commentSpan {
+	color: #d03535
+}
+#commentCheckResult {
+	 color: black
+}
+#commentCheckLimit {
+	color: grey;
 }
 /* 채팅테스트 끝*/
 

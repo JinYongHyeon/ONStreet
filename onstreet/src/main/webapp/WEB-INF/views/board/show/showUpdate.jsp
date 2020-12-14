@@ -155,20 +155,13 @@ var oEditors = [];
 
 
 <c:set var="svo" value="${requestScope.svo}" />
-<div style="float: left; width: 15%; height: 100px"></div>
-<div style="float: left; width: 70%;">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 	<form action="updateShow.do" method="post" id="frm">
 		<input type="hidden" name="showNo" value="${svo.showNo}">
 		<sec:csrfInput />
-		<table border="1" id="showDetail">
-			<tr>
-				<td>공연제목</td>
-				<td><input type="text" name="showTitle"
-					value="${svo.showTitle}" id="postTitle"></td>
-			</tr>
-			<tr>
-				<td>공연내용</td>
-				<td style="width: 1300px">
+		<br><br>
+				<input type="text" name="showTitle" required="required" id="postTitle"value="${svo.showTitle}" maxlength="45">
 					<div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
@@ -183,17 +176,14 @@ var oEditors = [];
 						</div>
 						<textarea rows="25" cols="100" name="showContent" id="showContent">${svo.showContent}</textarea>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>공연일정</td>
-				<td><input type="date" name="showDate" required="required"
-					value="${svo.showDate}" id="showDate"></td>
-			</tr>
-		</table>
-		<input type="submit" value="수정하기" id="postUpdate"
-			class="btn btn-warning">
+				
+		
+			<div id="showUpdateShowDate">
+			<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input type="date" name="showDate" required="required" min="${today}" id="showDate" value="${svo.showDate}">
+		<input type="button" id="postUpdate" class="btn btn-primary"
+			value="수정하기" />
+			</div>
 	</form>
 
 </div>
-<div style="float: left; width: 15%;"></div>
+<div class="col-sm-2"></div>

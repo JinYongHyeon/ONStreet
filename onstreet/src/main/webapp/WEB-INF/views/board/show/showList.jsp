@@ -5,7 +5,7 @@
 <div class="col-sm-2"><h1><b>SHOW</b></h1> <br></div>
 <div class="col-sm-8">
 <br><br>
-<table id="showListTable" class="table table-striped table-condensed" >
+<table id="showListTable" class="table table-striped table-condensed">
 	<thead>
 		<tr class="success">
 			<th>번호</th>
@@ -108,7 +108,7 @@
 	<sec:authorize access="hasRole('ROLE_ARTIST')">
 	
 	<div align="right">
-		<form method="get" action="addShowForm.do">
+		<form method="get" action="addShowForm.do" id="showListRegisterBtn">
 			<sec:csrfInput/>
 			<input type="submit" class="btn btn-primary" value="공연등록"/>
 		</form>
