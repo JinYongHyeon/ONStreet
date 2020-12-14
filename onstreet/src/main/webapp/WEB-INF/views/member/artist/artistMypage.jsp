@@ -2,9 +2,14 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<style>
+.artistmypage{
+	width: 100%;
+}	
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-	<table>
+<div class="container">
+	<table class="artistmypage">
 		<tr>
 		<td>아이디</td>
 		<td><sec:authentication property="principal.memberVO.id"/></td>
@@ -50,12 +55,13 @@
 		<td><sec:authentication property="principal.artistInfo"/></td>
 		</tr>
 	</table>
-	
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
 	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a><br>
 	<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a><br>
 	<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
+	<a href="${pageContext.request.contextPath}/followingList.do">팔로우리스트</a>
 
+</div>
 
 
 

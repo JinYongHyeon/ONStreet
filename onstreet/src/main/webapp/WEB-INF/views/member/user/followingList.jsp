@@ -2,16 +2,19 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+
 <script type="text/javascript">
 
 function check_all(){
-	for(i=0; i< form.followingId.length; i++){
-		form.followingId[i].checked = true;
+	var fi = document.getElementsByName("followingId");
+	for(i=0; i< fi.length; i++){
+		fi[i].checked = true;
 	}
 }
 	function uncheck_all(){
-		for(i=0; i< form.followingId.length; i++){
-			form.followingId[i].checked = false;
+		var fi = document.getElementsByName("followingId");
+		for(i=0; i< fi.length; i++){
+			fi[i].checked = false;
 		}
 	}
 	
@@ -42,11 +45,12 @@ function check_all(){
 </script>
 
 
-
+<div class="container">
 <div id="thumbnail alert-info">
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form">
 <input type="button" value="모두 선택" onclick="check_all();"  class="btn btn-default select_all">
 <input type="button" value="모두 해제" onclick="uncheck_all();"  class="btn btn-default select_all">
+<div class="followlist">
 <sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.list.followList}">
 <input type="checkbox" name="followingId" value="${list.followingId}"> 
@@ -63,12 +67,13 @@ function check_all(){
 <a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.memberVO.id}">${list.memberVO.nickName}</a><br>
 </div>
 </c:forEach>
+</div>
 <div class="pull-left">
 <input type="submit" id="removefollowBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
 </div>
 </form>
 </div>
-
+</div>
 <!-- 페이징빈시작 -->
 <c:set var="pb" value="${requestScope.list.pagingBean}" />
 <div class="pagingInfo">

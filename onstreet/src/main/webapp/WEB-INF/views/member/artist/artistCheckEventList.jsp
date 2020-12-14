@@ -26,9 +26,7 @@ function check(){
 		$(document).on("click","#checkboxBtn",function(){
 			if($("#checkboxBtn").length>=1){
 			$("#deleteEventBtn").css("display","block");
-			}eles{
-			$("#deleteEventBtn").css("display","none");
-			}//else
+			}//if
 		});//function2
 	});//function1
 //삭제 버튼id명  deleteEventBtn
@@ -42,7 +40,7 @@ function check(){
 
 <div class="container">
   <h2>이벤트승인현황</h2>
-  <p class="evetext">*반려상태인 이벤트만 삭제 가능합니다.</p>            
+  
 
 
 <table class="table">
@@ -52,14 +50,15 @@ function check(){
 	<th>이벤트제목</th>
 	<th>이벤트내용</th>
 	<th>이벤트날짜</th>
-	<th>승인상태  <input type="checkbox" id="checkboxBtn" name="checkboxBtn" onclick="check_all()" /></th>
+	<th>승인상태  <input type="checkbox" id="checkboxBtn" name="checkboxBtn" onclick="check_all()"/></th>
 </tr>
 </thead>
 
 <tbody>
 <form action="${pageContext.request.contextPath}/deleteEvent2.do?deleteEvent=${evtlist.eventNo}" method="post" onsubmit="return check()" name="form">
 <div>
-<input type="submit" style="display:none;" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title >
+<p class="evetext">*반려상태인 이벤트만 삭제 가능합니다.</p>            
+<input type="submit" style="display:none;" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
 <small>
 <span class="count">1 item</span>
 </small>

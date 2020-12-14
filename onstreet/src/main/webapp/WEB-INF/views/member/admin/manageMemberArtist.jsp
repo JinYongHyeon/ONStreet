@@ -23,17 +23,19 @@
 		});//click
 	});//ready
 </script>
-
-<h1>
-	<b>MANAGE</b>
-</h1>
+<br><br>
+<span id="manageFormTitle">MANAGE</span>
 <br>
 <br>
+<br><br>
+<div class="container">
+<form id="manageMemberBtn">
 <input type="button" id="removeMember" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageMemberForm.do">회원 전체  목록 보기</a>
+</form>
 <sec:csrfInput />
 <form action="${pageContext.request.contextPath}/manageMember.do" method="post" id="removeMemberForm">
-<table border="1">
+<table id="manageMemberTable">
 	<thead>
 		<tr>
 		    <th></th>
@@ -53,7 +55,7 @@
 		<c:forEach var="avo" items="${requestScope.authVO.memberList}">
 			<tr>
 				<td>
-				<input type="checkbox" name="checkMember" value="${avo.memberVO.id}" class="checkMember"><sec:csrfInput/>>
+				<input type="checkbox" name="checkMember" value="${avo.memberVO.id}" class="checkMember"><sec:csrfInput/>
 				</td>
 				<td>${avo.memberVO.id}</td>
 				<td>${avo.memberVO.nickName}</td>
@@ -68,6 +70,7 @@
 	</tbody>
 </table>
 </form>
+</div>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	

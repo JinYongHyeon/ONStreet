@@ -180,6 +180,11 @@ public class MemberServiceImpl implements MemberService {
 		else
 			pagingBean = new PagingBean(followingTotalCount,Integer.parseInt(pageNo));
 		FollowListVO followListVO = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
+		System.out.println(id);
+		System.out.println(pagingBean.getStartRowNumber());
+		System.out.println(pagingBean.getEndRowNumber());
+		System.out.println(pagingBean.getStartRowNumber());
+		System.out.println("DDDD : "+followListVO.getFollowList());
 		return followListVO;
 	}
 
