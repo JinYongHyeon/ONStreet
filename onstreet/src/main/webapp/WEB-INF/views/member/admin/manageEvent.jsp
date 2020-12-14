@@ -42,17 +42,20 @@
 		});//click
 	});//ready
 </script>
-
-<div class="col-sm-2"></div>
-<div class="col-sm-8">
-<h1><b>MANAGE</b></h1> <br><br>
+<br><br>
+<span id="manageFormTitle">MANAGE</span>
+<br>
+<br>
+<br><br>
 
 <sec:csrfInput />
-
+<div class="container">
+<form id="manageMemberBtn">
 <input type="button" id="checkEvent" value="승인하기">
 <input type="button" id="uncheckEvent" value="미승인하기">
+</form>
 <form method="post" id="checkEventForm">
-<table border="1">
+<table id="manageMemberTable">
 	<thead>
 		<tr>
 			<th></th>
@@ -94,7 +97,7 @@
 	</tbody>
 </table>
 	</form>
-
+</div>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -117,5 +120,3 @@
 	</c:if>
 	</ul>	 		
 	</div>
-	</div>
-<div class="col-sm-2"></div>

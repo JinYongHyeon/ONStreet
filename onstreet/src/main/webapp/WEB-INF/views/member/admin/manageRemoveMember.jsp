@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-
-<span id="artistTitle">MANAGE</span>
+<br><br>
+<span id="manageFormTitle">MANAGE</span>
 <br>
 <br>
-<div class="col-sm-7"></div>
+<br><br>
+<div class="container">
 <form action="${pageContext.request.contextPath}/manageSearchRemoveMember.do" method="get" id="searchManageForm">
 				<input type="text" name="searchRemoveMember"> <input type="submit" value="검색">
 			</form>
@@ -45,7 +46,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-
+</div>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	

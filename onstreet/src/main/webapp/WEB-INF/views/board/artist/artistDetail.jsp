@@ -65,6 +65,7 @@
 			
 		</div>
 	</div>
+	</div>
 <link href="${pageContext.request.contextPath}/resources/style/main.min.css" rel="stylesheet"/>
 <script  type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/main.min.js"></script>
 <script type="text/javascript">
