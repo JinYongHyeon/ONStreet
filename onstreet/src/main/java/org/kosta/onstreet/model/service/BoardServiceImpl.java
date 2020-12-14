@@ -41,8 +41,10 @@ public class BoardServiceImpl implements BoardService {
 		PagingBean pagingBean=null;
 		if(pageNo==null) {
 			pagingBean=new PagingBean(totalNoticeCount);
+			pagingBean.setContentNumberPerPage(15);
 		}else {
 			pagingBean=new PagingBean(totalNoticeCount,Integer.parseInt(pageNo));
+			pagingBean.setContentNumberPerPage(15);
 		}
 		NoticeListVO  list=new NoticeListVO(boardMapper.getNoticeList(pagingBean),pagingBean);
 		return list;
