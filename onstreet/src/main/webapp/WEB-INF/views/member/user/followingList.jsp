@@ -53,6 +53,7 @@ function check_all(){
 <div class="followlist">
 <sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.list.followList}">
+
 <input type="checkbox" name="followingId" value="${list.followingId}"> 
 <div>
 <c:choose>
@@ -64,7 +65,7 @@ function check_all(){
 	</c:otherwise>
 </c:choose>
 
-<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.memberVO.id}">${list.memberVO.nickName}</a><br>
+<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.followingId}">${list.memberVO.nickName}</a><br>
 </div>
 </c:forEach>
 </div>

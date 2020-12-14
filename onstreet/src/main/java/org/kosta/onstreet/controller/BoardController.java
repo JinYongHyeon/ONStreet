@@ -206,7 +206,7 @@ public class BoardController {
       eventFileUploadBean.eventBannerUpload(eventVO, request);
 
       boardService.addEvent(eventVO);
-      return "redirect:getEventDetail.do?eventNo=" + eventVO.getEventNo();
+      return "redirect:checkWaitEvent.do?eventNo=" + eventVO.getEventNo();
    }
 
 	

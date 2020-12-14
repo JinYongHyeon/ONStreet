@@ -133,7 +133,8 @@
 	});
 </script>
 <body>
-<h1><b>EVENT</b></h1> <br>
+<br><br>
+<span id="eventDetailTitle">EVENT</span> <br><br><br>
 
 <div id="multipartPreView">
 
@@ -166,7 +167,7 @@
 <div class="container">
 <form action="addEvent.do" method="post" id="addEvent" enctype="multipart/form-data">
 <sec:csrfInput />
-제목  <input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle"> <br><br>
+<input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle">
 <div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
@@ -175,9 +176,9 @@
 							  <path fill-rule="evenodd" d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
 							</svg></button>
 						</div>
-<textarea rows="25" cols="170" name="eventContent" id="eventContent"></textarea></div><br><br>
+<textarea rows="25" cols="500" name="eventContent" id="eventContent"></textarea></div>
 이벤트 날짜  <input type="date" name="eventDate" required="required" id="eventDate"> 
-<input type="file" name="eventImageFile" id="eventImageFile" accept="image/*"><br><br>
+<input type="file" name="eventImageFile" id="eventImageFile" accept="image/*">
 <input type="button" id="postWrite" value="등록하기"><br><br>
 </form>
 </div>
