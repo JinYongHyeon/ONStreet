@@ -34,6 +34,10 @@
 		$("#multipartPreViewForm input[value=전송]").click(
 				
 				function() {
+					if($("#multipartPreViewForm .multipartPreViewFile input[type=file]").val()===""){
+						alert("이미지를 등록해주세요");
+						return;
+					}
 					var formData = new FormData($('#multipartPreViewForm')[0]);
 					$
 							.ajax({

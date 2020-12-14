@@ -34,18 +34,22 @@
 		
 	});//ready
 </script>
-
-<div class="col-sm-2"></div>
-<div class="col-sm-8">
-<h1><b>MANAGE</b></h1> <br><br>
+<br><br>
+<span id="manageFormTitle">MANAGE</span>
+<br>
+<br>
+<br><br>
+<div class="container">
 <form action="${pageContext.request.contextPath}/manageSearchShow.do" method="get" id="searchManageForm">
 				<input type="text" name="searchShow"> <input type="submit" value="검색">
 			</form>
+			<form id="manageMemberBtn">
 <input type="button" id="removeShow" value="삭제하기">
 <a href="${pageContext.request.contextPath}/manageEventList.do">이벤트 목록 보기</a>
+</form>
 <sec:csrfInput />
 	<form action="${pageContext.request.contextPath}/manageShow.do" method="post" id="removeShowForm">
-<table border="1">
+<table id="manageMemberTable">
 	<thead>
 		<tr>
 			<th></th>
@@ -78,6 +82,7 @@
 	</tbody>
 </table>
 </form>
+</div>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -100,5 +105,3 @@
 	</c:if>
 	</ul>	 		
 	</div>
-	</div>
-<div class="col-sm-2"></div>

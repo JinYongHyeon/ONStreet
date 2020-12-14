@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 외부폰트 스타일 */
 @font-face {
 	font-family: 'JSDongkang-Regular';
 	src: url('../font/JSDongkang-Regular.ttf');
@@ -13,41 +14,46 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
+/* 전체 스타일 적용 */
 * {
-	/* margin: 0 auto; */
 	padding: 0;
 	list-style: none;
 }
 
+/* 외부폰트 패스워드 깨짐 방지용 폰트설정 */
 input[type=password] {
 	font-family: "맑은고딕";
 }
+/* input 패스워드 placeholder 외부폰트로 적용 */
+input[type=password]::placeholder {
+	font-family: JSDongkang-Regular;
+}
 
-a {
-	background-color: #d03535;
-	border-color: #d03535;
-	color: white;
-	border-radius: 5px;
-	border: 2px solid #d03535;
+/* a {
+   background-color: #d03535;
+   border-color: #d03535;
+   color: white;
+   border-radius: 5px;
+   border: 2px solid #d03535;
 }
 
 input[type=button] {
-	background-color: #d03535;
-	border-color: #d03535;
-	color: white;
-	border-radius: 5px;
-	border: 2px solid #d03535;
+   background-color: #d03535;
+   border-color: #d03535;
+   color: white;
+   border-radius: 5px;
+   border: 2px solid #d03535;
 }
 
 input[type=submit] {
-	background-color: #d03535;
-	border-color: #d03535;
-	color: white;
-	border-radius: 5px;
-	border: 2px solid #d03535;
-}
+   background-color: #d03535;
+   border-color: #d03535;
+   color: white;
+   border-radius: 5px;
+   border: 2px solid #d03535;
+} */
 
+/* layout.jsp 영역 */
 #main {
 	width: 100%;
 	float: left;
@@ -55,12 +61,6 @@ input[type=submit] {
 	min-height: 78vh;
 	padding: 0;
 	font-family: JSDongkang-Regular;
-}
-
-/*페이징*/
-.pagingInfo .pagination .active a {
-	background-color: #d03535;
-	border-color: #d03535;
 }
 
 /* header 로고 + 검색 */
@@ -249,6 +249,12 @@ input[type=submit] {
 	margin-right: 20px;
 }
 
+/*페이징*/
+.pagingInfo .pagination .active a {
+	background-color: #d03535;
+	border-color: #d03535;
+}
+
 .showMain {
 	float: inherit;
 }
@@ -289,23 +295,63 @@ input[type=submit] {
 }
 
 #mainVideo .mainVideoLoginForm span {
-	width: 250px;
-	height: 50px;
-	line-height: 50px;
-	float: left;
-	margin-right: 20px;
-	color: #fff;
-	background-color: #d03535;
-	text-align: center;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: bold;
+   width: 250px;
+   height: 50px;
+   line-height: 50px;
+   float: left;
+   margin-right: 20px;
+   color: #fff;
+   background-color: #d03535;
+    border: 2px solid #d03535;
+  	border-radius: 5px;
+   text-align: center;
+   cursor: pointer;
+   font-size: 16px;
+   font-weight: bold;
 }
 
 #mainVideo .mainVideoLoginForm span::before {
 	content: "";
 	width: 100%;
 	height: 100%;
+}
+
+#mainVideo .mainContent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	z-index: 4;
+	text-align: center;
+}
+
+#mainVideo .mainContent h1 {
+	font-size: 64px;
+}
+
+#mainVideo .mainContent h3 {
+	font-size: 44px;
+}
+
+#mainVideo .mainMoveControl span {
+	position: absolute;
+	left: 50%;
+	bottom: 7%;
+	transform: translate(-50%, 0);
+	z-index: 4;
+	color: #fff;
+}
+
+#mainVideo .mainMoveControl span svg {
+	width: 65px;
+	height: 65px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+#mainVideo .mainMoveControl span svg:hover {
+	color: #d03535;
 }
 
 /* 메인페이지 - 오늘의 공연 */
@@ -352,6 +398,14 @@ input[type=submit] {
 	z-index: -1;
 }
 
+#todayShow .artistShowRightBtn span {
+	left: -15px;
+}
+
+#todayShow .artistShowLeftBtn span {
+	right: -15px;;
+}
+
 #todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn {
 	width: 10%;
 	height: 300px;
@@ -359,32 +413,31 @@ input[type=submit] {
 	position: relative;
 }
 
-#todayShow .artistShowLeftBtn::before, #todayShow .artistShowRightBtn::before
+#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span
 	{
-	content: "";
+	width: 45px;
+	height: 45px;
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: #000;
-	opacity: 0.7;
-	left: 0;
+	top: 50%;
+	transform: translate(0, -50%);
+	margin-top: 0;
+	cursor: pointer;
+	font-weight: bold;
+	color: #000;
+	background-color: #fff;
+	border-radius: 100%;
+	z-index: 2;
+	box-shadow: 0px 1px 13px 1px #e5e5e5;
 }
 
-#todayShow .artistShowLeftBtn h1, #todayShow .artistShowRightBtn h1 {
+#todayShow .artistShowLeftBtn span svg, #todayShow .artistShowRightBtn span svg
+	{
+	width: 60%;
+	height: 60%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin-top: 0;
-	cursor: pointer;
-	font-weight: bold;
-	color: #fff;
-}
-
-#todayShow .artistShowLeftBtn h1 svg, #todayShow .artistShowRightBtn h1 svg
-	{
-	width: 2em;
-	height: 2em;
 }
 
 #todayShow .artistShow {
@@ -395,6 +448,8 @@ input[type=submit] {
 	background-image: url("../../resources/img/content/todayShowbg.png");
 	background-position: center center;
 	position: relative;
+	border-radius: 15px;
+	overflow: hidden;
 }
 
 #todayShow .artistShow::before {
@@ -433,6 +488,7 @@ input[type=submit] {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
 #todayShow .artistShow .artistShowList li a {
@@ -496,33 +552,39 @@ input[type=submit] {
 	position: relative;
 }
 
-#artisStandardt .artistRecommendationLeftBtn::before, #artisStandardt .artistRecommendationRightBtn::before
-	{
-	content: "";
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	background-color: #000;
-	opacity: 0.8;
+#artisStandardt .artistRecommendationRightBtn span {
+	left: -15px;
 }
 
-#artisStandardt .artistRecommendationLeftBtn h1, #artisStandardt .artistRecommendationRightBtn h1
+#artisStandardt .artistRecommendationLeftBtn span {
+	right: -15px;;
+}
+
+#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span
 	{
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	margin-top: 0;
+	cursor: pointer;
+	font-weight: bold;
+	color: #000;
+	background-color: #fff;
+	border-radius: 100%;
+	z-index: 2;
+	box-shadow: 0px 1px 13px 1px #e5e5e5;
+}
+
+#artisStandardt .artistRecommendationLeftBtn span svg, #artisStandardt .artistRecommendationRightBtn span svg
+	{
+	width: 60%;
+	height: 60%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin-top: 0;
-	cursor: pointer;
-	font-weight: bold;
-	color: #fff;
-}
-
-#artisStandardt .artistRecommendationLeftBtn h1 svg, #artisStandardt .artistRecommendationRightBtn h1 svg
-	{
-	width: 2em;
-	height: 2em;
 }
 
 #artisStandardt .artistRecommendation {
@@ -556,9 +618,11 @@ input[type=submit] {
 	float: left;
 	margin-right: 45px;
 	position: relative;
+	border-radius: 15px;
+	overflow: hidden;
 }
 
-#artisStandardt .artistRecommendation .artistRecommendationList ul a:nth-child(3) li
+#artisStandardt .artistRecommendation .artistRecommendationList ul li:nth-child(3)
 	{
 	margin-right: 0;
 }
@@ -572,23 +636,23 @@ input[type=submit] {
 #artisStandardt .artistRecommendation .artistRecommendationList ul li span
 	{
 	position: absolute;
-	bottom: 1.5%;
+	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 0);
+	transform: translate(-50%, -50%);
 	color: #fff;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 24px;
 }
 
-#artisStandardt .artistRecommendation .artistRecommendationList ul li::before
+#artisStandardt .artistRecommendation .artistRecommendationList ul li a::before
 	{
 	content: "";
 	position: absolute;
 	bottom: 0;
 	background-color: #000;
-	opacity: 0.7;
+	opacity: 0.4;
 	width: 100%;
-	height: 40px;
+	height: 100%;
 }
 
 /* 로그인  */
@@ -665,12 +729,14 @@ input[type=submit] {
 }
 
 #login .loginMain .loginForm input[type=submit] {
-	width: 350px;
-	background-color: #d03535;
-	color: #fff;
-	font-weight: bold;
-	font-size: 18px;
-	line-height: 30px;
+   width: 350px;
+   background-color: #d03535;
+   color: #fff;
+   font-weight: bold;
+   font-size: 18px;
+   line-height: 30px;
+   border: 2px solid #d03535;
+  border-radius: 5px;
 }
 
 #login .loginMain .loginForm svg {
@@ -714,7 +780,7 @@ input[type=submit] {
 }
 
 #login .loginMain .loginForm .login-label-group input:not(:placeholder-shown) 
-	~ label {
+   ~ label {
 	padding-top: .25rem;
 	padding-bottom: .25rem;
 	font-size: 12px;
@@ -723,7 +789,7 @@ input[type=submit] {
 
 /* 회원가입 + 회원수정 */
 #registerTitle {
-	text-align:center;
+	text-align: center;
 	margin-top: 30px;
 }
 
@@ -745,26 +811,27 @@ input[type=submit] {
 
 #registerForm, #updateForm {
 	width: 600px;
-	margin:0 auto;
+	margin: 0 auto;
 	margin-top: 25px;
 }
 
 #registerForm input[type=submit], #updateForm input[type=submit] {
-	width: 100%;
-	height: 50px;
-	border: none;
-	background-color: #d03535;
-	color: #fff;
-	float: left;
-	margin-top: 15px;
-	margin-bottom: 15px;
+   width: 100%;
+   height: 50px;
+   border: none;
+   background-color: #d03535;
+   border: 2px solid #d03535;
+   border-radius: 5px;
+   color: #fff;
+   float: left;
+   margin-bottom: 15px;
 }
 
 #registerForm table tr th, #updateForm table tr th {
 	width: 150px;
 	text-align: center;
 	background-color: #d03535;
-	color:#fff
+	color: #fff
 }
 
 #registerForm table tr td, #updateForm table tr td {
@@ -808,7 +875,7 @@ input[type=submit] {
 	height: 41px;
 	border: none;
 	background-color: #d03535;
-	color:#fff;
+	color: #fff;
 }
 
 #registerForm .defaultprofile, #updateForm .defaultprofile {
@@ -835,7 +902,7 @@ input[type=submit] {
 }
 
 #choiceRegister .choiceTitle {
-	margin-top: 60px;
+   margin-top: 120px;
 }
 
 #choiceRegister .choiceTitle h1 {
@@ -854,19 +921,17 @@ input[type=submit] {
 	transform: translate(-50%, 0);
 }
 
-#choiceRegister .choiceRegisterMemberText h3{
-	width: 100%;
-	border: 1px solid #e5e5e5;
-	padding: 15px;
-	background-color: #d03535;
-	margin-top: 45px;
-	color: #fff;
+#choiceRegister section{
+	width:650px;
+	margin:0 auto;
+	margin-top:100px;
 }
 
 #choiceRegister ul {
-	width: 300px;
-	list-style: none;
-	margin-top: 50px;
+   width: 300px;
+   float:left;
+   list-style: none;
+   margin-right: 25px;
 }
 
 #choiceRegister ul li:nth-child(1) {
@@ -875,15 +940,15 @@ input[type=submit] {
 	border: 1px solid #e5e5e5;
 	border-radius: 15px;
 	position: relative;
-	border-bottom-left-radius:0;
-	border-bottom-right-radius:0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 	/*box-shadow: 2px 2px 2px 2px #000;*/
 	overflow: hidden;
 }
 
-#choiceRegister ul li img{
-	width:100%;
-	float:left;
+#choiceRegister ul li img {
+	width: 100%;
+	float: left;
 }
 
 #choiceRegister ul li span {
@@ -896,12 +961,13 @@ input[type=submit] {
 }
 
 #choiceRegister ul li h3 {
-	width: 100%;
-	border: 1px solid #e5e5e5;
-	padding: 15px;
-	background-color: #d03535;
-	margin-top: 0;
-	color: #fff;
+   width: 100%;
+   padding: 15px;
+   background-color: #d03535;
+   border: 2px solid #d03535;
+   border-radius: 5px;
+   margin-top: 0;
+   color: #fff;
 }
 
 #choiceRegister ul li>a {
@@ -920,12 +986,11 @@ input[type=submit] {
 
 /* 약관 동의서 */
 #checkDocument {
-	margin-top: 50px;
-	text-align: center;
+   margin-top: 120px;
+   text-align: center;
 }
 
 #checkDocument .checkDocumentContent {
-	
 	margin-bottom: 15px;
 }
 
@@ -934,8 +999,7 @@ input[type=submit] {
 	font-weight: bold;
 }
 
-
-#checkDocument .checkDocumentTitle h1::before{
+#checkDocument .checkDocumentTitle h1::before {
 	content: "";
 	width: 7%;
 	height: 2px;
@@ -943,7 +1007,7 @@ input[type=submit] {
 	background-color: #d03535;
 	position: absolute;
 	left: 50%;
-	bottom:-13%;
+	bottom: -13%;
 	transform: translate(-50%, 0);
 	z-index: -1;
 }
@@ -969,12 +1033,14 @@ input[type=submit] {
 }
 
 #checkDocument .checkDocumentBtn input {
-	width: 150px;
-	height: 40px;
-	background-color: #d03535;
-	border: none;
-	margin-right: 15px;
-	color: #fff;
+   width: 150px;
+   height: 40px;
+   background-color: #d03535;
+   border: none;
+   margin-right: 15px;
+   color: #fff;
+   border: 2px solid #d03535;
+   border-radius: 5px;
 }
 
 /* 아티스트 리스트 */
@@ -1010,6 +1076,10 @@ input[type=submit] {
 	width: 60%;
 	display: inline-block;
 	text-align: center;
+	border: 2px solid #d03535;
+	border-radius: 5px;
+	background-color: #d03535;
+	color: white;
 }
 
 /*아티스트 상세보기*/
@@ -1039,6 +1109,13 @@ input[type=submit] {
 	height: 5%;
 }
 
+.artistProfile input[type=button] {
+	color: white;
+	border: 2px solid #d03535;
+	border-radius: 5px;
+	background-color: #d03535;
+}
+
 .artistProfile #artistName {
 	font-size: x-large;
 	font-weight: bold;
@@ -1055,12 +1132,12 @@ input[type=submit] {
 #eventListTitle {
 	font-size: 40px;
 	font-weight: bolder;
-	box-shadow: 0 -6px #d03535 inset;	
+	box-shadow: 0 -6px #d03535 inset;
 	margin-left: 500px;
 }
 
-.eventList{
-	width:800px;
+.eventList {
+	width: 800px;
 	height: 150px;
 	margin: 80px auto;
 	position: relative;
@@ -1072,9 +1149,14 @@ input[type=submit] {
 }
 
 .event a {
-    float: right;
-    margin-right: 170px;
+	float: right;
+	margin-right: 170px;
 	font-size: 18px;
+	color: white;
+	border: 2px solid #d03535;
+	border-radius: 5px;
+	background-color: #d03535;
+	padding: 5px 10px 5px 10px;
 }
 
 .eventList img {
@@ -1084,14 +1166,14 @@ input[type=submit] {
 
 #frontText {
 	background-color: #9999;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    float: left;
-    transform: translate(-50%, -50%);
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	float: left;
+	transform: translate(-50%, -50%);
 }
 
 #eventTitle {
@@ -1103,15 +1185,14 @@ input[type=submit] {
 	font-size: medium;
 }
 
-#event a {
-	text-decoration: none;
-	padding: 5px 10px 5px 10px;
-	display: inline-block;
-	float: right;
-	margin-right: 350px;
+/*이벤트 상세보기*/
+#eventDetailTitle {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 900px;
 }
 
-/*이벤트 상세보기*/
 #eventName {
 	font-weight: bold;
 	font-size: 50px;
@@ -1150,35 +1231,32 @@ input[type=submit] {
 }
 
 /*관리자 페이지*/
-#manageMember {
-	color: black;
-	border-radius: 5px;
-	border: 2px solid #000000;
-	float: left;
-	margin-left: 400px;
-	margin-bottom: 50px;
-	font-size: xx-large;
+#manageFormTitle {
+	font-size: 40px;
 	font-weight: bolder;
-	width: 20%;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 830px;
 }
 
-#managePost {
-	color: black;
-	border-radius: 5px;
-	border: 2px solid #000000;
-	float: right;
-	margin-right: 400px;
-	margin-bottom: 50px;
+#manageFormBtn {
+	color: white;
+	border: 2px solid #d03535;
+	float: left;
 	font-size: xx-large;
 	font-weight: bolder;
 	width: 20%;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #d03535;
+	text-align: center;
+	margin-right: 50px;
 }
 
 /*회원 관리*/
+#manageMemberTable {
+	width: 100%;
+}
+
 #manageMemberTable td {
 	text-align: center;
 	padding: 6px;
@@ -1186,26 +1264,44 @@ input[type=submit] {
 
 #manageMemberTable th {
 	padding: 5px;
-	background-color: #999;
+	background-color: #d03535;
 	text-align: center;
+	color: white;
+}
+
+#searchManageForm input[type=submit] {
+	color: white; background-color : #d03535;
+	border-radius: 5px;
+	border: 2px solid #d03535;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 10px;
+	background-color: #d03535;
+}
+
+#searchManageForm input[type=text] {
+	border-radius: 5px;
+	border: 2px solid #d03535;
+	padding: 5px 0px 5px 50px;
+	margin-left: 860px;
 }
 
 #manageMemberBtn input[type=button] {
-	background-color: white;
+	color: white;
+	background-color: #d03535;
 	border-radius: 5px;
-	border: 2px solid #000000;
+	border: 2px solid #d03535;
 	padding: 5px 10px 5px 10px;
 	margin-bottom: 10px;
 }
 
 #manageMemberBtn a {
-	text-decoration: none;
-	color: black;
-	padding: 5px 10px 5px 10px;
+	color: white;
+	background-color: #d03535; padding : 5px 10px 5px 10px;
 	display: inline-block;
 	border-radius: 5px;
-	border: 2px solid #000000;
+	border: 2px solid #d03535;
 	margin-bottom: 10px;
+	padding: 5px 10px 5px 10px;
 }
 
 /* 회원가입 성공 */
@@ -1244,232 +1340,382 @@ input[type=submit] {
 	width: 100%;
 }
 
-/* 이동욱 board/show css */ 
+/* 이동욱 board/show css */
 #showDetailContent img {
-max-width: 100%;
-max-height: 100%;
-float: left;
+	max-width: 100%;
+	max-height: 100%;
+	float: left;
 }
-
+#commentRegisterBtn{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showListRegisterBtn input[type=submit]{
+	border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#commentUpdate input[type=button]{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    color: white;
+}
+#commentUpdate input[type=submit]{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+    color: white;
+}
+#btnUpdate{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    margin-right: 5px;
+    color: white;
+}
+#btnUpdateCancel{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#showDate {
+	border: 0
+}
+#postWrite {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#postUpdate {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showTitle {
+	width: 944px; height: 35px
+}
+#postTitle {
+	width: 944px; height: 35px
+}
+#showRegisterShowDate {
+	width: 944px
+}
+#showUpdateShowDate {
+	width: 944px
+}
 .btn-comment form {
 	display: inline;
 }
-#showListTable th{
+
+#showListTable th {
+   text-align: center; color: white;
+}
+
+#showListTable td {
 	text-align: center;
 }
-#showListTable td{
-	text-align: center;
+
+#showListTable #showListTableNotice {
+   color: red;
+   font-weight: bold;
 }
-#showListTable #showListTableNotice{
-	background: orange;
+#showListTableNotice a{
+   color: red;
+   font-weight: bold;
+
 }
+
 #showDetailLeftSide {
-	float: left; width: 15%; height: 100px;
+	float: left; width: 15%; height: 1000px;
 }
+
 #showDetailContentSide {
-	float: left; /* width: 38%; */ height: 942px;
+	float: left; width: 38%; height: 942px; max-height: 942px;
 }
+
 #showDetailBlankSide {
-	float: left; width: 2%; height: 1000px;
+	float: left;
+	width: 2%;
+	height: 1000px;
 }
+
 #showDetailCommentSide {
-	 float: left; width: 33%; height: 942px;
+	float: left;
+	width: 33%;
+	height: 942px;
 }
 
 #showDetailrightSide {
-	float: right; width: 12%; height: 100px;
+	float: right;
+	width: 12%;
+	height: 100px;
 }
+
 .showDetailArtistComment {
 	text-align: left;
-	
-	
-	
 }
+
 .showDetailMemberComment {
 	text-align: right;
 }
+
 .btn-disabled {
 	background: grey;
 }
+
 #btn-update {
+   float: left;
+   margin-right: 5px;
+}
+
+#btn-delete {
 	float: left;
 }
-#btn-delete {
-	float: left; 
-}
+
 #heart {
-	color:red;
+	color: red;
 }
+
 #heartBlank {
-	color:red;
+	color: red;
 }
+
 #comment {
-	width: 450px;
+   width: 450px;
+   background: white; border: #2f323b; color: black
 }
+
 #commentContent {
-	width: 440px; height: 60px;
+	width: 440px;
+	height: 60px;
 }
+
 #showDetailContent {
 	max-width: 500px;
 	max-height: 907px;
 }
+#showListTable th{
+	background: #d03535;
+}
+#showDetailProfile{
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentArtistProfile {
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentNickName {
+	  text-align: center;
+}
 
 /* 채팅 테스트 */
-
 ::-webkit-scrollbar {
-  width: 4px;
+	width: 4px;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #d03535;
-  border-radius: 2px;
+	background-color: #d03535;
+	border-radius: 2px;
 }
-.test{
-    max-height: 942px;
+
+.test {
+	max-height: 942px;
 	overflow: scroll;
 }
+
 .chatbox {
-    width: 300px;
-    height: 907px;
-    max-height: 907px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	width: 300px;
+	height: 907px;
+	max-height: 907px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
 }
+
 .chat-window {
-    flex: auto;
-    /* height: 100%; */
-    max-height: 907px;
-    background: #f6f9f6;
-    overflow: auto;
+	flex: auto;
+	/* height: 100%; */
+	max-height: 907px;
+	background: #f6f9f6;
+	overflow: auto;
 }
+
 #commentRegisterTd {
-	    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #2671ff;
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #2671ff;
 }
+
 #commentregisterForm {
-    border-top: 1px solid #2671ff;
-	
+	border-top: 1px solid #2671ff;
 }
+
 .chat-input {
-    flex: 0 0 auto;
-    height: 60px;
-    background: #40434e;
-    border-top: 1px solid #2671ff;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	flex: 0 0 auto;
+	height: 60px;
+	background: #40434e;
+	border-top: 1px solid #2671ff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
 }
+
 .chat-input input {
-    height: 59px;
-    line-height: 60px;
-    outline: 0 none;
-    border: none;
-    width: calc(100% - 60px);
-    color: white;
-    text-indent: 10px;
-    font-size: 12pt;
-    padding: 0;
-    background: #40434e;
+	height: 59px;
+	line-height: 60px;
+	outline: 0 none;
+	border: none;
+	width: calc(100% - 60px);
+	color: white;
+	text-indent: 10px;
+	font-size: 12pt;
+	padding: 0;
+	background: #40434e;
 }
+
 .chat-input button {
-    float: right;
-    outline: 0 none;
-    border: none;
-    background: rgba(255,255,255,.25);
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    padding: 2px 0 0 0;
-    margin: 10px;
-    transition: all 0.15s ease-in-out;
+	float: right;
+	outline: 0 none;
+	border: none;
+	background: rgba(255, 255, 255, .25);
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	padding: 2px 0 0 0;
+	margin: 10px;
+	transition: all 0.15s ease-in-out;
 }
-.chat-input input[good] + button {
-    box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
-    background: #2671ff;
+
+.chat-input input[good]+button {
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+	background: #2671ff;
 }
-.chat-input input[good] + button:hover {
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
+.chat-input input[good]+button:hover {
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
-.chat-input input[good] + button path {
-    fill: white;
+
+.chat-input input[good]+button path {
+	fill: white;
 }
+
 .msg-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    margin: 0 0 10px 0;
-    padding: 0;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	margin: 0 0 10px 0;
+	padding: 0;
 }
+
 .msg-box {
-    display: flex;
-    background: #d03535;
-    padding: 10px 10px 0 10px;
-    border-radius: 0 6px 6px 0;
-    max-width: 80%;
-    width: auto;
-    float: left;
-    box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+	display: flex;
+	background: #d03535;
+	padding: 10px 10px 0 10px;
+	border-radius: 0 6px 6px 0;
+	max-width: 80%;
+	width: auto;
+	float: left;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 }
+
+#showDetailProfileImg {
+	 position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);
+}
+#showDetailShowWriteDate{
+	font-size: 12px; color: #c4b3b3;
+}
+#showDetailUpdateDeleteDiv {
+	padding-top: 9px
+}
+
 .user-img {
-    display: inline-block;
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
-    background: #2671ff;
-    margin: 0 10px 10px 0;
+	display: inline-block;
+	border-radius: 50%;
+	height: 35px;
+	width: 35px;
+	background: #2671ff;
+	margin: 0 10px 10px 0;
 }
+
 .flr {
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 50px);
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 50px);
 }
+
 .messages {
     flex: 1 0 auto;
+    text-align: center;
 }
+
 .msg {
-    display: inline-block;
-    font-size: 11pt;
-    line-height: 13pt;
-    color: rgba(255,255,255,.7);
-    margin: 0 0 4px 0;
+	display: inline-block;
+	font-size: 11pt;
+	line-height: 13pt;
+	color: rgba(255, 255, 255, .7);
+	margin: 0 0 4px 0;
 }
+
+#msg-1{
+	color: black;
+}
+
 .msg:first-of-type {
-    margin-top: 8px;
+	margin-top: 8px;
 }
+
 .timestamp {
-    color: rgba(0,0,0,.38);
-    font-size: 8pt;
-    margin-bottom: 10px;
+	color: rgba(0, 0, 0, .38);
+	font-size: 8pt;
+	margin-bottom: 10px;
 }
+
 .username {
-    margin-right: 3px;
+	margin-right: 3px;
 }
+
 .posttime {
-    margin-left: 3px;
-    color: #c4b3b3;
+	margin-left: 3px;
+	color: #c4b3b3;
 }
+
 .msg-self .msg-box {
-    border-radius: 6px 0 0 6px;
-    background: white;
-    float: right;
-    word-break:break-all;
+	border-radius: 6px 0 0 6px;
+	background: white;
+	float: right;
+	word-break: break-all;
 }
+
 .msg-self .user-img {
-   /*  margin: 0 0 10px 10px; */
+	/*  margin: 0 0 10px 10px; */
+	
 }
+
 .msg-self .msg {
-    text-align: right;
+	text-align: right;
 }
+
 .msg-self .timestamp {
-    text-align: right;
+	text-align: right;
+}
+#commentSpan {
+	color: #d03535
+}
+#commentCheckResult {
+	 color: black
+}
+#commentCheckLimit {
+	color: grey;
 }
 /* 채팅테스트 끝*/
-
-
-
-
 
 /* 사진 미리보기 */
 #multipartPreView {
@@ -1547,12 +1793,14 @@ float: left;
 }
 
 #multipartPreViewForm input[type=button] {
-	width: 150px;
-	height: 50px;
-	background-color: #d03535;
-	color: #fff;
-	border: none;
-	margin-right: 10px;
+   width: 150px;
+   height: 50px;
+   background-color: #d03535;
+   color: #fff;
+   border: none;
+   margin-right: 10px;
+   border: 2px solid #d03535;
+   border-radius: 5px;
 }
 
 /* 팔로우리스트 세희 */
@@ -1605,7 +1853,7 @@ float: left;
 /*공지시항리스트 UI 김수민 */
 #noticeList {
 	width: 1100px;
-	height: 180px;	
+	height: 180px;
 	border: 2px solid #F2DCE0;
 	font-size: 15px;
 	margin: 0 auto;
@@ -1620,19 +1868,20 @@ float: left;
 
 #noticeList tr td {
 	border-bottom: 2px solid #F2DCE0;
-	border-top:2px solid #F2DCE0;
+	border-top: 2px solid #F2DCE0;
 	border-collapse: collapse;
 	text-align: center;
 	border-color: #F2DCE0;
 }
+
 #noticeButton_1 input[type='submit'] {
 	width: 50px;
 	height: 30px;
 	border: 1px blue solid;
 	background-color: blue;
 	position: relative;
-	float:right;
-	right:470px;
+	float: right;
+	right: 470px;
 	margin-top: 10px;
 	color: white;
 }
@@ -1679,9 +1928,11 @@ float: left;
 	margin-top: 200px;
 	margin-right: 600px;
 }
-#noticeDetail #DetailTitle{
-	background-color:#f2A2A2; 
+
+#noticeDetail #DetailTitle {
+	background-color: #f2A2A2;
 }
+
 #noticeDetail tr th {
 	text-align: left;
 	font-size: 20px;
@@ -1692,6 +1943,7 @@ float: left;
 	border-color: #F2C9C9;
 	font-size: 20px;
 }
+
 #noticeDetail tr td {
 	text-align: center;
 	font-size: 25px;
@@ -1700,12 +1952,13 @@ float: left;
 	border-color: #F2C9C9;
 	font-size: 25px;
 }
-#noticeContent{
+
+#noticeContent {
 	height: 180px;
 	background-color: #F2DCE0;
 	border: 2px solid;
-	
 }
+
 #noticeDetailButton {
 	width: 40px;
 	height: 30px;
@@ -1724,10 +1977,10 @@ float: left;
 	color: black;
 }
 /*공지사항 등록 UI 김수민*/
-#registerNoticeTitle{
+#registerNoticeTitle {
 	width: 940px;
-	height:30px;
-	font-size:20px;
+	height: 30px;
+	font-size: 20px;
 	margin: 0 auto;
 	position: relative;
 	float: left;
@@ -1735,57 +1988,64 @@ float: left;
 	border: 1px solid;
 	margin-top: 100px;
 }
-#register{
+
+#register {
 	font-size: 40px;
 	position: relative;
 	float: left;
 	left: 50px;
 	margin-bottom: 10px;
 }
-#textTitle{
-	position:relative;
+
+#textTitle {
+	position: relative;
 	float: left;
 	left: 220px;
 	font-size: 25px;
 	margin-top: 100px;
 }
-#content{
+
+#content {
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 225px;
 	margin-top: 30px;
 }
-#submitButton{
+
+#submitButton {
 	width: 70px;
-	height:40px;
-	border: 1px solid  blue;
+	height: 40px;
+	border: 1px solid blue;
 	background-color: white;
 	color: blue;
 	position: relative;
-	float:right;
+	float: right;
 	right: 500px;
 }
-#resetButton{
+
+#resetButton {
 	width: 70px;
-	height:40px;
+	height: 40px;
 	border: 1px solid red;
 	background-color: white;
 	color: red;
-	position:relative;
+	position: relative;
 	float: right;
 	right: 457px;
 }
-#resetButton:hover{
+
+#resetButton:hover {
 	background-color: red;
 	color: white;
 }
-#submitButton:hover{
+
+#submitButton:hover {
 	background-color: blue;
 	color: white;
 }
 /*회원정보 수정 UI 김수민  */
-#updateTitle{
+#updateTitle {
 	width: 760px;
 	font-size: 20px;
 	position: relative;
@@ -1793,51 +2053,58 @@ float: left;
 	left: 500px;
 	margin-bottom: 20px;
 }
-#titleUpdate{
-	font-size:25px;
+
+#titleUpdate {
+	font-size: 25px;
 	position: relative;
 	float: left;
-	left: 480px; 
+	left: 480px;
 	margin-bottom: 20px;
 }
-#updateContent{
+
+#updateContent {
 	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 300px;
 	margin-top: 50px;
 }
-#update{
+
+#update {
 	font-size: 25px;
-	position:relative;
+	position: relative;
 	float: left;
 	left: 480px;
 }
-#updateButton{
+
+#updateButton {
 	width: 70px;
-	height:40px;
+	height: 40px;
 	background-color: white;
 	border-color: blue;
 	position: relative;
-	 float:right;
+	float: right;
 	right: 650px;
 }
-#updateButton:hover{
+
+#updateButton:hover {
 	background-color: blue;
 	color: white;
 }
-#backButton{
+
+#backButton {
 	width: 70px;
-	height:40px;
+	height: 40px;
 	background-color: white;
 	border-color: red;
 	position: relative;
-	float:right;
+	float: right;
 	right: 494px;
 }
-#backButton:hover{
-	background-color:red;
-	color:white;
+
+#backButton:hover {
+	background-color: red;
+	color: white;
 }
 /* 회원탈퇴 페이지 ui 정세희*/
 .remove-member{
@@ -1850,8 +2117,8 @@ float: left;
  }
  
 fieldset {
-    border: none;
-    vertical-align: top;
+	border: none;
+	vertical-align: top;
 }
 
 .removBtn {
@@ -1887,132 +2154,286 @@ fieldset {
 }
 /*팔로우리스트 ui 끝*/
 
-
-
- /* 이벤트승인현황 ui 정세희*/
-.evetext{
+/* 이벤트승인현황 ui 정세희*/
+.evetext {
 	text-align: right;
-} 
-    
- /* 이벤트승인현황 ui 끝 정세희*/
-    
-    
-    
-    
-/* 아티스트 일정 디자인 - 진용현 */
-#calendar{
-	width:1100px;
-	position: absolute;
-	top:60%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	z-index: -3;
-	background-color:#fff;
-	padding:15px;
-	text-align: center;
-    opacity: 0; 
 }
 
-#calendar .calendarTitle{
-	background-color:#d03535;
-	color:#fff;
+/* 이벤트승인현황 ui 끝 정세희*/
+
+/* 아티스트 일정 디자인 - 진용현 */
+#calendar {
+	width: 1100px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -3;
+	background-color: #fff;
+	padding: 15px;
+	text-align: center;
+	opacity: 0;
+}
+
+#calendar .calendarTitle {
+	background-color: #d03535;
+	color: #fff;
 	height: 100px;
 	position: relative;
 }
-#calendar .calendarTitle svg{
-	color:#fff;
+
+#calendar .calendarTitle svg {
+	color: #fff;
 	position: absolute;
-	right:0;
-	top:0;
+	right: 0;
+	top: 0;
 	margin: 10px;
 	cursor: pointer;
 }
 
-#calendar .calendarTitle h1{
+#calendar .calendarTitle h1 {
 	line-height: 100px;
-	margin:0;
-}
-#calendar #artistCalendar{
-	padding:15px
-}
-#calendar #artistCalendar a{
-	text-decoration: none;
-	color:#d03535;
-}
-#calendar #artistCalendar table tr th{
-	background-color:#d03535;
-}
-#calendar #artistCalendar table tr th a{
-	color:#fff;
+	margin: 0;
 }
 
-#calendar #artistCalendar button{
-	background-color:#d03535 !important;
-	border:none !important;
+#calendar #artistCalendar {
+	padding: 15px
+}
+
+#calendar #artistCalendar a {
+	text-decoration: none;
+	color: #d03535;
+}
+
+#calendar #artistCalendar table tr th {
+	background-color: #d03535;
+}
+
+#calendar #artistCalendar table tr th a {
+	color: #fff;
+}
+
+#calendar #artistCalendar button {
+	background-color: #d03535 !important;
+	border: none !important;
 	opacity: 1;
 }
 
 /* fullcalendar css */
-.fc-h-event{
-	background-color:#d03535 !important	;
-	border:none !important;
+.fc-h-event {
+	background-color: #d03535 !important;
+	border: none !important;
 }
 
 /* 비밀번호 변경 css  - 진용현*/
-#passwordUpdate{
-	width:50%;
-	position: absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
+#passwordUpdate {
+	width: 40%;
 	text-align: center;
-	border:1px solid #d03535;
-}
-#passwordUpdate form table{
-	margin:0 auto;
-	width:100%;
-}
-#passwordUpdate form table th{
-	width:30%;
-}
-#passwordUpdate form table td{
-	width:70%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-#passwordUpdate form table td input{
-	width:100%;
-	border:none;
-	padding:15px;
-}
-#passwordUpdate .passwordUpdateTitle{
-	background-color:#d03535;
-	height: 70px;
-}
-#passwordUpdate .passwordUpdateTitle h1{
-	line-height: 70px;
-	margin:0;
-	color:#fff;
+#passwordUpdate form table {
+	margin: 0 auto;
+	width: 100%;
+	border: 1px solid #d03535;
 }
 
-/* #passwordUpdate .passwordUpdateTitle h1::before {
+#passwordUpdate form table tr {
+	border-bottom: 1px solid #d03535;
+}
+
+#passwordUpdate form table tr th {
+	width: 30%;
+	border-right: 1px solid #d03535;
+	text-align: center;
+}
+
+#passwordUpdate form table tr td {
+	width: 70%;
+	text-align: left;
+	padding: 5px;
+}
+
+#passwordUpdate form table tr td input {
+	width: 100%;
+	border: none;
+}
+/* #passwordUpdate .passwordUpdateTitle{
+   background-color:#d03535;
+   height: 55px;
+}
+#passwordUpdate .passwordUpdateTitle h2{
+   line-height:55px;
+   margin:0;
+   color:#fff;
+} */
+#passwordUpdate .passwordUpdateTitle {
+	height: 80px;
+}
+
+#passwordUpdate .passwordUpdateTitle h2 {
+	text-align: center;
+	position: relative;
+	font-weight: bold;
+	margin: 0;
+}
+
+#passwordUpdate .passwordUpdateTitle h2::before {
 	content: "";
-	width: 7%;
+	width: 14%;
 	height: 2px;
 	background-color: #d03535;
 	position: absolute;
 	bottom: -10px;
 	left: 50%;
 	transform: translate(-50%, 0);
-} */
-
-#passwordUpdate #passwordUpdateForm{
-	margin-top:15px;	
 }
 
+
 #passwordUpdate #passwordUpdateForm button{
-	width:100%;
-	height: 40px;
-	color:#fff;
-	background-color:#d03535;
-	border:none;
+   width:100%;
+   height: 40px;
+   color:#fff;
+   background-color:#d03535;
+   border:none;
+   border: 2px solid #d03535;
+   border-radius: 5px;
+}
+
+/*480, 768, 1024, 1600*/
+/* 반응형 웹 mediaQuery */
+@media screen and (max-width:1600px) {
+	/* layout-header */
+	#header .navigation nav{
+		width:45%;
+	}
+	#header .navigation .loginbar{
+		width:55%;
+	}
+	#header .navigation .loginbar .bitLogin{
+		width:55%;
+	}
+	#header .navigation .loginbar .bitMainSearch{
+		width:42%;
+	}
+	/* 회원가입 - 이용약관*/
+	#checkDocument{
+		margin-top:100px;
+	}	
+}
+
+@media screen and (max-width:1024px) {
+	.container{
+		width:970px;
+	}
+	
+	#header{
+		height: 60px;
+	}
+	#header .navigation nav{
+		width:35%;
+	}
+	#header .navigation nav ul{
+		height: 60px;
+	}
+	#header .navigation nav ul li{
+		width:25%;
+		height: 60px;
+		line-height: 60px;
+		font-size:16px;
+	}
+	#header .navigation .loginbar{
+		width:65%;
+	}
+	#header .navigation .loginbar .bitLogin{
+		line-height: 60px;	
+	}
+	
+	#header .navigation .loginbar .bitLogin a{
+		font-size:16px;
+	}
+	
+	#header .bitMainSearch{
+		margin-right: 10px;
+	}
+	#header .bitMainSearch form input[type=text]{
+		left:70px;
+		width: 51%;
+	}
+	#header .bitMainSearch form input[type=submit]{
+		width:70px;
+	}	
+	
+	#header .bitMainSearch #asd{
+		height: 60px;
+	}
+
+	#mainVideo{
+		height: 57vh;
+	}
+	
+	#mainVideo .mainVideoLoginForm span{
+		width:200px;
+		height:40px;
+		line-height:40px;
+		font-size:14px;
+	}
+	
+	
+	#artisStandardt .artistRecommendation {
+		height: 250px;
+	}		
+	
+	#checkDocument{
+		margin-top:40px;
+	}
+	#choiceRegister .choiceTitle{
+		margin-top:80px;
+	}
+	#choiceRegister section{
+		margin-top:87px;
+	}
+}
+
+@media screen and (max-width:480px) {
+	
+	.container{
+		width:430px;
+	}
+	
+	#mainVideo{
+		height: 27vh;
+	}
+	
+	#mainVideo .mainVideoLoginForm span{
+		width:90px;
+		height:25px;
+		line-height:25px;
+		font-size:10px;
+		margin-right:10px;
+	}
+	#todayShow .artistShow{
+		width:90%;
+		height: 150px;
+	}
+	#todayShow .artistShowTitle{
+		margin-left:0;
+	}
+	
+	#todayShow .artistShowTitle h2{
+		font-size:18px;
+	}
+	
+	#todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn{
+		width:5%;
+		height:150px;
+	}
+	
+	#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span{
+		width:25px;
+		height: 25px;
+	}
 }

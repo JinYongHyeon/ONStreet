@@ -64,8 +64,11 @@ alert(today) */
 		});
 
 		$("#multipartPreViewForm input[value=전송]").click(
-			
-						function() {
+						function() { 
+							if($("#multipartPreViewForm .multipartPreViewFile input[type=file]").val()===""){
+								alert("이미지를 등록해주세요");
+								return;
+							}
 							var formData = new FormData($('#multipartPreViewForm')[0]);
 							$
 									.ajax({
@@ -145,7 +148,7 @@ alert(today) */
 	<form method="post" action="addShow.do" id="frm">
 		<sec:csrfInput />
 		<br><br>
-				<input style="width: 944px; height: 35px" type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
+				<input type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
 					<div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
@@ -155,19 +158,12 @@ alert(today) */
 							</svg></button>
 						</div><textarea rows="25" name="showContent" id="showContent" ></textarea>
 					</div>
-					<div style="width: 944px">
-				<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input style="border: 0" type="date" name="showDate" required="required" min="${today}" id="showDate">
+					<div id="showRegisterShowDate">
+				<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input type="date" name="showDate" required="required" min="${today}" id="showDate">
 		<input type="button" id="postWrite" class="btn btn-primary"
-			value="등록하기"  style="float: right"/>
+			value="등록하기" />
 			</div>
 	</form>
 <br>
 </div>
 <div class="col-sm-2"></div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(document).on("click",".photoPreViewBtn",function(){
-			alert(1);
-		});
-	});
-</script>
