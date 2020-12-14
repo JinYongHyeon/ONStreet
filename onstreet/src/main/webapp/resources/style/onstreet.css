@@ -1339,13 +1339,76 @@ input[type=submit] {
 	max-height: 100%;
 	float: left;
 }
-
+#commentRegisterBtn{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showListRegisterBtn input[type=submit]{
+	border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#commentUpdate input[type=button]{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    color: white;
+}
+#commentUpdate input[type=submit]{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+    color: white;
+}
+#btnUpdate{
+	 border: 2px solid #eea236;
+    border-radius: 5px;
+    background-color: #ec971f;
+    margin-right: 5px;
+    color: white;
+}
+#btnUpdateCancel{
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+    color: white;
+}
+#showDate {
+	border: 0
+}
+#postWrite {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#postUpdate {
+	float: right;
+	 border: 2px solid #d03535;
+    border-radius: 5px;
+    background-color: #d03535;
+}
+#showTitle {
+	width: 944px; height: 35px
+}
+#postTitle {
+	width: 944px; height: 35px
+}
+#showRegisterShowDate {
+	width: 944px
+}
+#showUpdateShowDate {
+	width: 944px
+}
 .btn-comment form {
 	display: inline;
 }
 
 #showListTable th {
-	text-align: center;
+   text-align: center; color: white;
 }
 
 #showListTable td {
@@ -1353,18 +1416,21 @@ input[type=submit] {
 }
 
 #showListTable #showListTableNotice {
-	background: orange;
+   color: red;
+   font-weight: bold;
+}
+#showListTableNotice a{
+   color: red;
+   font-weight: bold;
+
 }
 
 #showDetailLeftSide {
-	float: left;
-	width: 15%;
-	height: 100px;
+	float: left; width: 15%; height: 1000px;
 }
 
 #showDetailContentSide {
-	float: left; /* width: 38%; */
-	height: 942px;
+	float: left; width: 38%; height: 942px; max-height: 942px;
 }
 
 #showDetailBlankSide {
@@ -1398,7 +1464,8 @@ input[type=submit] {
 }
 
 #btn-update {
-	float: left;
+   float: left;
+   margin-right: 5px;
 }
 
 #btn-delete {
@@ -1414,7 +1481,8 @@ input[type=submit] {
 }
 
 #comment {
-	width: 450px;
+   width: 450px;
+   background: white; border: #2f323b; color: black
 }
 
 #commentContent {
@@ -1425,6 +1493,18 @@ input[type=submit] {
 #showDetailContent {
 	max-width: 500px;
 	max-height: 907px;
+}
+#showListTable th{
+	background: #d03535;
+}
+#showDetailProfile{
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentArtistProfile {
+	width:35px; height: 35px; overflow: hidden; position: relative; float:left; border-radius:100%;
+}
+#showDetailCommentNickName {
+	  text-align: center;
 }
 
 /* 채팅 테스트 */
@@ -1538,6 +1618,16 @@ input[type=submit] {
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 }
 
+#showDetailProfileImg {
+	 position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);
+}
+#showDetailShowWriteDate{
+	font-size: 12px; color: #c4b3b3;
+}
+#showDetailUpdateDeleteDiv {
+	padding-top: 9px
+}
+
 .user-img {
 	display: inline-block;
 	border-radius: 50%;
@@ -1555,7 +1645,8 @@ input[type=submit] {
 }
 
 .messages {
-	flex: 1 0 auto;
+    flex: 1 0 auto;
+    text-align: center;
 }
 
 .msg {
@@ -1564,6 +1655,10 @@ input[type=submit] {
 	line-height: 13pt;
 	color: rgba(255, 255, 255, .7);
 	margin: 0 0 4px 0;
+}
+
+#msg-1{
+	color: black;
 }
 
 .msg:first-of-type {
@@ -1603,6 +1698,15 @@ input[type=submit] {
 
 .msg-self .timestamp {
 	text-align: right;
+}
+#commentSpan {
+	color: #d03535
+}
+#commentCheckResult {
+	 color: black
+}
+#commentCheckLimit {
+	color: grey;
 }
 /* 채팅테스트 끝*/
 
