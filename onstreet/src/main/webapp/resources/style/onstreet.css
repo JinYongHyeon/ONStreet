@@ -1843,9 +1843,10 @@ float: left;
 .remove-member{
     padding: 76px 100px 100px 65px;
     border: 2px solid #ededed;
-    width:70%;
+/*  width:70%;*/
     text-align: center;
     font-size: 19px;
+  /*  // margin-left: 50px; */
  }
  
 fieldset {
@@ -1870,6 +1871,19 @@ fieldset {
 	color: #333;
 	background-color: #fff;
 	border-color: #ccc;
+}
+.followlist img{
+    margin-top: 50px;
+    border: 2px solid #d03535;
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+}	
+.followlist a{
+    padding: 5px 5px;
+    width: 20%;
+    display: inline-block;
+    text-align: center;
 }
 /*팔로우리스트 ui 끝*/
 

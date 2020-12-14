@@ -39,6 +39,7 @@
 
 
 <sec:csrfInput />
+<div class="container">
 <h2 class="font_ctb">회원탈퇴</h2>
 <div class="remove-member">
 <fieldset>
@@ -56,4 +57,5 @@
 </table>
 <input type="button" value="탈퇴하기" class="removBtn" id="removeBtn">
 </fieldset>
+</div>
 </div>
