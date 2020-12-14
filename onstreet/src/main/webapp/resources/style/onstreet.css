@@ -188,6 +188,7 @@ input[type=submit] {
 }
 
 #header .bitMainSearch #asd {
+	width: 30px;
 	height: 80px;
 	float: right;
 	cursor: pointer;
@@ -237,10 +238,9 @@ input[type=submit] {
 	float: left;
 	border-top: 1px solid white;
 	padding: 25px;
-	height: 100px;
+	height: 150px;
 	background-color: #FAFAFA;
 	text-align: center;
-	margin-bottom: 50px;
 	font-family: JSDongkang-Regular;
 }
 
@@ -2400,6 +2400,42 @@ fieldset {
 		width:360px;
 	}
 	
+	#login{
+		width:400px;
+		height: 300px;
+	}
+	
+	#header{
+		height: 30px;
+	}
+	
+	#header .navigation nav ul{
+		height: 30px;
+	}
+	#header .navigation nav ul li{
+		height: 30px;
+		line-height: 30px;
+		font-size:10px;
+	}
+	#header .bitLog a img{
+		margin-top:0;
+	}
+	#header .navigation .loginbar .bitLogin{
+		width:60%;
+		line-height: 30px;
+	}
+	#header .navigation .loginbar .bitLogin a{
+		font-size:10px;
+		margin-left:0;
+	}
+	#header .navigation .loginbar .bitMainSearch{
+		width:35%;
+	}
+	#header .bitMainSearch #asd{
+		width:9px;
+		height: 30px;
+	}
+	
 	#mainVideo{
 		height: 27vh;
 	}
@@ -2428,7 +2464,7 @@ fieldset {
 	}
 	#todayShow .artistShow{
 		width:90%;
-		height: 150px;
+		height: 120px;
 	}
 	#todayShow .artistShowTitle{
 		margin-left:0;
@@ -2440,12 +2476,20 @@ fieldset {
 	
 	#todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn{
 		width:5%;
-		height:150px;
+		height:120px;
 	}
 	
 	#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span{
 		width:25px;
 		height: 25px;
+	}
+	
+	.todayShowInfo h1{
+		font-size:18px;	
+	}
+	.todayShowInfo h2{
+		font-size:16px;
+		margin-top:0;
 	}
 	
 	#artisStandardt .artistRecommendationTltle{
@@ -2474,5 +2518,30 @@ fieldset {
 	#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span{
 		width:25px;
 		height: 25px;
+	}
+	
+	/* 이벤트 */
+	#eventListTitle{
+		margin-left:0;
+	}
+	
+	.eventList{
+		width:350px;
+		height: 70px;
+	}
+	.eventList img{
+		width:100%;
+		height: 70px;
+	}
+	
+	#eventListTitle{
+		width:320px;
+		float:left;
+		text-align: center;
+		box-shadow:inherit;
+	}
+	.event a{
+		margin-right:0;
+		font-size:12px;
 	}
 }
