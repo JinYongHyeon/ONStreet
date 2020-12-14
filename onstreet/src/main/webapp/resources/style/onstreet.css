@@ -1849,6 +1849,14 @@ input[type=submit] {
 	margin-inline-end: 0px;
 	padding-inline-start: 40px;
 }
+/* 세희 마이페이지 css*/
+
+
+
+/* 세희 마이페이지 끝 */
+
+
+
 
 /*공지시항리스트 UI 김수민 */
 #noticeList {
@@ -2110,16 +2118,17 @@ input[type=submit] {
 .remove-member{
     padding: 76px 100px 100px 65px;
     border: 2px solid #ededed;
-/*  width:70%;*/
+	width:70%;
     text-align: center;
     font-size: 19px;
-  /*  // margin-left: 50px; */
+    margin-left: 50px;
+    margin: 0 auto;
+ }
+ .tabl310{
+ 	margin: auto;
  }
  
-fieldset {
-	border: none;
-	vertical-align: top;
-}
+
 
 .removBtn {
 	background: #1f1f1f;
