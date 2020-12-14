@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
 
 $(function(){
@@ -274,7 +273,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">

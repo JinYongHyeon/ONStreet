@@ -1437,14 +1437,14 @@ input[type=submit] {
 }
 
 #showDetailContentSide {
-	float: left; width: 38%; height: 942px; max-height: 942px;
+	float: left; /* width: 38%; */ height: 942px; max-height: 942px;
 }
 
-#showDetailBlankSide {
+/* #showDetailBlankSide {
 	float: left;
 	width: 2%;
 	height: 1000px;
-}
+} */
 
 #showDetailCommentSide {
 	float: left;
