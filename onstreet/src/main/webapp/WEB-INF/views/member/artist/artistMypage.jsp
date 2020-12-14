@@ -7,7 +7,52 @@
 	width: 100%;
 }	
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="container">
+  <h2>Table Head Colors</h2>
+  <p>The .thead-dark class adds a black background to table headers, and the .thead-light class adds a grey background to table headers:</p>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <td>아이디</td>
+		<td><sec:authentication property="principal.memberVO.id"/></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
 	<table class="artistmypage">
 		<tr>
@@ -58,9 +103,9 @@
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
 	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a><br>
 	<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a><br>
-	<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
+	<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a><br>
 	<a href="${pageContext.request.contextPath}/followingList.do">팔로우리스트</a>
-
+	
 </div>
 
 

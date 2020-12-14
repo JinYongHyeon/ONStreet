@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
 
 $(function(){
@@ -139,20 +138,20 @@ $(function(){
 });
 </script>
 <!-- <br><br> -->
+<br><br>
+<span id="showListTitle">SHOW</span>
+<br><br><br>
 <c:set var="svo" value="${requestScope.svo}" />
-<div id="showDetailLeftSide"></div>
+<div class="container">
 <sec:authentication property="principal.memberVO" var="member"/>
-			<h1>${svo.showTitle}</h1><br>
+			<h1>${svo.showTitle}</h1><hr>
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px"></div>
 			&nbsp;<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${svo.artistVO.memberVO.id}">${svo.artistVO.memberVO.nickName}</a><br>
-			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span>
-			<h4>공연일정:${svo.showDate}</h4>
-			<%-- 온도 표시 --%>
-			<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
-  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
-    					${requestScope.likeCount}℃
-  					</div><br>
+			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span><hr>
+			<h4>공연날짜는 ${svo.showDate}</h4><br>
+			
   					<%-- 좋아요 버튼 --%>
+  					<div style="float: left;">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
 				<button type="button" class="btn btn-default btn-sm btn-disabled" id="likeBtn" disabled="disabled">
@@ -198,7 +197,15 @@ $(function(){
 				</button>
 				</c:otherwise>
 				</c:choose>
-			<br>
+				</div>
+				<%-- 온도 표시 --%>
+				<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
+  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
+    					${requestScope.likeCount}℃
+  					</div><br>
+				
+			
+			<hr>
 			<div id="showDetailUpdateDeleteDiv">
 			<input type="hidden" id="loginId" value="${member.id}"> 
 			<c:if test="${member.id==svo.artistVO.memberVO.id}">
@@ -210,13 +217,17 @@ $(function(){
 						<button type="button" id="btn-update" class="btn btn-warning" >수정</button>
 					</c:otherwise>
 				</c:choose>
+				
 				<form action="deleteShow.do" method="post">
 					<sec:csrfInput/>
 					<input type="hidden" name="showNo" value="${svo.showNo}">
 					<input type="submit" id="btn-delete" class="btn btn-danger" value="삭제">
 				</form>
 			</c:if>
-			</div><br><br>
+			</div>
+			
+			<br><br>
+			</div>
 			
 
 <div id="showDetailContentSide" >
@@ -226,7 +237,7 @@ $(function(){
 			</div>
 		</section>		
 </div>
-<div id="showDetailBlankSide"></div>
+
 <%-- 댓글 리스트 --%>
 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 <div id="showDetailCommentSide">
@@ -274,7 +285,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">

@@ -24,9 +24,20 @@ function check(){
 
 	$(function(){
 		$(document).on("click","#checkboxBtn",function(){
-			if($("#checkboxBtn").length>=1){
-			$("#deleteEventBtn").css("display","block");
-			}//if
+			var flag=false;
+			for(i=0; i<form.checkboxBtn.length; i++){
+				console.log(form.checkboxBtn[i].checked==true);
+				if(form.checkboxBtn[i].checked==true){
+				flag=true;
+				break;
+				}
+			}
+			if(flag===true){
+				$("#deleteEventBtn").css("display","block");
+			}else{
+				$("#deleteEventBtn").css("display","none");
+			}
+			
 		});//function2
 	});//function1
 //삭제 버튼id명  deleteEventBtn
