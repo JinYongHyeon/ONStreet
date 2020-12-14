@@ -2387,11 +2387,26 @@ fieldset {
 @media screen and (max-width:480px) {
 	
 	.container{
-		width:430px;
+		width:360px;
 	}
 	
 	#mainVideo{
 		height: 27vh;
+	}
+	
+	#mainVideo .mainContent h1{
+		font-size:24px;
+	}
+	#mainVideo .mainContent h3{
+		font-size:14px;
+		margin-top:0;
+	}
+	#mainVideo .mainMoveControl span{
+		bottom:15%;
+	}
+	#mainVideo .mainMoveControl span svg{
+		width:25px;
+		height: 25px;
 	}
 	
 	#mainVideo .mainVideoLoginForm span{
@@ -2419,6 +2434,34 @@ fieldset {
 	}
 	
 	#todayShow .artistShowLeftBtn span, #todayShow .artistShowRightBtn span{
+		width:25px;
+		height: 25px;
+	}
+	
+	#artisStandardt .artistRecommendationTltle{
+		margin-left:0;
+	}
+	
+	#artisStandardt .artistRecommendationTltle h2{
+		font-size:18px;
+	}
+	#artisStandardt .artistRecommendation{
+		height: 100px;
+	}
+	#artisStandardt .artistRecommendationLeftBtn, #artisStandardt .artistRecommendationRightBtn{
+		height: 100px;
+	}
+	
+	#artisStandardt .artistRecommendation .artistRecommendationList ul li{
+		width:29%;
+		margin-right:15px;
+	}
+	
+	#artisStandardt .artistRecommendation .artistRecommendationList ul li span{
+		font-size:10px;
+	}
+	
+	#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span{
 		width:25px;
 		height: 25px;
 	}
