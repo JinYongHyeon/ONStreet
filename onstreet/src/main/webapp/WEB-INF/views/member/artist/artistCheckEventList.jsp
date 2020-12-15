@@ -31,11 +31,21 @@ function check(){
 				flag=true;
 				break;
 				}
+				
 			}
 			if(flag===true){
 				$("#deleteEventBtn").css("display","block");
+				$("#deleteEventBtn").animate({
+					opacity : 1
+				},1000);
+				
 			}else{
-				$("#deleteEventBtn").css("display","none");
+				$("#deleteEventBtn").animate({
+					opacity : 0
+				},1000,function(){
+					$(this).css("display","none");	
+				});
+				$("#checkboxBtn").prop('checked', false);	
 			}
 			
 		});//function2
@@ -69,7 +79,7 @@ function check(){
 <form action="${pageContext.request.contextPath}/deleteEvent2.do?deleteEvent=${evtlist.eventNo}" method="post" onsubmit="return check()" name="form">
 <div>
 <p class="evetext">*반려상태인 이벤트만 삭제 가능합니다.</p>            
-<input type="submit" style="display:none;" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
+<input type="submit" style="display:none; opacity: 0" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
 <small>
 <span class="count">1 item</span>
 </small>

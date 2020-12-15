@@ -9,57 +9,14 @@
 </style>
 
 <div class="container">
-  <h2>Table Head Colors</h2>
-  <p>The .thead-dark class adds a black background to table headers, and the .thead-light class adds a grey background to table headers:</p>
+  <h2>Artist Mypage</h2>
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <td>아이디</td>
 		<td><sec:authentication property="principal.memberVO.id"/></td>
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-	<table class="artistmypage">
-		<tr>
-		<td>아이디</td>
-		<td><sec:authentication property="principal.memberVO.id"/></td>
-		</tr>
-		<tr>
+      	<tr>
 		<td>이름</td>
 		<td><sec:authentication property="principal.memberVO.name"/></td>
 		</tr>
@@ -99,7 +56,25 @@
 		<td>소개글</td>
 		<td><sec:authentication property="principal.artistInfo"/></td>
 		</tr>
-	</table>
+    </thead>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
 	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a><br>
 	<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a><br>
