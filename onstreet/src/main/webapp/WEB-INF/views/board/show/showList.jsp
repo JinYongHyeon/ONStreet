@@ -60,6 +60,15 @@
 		</c:forEach>
 	</tbody>
 </table>
+<sec:authorize access="hasRole('ROLE_ARTIST')">
+	
+	<div align="right">
+		<form method="get" action="addShowForm.do" id="showListRegisterBtn">
+			<sec:csrfInput/>
+			<input type="submit" class="btn btn-primary" value="공연등록"/>
+		</form>
+	</div>
+	</sec:authorize>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -109,13 +118,4 @@
 	</c:if>
 	</ul>	 		
 	</div>
-	<sec:authorize access="hasRole('ROLE_ARTIST')">
-	
-	<div align="right">
-		<form method="get" action="addShowForm.do" id="showListRegisterBtn">
-			<sec:csrfInput/>
-			<input type="submit" class="btn btn-primary" value="공연등록"/>
-		</form>
-	</div>
-	</sec:authorize>
 	</div>

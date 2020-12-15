@@ -165,7 +165,7 @@ function move() {
 			&nbsp;<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${svo.artistVO.memberVO.id}">${svo.artistVO.memberVO.nickName}</a><br>
 			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span><hr>
 			<h4>🎵 공연날짜는 ${svo.showDate} 🎵</h4><br>
-			
+			<div id="tempertureBar">
   					<%-- 좋아요 버튼 --%>
   					<div style="float: left;">
 				<c:choose>
@@ -215,12 +215,13 @@ function move() {
 				</c:choose>
 				</div>
 				<%-- 온도 표시 --%>
+				<div class="myBarForm">
 				<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
   						aria-valuemin="0" aria-valuemax="100">
     					${requestScope.likeCount}℃
-  					</div><br>
-				
-			
+  					</div>
+				</div>
+  					</div>
 			<hr>
 			<div id="showDetailUpdateDeleteDiv">
 			<input type="hidden" id="loginId" value="${member.id}"> 

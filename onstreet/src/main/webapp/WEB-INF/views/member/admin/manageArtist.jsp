@@ -42,6 +42,9 @@
 					return;
 				}
 		});//click
+		$("#allNoticeCheck").change(function() {
+	   		 $("#checkArtistForm :checkbox[name=checkArtist]").prop("checked",$(this).prop("checked"))
+		});
 	});//ready
 </script>
 
@@ -59,7 +62,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-			<th></th>
+			<th><input type="checkbox" id="allNoticeCheck"></th>
 			<th>아이디</th>
 			<th align="center">닉네임</th>
 			<th align="center">주소</th>

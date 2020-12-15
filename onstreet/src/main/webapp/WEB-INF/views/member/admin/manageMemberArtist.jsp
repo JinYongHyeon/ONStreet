@@ -21,6 +21,9 @@
 					return;
 				}
 		});//click
+		$("#allNoticeCheck").change(function() {
+	   		 $("#removeMemberForm :checkbox[name=checkMember]").prop("checked",$(this).prop("checked"))
+		});
 	});//ready
 </script>
 <br><br>
@@ -38,7 +41,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-		    <th></th>
+		    <th><input type="checkbox" id="allNoticeCheck"></th>
 			<th>아이디</th>
 			<th>닉네임</th>
 			<th>주소</th>
