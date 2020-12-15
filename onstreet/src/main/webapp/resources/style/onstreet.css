@@ -1851,8 +1851,7 @@ input[type=submit] {
 #noticeDetail tr th {
 	text-align: left;
 }
-
-#noticeDtailProFile {
+#noticeDtailProFile{
 	width: 35px;
 	height: 35px;
 	overflow: hidden;
@@ -1860,22 +1859,19 @@ input[type=submit] {
 	float: left;
 	border-radius: 100%;
 }
-
-.noticeImg {
+.noticeImg{
 	display: inline-block;
-	border-radius: 50%;
-	height: 35px;
-	width: 35px;
-	background: #2671ff;
-	margin: 0 10px 10px 0;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background: #2671ff;
+    margin: 0 10px 10px 0;
 }
-
-#noticeWrite {
+#noticeWrite{
 	font-size: 15px;
 }
-
-#noticeDate {
-	padding-top: 30px;
+#noticeDate{
+	padding-top:30px;
 	padding-left: 15px;
 	font-size: 10px;
 }
@@ -1917,8 +1913,8 @@ input[type=submit] {
 #register {
 	font-size: 40px;
 	font-weight: bolder;
-	box-shadow: 0 -6px #d03535 inset;
-	margin-left: 800px;
+	box-shadow: 0-6px #d03535 inset;
+	margin-left:800px;
 	padding-bottom: 5px;
 }
 
@@ -1964,10 +1960,10 @@ input[type=submit] {
 /*회원정보 수정 UI 김수민  */
 #logoNoticeUpdate{
 	font-size: 40px;
-	font-weight: bolder;
-	box-shadow: 0 -6px #d03535 inset;
-	margin-left: 800px;
-	padding-bottom: 5px;
+    font-weight: bolder;
+    box-shadow: 0-6px #d03535 inset;
+    margin-left: 800px;
+    padding-bottom: 5px;
 }
 
 #updateTitle {
@@ -2043,6 +2039,70 @@ input[type=submit] {
 /*회원탈퇴 페이지 ui 끝*/
 
 /*팔로우리스트 ui 정세희*/
+li {
+  display: inline-block;
+}
+
+input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+
+.followlistcheck label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.followlistcheck label::before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.followlistcheck label img {
+    height: 300px;
+    width: 100%;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+.followlistcheck :checked+label {
+  border-color: #ddd;
+}
+
+.followlistcheck :checked+label::before {
+  content: "✓";
+  background-color: grey;
+  transform: scale(1);
+}
+
+.followlistcheck :checked+label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
 .btn-default {
 	color: #333;
 	background-color: #fff;
@@ -2063,75 +2123,7 @@ input[type=submit] {
 	display: inline-block;
 	text-align: center;
 }
-ul {
-  list-style-type: none;
-}
 
-li {
-  display: inline-block;
-}
-
-input[type="checkbox"][id^="cb"] {
-  display: none;
-}
-
-label {
-  border: 1px solid #fff;
-  padding: 10px;
-  display: block;
-  position: relative;
-  margin: 10px;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-label::before {
-  background-color: white;
-  color: white;
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  border: 1px solid grey;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 28px;
-  transition-duration: 0.4s;
-  transform: scale(0);
-}
-
-label img {
-    height: 300px;
-    width: 100%;
-    transition-duration: 0.2s;
-    transform-origin: 50% 50%;
-}
-
-:checked+label {
-  border-color: #ddd;
-}
-
-:checked+label::before {
-  content: "✓";
-  background-color: grey;
-  transform: scale(1);
-}
-
-:checked+label img {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px #333;
-  z-index: -1;
-}
-
-}
  .followlistcheck{
     width: 100%;
     float: left;
