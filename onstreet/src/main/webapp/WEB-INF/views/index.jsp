@@ -13,7 +13,7 @@
      </sec:authorize>
   <sec:authorize access="hasRole('ROLE_MEMBER')">
      <div class="mainContent">
-        <h1>Wel Come</h1>
+        <h1>WelCome</h1>
         <h3>Onstreet</h3>
      </div>
      <div class="mainMoveControl">
