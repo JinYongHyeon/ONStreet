@@ -16,11 +16,21 @@
 </form>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#noticeRegister").submit(function() {
-		return confirm("공지사항을 등록하시겠습니까?");
+	$("#submitButton").click(function() {
+		if($("#registerNoticeTitle").val().trim() == "") {
+			alert("공지사항 제목을 입력하세요.");
+			return;
+		}
+		if($("#content").val().trim() == "") {
+			alert("공지사항 내용을 입력하세요.");
+			return;
+		}
+		if(confirm("공지사항을 등록하시겠습니까?")) {
+			$("#noticeRegister").submit();
+		}
 	});
 	$("#resetButton").click(function() {
-		alert("공지사항등록을 취소했습니다.");
+		alert("공지사항 등록을 취소했습니다.");
 		location.href="home.do";
 	});
 });

@@ -58,6 +58,12 @@ public interface BoardService {
      * @param noticeNo
      */
     void deleteNotice(String[] noticeNo);
+    
+    /**
+     * 정지윤
+     * 공지사항 상세보기 삭제
+     */
+    void deleteNoticeDetail(String noticeNo);
 
 	/**
 	 * 정지윤

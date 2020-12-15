@@ -129,10 +129,21 @@ public class BoardController {
     * @param noticeNo
     * @return
     */
-   @Secured("ROLE_MEMBER")
+   @Secured("ROLE_ADMIN")
    @PostMapping("deleteNotice.do")
    public String deleteNotice(String[] noticeNo) {
       boardService.deleteNotice(noticeNo);
+      return "redirect:getNoticeList.do";
+   }
+   
+   /**
+    * 정지윤
+    * 공지사항 상세보기 삭제
+    */
+   @Secured("ROLE_ADMIN")
+   @PostMapping("deleteNoticeDetail.do")
+   public String deleteNoticeDetail(String noticeNo) {
+      boardService.deleteNoticeDetail(noticeNo);
       return "redirect:getNoticeList.do";
    }
 
