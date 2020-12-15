@@ -42,7 +42,7 @@
       	</tr>
 		<tr>
 		<td>팔로워</td>
-		<td>${requestScope.map. }</td>
+		<td>${requestScope.followingTotalCount}</td>
 		</tr>
 		<tr>
 		<td>SNS 주소</td>
