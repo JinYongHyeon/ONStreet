@@ -1774,6 +1774,24 @@ input[type=submit] {
 	padding-inline-start: 40px;
 }
 /* 세희 마이페이지 css*/
+#mypagetable ,#mypagetable tr th{
+ text-align: center;
+}
+
+#mypage-alink .mypageBtn{
+	width:84%;
+	margin:0 auto;
+}
+#mypage-alink .mypageBtn a{
+	float:left;
+	text-align:center;
+	width: 180px;
+	height: 30px;
+	line-height:30px;
+	border: 1px solid #000;
+	margin-right: 10px;
+	
+}
 
 /* 세희 마이페이지 끝 */
 
@@ -2027,7 +2045,7 @@ input[type=submit] {
 }
 
 .removBtn {
-	background: #1f1f1f;
+	background: #d03535;;
 	border: 1px solid rgba(31, 31, 31, 0.5);
 	box-sizing: border-box;
 	text-align: center;
@@ -2035,6 +2053,8 @@ input[type=submit] {
 	font-weight: 500;
 	border-radius: 0 !important;
 	margin: 10px;
+	width: 106px;
+    height: 35px;
 }
 /*회원탈퇴 페이지 ui 끝*/
 
@@ -2131,6 +2151,7 @@ input[type="checkbox"][id^="cb"] {
 
 
 .followlistcheck a{
+	width:100%;
 	padding: 5px 5px;
     display: inline-block;
     text-align: center;
@@ -2147,6 +2168,11 @@ input[type="checkbox"][id^="cb"] {
     font-weight: bolder;
     box-shadow: 0 -6px #d03535 inset;
     margin-left: 10px;
+}
+
+.followlistcheckSection{
+	margin-top: 80px;	
+	
 }
 /*팔로우리스트 ui 끝*/
 
