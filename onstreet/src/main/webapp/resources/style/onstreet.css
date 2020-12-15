@@ -1889,13 +1889,19 @@ input[type=submit] {
 	color: white;
 	border-radius: 5px;
 	border: 1px solid #d58512;
+	margin-right: 5px;
 }
 
-#noticeDetailButton:hover {
+#noticeDeleteButton {
+	width: 50px;
+	height: 30px;
+	float: left;
+	background-color: #d03535;
+	color: white;
+	border-radius: 5px;
 	border: 1px solid #d03535;
-	background-color: white;
-	color: black;
 }
+
 /*공지사항 등록 UI 김수민*/
 #registerNoticeTitle{
 	width: 100%;
@@ -1968,6 +1974,16 @@ input[type=submit] {
 
 #updateContent {
 	position: relative;
+	float: left;
+	width: 100%;
+}
+
+#update {
+	font-size: 25px;
+	position: relative;
+	float: left;
+	left: 490px;
+	margin-top: 30px;
 	width: 100%;
 }
 
@@ -1980,6 +1996,7 @@ input[type=submit] {
 	float: right;
 	position: relative;
 	margin-right: 10px;
+	margin-top: 10px;
 }
 
 #backButton {
@@ -1991,6 +2008,7 @@ input[type=submit] {
 	position: relative;
 	float: right;
 	border-radius: 5px;
+	margin-top: 10px;
 }
 
 /* 회원탈퇴 페이지 ui 정세희*/
@@ -2021,6 +2039,70 @@ input[type=submit] {
 /*회원탈퇴 페이지 ui 끝*/
 
 /*팔로우리스트 ui 정세희*/
+li {
+  display: inline-block;
+}
+
+input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+
+.followlistcheck label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.followlistcheck label::before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.followlistcheck label img {
+    height: 300px;
+    width: 100%;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+.followlistcheck :checked+label {
+  border-color: #ddd;
+}
+
+.followlistcheck :checked+label::before {
+  content: "✓";
+  background-color: grey;
+  transform: scale(1);
+}
+
+.followlistcheck :checked+label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
 .btn-default {
 	color: #333;
 	background-color: #fff;
@@ -2041,7 +2123,6 @@ input[type=submit] {
 	display: inline-block;
 	text-align: center;
 }
-/*팔로우리스트 ui 끝*/
 
  .followlistcheck{
     width: 100%;
@@ -3091,5 +3172,16 @@ input[type=submit] {
     border: 1px solid #000000;
     margin-right: 300px;
     width: 40%;
+	}
+	#register {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 160px;
+	padding-bottom: 5px;
+	}
+	#showDetailCommentSide {
+	width: 76%;
+    margin-left: 60px;
 	}
 }
