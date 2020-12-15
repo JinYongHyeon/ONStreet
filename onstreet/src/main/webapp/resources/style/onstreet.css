@@ -1443,6 +1443,11 @@ input[type=submit] {
     background-color: #d03535;
     color: white;
 }
+/* 공연제목 크기조절 */
+#showListTitleTd{
+	width: 336px;overflow:hidden;text-overflow:ellipsis; white-space: nowrap;
+/* 	style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" */
+}
 
 /*********************************************** 공연상세보기 ***********************************************/
 
@@ -2124,10 +2129,12 @@ input[type=submit] {
 }
 
 #showDetailContentSide {
-	float: left; /* width: 38%; */ height: 942px; max-height: 942px;
+	float: left; width: 30%; height: 942px; max-height: 942px;
 	margin-left: 390px;
 }
-
+#myBar {
+	height: 30px;
+}
 /* #showDetailBlankSide {
 	float: left;
 	width: 2%;
@@ -2136,7 +2143,7 @@ input[type=submit] {
 
 #showDetailCommentSide {
 	float: left;
-	width: 33%;
+	width: 30%;
 	height: 942px;
 }
 
@@ -2176,7 +2183,7 @@ input[type=submit] {
 }
 
 #comment {
-   width: 450px;
+   width: 100%;
    background: white; border: #2f323b; color: black
 }
 
@@ -2239,7 +2246,7 @@ input[type=submit] {
 	padding: 8px;
 	line-height: 1.42857143;
 	vertical-align: top;
-	border-top: 1px solid #2671ff;
+	border-top: 1px solid #d03535;
 }
 
 #commentregisterForm {
@@ -2328,7 +2335,7 @@ input[type=submit] {
 	border-radius: 50%;
 	height: 35px;
 	width: 35px;
-	background: #2671ff;
+	/* background: #2671ff; */
 	margin: 0 10px 10px 0;
 }
 
@@ -2790,5 +2797,17 @@ input[type=submit] {
 	#noticeButton_2{
 		right:0;
 	}
-	
+	/* 공연제목 크기조절 */
+	#showListTitleTd{
+	display: inline-block; width: 161px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+	}
+	#showListNickNameTd{
+	display: block; width: 62px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+	} 
+	#showDetailContentSide{
+		margin-left: 60px; width: 76%;
+	}
+	#showDetailCommentSide{
+		margin-left: 60px; width: 76%;
+	}
 }

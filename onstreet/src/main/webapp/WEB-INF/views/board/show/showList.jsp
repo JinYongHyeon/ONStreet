@@ -42,13 +42,16 @@
 				<td>
 				${requestScope.totalPostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 				</td>
-				<td>
+				<td id="showListTitleTd">
+ 
 				<a href="getShowDetail.do?showNo=${list.showNo}">
 				${list.showTitle}
 				</a>
 				</td>
 				<td>
+				<div id="showListNickNameTd">
 				${list.artistVO.memberVO.nickName}
+				</div>
 				</td>
 				<td align="center">
 				${list.showDate}

@@ -151,7 +151,7 @@ function move() {
 	    }
 	  }
 	}
-}
+
 </script>
 <!-- <br><br> -->
 <div class="showListTitle">
@@ -179,13 +179,13 @@ function move() {
 				<c:if test="${requestScope.likeId.size()==0}">
 					<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 				</c:if>
-				<c:if test="${ok==1}">
+				<%-- <c:if test="${ok==1}"> --%>
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
 						<c:if test="${unLikeCheck!=member.id}">
 							<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 						</c:if>
 				</c:forEach>
-				</c:if>
+				<%-- </c:if> --%>
 				</button>
 				</c:when>
 				<c:otherwise>
@@ -301,7 +301,7 @@ function move() {
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: grey;">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
@@ -354,7 +354,7 @@ function move() {
 				<input type="hidden" name="showNo" value="${svo.showNo}"> 
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
