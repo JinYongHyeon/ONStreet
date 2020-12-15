@@ -18,12 +18,16 @@
 </table>
 <input type="hidden" name="noticeNo" value="${requestScope.nvo}">
 <button type="submit" class="btn" id="updateButton">수정</button>
-<button type="reset" class="btn" id="backButton">취소</button>
+<input type="button" class="btn"  id="backButton" value="취소">
 </form>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#noticeUpdate").submit(function() {
 		return confirm("공지사항을 수정하시겠습니까?");
+	});
+	$("#backButton").click(function() {
+		alert("공지사항수정을 취소했습니다.");
+		location.href="getNoticeList.do";
 	});
 });
 </script>

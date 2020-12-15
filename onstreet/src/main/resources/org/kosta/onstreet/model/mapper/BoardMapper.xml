@@ -56,6 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <resultMap type="noticeVO" id="noticeListRM">
       <result property="memberVO.id" column="id"/>
       <result property="memberVO.nickName" column="nickname"/>
+      <result property="memberVO.profile" column="profile"/>
    </resultMap>
  <select id="getNoticeList" parameterType="pagingBean" resultMap="noticeListRM">
  	select n.rnum,n.notice_no,n.notice_title,n.notice_write_date,m.nickname
@@ -69,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </select>
  <!-- 공지사항 상세보기 :김수민 -->
  	<select id="getNoticeDetail" resultMap="noticeListRM">
- 	select n.notice_no,n.notice_title,n.notice_write_date,notice_content,m.nickName
+ 	select n.notice_no,n.notice_title,n.notice_write_date,notice_content,m.nickName,m.profile
 	from(
 	select notice_no,notice_title,to_char(notice_write_date,'YYYY.MM.DD')as 
 	notice_write_date,notice_content,id

@@ -130,7 +130,6 @@ function check(){
    <li class="active"><a href="#">${i}</a></li>
    </c:otherwise>
    </c:choose>
-   &nbsp;
    </c:forEach>
    <c:if test="${pb.nextPageGroup}">   
    <li><a href="${pageContext.request.contextPath}/artistCheckEventList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>

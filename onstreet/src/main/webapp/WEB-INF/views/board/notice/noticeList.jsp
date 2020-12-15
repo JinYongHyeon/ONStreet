@@ -20,8 +20,9 @@ $(document).ready(function() {
 </script>
 <form action="deleteNotice.do" method="post" id="deleteNoticecheckForm">
 <sec:csrfInput/>
-<h1><b>NOTICE</b></h1>
-<table id="noticeList">
+<br>
+<span id="logoNotice">NOTICE</span><br><br>
+<table id="noticeList" class="table table-striped table-condensed">
 <thead>
 <tr>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
