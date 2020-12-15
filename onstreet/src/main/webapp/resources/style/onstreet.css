@@ -3052,6 +3052,9 @@ input[type=submit] {
 		margin-left: 60px;
 		width: 76%;
 	}
+	#showDetailCommentSide{
+		margin-left: 60px; width: 76%;
+	}
 	#showTitle {
 	width: 100%;
 	}
