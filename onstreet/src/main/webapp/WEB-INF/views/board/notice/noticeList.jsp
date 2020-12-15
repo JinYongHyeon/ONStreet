@@ -18,11 +18,17 @@ $(document).ready(function() {
 	});//click
 });//ready
 </script>
+<div class="showListTitle">
+<span id="showListTitle">NOTICE</span>
+</div>
+<div class="container">
 <form action="deleteNotice.do" method="post" id="deleteNoticecheckForm">
 <sec:csrfInput/>
-<br>
-<span id="logoNotice">NOTICE</span><br><br>
-<table id="noticeList" class="table table-striped table-condensed">
+
+<!-- <br>
+<span id="logoNotice">NOTICE</span><br><br> -->
+<!-- <table id="noticeList" class="table table-striped table-condensed"> -->
+<table id="showListTable" class="table table-striped table-condensed">
 <thead>
 <tr>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -83,4 +89,5 @@ ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.i
    <li><a href="${pageContext.request.contextPath}/getNoticeList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
    </c:if>
    </ul>          
-   </div>          
+   </div>  
+   </div>        

@@ -19,7 +19,7 @@
 	</thead>
 
 	<tbody>
-	
+	<c:if test="${requestScope.nlvo!=null}">
 	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount}</td>
@@ -34,6 +34,7 @@
 		<td></td>		
 		</tr>
 		<%-- </c:forEach> --%>
+		</c:if>
 		
 		<c:set var="pb" value="${requestScope.slvo.pagingBean}" />
 
