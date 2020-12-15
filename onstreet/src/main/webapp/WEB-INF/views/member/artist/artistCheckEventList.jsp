@@ -11,24 +11,27 @@ function check_all(){
 } 
 
 function check(){
-	//var flag = false;
-	$("input:checkbox[name='checkboxBtn']").each(function(){
-		//checkbox checked -- > flag = true;
-			alert(1);
-		if($(this).is(":checked")){
-			confrim("정말삭제하시겠습니까?");
-	//	flag=true;
-//		return ;//반복문 빠져나오게
-		}//if1
-	});//each
+	var flag = false;
+	var checkBox = document.getElementsByName("checkboxBtn");
+	for(var i=0;i<checkBox.length;i++){
+		if(checkBox[i].checked){
+			flag=true;
+			break;
+		}
+	} 
+	
+		if(flag===true){
+			return confirm("정말삭제하시겠습니까?");
+		}
 }
 
 	$(function(){
 		$(document).on("click","#checkboxBtn",function(){
 			var flag=false;
-			for(i=0; i<form.checkboxBtn.length; i++){
-				console.log(form.checkboxBtn[i].checked==true);
-				if(form.checkboxBtn[i].checked==true){
+			var checkBox = document.getElementsByName("checkboxBtn");
+			for(i=0; i<checkBox.length; i++){
+				//console.log(form.checkboxBtn[i].checked==true);
+				if(checkBox[i].checked){
 				flag=true;
 				break;
 				}

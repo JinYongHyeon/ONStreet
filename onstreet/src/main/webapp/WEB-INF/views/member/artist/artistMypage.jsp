@@ -38,11 +38,11 @@
 		</tr>
 		<tr>
         <th>현재온도</th>
-        <td>${requestScope.map.AVGLIKE}</td>
+        <td>${requestScope.map.AVGLIKE}♨</td>
       	</tr>
 		<tr>
 		<td>팔로워</td>
-		<td>${requestScope.followingTotalCount}</td>
+		<td>${requestScope.followingTotalCount}명</td>
 		</tr>
 		<tr>
 		<td>SNS 주소</td>
