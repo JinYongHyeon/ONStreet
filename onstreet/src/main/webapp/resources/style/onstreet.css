@@ -1583,6 +1583,8 @@ input[type=submit] {
 	padding: 15px;
 	text-align: center;
 	opacity: 0;
+	display:none;
+	margin:50px auto;
 }
 /*아티스트 달력 - 타이틀*/
 #calendar .calendarTitle {
@@ -2499,14 +2501,19 @@ input[type=submit] {
 /*********************************************** 가로 480PX MAX  ***********************************************/
 @media screen and (max-width:480px) {
 	
+	/* 컨테이너 */
 	.container{
 		width:390px !important;
 	}
 	
+/*********************************************** 로그인  ***********************************************/
+
+	/*로그인-최상위*/
 	#login{
 		width:400px;
 		height: 300px;
 	}
+	/* 로그인타이틀*/
 	#login .loginTitle{
 		padding:0;
 		height: 50px;
@@ -2516,11 +2523,15 @@ input[type=submit] {
 	#login .loginTitle h3{
 		margin:0;
 	}
+
+/*********************************************** 상단[Heeader]  ***********************************************/
 	
+	/* 상단 - 최상위*/
 	#header{
 		height: 30px;
 	}
 	
+	/* 메뉴 */
 	#header .navigation nav ul{
 		height: 30px;
 	}
@@ -2529,9 +2540,12 @@ input[type=submit] {
 		line-height: 30px;
 		font-size:10px;
 	}
+	/* 로고 */
 	#header .bitLog a img{
 		margin-top:0;
 	}
+	
+	/* 로그아웃,마이페이지,관리자 버튼*/
 	#header .navigation .loginbar .bitLogin{
 		width:60%;
 		line-height: 30px;
@@ -2540,6 +2554,7 @@ input[type=submit] {
 		font-size:10px;
 		margin-left:0;
 	}
+	/* 검색*/
 	#header .navigation .loginbar .bitMainSearch{
 		width:35%;
 	}
@@ -2547,11 +2562,13 @@ input[type=submit] {
 		width:9px;
 		height: 30px;
 	}
+/*********************************************** 메인 ***********************************************/
 	
+	/*메인페이지 - 비디오 - 최상위*/
 	#mainVideo{
 		height: 27vh;
 	}
-	
+	/*메인페이지 -비디오 안(로그인 후) 환영글*/
 	#mainVideo .mainContent h1{
 		font-size:24px;
 	}
@@ -2559,6 +2576,7 @@ input[type=submit] {
 		font-size:14px;
 		margin-top:0;
 	}
+	/*메인페이지 - 비디오 안(로그인 후) 아래 화살표*/
 	#mainVideo .mainMoveControl span{
 		bottom:15%;
 	}
@@ -2566,7 +2584,7 @@ input[type=submit] {
 		width:25px;
 		height: 25px;
 	}
-	
+	/*메인페이지 - 비디오 안(로그인 하기 전) 로그인*/
 	#mainVideo .mainVideoLoginForm span{
 		width:90px;
 		height:25px;
@@ -2574,10 +2592,12 @@ input[type=submit] {
 		font-size:10px;
 		margin-right:10px;
 	}
+	/* 오늘의 공연 슬라이드 */
 	#todayShow .artistShow{
 		width:90%;
 		height: 120px;
 	}
+	/* 오늘의 공연 타이틀 */
 	#todayShow .artistShowTitle{
 		margin-left:0;
 	}
@@ -2586,6 +2606,7 @@ input[type=submit] {
 		font-size:18px;
 	}
 	
+	/* 오늘의 공연 슬라이드 왼쪽,오른쪽 버튼*/
 	#todayShow .artistShowLeftBtn, #todayShow .artistShowRightBtn{
 		width:5%;
 		height:120px;
@@ -2595,7 +2616,7 @@ input[type=submit] {
 		width:25px;
 		height: 25px;
 	}
-	
+	/* 오늘의 공연 슬라이드 리스트 아티스트 소개글*/
 	.todayShowInfo h1{
 		font-size:18px;	
 	}
@@ -2604,6 +2625,7 @@ input[type=submit] {
 		margin-top:0;
 	}
 	
+	/* 메인페이지 - 추천아티스트타이틀 */
 	#artisStandardt .artistRecommendationTltle{
 		margin-left:0;
 	}
@@ -2611,13 +2633,19 @@ input[type=submit] {
 	#artisStandardt .artistRecommendationTltle h2{
 		font-size:18px;
 	}
+	/* 추천아티스트 슬라이드 */
 	#artisStandardt .artistRecommendation{
 		height: 100px;
 	}
+	/* 추천아티스트 슬라이드 왼쪽,오른쪽 버튼 */
 	#artisStandardt .artistRecommendationLeftBtn, #artisStandardt .artistRecommendationRightBtn{
 		height: 100px;
 	}
-	
+	#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span{
+		width:25px;
+		height: 25px;
+	}
+	/* 추천아티스트 */
 	#artisStandardt .artistRecommendation .artistRecommendationList ul li{
 		width:29%;
 		margin-right:15px;
@@ -2626,17 +2654,13 @@ input[type=submit] {
 	#artisStandardt .artistRecommendation .artistRecommendationList ul li span{
 		font-size:10px;
 	}
+/*********************************************** 이벤트 ***********************************************/
 	
-	#artisStandardt .artistRecommendationLeftBtn span, #artisStandardt .artistRecommendationRightBtn span{
-		width:25px;
-		height: 25px;
-	}
-	
-	/* 이벤트 */
+	/* 이벤트타이틀*/
 	#eventListTitle{
 		margin-left:0;
 	}
-	
+	/*이벤트리스트 개개인*/
 	.eventList{
 		width:350px;
 		height: 70px;
@@ -2645,7 +2669,8 @@ input[type=submit] {
 		width:100%;
 		height: 70px;
 	}
-	
+/*********************************************** 이벤트 상세보기 ***********************************************/
+	/*이벤트상세보기 타이틀*/
 	#eventDetailTitle{
 		width:100%;
 		float:left;
@@ -2664,11 +2689,13 @@ input[type=submit] {
 		background-color:#d03535;
 		bottom:4%;
 	}
+	
+	/*이벤트리스트 이벤트등록버튼*/
 	.event a{
 		margin-right:0;
 		font-size:12px;
 	}
-	
+/*********************************************** 아티스트 리스트 ***********************************************/
 	/* 아티스트 리스트 - 타이틀 */
 	#artistTitle{
 		width:100%;
@@ -2690,12 +2717,12 @@ input[type=submit] {
 		bottom:4%;
 	}
 	
-	/* 아티스트 리스트 - 리스트*/
+	/* 아티스트 리스트 - 최상위 */
 	#artist{
 		width:100%;
 		margin-left:0;
 	}
-	
+	/* 아티스트 리스트 개개인 아티스트 */
 	.artistList{
 		width:100%;
 	}
@@ -2707,7 +2734,12 @@ input[type=submit] {
 	.artistList a{
 		width:100%;
 	}
-	
+/*********************************************** 아티스트 리스트 ***********************************************/
+/*아티스트상세 타이틀*/
+#artistDetailTitle{
+	margin-left:0;	
+}
+/*********************************************** 공연 리스트 ***********************************************/
 	/* 공연리스트 -  타이틀 */
 	#showListTitle{
 		width:100%;
@@ -2734,7 +2766,7 @@ input[type=submit] {
 	#showListRegisterBtn input[type=submit]{
 		margin-bottom:15px;
 	}
-	
+/*********************************************** 페이징 ***********************************************/
 	/* 페이징 */
 	.pagingInfo{
 		width:100%;
@@ -2743,7 +2775,7 @@ input[type=submit] {
 	.pagination{
 		margin-top:0;
 	}
-	
+/*********************************************** 공지사항 ***********************************************/
 	/* 공지사항 - 타이틀 */
 	#logoNotice{
 		width:100%;
@@ -2765,7 +2797,6 @@ input[type=submit] {
 		background-color:#d03535;
 		bottom:4%;
 	}
-	
 	
 	/* 공지사항 - 테이블 */
 	#noticeList{

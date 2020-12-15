@@ -163,13 +163,13 @@ $(function(){
 				<c:if test="${requestScope.likeId.size()==0}">
 					<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 				</c:if>
-				<c:if test="${ok==1}">
+				<%-- <c:if test="${ok==null}"> --%>
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
 						<c:if test="${unLikeCheck!=member.id}">
 							<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 						</c:if>
 				</c:forEach>
-				</c:if>
+				<%-- </c:if> --%>
 				</button>
 				</c:when>
 				<c:otherwise>
