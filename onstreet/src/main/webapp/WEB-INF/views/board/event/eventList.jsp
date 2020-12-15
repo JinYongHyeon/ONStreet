@@ -6,8 +6,9 @@
 
 <jsp:useBean id="toDay" class="java.util.Date" />
 <fmt:formatDate value='${toDay}' pattern='yyyy년 MM월 dd일' var="nowDate"/>
-<br><br><br>
-<span id="eventDetailTitle">EVENT</span> <br><br><br>
+<div class="eventDetailTitle">
+<span id="eventDetailTitle">EVENT</span>
+</div>
 <div class="container con">
 <div class="event">
 <sec:authorize access="hasRole('ROLE_ARTIST')">
@@ -19,17 +20,17 @@
 
 <c:choose>
 	<c:when test="${nowDate>evo.eventDate}">
-		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"> <br>
+		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"> 
 		<span id="frontText"></span>
 	</c:when>
 	<c:otherwise>
 		<a href="getEventDetail.do?eventNo=${evo.eventNo}">
-		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"></a> <br>
+		<img src="${pageContext.request.contextPath}/resources/img/content/${evo.eventImage}"></a> 
 	</c:otherwise>
 </c:choose>
 
 <span id="eventTitle">${evo.eventTitle}</span> <br>
-<span id="eventDate">${evo.eventDate}</span> <br><br>
+<span id="eventDate">${evo.eventDate}</span> 
 </div>
 </c:forEach>
 <c:set var="pb" value="${requestScope.eventVO.pagingBean}" />
