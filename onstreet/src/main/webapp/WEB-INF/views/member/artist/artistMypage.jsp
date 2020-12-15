@@ -42,7 +42,7 @@
       	</tr>
 		<tr>
 		<td>팔로워</td>
-		<td></td>
+		<td>${requestScope.map. }</td>
 		</tr>
 		<tr>
 		<td>SNS 주소</td>
@@ -58,21 +58,6 @@
 		</tr>
     </thead>
   </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>

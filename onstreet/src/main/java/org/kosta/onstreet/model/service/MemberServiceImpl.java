@@ -184,7 +184,6 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(pagingBean.getStartRowNumber());
 		System.out.println(pagingBean.getEndRowNumber());
 		System.out.println(pagingBean.getStartRowNumber());
-		System.out.println("DDDD : "+followListVO.getFollowList());
 		return followListVO;
 	}
 
