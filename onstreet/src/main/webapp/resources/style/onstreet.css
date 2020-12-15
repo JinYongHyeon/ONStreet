@@ -2079,6 +2079,12 @@ input[type=submit] {
 #showRegisterShowDate {
 	width: 944px
 }
+#showRegisterFormDiv{
+	margin-left: 130px
+}
+#showUpdateFormDiv{
+	margin-left: 130px
+}
 /*[수정]공연수정 날짜*/
 #showUpdateShowDate {
 	width: 944px
@@ -2987,5 +2993,42 @@ input[type=submit] {
 	}
 	#showDetailCommentSide{
 		margin-left: 60px; width: 76%;
+	}
+	#showTitle {
+	width: 100%;
+	}
+	#showRegisterFormDiv{
+	margin-left: 0px
+	}
+	.mutiPhotoUpload{
+	width: 100%;
+	border-right: solid 1px #b5b5b5;
+	}
+	#showRegisterShowDate{
+	width: 100% 
+	}
+	#showUpdateFormDiv{
+	margin-left: 0px
+	}
+	#postTitle{
+	width: 100%;
+	}
+	#showUpdateShowDate{
+	width: 100%
+	}
+	#addEvent{
+	margin-left: 0px
+	}
+	#addEvent input[type=text] {
+    width: 100%;
+    font-size: medium;
+    border: 1px solid #000000;
+    height: 30px;
+	}
+	#addEvent input[type=file] {
+	float: none;
+    border: 1px solid #000000;
+    margin-right: 300px;
+    width: 40%;
 	}
 }
