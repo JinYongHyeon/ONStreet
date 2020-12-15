@@ -2056,7 +2056,7 @@ input[type=submit] {
 	display: inline-block;
 	text-align: center;
 }
-ul {
+/* ul {
   list-style-type: none;
 }
 
@@ -2122,7 +2122,7 @@ label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
-}
+} */
 
  .followlistcheck{
     width: 100%;
@@ -3132,6 +3132,9 @@ label img {
 	#showDetailContentSide {
 		margin-left: 60px;
 		width: 76%;
+	}
+	#showDetailCommentSide{
+		margin-left: 60px; width: 76%;
 	}
 	#showTitle {
 	width: 100%;
