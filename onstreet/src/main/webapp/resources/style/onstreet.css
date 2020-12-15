@@ -1945,19 +1945,41 @@ input[type=submit] {
 	width: 720px;
 	height: 270px;
 	margin: 0 auto;
-	margin-top: 150px;
+	margin-top: 120px;
 	margin-right: 600px;
 }
 #noticeDetail #DetailTitle{
 	font-size: 50px;
+	padding-bottom: 20px;
 }
-
-#noticeDetail tr th {
+#noticeDtailProFile{
+	position: absolute;
+    top: 55%;
+    left: 30%;
+    transform: translate(-50%,-50%);
+}
+.noticeImg{
+	display: inline-block;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background: #2671ff;
+    margin: 0 10px 10px 0;
+}
+#noticeWrite{
+	padding-top:60px;
+	font-size: 20px;
 	text-align: left;
+	padding-left: 10px; 
 }
 #noticeDate{
-	padding-top:30px;
+	position: relative;
+	float: left;
+	left: 55px;
+}
+#noticeClock{
 	font-size: 20px;
+	text-align: left; 
 }
 #noticeContent{
 	height: 200px;

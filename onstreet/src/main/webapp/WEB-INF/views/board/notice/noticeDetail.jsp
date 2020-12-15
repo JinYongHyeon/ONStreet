@@ -4,24 +4,21 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <div class="col-sm-12">
 <sec:csrfInput/>
-<table id="noticeDetail">
-<tr>
-<th id="DetailTitle">&nbsp;제목:${requestScope.nvo.noticeTitle}</th>
-</tr>
-<tr>
-<th height="30px" style="text-align: left;" id="noticeDate">&nbsp;&nbsp;
-<img class="user-img" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px">
-작성자:${requestScope.nvo.memberVO.nickName}<br>
-&nbsp;&nbsp;&nbsp;작성일시:${requestScope.nvo.noticeWriteDate}</th>
-</tr>
-<tr>
-<td colspan="5" id="noticeContent"  style="text-align: left;">
+<div id="noticeDetail">
+<div id="DetailTitle">&nbsp;제목:${requestScope.nvo.noticeTitle}</div>
+<div id="noticeDtailProFile">
+<img class="noticeImg" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px"height="30px">
+</div>
+&nbsp;&nbsp;&nbsp;
+<span id="noticeWrite">작성자:${requestScope.nvo.memberVO.nickName}</span>
+<br>
+<span id="noticeDate">${requestScope.nvo.noticeWriteDate}</span>
+<br><span id="noticeClock">&nbsp;&nbsp;&nbsp;
+<br><br>작성일시:${requestScope.nvo.noticeWriteDate}</span>
+<div id="noticeContent"  style="text-align: left;">
 &nbsp;&nbsp;작성내용:${requestScope.nvo.noticeContent}
-</td>
-</tr>
-<tr>
-</tr>
-</table>
+</div>
+</div>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <button form="nopdateNoticeForm" type="submit" id="noticeDetailButton">수정</button>
 <form action="updateNoticeForm.do" id="nopdateNoticeForm" method="get">
