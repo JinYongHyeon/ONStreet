@@ -8,9 +8,9 @@
 }	
 </style>
 
-<div class="container">
+<div class="container" id="mypage-alink">
   <span id="mypageTitle">Artist Mypage</span>
-  <table class="table">
+  <table class="table table-bordered table-sm" id="mypagetable">
     <thead class="thead-dark">
       <tr>
         <td>아이디</td>
@@ -59,13 +59,13 @@
     </thead>
   </table>
 
-
-	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a><br>
-	<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a><br>
-	<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a><br>
-	<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a><br>
-	<a href="${pageContext.request.contextPath}/followingList.do">팔로우리스트</a>
-	
+	<div class="mypageBtn">
+		<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a>
+		<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a>
+		<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a>
+		<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
+		<a href="${pageContext.request.contextPath}/followingList.do">팔로우리스트</a>
+	</div>
 </div>
 
 

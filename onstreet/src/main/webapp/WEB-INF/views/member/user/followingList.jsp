@@ -2,7 +2,21 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<style>
+.followlistcheck ul{
+	width: 350px;
+    float: left;
+    margin-right: 30px;
+}
+#followlistform{
+	float: right;
+}
 
+#followlistform input{
+	float:left; 
+	margin-right: 15px;
+}
+</style>
 
 <!-- 자바스크립트 -->
 <script type="text/javascript">
@@ -95,12 +109,12 @@
 		
 </script>
 <div class="container followlistcheckSection">
-<form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form">
+<form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form" id="followlistform">
 <input type="submit" id="removefollowBtn" style="display:none; opacity: 0" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
 <input type="button" value="모두선택" class="btn btn-default select_all">
 <input type="button" value="모두해제" class="btn btn-default select_all">
 </div>
-
+<div class="container">
 <div class="followlistcheck">
 <sec:csrfInput/>
 <c:forEach var="list" items="${requestScope.list.followList}" varStatus="point">
@@ -110,6 +124,7 @@
 <ul>
   <li><input type="checkbox" id="cb${point.index}" name="followingId" value="${list.followingId}" />
     <label for="cb${point.index}"><img src="${pageContext.request.contextPath}/resources/img/profile/${list.memberVO.profile}"></label>
+	<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.followingId}">${list.memberVO.nickName}</a><br>
   </li>
 </ul>	
 	</c:when>
@@ -124,6 +139,7 @@
 	</c:otherwise>
 </c:choose>
 </c:forEach>
+</div>
 </div>
 </form>
 

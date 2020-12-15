@@ -272,7 +272,7 @@
 	}
 	#eventDetailTitle::before {
 		content: "";
-		width: 15%;
+		width: 28%;
 		height: 3px;
 		position: absolute;
 		left: 50%;
@@ -301,7 +301,7 @@
 	}
 	#artistTitle::before {
 		content: "";
-		width: 15%;
+		width: 41%;
 		height: 3px;
 		position: absolute;
 		left: 50%;
@@ -339,7 +339,7 @@
 	}
 	#artistDetailTitle::before {
 		content: "";
-		width: 15%;
+		width: 31%;
 		height: 3px;
 		position: absolute;
 		left: 50%;
@@ -422,7 +422,7 @@
 	}
 	#showListTitle::before {
 		content: "";
-		width: 15%;
+		width: 27%;
 		height: 3px;
 		position: absolute;
 		left: 50%;
@@ -572,6 +572,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+	/* 공연리스트에서 제목 ... 처리 */
 	#showListNickNameTd {
 		display: block;
 		width: 62px;
@@ -579,50 +580,63 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+	/* 공연상세보기 공연내용 */
 	#showDetailContentSide {
 		margin-left: 60px;
 		width: 76%;
 	}
+	/* 공연상세보기 댓글 */
 	#showDetailCommentSide{
 		margin-left: 60px; width: 76%;
 	}
+	/* 공연등록 공연제목 폼  */
 	#showTitle {
 	width: 100%;
 	}
+	/* 공연등록 내용 폼 */
 	#showRegisterFormDiv{
 	margin-left: 0px
 	}
+	/* 공연등록,수정 공여내용 폼 안에 사진등록 */
 	.mutiPhotoUpload{
 	width: 100%;
 	border-right: solid 1px #b5b5b5;
 	}
+	/* 공연등록 날짜 */
 	#showRegisterShowDate{
 	width: 100% 
 	}
+	/* 공연 수정 내용 폼 */
 	#showUpdateFormDiv{
 	margin-left: 0px
 	}
+	/* 공연 수정 제목 */
 	#postTitle{
 	width: 100%;
 	}
+	/* 공연 수정 날짜 */
 	#showUpdateShowDate{
 	width: 100%
 	}
+	/* 이벤트 등록 폼 */
 	#addEvent{
 	margin-left: 0px
 	}
+	/* 이벤트 등록 안에 제목 */
 	#addEvent input[type=text] {
     width: 100%;
     font-size: medium;
     border: 1px solid #000000;
     height: 30px;
 	}
+	/* 이벤트 등록 안에 이벤트 배너 사진 등록 */
 	#addEvent input[type=file] {
 	float: none;
     border: 1px solid #000000;
     margin-right: 300px;
     width: 40%;
 	}
+	/* 공지사항 타이틀 */
 	#register {
 	font-size: 40px;
 	font-weight: bolder;
@@ -630,8 +644,26 @@
 	margin-left: 160px;
 	padding-bottom: 5px;
 	}
+	/* 공연상세보기 댓글 */
 	#showDetailCommentSide {
 	width: 76%;
     margin-left: 60px;
+	}
+	/* 공지사항 타이틀 */
+	#logoNoticeUpdate{
+	font-size: 40px;
+    font-weight: bolder;
+    box-shadow: 0-6px #d03535 inset;
+    margin-left: 160px;
+    padding-bottom: 5px;
+	}
+	/* 공연리스트 상세보기 수정삭제 버튼 */
+	#showDetailUpdateDeleteDiv{
+	margin-bottom: 15px;
+	}
+	/* 아티스트 상세보기 폰트 */
+	.artistProfile{
+	font-size: inherit;
+    text-align: left;
 	}
 }

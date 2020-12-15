@@ -3,6 +3,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#noticeDetailButton").click(function() {
+		if(confirm("공지사항을 수정하시겠습니까?")) {
+			location.href="updateNoticeForm.do";
+		} else {
+			return false;	
+		} 
+	});
+	
+	$("#noticeDeleteButton").click(function() {
+		if(confirm("공지사항을 삭제하시겠습니까?")) {
+			location.href="getNoticeList.do";
+		} else {
+			return false;	
+		} 
+	});
+});//ready
+</script>
+
 <div class="showListTitle">
 <span id="showListTitle">NOTICE</span>
 </div>
@@ -20,7 +40,8 @@
 					</form>
 
 			<button form="nopdateNoticeDeleteForm" type="submit" id="noticeDeleteButton">삭제</button>
-					<form action="deleteNotice.do" id="nopdateNoticeDeleteForm" method="post">
+					<form action="deleteNoticeDetail.do" id="nopdateNoticeDeleteForm" method="post">
+					<sec:csrfInput/>
 					<input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
 					</form>
 					</sec:authorize>
