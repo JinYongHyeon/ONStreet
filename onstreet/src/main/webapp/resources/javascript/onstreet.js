@@ -28,10 +28,17 @@ $(document).ready(function(){
    });
    
    $(document).on("click","#asd",function(){
-      $(this).css("display","none");
+	if($("#header .navigation .mobileSearch").is(":animated"))return;
+	if($(window).width()>480){
+		$(this).css("display","none");
       $("#header .bitMainSearch form").animate({
          left:0
       },1000);
+	}
+	$("#header .navigation .mobileSearch").animate({
+		right:"0"
+	},1000);
+      
    });
    
    //로그인폼 창닫기 진용현 
