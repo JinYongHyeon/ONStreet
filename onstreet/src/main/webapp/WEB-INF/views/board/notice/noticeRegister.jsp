@@ -4,24 +4,16 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <form action="addNotice.do" method="post" id="noticeRegister">
 <input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
-<br><span id="register">공지사항 작성</span>
-<table>
-<tr>
-<th>
-<div id="textTitle">제목</div>
+<br><span id="register">NOTICE</span>
+<div class="container">
 <sec:csrfInput/>
-<input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="registerNoticeTitle"><br><br>
-</th>
-</tr>
-<tr>
-<td>
+<input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="registerNoticeTitle">
 <textarea rows="10" cols="70"  name="noticeContent" required="required" id="content" placeholder="공지사항의 내용을 입력하세요">
 </textarea>
-</td>
-</tr>
-</table>
+
 <input type="button" id="resetButton" value="취소 ">
 <button type="submit" class="btn" id="submitButton">확인</button>
+</div>
 </form>
 <script type="text/javascript">
 $(document).ready(function() {

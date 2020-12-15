@@ -100,6 +100,13 @@ public interface MemberService {
 	FollowListVO getfollowingList(String id,String pageNo);
 	
 	/**
+	 * 팔로잉 중복체크 - 정지윤
+	 * @param mvo
+	 * @param follwingId
+	 * @return
+	 */
+	int follwingCheck(MemberVO mvo, String follwingId);
+	/**
 	 * 팔로잉 등록 - 정지윤 1.중복체크 2.중복 아니면 팔로잉 등록
 	 * @param followVO
 	 * @return
@@ -133,5 +140,7 @@ public interface MemberService {
 	 * @return
 	 */
 	EventListVO artistCheckEventList(String pageNo,String id);
+
+
 	
 }

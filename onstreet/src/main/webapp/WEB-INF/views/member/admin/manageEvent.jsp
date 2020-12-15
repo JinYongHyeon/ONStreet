@@ -40,6 +40,9 @@
 					return;
 				}
 		});//click
+		$("#allNoticeCheck").change(function() {
+	   		 $("#checkEventForm :checkbox[name=checkEvent]").prop("checked",$(this).prop("checked"))
+		});
 	});//ready
 </script>
 <br><br>
@@ -58,7 +61,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-			<th></th>
+			<th><input type="checkbox" id="allNoticeCheck"></th>
 			<th>이벤트 번호</th>
 			<th align="center">아티스트명</th>
 			<th align="center">제목</th>

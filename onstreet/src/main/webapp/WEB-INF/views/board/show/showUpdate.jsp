@@ -38,7 +38,7 @@ var oEditors = [];
 
 		//저장버튼 클릭시 form 전송
 		$("#postUpdate").click(function() {
-			if ($("#postTitle").val() == "") {
+			if ($("#postTitle").val().trim() == "") {
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}
@@ -123,6 +123,9 @@ var oEditors = [];
 	});
 </script>
 
+<div class="showListTitle">
+<span id="showListTitle">SHOW</span>
+</div>
 
 <div id="multipartPreView">
 	<div class="preViewImg">
@@ -156,7 +159,7 @@ var oEditors = [];
 
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="col-sm-2"></div>
-<div class="col-sm-8" style="margin-left: 130px">
+<div class="col-sm-8" id="showUpdateFormDiv">
 	<form action="updateShow.do" method="post" id="frm">
 		<input type="hidden" name="showNo" value="${svo.showNo}">
 		<sec:csrfInput />

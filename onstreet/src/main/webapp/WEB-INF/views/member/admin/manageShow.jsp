@@ -31,7 +31,9 @@
 				return false;
 			}
 		});
-		
+		$("#allNoticeCheck").change(function() {
+	   		 $("#removeShowForm :checkbox[name=checkShow]").prop("checked",$(this).prop("checked"))
+		});
 	});//ready
 </script>
 <br><br>
@@ -52,7 +54,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-			<th></th>
+			<th><input type="checkbox" id="allNoticeCheck"></th>
 			<th>제목</th>
 			<th align="center">작성자</th>
 			<th align="center">공연일시</th>

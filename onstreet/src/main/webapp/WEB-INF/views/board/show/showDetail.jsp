@@ -14,7 +14,7 @@ $(function(){
 	});
 	
 	$('#commentRegisterBtn').click(function(){
-		if ($("#comment").val() == "") {
+		if ($("#comment").val().trim() == "") {
 			alert("댓글을 입력하세요.");
 			return false;
 		}
@@ -164,8 +164,8 @@ function move() {
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px"></div>
 			&nbsp;<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${svo.artistVO.memberVO.id}">${svo.artistVO.memberVO.nickName}</a><br>
 			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span><hr>
-			<h4>공연날짜는 ${svo.showDate}</h4><br>
-			
+			<h4>🎵 공연날짜는 ${svo.showDate} 🎵</h4><br>
+			<div id="tempertureBar">
   					<%-- 좋아요 버튼 --%>
   					<div style="float: left;">
 				<c:choose>
@@ -215,12 +215,13 @@ function move() {
 				</c:choose>
 				</div>
 				<%-- 온도 표시 --%>
+				<div class="myBarForm">
 				<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
   						aria-valuemin="0" aria-valuemax="100">
     					${requestScope.likeCount}℃
-  					</div><br>
-				
-			
+  					</div>
+				</div>
+  					</div>
 			<hr>
 			<div id="showDetailUpdateDeleteDiv">
 			<input type="hidden" id="loginId" value="${member.id}"> 
@@ -255,7 +256,6 @@ function move() {
 </div>
 
 <%-- 댓글 리스트 --%>
-<!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 <div id="showDetailCommentSide">
 
 <%-- 댓글 --%>

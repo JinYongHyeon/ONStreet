@@ -295,9 +295,11 @@ public class MemberController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("getArtistDetail.do")
 	public String getArtistDetail(String id,Model model) {
+		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("artistVO", memberService.findMemberById(id));
 		model.addAttribute("map", memberService.getArtistTemperture(id));
 		model.addAttribute("showVO", memberService.getArtistShowDate(id));
+		model.addAttribute("count", memberService.follwingCheck(avo.getMemberVO(), id));
 		return "board/artist/artistDetail.tiles";
 	}
 	

@@ -1778,6 +1778,11 @@ input[type=submit] {
 /* 세희 마이페이지 끝 */
 
 /*공지시항리스트 UI 김수민 */
+.logoNotice {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
 #logoNotice {
 	font-size: 40px;
 	font-weight: bolder;
@@ -1786,9 +1791,7 @@ input[type=submit] {
 }
 
 #noticeList {
-	width: 1300px;
-	font-size: 15px;
-	margin: 0 auto;
+	width: 100%;
 }
 
 #noticeList tr  th {
@@ -1806,22 +1809,16 @@ input[type=submit] {
 	padding: 5px;
 }
 
-#noticeButton_1 input[type='submit'] {
+#noticeButton_1 input[type=submit] {
 	width: 50px;
 	height: 30px;
 	border: 1px #d03535 solid;
 	background-color: #d03535;
 	position: relative;
-	float: right;
-	right: 400px;
-	margin-top: 20px;
+	float:right;
 	color: white;
+	margin-right: 10px;
 	border-radius: 5px;
-}
-
-#noticeButton_1 input[type='submit']:hover {
-	color: black;
-	background-color: white;
 }
 
 #noticeButton_2 {
@@ -1831,8 +1828,6 @@ input[type=submit] {
 	background-color: #d03535;
 	position: relative;
 	float: right;
-	right: 260px;
-	margin-top: 20px;
 	color: white;
 	border-radius: 5px;
 }
@@ -1845,11 +1840,8 @@ input[type=submit] {
 
 /*공지사항 상세보기 UI 김수민  */
 #noticeDetail {
-	width: 720px;
-	height: 270px;
-	margin: 0 auto;
-	margin-top: 130px;
-	margin-right: 600px;
+	width: 100%;
+	margin-top: 50px;
 }
 
 #noticeDetail #DetailTitle {
@@ -1896,14 +1888,11 @@ input[type=submit] {
 #noticeDetailButton {
 	width: 50px;
 	height: 30px;
-	position: relative;
-	float: right;
-	right: 600px;
-	margin-top: 50px;
-	background-color: #d03535;
+	float: left;
+	background-color: #ec971f;
 	color: white;
 	border-radius: 5px;
-	border: 1px solid #d03535;
+	border: 1px solid #d58512;
 }
 
 #noticeDetailButton:hover {
@@ -1912,10 +1901,11 @@ input[type=submit] {
 	color: black;
 }
 /*공지사항 등록 UI 김수민*/
-#registerNoticeTitle {
-	width: 930px;
-	height: 30px;
-	font-size: 20px;
+#registerNoticeTitle{
+	width: 100%;
+	height:30px;
+	font-size:20px;
+	margin-top: 50px;
 }
 
 #register {
@@ -1926,20 +1916,10 @@ input[type=submit] {
 	padding-bottom: 5px;
 }
 
-#textTitle {
-	position: relative;
-	float: left;
-	left: 450px;
-	font-size: 25px;
-	margin-top: 80px;
-}
-
 #content {
 	font-size: 25px;
 	position: relative;
-	float: left;
-	left: 454px;
-	margin-top: 30px;
+	width: 100%;
 }
 
 #submitButton {
@@ -1950,8 +1930,8 @@ input[type=submit] {
 	color: white;
 	position: relative;
 	float: right;
-	right: 500px;
 	margin-top: 10px;
+	margin-right: 10px;
 }
 
 #resetButton {
@@ -1962,7 +1942,6 @@ input[type=submit] {
 	color: white;
 	position: relative;
 	float: right;
-	right: 457px;
 	margin-top: 10px;
 	border-radius: 5px;
 }
@@ -1977,16 +1956,7 @@ input[type=submit] {
 	color: black;
 }
 /*회원정보 수정 UI 김수민  */
-#updateTitle {
-	width: 748px;
-	font-size: 20px;
-	position: relative;
-	float: left;
-	left: 510px;
-	margin-top: 80px;
-}
-
-#logoNoticeUpdate {
+#logoNoticeUpdate{
 	font-size: 40px;
 	font-weight: bolder;
 	box-shadow: 0 -6px #d03535 inset;
@@ -1994,16 +1964,13 @@ input[type=submit] {
 	padding-bottom: 5px;
 }
 
-#titleUpdate {
-	font-size: 25px;
-	position: relative;
-	float: left;
-	left: 490px;
-	margin-top: 80px;
+#updateTitle {
+	width: 100%;
+	height: 30px;
+	margin-top: 50px;
 }
 
 #updateContent {
-	font-size: 25px;
 	position: relative;
 	float: left;
 	left: 300px;
@@ -2016,6 +1983,7 @@ input[type=submit] {
 	float: left;
 	left: 490px;
 	margin-top: 30px;
+	width: 100%;
 }
 
 #updateButton {
@@ -2024,15 +1992,9 @@ input[type=submit] {
 	background-color: #d03535;
 	border-color: #d03535;
 	color: white;
-	position: relative;
 	float: right;
-	right: 670px;
-	margin-top: 10px;
-}
-
-#updateButton:hover {
-	background-color: white;
-	color: black;
+	position: relative;
+	margin-right: 10px;
 }
 
 #backButton {
@@ -2043,15 +2005,9 @@ input[type=submit] {
 	color: white;
 	position: relative;
 	float: right;
-	right: 494px;
-	margin-top: 10px;
 	border-radius: 5px;
 }
 
-#backButton:hover {
-	background-color: white;
-	color: black;
-}
 /* 회원탈퇴 페이지 ui 정세희*/
 .remove-member {
 	padding: 76px 100px 100px 65px;
@@ -2141,6 +2097,12 @@ input[type=submit] {
 #showRegisterShowDate {
 	width: 944px
 }
+#showRegisterFormDiv{
+	margin-left: 130px
+}
+#showUpdateFormDiv{
+	margin-left: 130px
+}
 /*[수정]공연수정 날짜*/
 #showUpdateShowDate {
 	width: 944px
@@ -2182,9 +2144,16 @@ input[type=submit] {
 	max-height: 942px;
 	margin-left: 390px;
 }
-
+.myBarForm{
+	width:94%;
+	float:left;
+}
 #myBar {
 	height: 30px;
+}
+#tempertureBar {
+	width: 100%;
+	float: left;
 }
 /* #showDetailBlankSide {
 	float: left;
@@ -3072,8 +3041,41 @@ input[type=submit] {
 		margin-left: 60px;
 		width: 76%;
 	}
-	#showDetailCommentSide {
-		margin-left: 60px;
-		width: 76%;
+	#showTitle {
+	width: 100%;
+	}
+	#showRegisterFormDiv{
+	margin-left: 0px
+	}
+	.mutiPhotoUpload{
+	width: 100%;
+	border-right: solid 1px #b5b5b5;
+	}
+	#showRegisterShowDate{
+	width: 100% 
+	}
+	#showUpdateFormDiv{
+	margin-left: 0px
+	}
+	#postTitle{
+	width: 100%;
+	}
+	#showUpdateShowDate{
+	width: 100%
+	}
+	#addEvent{
+	margin-left: 0px
+	}
+	#addEvent input[type=text] {
+    width: 100%;
+    font-size: medium;
+    border: 1px solid #000000;
+    height: 30px;
+	}
+	#addEvent input[type=file] {
+	float: none;
+    border: 1px solid #000000;
+    margin-right: 300px;
+    width: 40%;
 	}
 }

@@ -22,7 +22,14 @@
 <div class="col-sm-2"></div>
 <div class="col-sm-6 artistProfile">
     <span id="artistName">${requestScope.artistVO.memberVO.nickName}</span>
+    <c:choose>
+    	<c:when test="${requestScope.count==0}">
     		<input type="button" value="팔로우" id="follow">
+    	</c:when>
+    	<c:otherwise>
+    		<input type="button" value="팔로우 취소" id="follow">
+    	</c:otherwise>
+    </c:choose>
     <hr>
      <form id="memberCountCon">
      	<c:if test="${requestScope.map==null}">
@@ -90,22 +97,6 @@
 				$(this).css("z-index","-3");
 			});
 		});
-		
-		$.ajax({
-			type: "post",
-			url: "${pageContext.request.contextPath}/registerFollowing.do",
-			dataType: "text",
-			data: "followingId=${requestScope.artistVO.memberVO.id}",
-			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-	             xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-	            },
-			success: function(data) {
-				if(data==="0") {
-					$("#follow").attr("value", "팔로우 취소");
-					return;
-				}
-			}
-			});//ajax
 
 		$("#follow").click(function() {
 			if($("#follow").val()=="팔로우") {
@@ -121,7 +112,7 @@
 	             xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 	            },
 			success: function(data) {
-				if(data==="0") {
+				if(data==="1") {
 					alert("이미 팔로우한 아티스트입니다!");
 					$("#follow").attr("value", "팔로우 취소");
 					return;

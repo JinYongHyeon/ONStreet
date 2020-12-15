@@ -43,7 +43,7 @@ alert(today) */
 
 		//저장버튼 클릭시 form 전송
 		$("#postWrite").click(function() {
-			if ($("#showTitle").val() == "") {
+			if ($("#showTitle").val().trim() == "") {
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}
@@ -59,6 +59,7 @@ alert(today) */
 				alert("게시글 내용을 입력하세요.");
 				return;
 			}
+			
 
 			$("#frm").submit();
 		});
@@ -109,7 +110,9 @@ alert(today) */
 						});//click
 	});
 </script>
-
+<div class="showListTitle">
+<span id="showListTitle">SHOW</span>
+</div>
 
 <div id="multipartPreView">
 
@@ -143,7 +146,7 @@ alert(today) */
 
 
 <div class="col-sm-2"></div>
-<div class="col-sm-8" style="margin-left: 130px">
+<div class="col-sm-8" id="showRegisterFormDiv">
 
 	<form method="post" action="addShow.do" id="frm" >
 		<sec:csrfInput />

@@ -112,6 +112,10 @@ public class TestJUnit {
 		 /**
 		  * 정지윤 테스트
 		  */
+			/*
+			 * FollowVO followVO = new FollowVO('wjdwldbs','wldbs');
+			 * System.out.println(mm.followingCheckList(followVO));
+			 */
 		//System.out.println(bm.getEventValidity("21"));
 		//System.out.println(bm.getArtistShowDate("wjdwldbs"));
 		//System.out.println(bm.getTotalArtistCount());
