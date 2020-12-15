@@ -9,3 +9,9 @@
 <a href="${pageContext.request.contextPath}/getCheckArtistList.do" id="manageFormBtn">아티스트 승인</a>
 <a href="${pageContext.request.contextPath}/getCheckEventList.do" id="manageFormBtn">이벤트 승인</a> 
 </div>
+<script type="text/javascript">
+	if($(window).width()<500){
+		alert("관리자페이지는 PC를 이용해 주십시오");
+		location.href="${pageContext.request.contextPath}/home.do";
+	}	
+</script>

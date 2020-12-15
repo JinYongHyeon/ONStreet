@@ -135,7 +135,6 @@ public class AdminController {
 	@RequestMapping("manageSearchShow.do")
 	public String manageSearchShow(String searchShow, String pageNo, Model model) {
 		ShowListVO showListVO = adminService.manageSearchShow(pageNo, searchShow.trim());
-		System.out.println(showListVO);
 	    model.addAttribute("showListVO", showListVO);
 	    model.addAttribute("searchContent", searchShow);
 	    model.addAttribute("totalPostCount", adminService.manageSearchShowTotalCount(searchShow));
@@ -233,7 +232,6 @@ public class AdminController {
 	@Secured("ROLE_ARTIST")
 	@PostMapping("deleteEvent2.do")
 	public ModelAndView uncheckDeleteEvent(String[] checkboxBtn) {
-		System.out.println(checkboxBtn);
 		adminService.deleteEvent(checkboxBtn);
 		return new  ModelAndView("redirect:artistCheckEventList.do");
 	}

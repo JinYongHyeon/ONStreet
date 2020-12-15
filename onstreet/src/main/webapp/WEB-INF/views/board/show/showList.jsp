@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<br><br>
+<div class="showListTitle">
 <span id="showListTitle">SHOW</span>
-<br><br><br>
+</div>
 <div class="container">
 <table id="showListTable" class="table table-striped table-condensed">
 	<thead>
@@ -42,13 +42,16 @@
 				<td>
 				${requestScope.totalPostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 				</td>
-				<td>
+				<td id="showListTitleTd">
+ 
 				<a href="getShowDetail.do?showNo=${list.showNo}">
 				${list.showTitle}
 				</a>
 				</td>
 				<td>
+				<div id="showListNickNameTd">
 				${list.artistVO.memberVO.nickName}
+				</div>
 				</td>
 				<td align="center">
 				${list.showDate}
