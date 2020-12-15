@@ -1893,13 +1893,19 @@ input[type=submit] {
 	color: white;
 	border-radius: 5px;
 	border: 1px solid #d58512;
+	margin-right: 5px;
 }
 
-#noticeDetailButton:hover {
+#noticeDeleteButton {
+	width: 50px;
+	height: 30px;
+	float: left;
+	background-color: #d03535;
+	color: white;
+	border-radius: 5px;
 	border: 1px solid #d03535;
-	background-color: white;
-	color: black;
 }
+
 /*공지사항 등록 UI 김수민*/
 #registerNoticeTitle{
 	width: 100%;
@@ -1973,8 +1979,7 @@ input[type=submit] {
 #updateContent {
 	position: relative;
 	float: left;
-	left: 300px;
-	margin-top: 70px;
+	width: 100%;
 }
 
 #update {
@@ -1995,6 +2000,7 @@ input[type=submit] {
 	float: right;
 	position: relative;
 	margin-right: 10px;
+	margin-top: 10px;
 }
 
 #backButton {
@@ -2006,6 +2012,7 @@ input[type=submit] {
 	position: relative;
 	float: right;
 	border-radius: 5px;
+	margin-top: 10px;
 }
 
 /* 회원탈퇴 페이지 ui 정세희*/

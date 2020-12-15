@@ -2,20 +2,13 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
-<<<<<<< HEAD
-<br><span id="logoNotice">NOTICE</span>
-<div class="col-sm-12">
-<sec:csrfInput/>
-<div id="noticeDetail">
-<div id="DetailTitle">${requestScope.nvo.noticeTitle}</div><hr>
-<div id="noticeDtailProFile">
-<img class="noticeImg" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px"height="30px">
-=======
+
+
 
 
 <div class="showListTitle">
 <span id="showListTitle">NOTICE</span>
->>>>>>> branch 'main' of https://github.com/JinYongHyeon/ONStreet.git
+
 </div>
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="container">
@@ -24,7 +17,17 @@
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px"></div>
 			&nbsp;${requestScope.nvo.memberVO.nickName}<br>
 			<span id="showDetailShowWriteDate">&nbsp;${requestScope.nvo.noticeWriteDate}</span><hr>
-			
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<button form="nopdateNoticeForm" type="submit" id="noticeDetailButton">수정</button>
+					<form action="updateNoticeForm.do" id="nopdateNoticeForm" method="get">
+					<input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
+					</form>
+
+			<button form="nopdateNoticeDeleteForm" type="submit" id="noticeDeleteButton">삭제</button>
+					<form action="deleteNotice.do" id="nopdateNoticeDeleteForm" method="post">
+					<input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
+					</form>
+					</sec:authorize>
 			<div id="showDetailUpdateDeleteDiv">
 			<input type="hidden" id="loginId" value="${member.id}"> 
 			
@@ -41,11 +44,5 @@
 			</div>
 		</section>		
 </div>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button form="nopdateNoticeForm" type="submit" id="noticeDetailButton">수정</button>
-					<form action="updateNoticeForm.do" id="nopdateNoticeForm" method="get">
-					<input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
-					</form>
-						<!-- <button type="button" id="btn-update" class="btn btn-warning" >수정</button> -->
-			</sec:authorize>
+
 
