@@ -9,7 +9,7 @@
 </style>
 
 <div class="container">
-  <h2>Artist Mypage</h2>
+  <span id="mypageTitle">Artist Mypage</span>
   <table class="table">
     <thead class="thead-dark">
       <tr>
