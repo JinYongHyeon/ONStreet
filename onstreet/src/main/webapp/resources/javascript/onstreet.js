@@ -58,6 +58,7 @@ $(document).ready(function(){
    $(document).ready(function(){
       // 아이디 중복 진용현
       $("#registerId").keyup(function(){
+		$(this).val($(this).val().replace(/ /gi, ''));
          if($(this).val().length <4 || $(this).val().length >=10){
             $("#idCheck").text("4자이상 10자이하로 입력해주세요").css("color","#ff0000");
             idCoin =0;
@@ -81,10 +82,11 @@ $(document).ready(function(){
             }
          });
       });
-      
+
       //비밀번호 체크 - 진용현
-      $(document).on("keyup","#registerForm input[type=password]",function(){
-         if($(this).val().length<6 || $(this).val().length>14){
+      $(document).on("keyup","#registerForm input[name=password]",function(){
+		$(this).val($(this).val().replace(/ /gi, ''));
+         if($(this).val().trim().length<6 || $(this).val().trim().length>14){
             $("#passCheck").text("6자 이상 14자 이하로 입력해주세요").css("color","#ff0000");
             passCoin = 0;
          }else{
@@ -92,6 +94,13 @@ $(document).ready(function(){
             passCoin = 1;
          }
       });
+
+	//아티스트 소개글 빈공백 제거 
+	$(document).on("keyup","#registerForm textarea[name=artistInfo]",function(){
+		if($(this).val().length==1){
+		$(this).val($(this).val().replace(/ /gi, ''));
+		}
+	});
       
       // 회원가입 체크 - 진용현
       $("#registerForm").submit(function(){
@@ -142,6 +151,7 @@ $(document).ready(function(){
       var nickName = $("#registerForm input[name=nickName],#updateForm input[name=nickName]").val();
       // 닉네임 중복 체크 - 진용현
       $("#registerForm input[name=nickName],#updateForm input[name=nickName]").keyup(function(){
+	$(this).val($(this).val().replace(/ /gi, ''));
          if($(this).val().length<2 || $(this).val().length>=10){
             $("#nickNameCheck").text("2자이상 10자이하로 입력해주세요").css("color","#ff0000");
             nickCoin = 0;
@@ -171,8 +181,8 @@ $(document).ready(function(){
       });
       //전화번호 숫자 체크 - 진용현
       $("#registerForm input[name=phone],#updateForm input[name=phone]").keyup(function(){
+		$(this).val($(this).val().replace(/ /gi, ''));
          var telLength = $(this).val();
-         
          if(telLength.length<11 || telLength.length>11){
             $("#registerTelCheck").text("전화번호 11자리 입력해주세요").css("color","#ff0000");
                telCoin = 0; 

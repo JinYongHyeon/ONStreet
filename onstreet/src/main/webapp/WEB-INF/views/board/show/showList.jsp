@@ -19,7 +19,7 @@
 	</thead>
 
 	<tbody>
-	
+	<c:if test="${requestScope.nlvo!=null}">
 	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount}</td>
@@ -34,6 +34,7 @@
 		<td></td>		
 		</tr>
 		<%-- </c:forEach> --%>
+		</c:if>
 		
 		<c:set var="pb" value="${requestScope.slvo.pagingBean}" />
 
@@ -60,6 +61,15 @@
 		</c:forEach>
 	</tbody>
 </table>
+<sec:authorize access="hasRole('ROLE_ARTIST')">
+	
+	<div align="right">
+		<form method="get" action="addShowForm.do" id="showListRegisterBtn">
+			<sec:csrfInput/>
+			<input type="submit" class="btn btn-primary" value="공연등록"/>
+		</form>
+	</div>
+	</sec:authorize>
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
@@ -109,13 +119,4 @@
 	</c:if>
 	</ul>	 		
 	</div>
-	<sec:authorize access="hasRole('ROLE_ARTIST')">
-	
-	<div align="right">
-		<form method="get" action="addShowForm.do" id="showListRegisterBtn">
-			<sec:csrfInput/>
-			<input type="submit" class="btn btn-primary" value="공연등록"/>
-		</form>
-	</div>
-	</sec:authorize>
 	</div>

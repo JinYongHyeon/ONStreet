@@ -79,7 +79,7 @@
 
 		//저장버튼 클릭시 form 전송
 		$("#postWrite").click(function() {
-			if ($("#eventTitle").val() == "") {
+			if ($("#eventTitle").val().trim() == "") {
 				alert("게시글 제목을 입력하세요.");
 				return;
 			}

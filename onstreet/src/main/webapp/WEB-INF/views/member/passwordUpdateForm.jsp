@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
    <sec:authentication property="principal.memberVO" var="member" />
 
+<div class="container">
 <sec:csrfMetaTags/>
    
    <div id="passwordUpdate">
@@ -35,3 +36,4 @@
          <button type="button">확인</button>   
       </form>
    </div>
+</div>

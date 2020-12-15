@@ -29,7 +29,7 @@ public class FileUploadBean {
 		try {
 			String fileName = mvo.getProfile();
 			mvo.getProfileFile().transferTo(new File(realPath+fileName));
-			FileUtil.copyFile(new File(realPath+fileName), new File(copyPath+fileName));
+			FileUtil.copyFile(new File(realPath+fileName), new File(copyPath+fileName)); 
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

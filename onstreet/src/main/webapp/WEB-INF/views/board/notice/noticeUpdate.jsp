@@ -2,23 +2,19 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<br><span id="logoNoticeUpdate">공지사항 수정</span>
+<br><span id="logoNoticeUpdate">NOTICE</span>
 <form action="updateNotice.do" method="post" id="noticeUpdate">
-<table>
-<tr>
-<td><div id="titleUpdate">제목 수정</div>
+<div class="container">
+
 <sec:csrfInput/>
 <input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="updateTitle"> 
-</td>
-</tr>
-<tr>
-<td><div id="update">공지사항내용 수정</div>
-<textarea rows="10" cols="60" name="noticeContent" required="required" placeholder="공지사항의 내용을 입력하세요" id="updateContent">
+<textarea rows="25" cols="100" name="noticeContent" required="required" placeholder="공지사항의 내용을 입력하세요" id="updateContent">
 </textarea>
-</table>
+
 <input type="hidden" name="noticeNo" value="${requestScope.nvo}">
-<button type="submit" class="btn" id="updateButton">수정</button>
 <input type="button" class="btn"  id="backButton" value="취소">
+<button type="submit" class="btn" id="updateButton">수정</button>
+</div>
 </form>
 <script type="text/javascript">
 $(document).ready(function() {

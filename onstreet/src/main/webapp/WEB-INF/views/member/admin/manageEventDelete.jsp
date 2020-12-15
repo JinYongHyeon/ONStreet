@@ -21,6 +21,9 @@
 					return;
 				}
 		});//click
+		$("#allNoticeCheck").change(function() {
+	   		 $("#deleteEventForm :checkbox[name=deleteEvent]").prop("checked",$(this).prop("checked"))
+		});
 	});//ready
 </script>
 <br><br>
@@ -39,7 +42,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-			<th></th>
+			<th><input type="checkbox" id="allNoticeCheck"></th>
 			<th>이벤트 번호</th>
 			<th>아티스트명</th>
 			<th>제목</th>
@@ -86,13 +89,13 @@
 <div class="pagingInfo">
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getCheckEventList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+	<li><a href="${pageContext.request.contextPath}/manageEventList.do?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
 	</c:if>
 	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" 
 	end="${pb.endPageOfPageGroup}">
 	<c:choose>
 	<c:when test="${pb.nowPage!=i}">
-	<li><a href="${pageContext.request.contextPath}/getCheckEventList.do?pageNo=${i}">${i}</a></li> 
+	<li><a href="${pageContext.request.contextPath}/manageEventList.do?pageNo=${i}">${i}</a></li> 
 	</c:when>
 	<c:otherwise>
 	<li class="active"><a href="#" >${i}</a></li>
@@ -101,7 +104,7 @@
 	&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">	
-	<li><a href="${pageContext.request.contextPath}/getCheckEventList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+	<li><a href="${pageContext.request.contextPath}/manageEventList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
 	</ul>	 		
 	</div>
