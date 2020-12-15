@@ -2068,7 +2068,7 @@ input[type="checkbox"][id^="cb"] {
   display: none;
 }
 
-label {
+.followlistcheck label {
   border: 1px solid #fff;
   padding: 10px;
   display: block;
@@ -2083,7 +2083,7 @@ label {
   user-select: none;
 }
 
-label::before {
+.followlistcheck label::before {
   background-color: white;
   color: white;
   content: " ";
@@ -2101,24 +2101,24 @@ label::before {
   transform: scale(0);
 }
 
-label img {
+.followlistcheck label img {
     height: 300px;
     width: 100%;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
 }
 
-:checked+label {
+.followlistcheck :checked+label {
   border-color: #ddd;
 }
 
-:checked+label::before {
+.followlistcheck :checked+label::before {
   content: "✓";
   background-color: grey;
   transform: scale(1);
 }
 
-:checked+label img {
+.followlistcheck :checked+label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
