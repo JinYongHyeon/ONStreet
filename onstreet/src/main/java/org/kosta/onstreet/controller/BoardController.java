@@ -82,7 +82,7 @@ public class BoardController {
     * @param ra
     * @return
     */
-   @Secured("ROLE_MEMBER")
+   @Secured("ROLE_ADMIN")
    @PostMapping("addNotice.do")
    public String addNotice(NoticeVO noticeVO, RedirectAttributes ra) {
       ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -113,7 +113,7 @@ public class BoardController {
     * @param ra
     * @return
     */
-   @Secured("ROLE_MEMBER")
+   @Secured("ROLE_ADMIN")
    @PostMapping("updateNotice.do")
    public String updateNotice(NoticeVO noticeVO, RedirectAttributes ra) {
       ArtistVO avo = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -129,7 +129,7 @@ public class BoardController {
     * @param noticeNo
     * @return
     */
-   @Secured("ROLE_MEMBER")
+   @Secured("ROLE_ADMIN")
    @PostMapping("deleteNotice.do")
    public String deleteNotice(String[] noticeNo) {
       boardService.deleteNotice(noticeNo);
