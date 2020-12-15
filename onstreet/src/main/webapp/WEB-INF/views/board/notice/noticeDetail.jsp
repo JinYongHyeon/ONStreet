@@ -2,20 +2,9 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
-<<<<<<< HEAD
-<br><span id="logoNotice">NOTICE</span>
-<div class="col-sm-12">
-<sec:csrfInput/>
-<div id="noticeDetail">
-<div id="DetailTitle">${requestScope.nvo.noticeTitle}</div><hr>
-<div id="noticeDtailProFile">
-<img class="noticeImg" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px"height="30px">
-=======
-
 
 <div class="showListTitle">
 <span id="showListTitle">NOTICE</span>
->>>>>>> branch 'main' of https://github.com/JinYongHyeon/ONStreet.git
 </div>
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="container">
