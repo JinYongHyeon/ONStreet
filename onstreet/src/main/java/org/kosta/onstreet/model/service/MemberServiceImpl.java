@@ -188,8 +188,14 @@ public class MemberServiceImpl implements MemberService {
 		FollowListVO followListVO = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
 		return followListVO;
 	}
-
-	
+	/**
+	 * 팔로잉 중복체크 - 정지윤
+	 */
+	@Override
+	public int follwingCheck(MemberVO mvo,String follwingId) {
+		FollowVO fvo = new FollowVO(follwingId,mvo);
+		return memberMapper.followingCheckList(fvo);
+	}
 	/**
 	 * 정지윤 
 	 * 1. 중복체크
@@ -200,8 +206,10 @@ public class MemberServiceImpl implements MemberService {
 		int count = 0;
 		ArtistVO artistVO = (ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		followVO.setMemberVO(artistVO.getMemberVO());
-		if (memberMapper.followingCheckList(followVO) == 0) {
-			count = memberMapper.registerFollowing(followVO);
+		//중복 1 중복 아닐경우 0 
+		count = memberMapper.followingCheckList(followVO);
+		if (count == 0) {
+			 memberMapper.registerFollowing(followVO);
 		}
 		return count;
 	}

@@ -13,8 +13,9 @@
      </sec:authorize>
   <sec:authorize access="hasRole('ROLE_MEMBER')">
      <div class="mainContent">
-        <h1>Wel Come</h1>
-        <h3>Onstreet</h3>
+
+        <h1><b>Welcome</b></h1>
+        <h3><b>Onstreet</b></h3>
      </div>
      <div class="mainMoveControl">
         <span>
