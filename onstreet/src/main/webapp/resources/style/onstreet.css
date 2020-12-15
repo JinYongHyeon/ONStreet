@@ -3173,4 +3173,11 @@ label img {
     margin-right: 300px;
     width: 40%;
 	}
+	#register {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 160px;
+	padding-bottom: 5px;
+}
 }
