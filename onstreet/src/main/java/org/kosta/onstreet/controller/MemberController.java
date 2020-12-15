@@ -249,7 +249,6 @@ public class MemberController {
 	public ModelAndView mypageForm() {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
-		//System.out.println(avo==null);
 		if(avo.getCheckDate() == null) {
 		return new ModelAndView("member/user/memberMypage.tiles");	
 		}else {
