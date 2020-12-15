@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <div class="col-sm-12">
 <sec:csrfInput/>
-<span id="logoNotice">NOTICE</span>
+<br><span id="logoNotice">NOTICE</span><br><br>
 <div id="noticeDetail">
 <div id="DetailTitle">제목:${requestScope.nvo.noticeTitle}</div><hr>
 <div id="noticeDtailProFile">
