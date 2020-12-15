@@ -250,11 +250,17 @@ public class MemberController {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
 		//System.out.println(avo==null);
+		//관객마이페이지경로
+		ModelAndView mv=new ModelAndView();
 		if(avo.getCheckDate() == null) {
-		return new ModelAndView("member/user/memberMypage.tiles");	
+			mv.setViewName("member/user/memberMypage.tiles");
+			return mv;
 		}else {
-		return new ModelAndView("member/artist/artistMypage.tiles","map", memberService.getArtistTemperture(id));	
-			
+		//아티스트마이페이지경로
+			mv.addObject("map", memberService.getArtistTemperture(id));
+			mv.addObject("followingTotalCount",memberService.followingTotalCount(id));
+			mv.setViewName("member/artist/artistMypage.tiles");
+			return mv;
 		}
 	}
 	

@@ -298,7 +298,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM os_member m, os_artist a
 		WHERE m.id = a.id AND a.check_date IS NOT NULL 
 		AND m.nickname LIKE '%'||#{value}||'%'
-		AND id NOT IN('admin')
+		AND m.id NOT IN('admin')
 	</select>
 	
 	<!-- 검색[아티스트] - 진용현 -->

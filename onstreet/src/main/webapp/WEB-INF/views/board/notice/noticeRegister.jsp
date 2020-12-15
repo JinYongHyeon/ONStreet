@@ -4,7 +4,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <form action="addNotice.do" method="post" id="noticeRegister">
 <input type="hidden" name="noticeNo" value="${requestScope.nvo.noticeNo}">
-<div id="register">공지사항 작성</div>
+<br><span id="register">공지사항 작성</span>
 <table>
 <tr>
 <th>

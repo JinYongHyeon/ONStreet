@@ -163,7 +163,7 @@ label img {
 		}
 		
 </script>
-<div class="followlistcheckSection">
+<div class="container">
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form">
 <input type="button" value="모두선택" class="btn btn-default select_all">
 <input type="button" value="모두 해제" class="btn btn-default select_all">

@@ -87,6 +87,10 @@ public interface MemberService {
 	 */
 	int removeMember(String password,ArtistVO avo);
 
+	int followingTotalCount(String id);
+	
+	
+	
 	/**
 	 * 팔로우리스트 불러오기 - 정세희
 	 * @param id
