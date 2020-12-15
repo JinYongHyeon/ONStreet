@@ -93,6 +93,16 @@ public class BoardServiceImpl implements BoardService {
 	
 	/**
 	 * 정지윤
+	 * 공지사항 상세보기 삭제
+	 */
+	@Override
+	public void deleteNoticeDetail(String noticeNo) {
+		boardMapper.deleteNotice(noticeNo);
+	}
+	
+	
+	/**
+	 * 정지윤
 	 * 아티스트 리스트 불러오기
 	 */
 	@Override
