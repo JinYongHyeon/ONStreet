@@ -129,7 +129,7 @@ public class BoardController {
     * @param noticeNo
     * @return
     */
-   @Secured("ROLE_MEMBER")
+   @Secured("ROLE_ADMIN")
    @PostMapping("deleteNotice.do")
    public String deleteNotice(String[] noticeNo) {
       boardService.deleteNotice(noticeNo);
