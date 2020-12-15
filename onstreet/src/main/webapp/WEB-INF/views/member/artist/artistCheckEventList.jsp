@@ -11,13 +11,14 @@ function check_all(){
 } 
 
 function check(){
-	var flag = false;
+	//var flag = false;
 	$("input:checkbox[name='checkboxBtn']").each(function(){
 		//checkbox checked -- > flag = true;
+			alert(1);
 		if($(this).is(":checked")){
-			alert("정말삭제하시겠습니까?");
-		flag=true;
-		return ;//반복문 빠져나오게
+			confrim("정말삭제하시겠습니까?");
+	//	flag=true;
+//		return ;//반복문 빠져나오게
 		}//if1
 	});//each
 }

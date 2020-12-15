@@ -167,7 +167,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
-
+	public int followingTotalCount(String id) {
+		int followingTotalCount = memberMapper.followingTotalCount(id);
+		return followingTotalCount;
+	}
+	
+	
+	
 	/**
 	 * 정세희 팔로우리스트 불러오기
 	 */
@@ -180,11 +186,6 @@ public class MemberServiceImpl implements MemberService {
 		else
 			pagingBean = new PagingBean(followingTotalCount,Integer.parseInt(pageNo));
 		FollowListVO followListVO = new FollowListVO(memberMapper.getfollowingList(id,pagingBean),pagingBean);
-		System.out.println(id);
-		System.out.println(pagingBean.getStartRowNumber());
-		System.out.println(pagingBean.getEndRowNumber());
-		System.out.println(pagingBean.getStartRowNumber());
-		System.out.println("DDDD : "+followListVO.getFollowList());
 		return followListVO;
 	}
 

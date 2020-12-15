@@ -89,7 +89,6 @@ public class BoardController {
       noticeVO.setMemberVO(avo.getMemberVO());
       boardService.addNotice(noticeVO);
       ra.addAttribute("nvo", noticeVO.getNoticeNo());
-      // System.out.println(noticeVO);
       return "redirect:getNoticeList.do";
    }
 
@@ -104,7 +103,6 @@ public class BoardController {
       ModelAndView mv = new ModelAndView();
       mv.setViewName("board/notice/noticeUpdate.tiles");
       mv.addObject("nvo", noticeNo);
-      // System.out.println(noticeNo);
       return mv;
    }
 
@@ -122,7 +120,6 @@ public class BoardController {
       noticeVO.setMemberVO(avo.getMemberVO());
       boardService.updateNotice(noticeVO);
       ra.addAttribute("nvo", noticeVO.getNoticeNo());
-      // System.out.println(noticeVO);
       return "redirect:getNoticeList.do?noticeNo=" + noticeVO.getNoticeNo();
    }
 

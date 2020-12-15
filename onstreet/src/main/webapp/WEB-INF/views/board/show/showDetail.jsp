@@ -3,9 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
 
+<script>
 $(function(){
+	move();
 	$('#btn-update').click(function(){
 		if(confirm("수정하시겠습니까?")){
 			self.location.href = "updateShowForm.do?showNo="+${svo.showNo};
@@ -134,13 +135,28 @@ $(function(){
 		      
 		      
 		});//ready
-
 });
+
+function move() {
+	  var elem = document.getElementById("myBar");   
+	  var width = 0;
+	  var id = setInterval(frame, 30);
+	  function frame() {
+	    if (width >= ${requestScope.likeCount}) {
+	      clearInterval(id);
+	    } else {
+	      width++; 
+	      elem.style.width = width + '%'; 
+	      elem.innerHTML = width * 1  + '%';
+	    }
+	  }
+	}
+
 </script>
 <!-- <br><br> -->
-<br><br>
+<div class="showListTitle">
 <span id="showListTitle">SHOW</span>
-<br><br><br>
+</div>
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="container">
 <sec:authentication property="principal.memberVO" var="member"/>
@@ -163,13 +179,13 @@ $(function(){
 				<c:if test="${requestScope.likeId.size()==0}">
 					<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 				</c:if>
-				<c:if test="${ok==1}">
+				<%-- <c:if test="${ok==1}"> --%>
 				<c:forEach items="${requestScope.likeId}" var="unLikeCheck">
 						<c:if test="${unLikeCheck!=member.id}">
 							<span class="fa fa-heart-o" id="heartBlank"></span><span>좋아요</span>
 						</c:if>
 				</c:forEach>
-				</c:if>
+				<%-- </c:if> --%>
 				</button>
 				</c:when>
 				<c:otherwise>
@@ -200,7 +216,7 @@ $(function(){
 				</div>
 				<%-- 온도 표시 --%>
 				<div id="myBar" class="progress-bar progress-bar-danger" role="progressbar" 
-  						aria-valuemin="0" aria-valuemax="100" style="width:${requestScope.likeCount}%">
+  						aria-valuemin="0" aria-valuemax="100">
     					${requestScope.likeCount}℃
   					</div><br>
 				
@@ -285,7 +301,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: grey;">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
@@ -338,7 +354,7 @@ $(function(){
 				<input type="hidden" name="showNo" value="${svo.showNo}"> 
 				<c:choose>
 				<c:when test="${requestScope.validity>2}">
-				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
 				</c:when>
 				<c:otherwise>
 				<input type="button" id="commentUpdate${order.count}" value="수정">
