@@ -164,7 +164,7 @@ function move() {
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px"></div>
 			&nbsp;<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${svo.artistVO.memberVO.id}">${svo.artistVO.memberVO.nickName}</a><br>
 			<span id="showDetailShowWriteDate">&nbsp;${svo.showWriteDate}</span><hr>
-			<h4>공연날짜는 ${svo.showDate}</h4><br>
+			<h4>🎵 공연날짜는 ${svo.showDate} 🎵</h4><br>
 			
   					<%-- 좋아요 버튼 --%>
   					<div style="float: left;">
@@ -255,7 +255,6 @@ function move() {
 </div>
 
 <%-- 댓글 리스트 --%>
-<!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 <div id="showDetailCommentSide">
 
 <%-- 댓글 --%>

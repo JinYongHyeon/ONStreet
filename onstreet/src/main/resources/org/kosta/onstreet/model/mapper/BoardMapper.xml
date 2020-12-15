@@ -170,7 +170,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultMap="showListRM">
 		select
 		s.id,s.show_no,s.show_title,to_char(s.show_write_date,'YYYY-MM-DD HH:MM')
-		as show_write_date,s.show_content,to_char(s.show_date,'YYYY-MM-DD') as
+		as show_write_date,s.show_content,to_char(s.show_date,'yyyy"년" mm"월" dd"일"') as
 		show_date,m.nickname,m.profile
 		from OS_SHOW s, OS_member m
 		where s.id= m.id and show_no=#{value}
