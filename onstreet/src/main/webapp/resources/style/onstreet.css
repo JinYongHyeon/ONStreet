@@ -3176,5 +3176,9 @@ input[type="checkbox"][id^="cb"] {
 	box-shadow: 0 -6px #d03535 inset;
 	margin-left: 160px;
 	padding-bottom: 5px;
-}
+	}
+	#showDetailCommentSide {
+	width: 76%;
+    margin-left: 60px;
+	}
 }
