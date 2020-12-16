@@ -324,6 +324,9 @@ function move() {
 				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
 		</c:if>
+				<sec:authentication property="Authorities" var="role"/>
+		
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
@@ -331,6 +334,7 @@ function move() {
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
 				</sec:authorize>
+				</c:if>
 			</form>
 		<br>
 	</div>
@@ -384,6 +388,7 @@ function move() {
 				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
 		</c:if>
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
@@ -391,6 +396,7 @@ function move() {
 				<input type="hidden" name="showNo" value="${svo.showNo}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
 				</sec:authorize>
+				</c:if>
 			</form>
 <br>
 </div>
