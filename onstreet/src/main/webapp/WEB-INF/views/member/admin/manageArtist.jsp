@@ -57,6 +57,7 @@
 <input type="button" id="uncheckArtist" value="미승인하기">
 </form>
 <sec:csrfInput />
+					<form method="post" id="checkArtistForm">
 <table id="manageMemberTable">
 	<thead>
 		<tr>
@@ -78,9 +79,8 @@
 		<c:forEach items="${requestScope.artistVO.artistList}" var="avo">
 			<tr>
 				<td>
-					<form method="post" id="checkArtistForm">
 						<input type="radio" name="checkArtist" value="${avo.memberVO.id}" class="checkArtist"><sec:csrfInput/>
-					</form>
+					
 				</td>
 				<td>
 				${avo.memberVO.id}
@@ -107,6 +107,7 @@
 		</c:forEach>
 	</tbody>
 </table>
+</form>
 </div>
 <div class="pagingInfo">
 	<ul class="pagination">

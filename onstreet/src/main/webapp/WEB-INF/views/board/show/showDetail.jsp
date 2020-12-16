@@ -236,12 +236,23 @@ function move() {
 					</c:otherwise>
 				</c:choose>
 				
+			<sec:authentication property="Authorities" var="role"/>
+				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<form action="deleteShow.do" method="post">
 					<sec:csrfInput/>
 					<input type="hidden" name="showNo" value="${svo.showNo}">
 					<input type="submit" id="btn-delete" class="btn btn-danger" value="삭제">
 				</form>
 			</c:if>
+				</c:if>
+		
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<form action="deleteShow.do" method="post">
+					<sec:csrfInput/>
+					<input type="hidden" name="showNo" value="${svo.showNo}">
+					<input type="submit" id="btn-delete" class="btn btn-danger" value="삭제">
+				</form>
+				</sec:authorize>
 			</div>
 			
 			<br><br>
@@ -262,7 +273,139 @@ function move() {
 <%-- 댓글 --%>
     <section class="chat-window">
 <c:forEach var="cvo" items="${requestScope.clvo.commentList}" varStatus="order">
+
+<c:if test="${cvo.memberVO.removeUserDate!=null}">
 <c:choose>
+<c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
+<div id="div-comment${order.count}" class="showDetailArtistComment">
+		
+		<article class="msg-container msg-remote" id="msg-0">
+        <div class="msg-box" style="background-color: #80808054">
+        <c:choose>
+        <c:when test="${cvo.memberVO.profile==null}">
+        	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
+        </c:when>
+        <c:otherwise>
+        <div id="showDetailCommentArtistProfile">
+			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
+			</div>
+        </c:otherwise>
+        </c:choose>
+          <div class="flr">
+          <div id="showDetailCommentNickName">
+         <span>${cvo.memberVO.nickName}</span>
+         </div>
+            <div class="messages">
+              <p class="msg" id="msg-0">
+               ${cvo.commentContent}
+              </p>
+            </div>
+            <span class="timestamp"><span class="username"></span>&bull;<span class="posttime">${cvo.commentWriteDate}</span></span>
+          </div>
+        </div>
+      </article>
+		
+		
+		
+		<br>
+			<form id="commentUpdate" action="deleteComment.do" method="post">
+		<c:if test="${member.id==cvo.memberVO.id}">
+				<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<c:choose>
+				<c:when test="${requestScope.validity>2}">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
+				</c:when>
+				<c:otherwise>
+				<input type="button" id="commentUpdate${order.count}" value="수정">
+				</c:otherwise>
+				</c:choose>
+				<input type="submit" id="commentDelete${order.count}" value="삭제">
+		</c:if>
+				<sec:authentication property="Authorities" var="role"/>
+		
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<input type="submit" id="commentDelete${order.count}" value="삭제">
+				</sec:authorize>
+				</c:if>
+			</form>
+		<br>
+	</div>
+	</c:when>
+
+     
+      
+      <c:otherwise>
+      
+      <article class="msg-container msg-self" id="msg-0">
+        <div class="msg-box" style="background-color: #80808054">
+        	
+          <div class="flr" id="showDetailCommentNickName">
+          <span>${cvo.memberVO.nickName}</span>
+            <div class="messages">
+    			<p class="msg" id="msg-1" >
+                ${cvo.commentContent}
+              </p>
+            </div>
+            <span class="timestamp"><span class="username"></span>&bull;<span class="posttime">${cvo.commentWriteDate}</span></span>
+          </div>
+          <c:choose>
+        <c:when test="${cvo.memberVO.profile==null}">
+        	<img class="user-img" id="user-0" src="//gravatar.com/avatar/002464562345234523523568978962?d=retro" />
+        </c:when>
+        <c:otherwise>
+        <div id="showDetailCommentArtistProfile">
+			<img class="user-img" id="user-0" src="${pageContext.request.contextPath}/resources/img/profile/${cvo.memberVO.profile}" />
+			</div>
+        </c:otherwise>
+        </c:choose>
+        </div>
+      </article>
+      
+      <div id="div-comment${order.count}" class="showDetailMemberComment">
+<br>
+
+			<form id="commentUpdate" action="deleteComment.do" method="post">
+<c:if test="${member.id==cvo.memberVO.id}">
+			<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}"> 
+				<c:choose>
+				<c:when test="${requestScope.validity>2}">
+				<input type="button" id="commentUpdate${order.count}" value="수정" disabled="disabled" class="btn-disabled" style="background-color: grey; border: 2px solid grey;">
+				</c:when>
+				<c:otherwise>
+				<input type="button" id="commentUpdate${order.count}" value="수정">
+				</c:otherwise>
+				</c:choose>
+				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+		</c:if>
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+				</sec:authorize>
+				</c:if>
+			</form>
+<br>
+</div>
+</c:otherwise>
+</c:choose>
+	</c:if>
+	
+	<c:if test="${cvo.memberVO.removeUserDate==null}">
+	<c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
 <div id="div-comment${order.count}" class="showDetailArtistComment">
 		
@@ -293,9 +436,10 @@ function move() {
       </article>
 		
 		
+		
 		<br>
-		<c:if test="${member.id==cvo.memberVO.id}">
 			<form id="commentUpdate" action="deleteComment.do" method="post">
+		<c:if test="${member.id==cvo.memberVO.id}">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
 				<input type="hidden" name="countNo" value="${order.count}"> 
@@ -309,13 +453,24 @@ function move() {
 				</c:otherwise>
 				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
-			</form>
 		</c:if>
+				<sec:authentication property="Authorities" var="role"/>
+		
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<input type="submit" id="commentDelete${order.count}" value="삭제">
+				</sec:authorize>
+				</c:if> 
+			</form>
 		<br>
 	</div>
 	</c:when>
-      
-      
+
+     
       
       <c:otherwise>
       
@@ -346,9 +501,9 @@ function move() {
       
       <div id="div-comment${order.count}" class="showDetailMemberComment">
 <br>
-<c:if test="${member.id==cvo.memberVO.id}">
 
 			<form id="commentUpdate" action="deleteComment.do" method="post">
+<c:if test="${member.id==cvo.memberVO.id}">
 			<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
 				<input type="hidden" name="countNo" value="${order.count}"> 
@@ -362,12 +517,23 @@ function move() {
 				</c:otherwise>
 				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
-			</form>
 		</c:if>
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:csrfInput/>
+				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
+				<input type="hidden" name="countNo" value="${order.count}"> 
+				<input type="hidden" name="showNo" value="${svo.showNo}">
+				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+				</sec:authorize>
+				</c:if>
+			</form>
 <br>
 </div>
 </c:otherwise>
 </c:choose>
+</c:if>
+	
 </c:forEach> 
       
       

@@ -7,7 +7,7 @@
 <div class="container">
 
 <sec:csrfInput/>
-<input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="updateTitle"> 
+<input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="updateTitle" maxlength="30"> 
 <textarea rows="25" cols="100" name="noticeContent" required="required" placeholder="공지사항의 내용을 입력하세요" id="updateContent">
 </textarea>
 

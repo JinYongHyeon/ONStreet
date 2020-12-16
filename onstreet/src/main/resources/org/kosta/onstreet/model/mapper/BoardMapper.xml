@@ -41,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="showVO.showNo" column="showNo" />
 		<result property="memberVO.nickName" column="nickName" />
 		<result property="memberVO.profile" column="profile" />
+		<result property="memberVO.removeUserDate" column="remove_user_date" />
 	</resultMap>
 	
  	<!-- noticeVO has a -->
@@ -181,9 +182,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where c.show_no=#{showNo} and c.id=m.id and
 		c.comment_no between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}
 		order by comment_write_date asc -->
-		select cm.comment_no,cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname,cm.profile
+		select cm.comment_no,cm.rnum,cm.show_no,cm.id,cm.comment_content,cm.comment_write_date,cm.nickname,cm.profile,cm.remove_user_date
 		from (
-			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname,m.profile
+			select row_number() over(order by comment_write_date desc) as rnum, c.comment_no,c.show_no,c.id,c.comment_content,c.comment_write_date,m.nickname,m.profile,m.remove_user_date
 			from OS_COMMENT c, OS_MEMBER m
 			where c.show_no=#{showNo} and c.id=m.id
 		) cm

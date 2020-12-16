@@ -25,7 +25,7 @@
 	font-family: 'Titillium Web', sans-serif;
 }
 
-</style>
+</style> 
 
 <script type="text/javascript">
 function myFunction() {
@@ -85,6 +85,30 @@ function myFunction() {
 		<div class="dot"></div>
 	</div>
 </div>
+
+	<div class="removeMediaBtn" onclick="location.href='${pageContext.request.contextPath}/removeMemberForm.do'">
+		<span id="removeMediaBtn">회원탈퇴</span>
+		<div class="dot"></div>
+	</div>
+	
+	<div class="updateMediaBtn" onclick="location.href='${pageContext.request.contextPath}/updateArtistForm.do'">
+		<span id="updateMediaBtn">회원정보수정</span>
+		<div class="dot"></div>
+	</div>
+	
+	<div class="passUpdateMediaBtn" onclick="location.href='${pageContext.request.contextPath}/updatePasswordForm.do'">
+		<span id="passUpdateMediaBtn">비밀번호수정</span>
+		<div class="dot"></div>
+	</div><br>
+	
+	<div class="eventListMediaBtn" onclick="location.href='${pageContext.request.contextPath}/artistCheckEventList.do'">
+		<span id="eventListMediaBtn">이벤트신청현황</span>
+		<div class="dot"></div>
+	</div>
+	<div class="followListMediaBtn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
+		<span id="followListMediaBtn">팔로잉목록보기</span>
+		<div class="dot"></div>
+	</div><br>
     
     </div>
  
@@ -110,10 +134,10 @@ function myFunction() {
         <b>현재온도</b>
         	<c:choose>
 		<c:when test="${requestScope.map==null}">
-		🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는 0°C🔥
+		🔥 0°C🔥
 		</c:when>
 		<c:otherwise>
-			🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는	${requestScope.map.AVGLIKE}°C🔥
+			🔥${requestScope.map.AVGLIKE}°C🔥
 		</c:otherwise>
 	</c:choose>
         <hr>
