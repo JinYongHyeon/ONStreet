@@ -2339,6 +2339,7 @@ input[type=submit] {
 	height: 942px;
 	max-height: 942px;
 	margin-left: 390px;
+	word-break: break-all;
 }
 .myBarForm{
 	width:94%;
