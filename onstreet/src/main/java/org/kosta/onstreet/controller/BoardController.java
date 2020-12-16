@@ -482,6 +482,8 @@ public class BoardController {
       model.addAttribute("slvo", showListVO);
       model.addAttribute("searchContent", searchContent);
       model.addAttribute("totalPostCount", boardService.getSearchShowTotalCount(searchContent));
+      model.addAttribute("nlvo", boardService.getNoticeListForShowList());
+      model.addAttribute("totalNoticePostCount", boardService.getTotalNoticeCount());
       return "board/show/showList.tiles";
    }
 }
