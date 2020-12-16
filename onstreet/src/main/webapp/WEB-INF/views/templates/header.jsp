@@ -45,7 +45,7 @@
 			</svg>
 			
 			<form action="${pageContext.request.contextPath}/getShowSearchList.do" method="get" id="searchForm">
-				<input type="text" name="searchContent" required="required" placeholder="공연제목을 입력해주세요"> <input type="submit" value="검색">
+				<input type="text" name="searchContent" required="required" placeholder="공연제목을 입력해주세요" maxlength="60"> <input type="submit" value="검색">
 				<select name="kinds">
 					<option value="공연">공연</option>
 					<option value="아티스트">아티스트</option>
@@ -56,7 +56,7 @@
 	</div>
 	<div class="mobileSearch">
 		<form action="${pageContext.request.contextPath}/getShowSearchList.do" method="get" id="mobileSearchForm">
-				<input type="text" name="searchContent" required="required" placeholder="공연제목을 입력해주세요">
+				<input type="text" name="searchContent" required="required" placeholder="공연제목을 입력해주세요" maxlength="60">
 				<select name="kinds">
 					<option value="공연">공연</option>
 					<option value="아티스트">아티스트</option>

@@ -23,13 +23,13 @@
 	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount}</td>
-		<td><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
+		<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
 		<td>${requestScope.nlvo[0].memberVO.nickName}</td>		
 		<td></td>
 		</tr>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount-1}</td>
-		<td><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
+		<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
 		<td>${requestScope.nlvo[1].memberVO.nickName}</td>		
 		<td></td>		
 		</tr>

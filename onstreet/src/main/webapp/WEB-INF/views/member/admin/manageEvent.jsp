@@ -40,9 +40,6 @@
 					return;
 				}
 		});//click
-		$("#allNoticeCheck").change(function() {
-	   		 $("#checkEventForm :checkbox[name=checkEvent]").prop("checked",$(this).prop("checked"))
-		});
 	});//ready
 </script>
 <br><br>
@@ -61,7 +58,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-			<th><input type="checkbox" id="allNoticeCheck"></th>
+			<th></th>
 			<th>이벤트 번호</th>
 			<th align="center">아티스트명</th>
 			<th align="center">제목</th>
@@ -77,7 +74,7 @@
 			<tr>
 				<td>
 					<sec:csrfInput/>
-					<input type="checkbox" name="checkEvent" value="${evo.eventNo}" class="checkEvent">
+					<input type="radio" name="checkEvent" value="${evo.eventNo}" class="checkEvent">
 				</td>
 				<td>
 				${evo.eventNo}

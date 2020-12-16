@@ -124,7 +124,7 @@ h1 {
    	<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
    	</c:when>
    	<c:otherwise>
-   	<sec:authentication property="principal.memberVO.profile"/>
+   	<img src="${pageContext.request.contextPath}/resources/img/profile/<sec:authentication property="principal.memberVO.profile"/>"/>
    	</c:otherwise>
     </c:choose>
     </div>
@@ -164,7 +164,7 @@ h1 {
 		<span>팔로잉목록보기</span>
 		<div class="dot"></div>
 	</div>
-	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/updatePasswordForm.do'">
 		<span>비밀번호수정</span>
 		<div class="dot"></div>
 	</div>

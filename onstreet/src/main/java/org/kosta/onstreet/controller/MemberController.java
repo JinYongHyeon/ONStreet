@@ -250,6 +250,7 @@ public class MemberController {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String id=avo.getMemberVO().getId();
 		//System.out.println(avo==null);
+		
 		//관객마이페이지경로
 		ModelAndView mv=new ModelAndView();
 		if(avo.getCheckDate() == null) {

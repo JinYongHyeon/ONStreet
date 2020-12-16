@@ -65,7 +65,7 @@
 			</tr>
 			<tr>
 				<th>계좌번호</th>
-				<td><input type="text" name="account" placeholder="계좌번호 입력해주세요"></td>
+				<td><input type="text" name="account" placeholder="계좌번호 입력해주세요(은행)"></td>
 			</tr>
 			<tr>
 				<th>소개글</th>
