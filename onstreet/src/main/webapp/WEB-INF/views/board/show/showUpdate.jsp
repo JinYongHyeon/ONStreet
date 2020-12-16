@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/editor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
@@ -180,10 +181,13 @@ var oEditors = [];
 						</div>
 						<textarea rows="25" cols="100" name="showContent" id="showContent">${svo.showContent}</textarea>
 					</div>
-				
-		
+					
+			<c:set var="showDate" value="${fn:replace(svo.showDate,'년 ', '-')}"/>
+				<c:set var="showDate" value="${fn:replace(showDate,'월', '-')}"/>
+				<c:set var="showDate" value="${fn:replace(showDate,'일', '')}"/>
+				<c:set var="showDate" value="${fn:replace(showDate, ' ', '')}"/>
 			<div id="showUpdateShowDate">
-			<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input type="date" name="showDate" required="required" min="${today}" id="showDate" value="${svo.showDate}">
+			<span>공연날짜</span>&nbsp;&nbsp;&nbsp;<input type="date" name="showDate" required="required" min="${today}" id="showDate" value="${showDate}">
 		<input type="button" id="postUpdate" class="btn btn-primary"
 			value="수정하기" />
 			</div>

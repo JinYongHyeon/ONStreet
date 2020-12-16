@@ -65,6 +65,11 @@ public class TestJUnit {
 	@Test
 	public void board() {
 		/*
+		 * PagingBean pb=new PagingBean(9); System.out.println(bm.getCommentList("25",
+		 * pb));
+		 */
+		
+		/*
 		 * 김수민 테스트 공지사항 총합 테스트 공지사항 리스트 불러오는 테스트 int
 		 * noticeTotalCount=bm.getTotalNoticeCount();
 		 * System.out.println(noticeTotalCount); PagingBean pb=new
@@ -264,6 +269,14 @@ public class TestJUnit {
 		  
 		  MemberVO mvo = new MemberVO(); mvo.setId("user3"); mvo.setPassword(encoding);
 		  System.out.println(mm.updatePassword(mvo));
+		/*
+		 * String password= "1";
+		 * 
+		 * String encoding = passwordEncoder.encode(password);
+		 * 
+		 * MemberVO mvo = new MemberVO(); mvo.setId("admin"); mvo.setPassword(encoding);
+		 */
+		 // System.out.println(mm.updatePassword(mvo));
 		 
 		// System.out.println(mvo.getPassword().equals(encoding));
 	}

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <br>
 <span id="artistDetailTitle">ARTIST</span>
 <div class="container con">
@@ -22,6 +23,8 @@
 <div class="col-sm-2"></div>
 <div class="col-sm-6 artistProfile">
     <span id="artistName">${requestScope.artistVO.memberVO.nickName}</span>
+    <sec:authentication property="principal" var="member" />
+    	<c:if test="${member.memberVO.id != requestScope.artistVO.memberVO.id}">
     <c:choose>
     	<c:when test="${requestScope.count==0}">
     		<input type="button" value="팔로우" id="follow">
@@ -30,6 +33,7 @@
     		<input type="button" value="팔로우 취소" id="follow">
     	</c:otherwise>
     </c:choose>
+    </c:if>
     <hr>
      <form id="memberCountCon">
      	<c:if test="${requestScope.map==null}">

@@ -57,6 +57,7 @@
 <input type="button" id="uncheckArtist" value="미승인하기">
 </form>
 <sec:csrfInput />
+					<form method="post" id="checkArtistForm">
 <table id="manageMemberTable">
 	<thead>
 		<tr>
@@ -108,6 +109,7 @@
 	</tbody>
 		</form>
 </table>
+</form>
 </div>
 <div class="pagingInfo">
 	<ul class="pagination">

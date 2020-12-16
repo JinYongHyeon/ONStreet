@@ -114,6 +114,7 @@
 	/* 컨테이너 */
 	.container {
 		width: 390px !important;
+		    word-break: break-all;
 	}
 
 	/*********************************************** 로그인 ***********************************************/
@@ -284,6 +285,7 @@
 		height: 70px;
 		float:left;
 		margin:30px auto;
+		word-break: break-all;
 	}
 	.eventList img {
 		width: 100%;
@@ -646,11 +648,15 @@
 	
 	/* 공연상세보기 공연내용 */
 	#showDetailContentSide {
-		width: 100%;
+		margin-left: 60px;
+		width: 76%;
+	    word-break: break-all;
+	    height: inherit;
 	}
 	/* 공연상세보기 댓글 */
 	#showDetailCommentSide{
 		margin-left: 60px; width: 76%;
+		    height: inherit;
 	}
 	/* 공연등록 공연제목 폼  */
 	#showTitle {
@@ -707,7 +713,40 @@
 	float: none;
     border: 1px solid #000000;
     margin-right: 300px;
-    width: 40%;
+    width: 67%;
+	}
+	
+	#addEvent input[type=button] {
+   margin-right: 0;
+}
+	/***********************************************공지사항***********************************************/
+	/* 공지사항 타이틀 */
+	#register {
+	font-size: 40px;
+	font-weight: bolder;
+	box-shadow: 0 -6px #d03535 inset;
+	margin-left: 160px;
+	padding-bottom: 5px;
+	}
+	/* 공연상세보기 댓글 */
+	#showDetailCommentSide {
+	width: 76%;
+    margin-left: 60px;
+	}
+	/* 공지사항 타이틀 */
+	#logoNoticeUpdate{
+	font-size: 40px;
+    font-weight: bolder;
+    box-shadow: 0-6px #d03535 inset;
+    margin-left: 160px;
+    padding-bottom: 5px;
+	}
+	#noticeListNickNameTd{
+	display: revert;
+    width: 62px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 	}
 	/***********************************************마이페이지***********************************************/
 	/*마이페이지 타이틀*/
@@ -768,6 +807,141 @@
 	.remove-member table tr td input{
 		width:100%;
 	}
+	/*************************************************지윤이 아티스트 마이페이지************************************************************/
+	#mypage .mypageImage img {
+    width: 70%;
+    float: inherit;
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
+	#mypage .mypageContent {
+    width: 100%;
+    float: left;
+    font-size: large;
+        word-break: break-all;
+            margin-bottom: 30px;
+}
+	#btngroup {
+	display: none;
+	}
 	
+	#mypage .removeMediaBtn {
+	display: block;
+    float: left;
+	}
+	#mypage .removeMediaBtn #removeMediaBtn {
+		padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 50px;
+	}
+	#mypage .updateMediaBtn {
+	display: block;
+	    float: left;
+	}
+	#mypage .updateMediaBtn #updateMediaBtn{
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 10px;
+	}
+	#mypage .eventListMediaBtn {
+	display: block;
+	    float: left;
+	}
+	#mypage .eventListMediaBtn #eventListMediaBtn{
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 70px;
+	}
+	#mypage .followListMediaBtn {
+	display: block;
+	}
+	#mypage .followListMediaBtn #followListMediaBtn {
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 10px;
+	}
+	#mypage .passUpdateMediaBtn {
+	display: block;
+	}
+	#mypage .passUpdateMediaBtn #passUpdateMediaBtn {
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 10px;
+	}
 	
+	/************************************************지윤 회원 마이페이지****************************************************/
+	#mypage .removeMemberMediaBtn {
+	display: block;
+    float: left;
+	}
+	#mypage .removeMemberMediaBtn #removeMemberMediaBtn {
+		padding: 10px 16px 10px 16px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 10px;
+	}
+	#mypage .updateMemberMediaBtn {
+	display: block;
+	    float: left;
+	}
+	#mypage .updateMemberMediaBtn #updateMemberMediaBtn{
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 90px;
+	}
+	#mypage .followListMemberMediaBtn {
+	display: block;
+	    float: left;
+	}
+	#mypage .followListMemberMediaBtn #followListMemberMediaBtn{
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 90px;
+	}
+	#mypage .passUpdateMemberMediaBtn {
+	display: block;
+	}
+	#mypage .passUpdateMemberMediaBtn #passUpdateMemberMediaBtn {
+	padding: 10px 10px 10px 10px;
+		background-color: #d03535;
+		border: 1px solid #d03535;
+		color: white;
+		font-size: small;
+		margin-left: 10px;
+	}
+		/************************************************지윤 footer****************************************************/
+		#footer {
+			font-size: x-small; 
+		}
+		#footer img {
+			    width: 29px;
+    margin-right: 13px;
+		}
+		/************************************************지윤 main 화살표 안보이기****************************************************/
+		#mainVideo .mainMoveControl span svg {
+   display: none;
+}
 }

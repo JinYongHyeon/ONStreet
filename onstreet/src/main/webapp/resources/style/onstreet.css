@@ -315,8 +315,8 @@ input[type=submit] {
 	float: left;
 	border: none;
 	width: 40px;
-	height: 55px;
-	line-height: 55px;
+	height: 40px;
+	line-height: 40px;
 	padding: 0;
 	color: #000;
 }
@@ -325,7 +325,7 @@ input[type=submit] {
 	float: inherit;
 }
 
-/***********************************************메인[index.jsp***********************************************/
+/***********************************************메인[index.jsp]***********************************************/
 /* 메인페이지 -  비디오 - 최상위 */
 #mainVideo {
 	width: 100%;
@@ -1838,6 +1838,35 @@ input[type=submit] {
 	padding-inline-start: 40px;
 }
 /* 세희 마이페이지 css*/
+#mypage .removeMediaBtn {
+	display: none;
+}
+#mypage .updateMediaBtn {
+	display: none;
+}
+#mypage .eventListMediaBtn {
+	display: none;
+}
+#mypage .followListMediaBtn {
+	display: none;
+}
+#mypage .passUpdateMediaBtn {
+	display: none;
+}
+
+#mypage .updateMemberMediaBtn {
+	display: none;
+}
+#mypage .passUpdateMemberMediaBtn {
+	display: none;
+}
+#mypage .followListMemberMediaBtn {
+	display: none;
+}
+#mypage .removeMemberMediaBtn {
+	display: none;
+}
+
 #mypagetable ,#mypagetable tr th{
  text-align: center;
 }
@@ -1854,10 +1883,105 @@ input[type=submit] {
 	line-height:30px;
 	border: 1px solid #000;
 	margin-right: 10px;
+}
 	
+	/*-----마이페이지전체ui-------*/
+#btngroup h1 {
+	color: var(--solid);
+	font-size: 2.5rem;
+	margin-top: 6rem;	
+}
+#btngroup .btn {
+	position: relative;
+	margin: 0 auto;
+	width: var(--btn-w);
+	color: #d03535;
+	border: .15em solid #d03535;
+	border-radius: 5em;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 0.9em;;
+	line-height: 2em;
+	cursor: pointer;	
+	margin-top: 10px;
+    margin-right: 10px;
+}
+#btngroup .dot {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: var(--dot-w);
+	height: 100%;
+	border-radius: 100%;
+	transition: all 300ms ease;
+	display: none;
+}
+#btngroup .dot:after {
+	content: '';
+	position: absolute;
+	left: calc(50% - .4em);
+	top: -.4em;
+	height: .8em;
+	width: .8em;
+	background: var(--primary);
+	border-radius: 1em;
+	border: .25em solid var(--solid);
+	box-shadow: 0 0 .7em var(--solid),
+				0 0 2em var(--primary);
+}
+ .btn:hover .dot, .btn:focus .dot {
+	animation: atom 2s infinite linear;
+	display: block;
+}
+ @keyframes atom {
+	0% {transform: translateX(0) rotate(0);}
+	30%{transform: translateX(var(--tr-X)) rotate(0);}
+	50% {transform: translateX(var(--tr-X)) rotate(180deg);}
+	80% {transform: translateX(0) rotate(180deg);}
+	100% {transform: translateX(0) rotate(360deg);}
 }
 
-/* 세희 마이페이지 끝 */
+
+#mypage img{
+	width: 35%;
+    float: left;
+}
+  #mypage{
+  width: 100%;
+  margin-top: 43px;
+  }
+  #mypage .mypageImage img {
+  	width: 89%;
+  }
+  #mypage .mypageImage{
+  	width: 40%;
+  	float: left;
+  	max-height :600px;
+  }
+  #mypage .mypageContent{
+  	width: 40%;
+  	float:left;
+  	margin-left:20px;
+  	font-size: large;
+  }
+  #btngroup{
+/*   	position: absolute; */
+  	margin-top: 29px;
+  }
+  #artistInfo{
+  	height: 150px;
+  	overflow: hidden;
+  	
+  }
+  .mypageContent p {
+  	 word-break: break-all; 
+  }
+/*   .mypageContent #contentDetai{
+  margin:
+  } */
+  
+
+/* 세희 마이페이지전체ui 끝 */
 
 /*공지시항리스트 UI 김수민 */
 .logoNotice {
@@ -2331,6 +2455,7 @@ input[type=submit] {
 	width: 100%;
 	height: 942px;
 	max-height: 942px;
+	margin-left: 390px;
 	word-break: break-all;
 }
 .myBarForm{
