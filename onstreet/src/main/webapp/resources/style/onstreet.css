@@ -104,6 +104,8 @@ input[type=submit] {
 	width: 85%;
 	height: 100%;
 	float: left;
+	position: relative;
+	overflow: hidden;
 }
 
 /* 메뉴[nav] */
@@ -232,7 +234,48 @@ input[type=submit] {
 	height: 40px;
 	background-color: #d03535;
 }
-
+/*모바일검색*/
+#header .navigation .mobileSearch{
+	width:100%;
+	height:100%;
+	right:-100%;
+	position: absolute;
+	background-color:#fff;
+}
+#header .navigation .mobileSearch #mobileSearchForm{
+	height: 100%;
+	font-size:11px;
+}
+#header .navigation .mobileSearch #mobileSearchForm input[type=text]{
+	width:50%;
+	height:100%;
+	float:left;
+	border:none;
+	color:#000;
+	padding:15px;
+	font-size:11px;
+}
+#header .navigation .mobileSearch #mobileSearchForm select{
+	width:20%;
+	height:100%;
+	float:left;
+	border:none;
+	color:#000;
+}
+#header .navigation .mobileSearch #mobileSearchForm input[type=submit]{
+	width:20%;
+	height:100%;
+	float:left;
+	border:none;
+	background-color:#d03535;
+}
+#header .navigation .mobileSearch #mobileSearchForm svg{
+	width:10%;
+	height:100%;
+	cursor:pointer;
+	color:#000;
+	
+}
 /***********************************************하단 footer***********************************************/
 /*footer - 최상위*/
 #footer {
