@@ -518,7 +518,7 @@ input[type=submit] {
 	height: 300px;
 	float: left;
 	background-size: 100%;
-	background-image: url("../../resources/img/content/todayShowbg.png");
+	background-image: url("../../resources/img/todayShowbg.png");
 	background-position: center center;
 	position: relative;
 	border-radius: 15px;
@@ -1355,6 +1355,9 @@ input[type=submit] {
 	border: none;
 	background-color: #fff;
 }
+.eventContent p img{
+	width:100%;
+}
 
 /***********************************************이벤트 등록***********************************************/
 /*이벤트 등록폼*/
@@ -2087,13 +2090,13 @@ input[type=submit] {
 /*회원탈퇴 페이지 ui 끝*/
 
 /*팔로우리스트 ui 정세희*/
-li {
+ .followlistcheck ul li {
   display: inline-block;
 }
 
-input[type="checkbox"][id^="cb"] {
+.followlistcheck input[type="checkbox"][id^="cb"] {
   display: none;
-}
+} 
 
 .followlistcheck label {
   border: 1px solid #fff;
