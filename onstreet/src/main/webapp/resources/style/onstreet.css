@@ -2191,7 +2191,9 @@ input[type="checkbox"][id^="cb"] {
     width: 100%;
     float: left;
 }
-
+.progress-bar{
+	line-height: 30px;
+}
 
 .followlistcheck a{
 	width:100%;
@@ -2200,7 +2202,7 @@ input[type="checkbox"][id^="cb"] {
     text-align: center;
     border: 2px solid #fff;
     border-radius: 3px;
-    background-color: rgba(0,0,0,.5);
+    background-color: #d03535;
     color: white;
     border-block-start-style: none;
 }  
