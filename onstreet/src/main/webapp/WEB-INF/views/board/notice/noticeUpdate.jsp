@@ -19,6 +19,14 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#noticeUpdate").submit(function() {
+		if($("#updateTitle").val().trim() == "") {
+			alert("공지사항 제목을 입력하세요.");
+			return false;
+		}
+		if($("#updateContent").val().trim() == "") {
+			alert("공지사항 내용을 입력하세요.");
+			return false;
+		}
 		return confirm("공지사항을 수정하시겠습니까?");
 	});
 	$("#backButton").click(function() {

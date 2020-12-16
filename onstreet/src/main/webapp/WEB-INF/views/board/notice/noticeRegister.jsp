@@ -18,11 +18,11 @@ $(document).ready(function() {
 	$("#submitButton").click(function() {
 		if($("#registerNoticeTitle").val().trim() == "") {
 			alert("공지사항 제목을 입력하세요.");
-			return;
+			return false;
 		}
 		if($("#content").val().trim() == "") {
 			alert("공지사항 내용을 입력하세요.");
-			return;
+			return false;
 		}
 		if(confirm("공지사항을 등록하시겠습니까?")) {
 			$("#noticeRegister").submit();

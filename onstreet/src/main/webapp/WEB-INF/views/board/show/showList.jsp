@@ -19,7 +19,7 @@
 	</thead>
 
 	<tbody>
-	<c:if test="${requestScope.nlvo!=null}">
+	<c:if test="${requestScope.nlvo.size()!=0}">
 	<%-- <c:forEach items="${requestScope.nlvo.noList}" begin="0" end="1" varStatus="order" var="noList"> --%>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount}</td>
