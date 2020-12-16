@@ -21,6 +21,17 @@
 					return;
 				}
 		});//click
+		
+		$(document).on("submit","#searchManageForm",function(){
+			var content = $("#searchManageForm input[name=searchMember]").val();
+			if(content.trim()===""){
+				alert("공백은 검색이 제한됩니다. 다시 입력해 주십시오.");
+				$("#searchManageForm input[name=searchMember]").val("");
+				$("#searchManageForm input[name=searchMember]").focus();
+				return false;
+			}
+		});
+		
 		$("#allNoticeCheck").change(function() {
    		 $("#removeMemberForm :checkbox[name=checkMember]").prop("checked",$(this).prop("checked"))
 	});

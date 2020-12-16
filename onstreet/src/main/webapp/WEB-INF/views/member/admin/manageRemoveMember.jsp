@@ -2,6 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(document).on("submit","#searchManageForm",function(){
+			var content = $("#searchManageForm input[name=searchRemoveMember]").val();
+			if(content.trim()===""){
+				alert("공백은 검색이 제한됩니다. 다시 입력해 주십시오.");
+				$("#searchManageForm input[name=searchRemoveMember]").val("");
+				$("#searchManageForm input[name=searchRemoveMember]").focus();
+				return false;
+			}
+		});
+	});
+</script>
+
 <br><br>
 <span id="manageFormTitle">MANAGE</span>
 <br>

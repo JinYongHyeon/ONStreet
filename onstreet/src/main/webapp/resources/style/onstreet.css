@@ -315,8 +315,8 @@ input[type=submit] {
 	float: left;
 	border: none;
 	width: 40px;
-	height: 55px;
-	line-height: 55px;
+	height: 40px;
+	line-height: 40px;
 	padding: 0;
 	color: #000;
 }
@@ -325,7 +325,7 @@ input[type=submit] {
 	float: inherit;
 }
 
-/***********************************************메인[index.jsp***********************************************/
+/***********************************************메인[index.jsp]***********************************************/
 /* 메인페이지 -  비디오 - 최상위 */
 #mainVideo {
 	width: 100%;
@@ -1821,6 +1821,35 @@ input[type=submit] {
 	padding-inline-start: 40px;
 }
 /* 세희 마이페이지 css*/
+#mypage .removeMediaBtn {
+	display: none;
+}
+#mypage .updateMediaBtn {
+	display: none;
+}
+#mypage .eventListMediaBtn {
+	display: none;
+}
+#mypage .followListMediaBtn {
+	display: none;
+}
+#mypage .passUpdateMediaBtn {
+	display: none;
+}
+
+#mypage .updateMemberMediaBtn {
+	display: none;
+}
+#mypage .passUpdateMemberMediaBtn {
+	display: none;
+}
+#mypage .followListMemberMediaBtn {
+	display: none;
+}
+#mypage .removeMemberMediaBtn {
+	display: none;
+}
+
 #mypagetable ,#mypagetable tr th{
  text-align: center;
 }

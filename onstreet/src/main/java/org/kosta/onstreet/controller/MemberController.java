@@ -253,7 +253,7 @@ public class MemberController {
 		
 		//관객마이페이지경로
 		ModelAndView mv=new ModelAndView();
-		if(avo.getCheckDate() == null) {
+		if(avo.getCheckDate() == null || avo.getMemberVO().getId().equals("admin")) {
 			mv.setViewName("member/user/memberMypage.tiles");
 			return mv;
 		}else {
