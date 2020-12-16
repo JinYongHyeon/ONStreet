@@ -14,7 +14,7 @@
 * {box-sizing: border-box;}
 *:before, *:after {box-sizing: border-box;}
 
-body {
+ body {
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -24,96 +24,8 @@ body {
 	font-size: 20px;
 	font-family: 'Titillium Web', sans-serif;
 }
-h1 {
-	color: var(--solid);
-	font-size: 2.5rem;
-	margin-top: 6rem;	
-}
-.btn {
-	position: relative;
-	margin: 0 auto;
-	width: var(--btn-w);
-	color: #d03535;
-	border: .15em solid #d03535;
-	border-radius: 5em;
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 0.9em;;
-	line-height: 2em;
-	cursor: pointer;	
-	margin-top: 10px;
-    margin-right: 10px;
-}
-.dot {
-	content: '';
-	position: absolute;
-	top: 0;
-	width: var(--dot-w);
-	height: 100%;
-	border-radius: 100%;
-	transition: all 300ms ease;
-	display: none;
-}
-.dot:after {
-	content: '';
-	position: absolute;
-	left: calc(50% - .4em);
-	top: -.4em;
-	height: .8em;
-	width: .8em;
-	background: var(--primary);
-	border-radius: 1em;
-	border: .25em solid var(--solid);
-	box-shadow: 0 0 .7em var(--solid),
-				0 0 2em var(--primary);
-}
-.btn:hover .dot,
-.btn:focus .dot {
-	animation: atom 2s infinite linear;
-	display: block;
-}
-@keyframes atom {
-	0% {transform: translateX(0) rotate(0);}
-	30%{transform: translateX(var(--tr-X)) rotate(0);}
-	50% {transform: translateX(var(--tr-X)) rotate(180deg);}
-	80% {transform: translateX(0) rotate(180deg);}
-	100% {transform: translateX(0) rotate(360deg);}
-}
-#Mypage img{
-	width: 35%;
-    float: left;
-    max-height: 600px;
-}
-  #mypage{
-  width: 100%;
-  margin-top: 43px;
-  }
-  #mypage .mypageImage img {
-  	width: 89%;
-  }
-  #mypage .mypageImage{
-  	width: 40%;
-  	float: left;
-  }
-  #mypage .mypageContent{
-  	width: 40%;
-  	float:left;
-  	margin-left:20px;
-  	font-size: large;
-  }
-  #btngroup{
-  	position: absolute;
-  	margin-top: 29px;
-  }
-  #artistInfo{
-  	height: 150px;
-  	overflow: hidden;
-  	
-  }
-  .mypageContent p {
-  	 word-break: break-all; 
-  }
-</style>
+
+</style> 
 
 <script type="text/javascript">
 function myFunction() {
@@ -131,9 +43,6 @@ function myFunction() {
 </script>
 <div class="container" id="mypage-alink">
   <span id="mypageTitle">Artist Mypage</span>
- 
- 
- 
  <div id="mypage">
  
   <div class="mypageImage">
@@ -173,6 +82,30 @@ function myFunction() {
 		<div class="dot"></div>
 	</div>
 </div>
+
+	<div class="removeMediaBtn" onclick="location.href='${pageContext.request.contextPath}/removeMemberForm.do'">
+		<span id="removeMediaBtn">회원탈퇴</span>
+		<div class="dot"></div>
+	</div>
+	
+	<div class="updateMediaBtn" onclick="location.href='${pageContext.request.contextPath}/updateArtistForm.do'">
+		<span id="updateMediaBtn">회원정보수정</span>
+		<div class="dot"></div>
+	</div>
+	
+	<div class="passUpdateMediaBtn" onclick="location.href='${pageContext.request.contextPath}/updatePasswordForm.do'">
+		<span id="passUpdateMediaBtn">비밀번호수정</span>
+		<div class="dot"></div>
+	</div><br>
+	
+	<div class="eventListMediaBtn" onclick="location.href='${pageContext.request.contextPath}/artistCheckEventList.do'">
+		<span id="eventListMediaBtn">이벤트신청현황</span>
+		<div class="dot"></div>
+	</div>
+	<div class="followListMediaBtn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
+		<span id="followListMediaBtn">팔로잉목록보기</span>
+		<div class="dot"></div>
+	</div><br>
     
     </div>
  
@@ -198,10 +131,10 @@ function myFunction() {
         <b>현재온도</b>
         	<c:choose>
 		<c:when test="${requestScope.map==null}">
-		🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는 0°C🔥
+		🔥 0°C🔥
 		</c:when>
 		<c:otherwise>
-			🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는	${requestScope.map.AVGLIKE}°C🔥
+			🔥${requestScope.map.AVGLIKE}°C🔥
 		</c:otherwise>
 	</c:choose>
         <hr>

@@ -91,6 +91,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*)
 		FROM os_member
 		WHERE nickname LIKE '%'||#{value}||'%'
+		and remove_user_date is null
+		and id != 'admin'
 	</select>
 	
 	<!-- 회원 검색  -->

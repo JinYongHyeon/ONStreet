@@ -263,6 +263,12 @@ public class TestJUnit {
 		 */
 
 		
+		  String password= "123456";
+		  
+		  String encoding = passwordEncoder.encode(password);
+		  
+		  MemberVO mvo = new MemberVO(); mvo.setId("user3"); mvo.setPassword(encoding);
+		  System.out.println(mm.updatePassword(mvo));
 		/*
 		 * String password= "1";
 		 * 
