@@ -38,7 +38,7 @@ h1 {
 	border-radius: 5em;
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 1.3em;
+	font-size: 0.9em;;
 	line-height: 2em;
 	cursor: pointer;	
 }
@@ -77,7 +77,34 @@ h1 {
 	80% {transform: translateX(0) rotate(180deg);}
 	100% {transform: translateX(0) rotate(360deg);}
 }
+#Mypage img{
+	width: 35%;
+    float: left;
+}
 
+#btngroup{
+    margin-top: 86px;
+    }
+  #mypage{
+  width: 100%;
+  margin-top: 43px;
+  }
+  #mypage .mypageImage img {
+  	width: 100%;
+  }
+  #mypage .mypageImage{
+  	width: 40%;
+  	float: left;
+  }
+  #mypage .mypageContent{
+  	width: 40%;
+  	float:left;
+  	margin-left:20px;
+  	font-size: large;
+  }
+  #btngroup{
+  	position: absolute;
+  }
 </style>
 
 
@@ -85,63 +112,78 @@ h1 {
   <span id="mypageTitle">My page</span>   
   
   
-  <table class="table table-bordered table-sm" id="mypagetable">
   
-    <thead>
     
-      <tr>
-        <th>아이디</th>
-        <td><sec:authentication property="principal.memberVO.id"/></td>
-      </tr>
-      <tr>
-        <th>이름</th>
-        <td><sec:authentication property="principal.memberVO.name"/></td>
-       </tr>
-       <tr>
-        <th>닉네임</th>
-        <td><sec:authentication property="principal.memberVO.nickName"/></td>
-        </tr>
-        <tr>
-        <th>휴대폰 번호</th>
-        <td><sec:authentication property="principal.memberVO.phone"/></td>
-        </tr>
-        <tr>
-        <th>주소</th>
-        <td><sec:authentication property="principal.memberVO.address"/></td>
-        </tr>
-        <tr>
-        <th>이메일</th>
-        <td><sec:authentication property="principal.memberVO.email"/></td>
-        </tr>
-      
-      </thead>
-      
-  </table>
-       	<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a>
-        <a href="${pageContext.request.contextPath}/updateMemberForm.do">회원정보수정</a>
-        <a href="${pageContext.request.contextPath}/followingList.do">팔로잉목록보기</a>
-        <a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
-</div>
+    <div id="mypage">
+    
+    <div class="mypageImage">
+    <sec:authentication property="principal.memberVO.profile" var="member"/>
+    
+    <c:choose>
+   	<c:when test="${member==null}">
+   	<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
+   	</c:when>
+   	<c:otherwise>
+   	<sec:authentication property="principal.memberVO.profile"/>
+   	</c:otherwise>
+    </c:choose>
+    </div>
+    
 
+    
+    <div class="mypageContent">
+        <b>아이디</b>
+        <sec:authentication property="principal.memberVO.id"/>
+        <hr>
+        <b>이름</b>
+        <sec:authentication property="principal.memberVO.name"/>
+        <hr>
+        <b>닉네임</b>
+        <sec:authentication property="principal.memberVO.nickName"/>
+         <hr>
+        <b>휴대폰 번호</b>
+        <sec:authentication property="principal.memberVO.phone"/>
+        <hr>
+        <b>주소</b>
+        <sec:authentication property="principal.memberVO.address"/>
+        <hr>
+        <b>이메일</b>
+        <sec:authentication property="principal.memberVO.email"/>
+        
+        <div id="btngroup">
 
-<div class="container">	
-	<div class="btn">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/removeMemberForm.do'">
 		<span>회원탈퇴</span>
 		<div class="dot"></div>
 	</div>
-	<div class="btn">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/updateMemberForm.do'">
 		<span>회원정보수정</span>
 		<div class="dot"></div>
 	</div>
-	<div class="btn">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
 		<span>팔로잉목록보기</span>
 		<div class="dot"></div>
 	</div>
-	<div class="btn">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
 		<span>비밀번호수정</span>
 		<div class="dot"></div>
 	</div>
-</div>
+</div>	
+        </div>
+     </div> 
+      
+<%--        	<a href="${pageContext.request.contextPath}/removeMemberForm.do"/>회원탈퇴</a>
+        <a href="${pageContext.request.contextPath}/updateMemberForm.do"/>회원정보수정</a>
+        <a href="${pageContext.request.contextPath}/followingList.do"/>팔로잉목록보기</a>
+        <a href="${pageContext.request.contextPath}/updatePasswordForm.do"/>비밀번호수정</a> --%>
+        
+<div class="col-sm-2"></div>
+
+
+
+
+</div> 
+	
 
 
 
