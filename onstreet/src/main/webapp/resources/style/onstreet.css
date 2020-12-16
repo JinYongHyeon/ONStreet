@@ -669,6 +669,23 @@ input[type=submit] {
 	float: left;
 	position: relative;
 	overflow: hidden;
+	text-align: center;
+}
+
+#artisStandardt .artistRecommendation h1{
+	line-height: 300px;
+	position: relative;
+	color:#fff;
+}
+#artisStandardt .artistRecommendation h1::before{
+	content:"";
+	width:100%;
+	height: 100%;
+	left:0;
+	opacity:0.7;
+	position: absolute;
+	background-color:#000;
+	z-index:-1;
 }
 
 /* 추천아티스트 슬라이드 리스트 */
@@ -1898,6 +1915,11 @@ input[type=submit] {
 }
 
 /*공지사항 상세보기 UI 김수민  */
+/*공지사항 제목*/
+#noticeTitle{
+    word-break: break-all;
+}
+
 #noticeDetail {
 	width: 100%;
 	margin-top: 50px;
@@ -2007,7 +2029,7 @@ input[type=submit] {
 	border-radius: 5px;
 }
 
-/*회원정보 수정 UI 김수민  */
+/*공지사항 수정 UI 김수민  */
 #logoNoticeUpdate{
 	font-size: 40px;
     font-weight: bolder;
@@ -2306,10 +2328,10 @@ input[type=submit] {
 
 #showDetailContentSide {
 	float: left;
-	width: 30%;
+	width: 100%;
 	height: 942px;
 	max-height: 942px;
-	margin-left: 390px;
+	word-break: break-all;
 }
 .myBarForm{
 	width:94%;

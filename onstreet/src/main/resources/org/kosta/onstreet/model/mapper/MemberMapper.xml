@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="email" property="memberVO.email"/>
  		<result column="name" property="memberVO.name"/>
  		<result column="age" property="memberVO.age"/>
- 		<result column="remove_user_date" property="memberVO.removeUserDate"/>
+ 		<result column="remove_user_date" property=" "/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	

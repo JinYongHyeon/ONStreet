@@ -130,9 +130,6 @@ function myFunction() {
 </script>
 <div class="container" id="mypage-alink">
   <span id="mypageTitle">Artist Mypage</span>
- 
- 
- 
  <div id="mypage">
  
   <div class="mypageImage">

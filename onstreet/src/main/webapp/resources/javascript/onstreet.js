@@ -250,6 +250,11 @@ $(document).ready(function(){
          }
    });//회원수정 종합 체크 EVENT END
 
+//[회원수정] 비밀번호 변경 공백 방지 - 진용현
+  $(document).on("keyup","#passwordUpdateForm input[type=password]",function(){
+		$(this).val($(this).val().replace(/ /gi, ''));
+});
+
 //[회원수정] 비밀번호 변경 기능 - 진용현
    $("#passwordUpdateForm button").click(function(){
    var elementToken = document.querySelector('meta[name="_csrf"]');

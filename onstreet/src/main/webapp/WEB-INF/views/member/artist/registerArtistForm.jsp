@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<th>상세주소</th>
-				<td><input type="text" name="address" required="required" placeholder="상세주소 입력해주세요"></td>
+				<td><input type="text" name="address" required="required" placeholder="상세주소 입력해주세요" maxlength="50"></td>
 			</tr>
 			<tr>
 				<th>전화번호</th>

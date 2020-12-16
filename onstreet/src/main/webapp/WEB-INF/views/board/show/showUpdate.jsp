@@ -61,6 +61,7 @@ var oEditors = [];
 		$("#multipartPreViewForm input[value=전송]").click(
 			
 						function() {
+							if($("#multipartPreView").is(":animated"))return;
 							if($("#multipartPreViewForm .multipartPreViewFile input[type=file]").val()===""){
 								alert("이미지를 등록해주세요");
 								return;

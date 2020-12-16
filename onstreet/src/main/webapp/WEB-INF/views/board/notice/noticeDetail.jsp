@@ -29,7 +29,7 @@ $(document).ready(function() {
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="container">
 <sec:authentication property="principal.memberVO" var="member"/>
-			<h1>${nvo.noticeTitle}</h1><hr>
+			<h1 id="noticeTitle">${nvo.noticeTitle}</h1><hr>
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${nvo.memberVO.profile}" width="35px"></div>
 			&nbsp;${requestScope.nvo.memberVO.nickName}<br>
 			<span id="showDetailShowWriteDate">&nbsp;${requestScope.nvo.noticeWriteDate}</span><hr>
@@ -51,9 +51,6 @@ $(document).ready(function() {
 			</div>
 			
 			<br><br>
-			</div>
-			
-
 <div id="showDetailContentSide" >
 <section class="test">
 						<div>
@@ -61,5 +58,8 @@ $(document).ready(function() {
 			</div>
 		</section>		
 </div>
+			</div>
+			
+
 
 
