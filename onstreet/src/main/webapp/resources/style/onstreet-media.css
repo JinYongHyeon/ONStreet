@@ -2,19 +2,26 @@
 /*480, 768, 1024, 1600*/
 /* 반응형 웹 mediaQuery */
 @media screen and (max-width:1600px) {
-	/* layout-header */
+	/*********************************************** 상단[Heeader]-1600px   ***********************************************/
+	
+	/*메뉴*/
 	#header .navigation nav {
 		width: 45%;
 	}
+	/*로그아웃,마이페이지,관리자 버튼 + 검색 */
 	#header .navigation .loginbar {
 		width: 55%;
 	}
+	/*로그아웃,마이페이지,관리자 버튼*/
 	#header .navigation .loginbar .bitLogin {
 		width: 55%;
 	}
+	/* 검색 */
 	#header .navigation .loginbar .bitMainSearch {
 		width: 42%;
 	}
+	
+	/***********************************************이용약관-1600px ***********************************************/
 	/* 회원가입 - 이용약관*/
 	#checkDocument {
 		margin-top: 100px;
@@ -22,12 +29,16 @@
 }
 /*********************************************** 가로 1024PX MAX  ***********************************************/
 @media screen and (max-width:1024px) {
+	/*컨테이너*/
 	.container {
 		width: 970px;
 	}
+	/*********************************************** 상단[Heeader]-1024px  ***********************************************/
+	/*상단 - 최상위 */
 	#header {
 		height: 60px;
 	}
+	/* 메뉴 */
 	#header .navigation nav {
 		width: 35%;
 	}
@@ -40,15 +51,18 @@
 		line-height: 60px;
 		font-size: 16px;
 	}
+	/*로그아웃,마이페이지,관리자 버튼 + 검색 */
 	#header .navigation .loginbar {
 		width: 65%;
 	}
+	/* 로그아웃,마이페이지,관리자 버튼 */
 	#header .navigation .loginbar .bitLogin {
 		line-height: 60px;
 	}
 	#header .navigation .loginbar .bitLogin a {
 		font-size: 16px;
 	}
+	/* 검색 */
 	#header .bitMainSearch {
 		margin-right: 10px;
 	}
@@ -59,27 +73,37 @@
 	#header .bitMainSearch form input[type=submit] {
 		width: 70px;
 	}
+	/*검색 돋보기 아이콘*/
 	#header .bitMainSearch #asd {
 		height: 60px;
 	}
+	/*********************************************** 메인-1024px  ***********************************************/
+	/*메인페이지-비디오-최상위 */
 	#mainVideo {
 		height: 57vh;
 	}
+	/*메인페이지-비디오 안(로그인 하기 전)-로그인*/
 	#mainVideo .mainVideoLoginForm span {
 		width: 200px;
 		height: 40px;
 		line-height: 40px;
 		font-size: 14px;
 	}
+	/*추천아티스트 슬라이드*/
 	#artisStandardt .artistRecommendation {
 		height: 250px;
 	}
+	/***********************************************약관동의서-1024px***********************************************/
+	/*약관 동의서-최상위*/
 	#checkDocument {
 		margin-top: 40px;
 	}
+	/***********************************************회원가입[관객,아티스트]선택-1024px ***********************************************/
+	/*회원가입 선택-타이틀*/
 	#choiceRegister .choiceTitle {
 		margin-top: 80px;
 	}
+	/*회원가입[관객,아티스트]선택*/
 	#choiceRegister section {
 		margin-top: 87px;
 	}
@@ -92,7 +116,7 @@
 		width: 390px !important;
 	}
 
-	/*********************************************** 로그인  ***********************************************/
+	/*********************************************** 로그인 ***********************************************/
 
 	/*로그인-최상위*/
 	#login {
@@ -115,8 +139,12 @@
 	#header {
 		height: 30px;
 	}
-
+	
 	/* 메뉴 */
+	#header .navigation nav{
+		width:40%;
+	}
+	
 	#header .navigation nav ul {
 		height: 30px;
 	}
@@ -129,10 +157,14 @@
 	#header .bitLog a img {
 		margin-top: 0;
 	}
-
+	/* 로그아웃,마이페이지,관리자 버튼 + 검색*/
+	#header .navigation .loginbar{
+		width:60%;
+	}
+	
 	/* 로그아웃,마이페이지,관리자 버튼*/
 	#header .navigation .loginbar .bitLogin {
-		width: 60%;
+		width: 70%;
 		line-height: 30px;
 	}
 	#header .navigation .loginbar .bitLogin a {
@@ -141,8 +173,9 @@
 	}
 	/* 검색*/
 	#header .navigation .loginbar .bitMainSearch {
-		width: 35%;
+		width: 20%;
 	}
+	/*검색 돋보기 아이콘*/
 	#header .bitMainSearch #asd {
 		width: 9px;
 		height: 30px;
@@ -377,7 +410,12 @@
 	.artistProfile input[value=공연일정보기] {
 		width: 100%;
 	}
-
+	
+	/* 아티스트 상세보기 폰트 */
+	.artistProfile{
+	font-size: inherit;
+    text-align: left;
+	}
 	/*********************************************** 아티스트 일정(달력)  ***********************************************/
 
 	/*아티스트상세 달력*/
@@ -434,6 +472,23 @@
 	/* 공연리스트 - 버튼 */
 	#showListRegisterBtn input[type=submit] {
 		margin-bottom: 15px;
+	}
+	
+	 /* 공연제목 크기조절 */ 
+	#showListTitleTd {
+		display: inline-block;
+		width: 161px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	/* 공연리스트에서 제목 ... 처리 */
+	#showListNickNameTd {
+		display: block;
+		width: 62px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	/*********************************************** 페이징 ***********************************************/
 	/* 페이징 */
@@ -502,6 +557,7 @@
 		background-color: #d03535;
 		bottom: 4%;
 	}
+	/*관리자페이지 선택버튼*/
 	#manageFormBtn {
 		width: 100%;
 		margin-bottom: 5px;
@@ -517,16 +573,16 @@
 	#choiceRegister section {
 		width: 100%;
 	}
-	#choiceRegister ul {
+	#choiceRegister section ul {
 		width: 167px;
 	}
-	#choiceRegister ul:nth-child(2) {
+	#choiceRegister section ul:nth-child(2) {
 		margin-right: 0;
 	}
-	#choiceRegister ul li:nth-child(1) {
+	#choiceRegister section ul li:nth-child(1) {
 		height: 167px;
 	}
-	#choiceRegister ul li h3 {
+	#choiceRegister section ul li h3 {
 		padding: 0;
 		font-size: 16px;
 	}
@@ -563,23 +619,8 @@
 	#passwordUpdate{
 		width:90%;
 	}
-		
-	 /* 공연제목 크기조절 */ 
-	#showListTitleTd {
-		display: inline-block;
-		width: 161px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	/* 공연리스트에서 제목 ... 처리 */
-	#showListNickNameTd {
-		display: block;
-		width: 62px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+	/***********************************************공연상세보기***********************************************/
+	
 	/* 공연상세보기 공연내용 */
 	#showDetailContentSide {
 		margin-left: 60px;
@@ -618,6 +659,11 @@
 	#showUpdateShowDate{
 	width: 100%
 	}
+	/* 공연리스트 상세보기 수정삭제 버튼 */
+	#showDetailUpdateDeleteDiv{
+	margin-bottom: 15px;
+	}
+	/***********************************************이벤트 등록***********************************************/
 	/* 이벤트 등록 폼 */
 	#addEvent{
 	margin-left: 0px
@@ -636,6 +682,7 @@
     margin-right: 300px;
     width: 40%;
 	}
+	/***********************************************공지사항***********************************************/
 	/* 공지사항 타이틀 */
 	#register {
 	font-size: 40px;
@@ -657,13 +704,66 @@
     margin-left: 160px;
     padding-bottom: 5px;
 	}
-	/* 공연리스트 상세보기 수정삭제 버튼 */
-	#showDetailUpdateDeleteDiv{
-	margin-bottom: 15px;
+	/***********************************************마이페이지***********************************************/
+	/*마이페이지 타이틀*/
+	#mypageTitle {
+		width: 100%;
+		text-align: center;
+		float: left;
+		margin-left: 0;
+		margin-top:30px;
+		margin-bottom: 30px;
+		box-shadow: inherit;
+		position: relative;
+		font-size:26px;
 	}
-	/* 아티스트 상세보기 폰트 */
-	.artistProfile{
-	font-size: inherit;
-    text-align: left;
+	#mypageTitle::before {
+		content: "";
+		width: 36%;
+		height: 3px;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0);
+		background-color: #d03535;
+		bottom: -5%;
 	}
+	
+	/***********************************************회원탈퇴***********************************************/
+	/*회원탈퇴 타이틀*/
+	.font_ctb {
+		width: 100%;
+		text-align: center;
+		float: left;
+		margin-left:0 !important;
+		margin-top:30px;
+		margin-bottom: 30px;
+		box-shadow: inherit;
+		position: relative;
+		font-size:26px;
+		margin-top:235px;
+	}
+	.font_ctb::before {
+		content: "";
+		width: 18%;
+		height: 3px;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0);
+		background-color: #d03535;
+		bottom: -10%;
+	}
+	
+	.remove-member{
+		width:100%;
+		margin-top:150px;
+	}
+	.remove-member table tr td{
+		width:50%;
+		float:left;
+	}
+	.remove-member table tr td input{
+		width:100%;
+	}
+	
+	
 }
