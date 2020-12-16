@@ -137,7 +137,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select m.nickname,m.profile,f.following_id
 		from(select row_number() over(order by id asc) as rnum,following_id,id
 		from os_follow where id=#{id} ) f,os_member m
-		where m.id=f.following_id 
+		where m.id=f.following_id and m.remove_user_date is null
 		and rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
 	</select>
 	
@@ -196,9 +196,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (SELECT row_number() 
 		over(order by event_check_date desc) as rnum, event_check_date, event_no,
 		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') 
-		as event_date,id FROM os_event)
-		WHERE id=#{id}
-		AND rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
+		as event_date,id FROM os_event WHERE id=#{id})
+		WHERE rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
  	</select>
  	
  	

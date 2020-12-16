@@ -171,13 +171,7 @@ h1 {
 </div>	
         </div>
      </div> 
-      
-<%--        	<a href="${pageContext.request.contextPath}/removeMemberForm.do"/>회원탈퇴</a>
-        <a href="${pageContext.request.contextPath}/updateMemberForm.do"/>회원정보수정</a>
-        <a href="${pageContext.request.contextPath}/followingList.do"/>팔로잉목록보기</a>
-        <a href="${pageContext.request.contextPath}/updatePasswordForm.do"/>비밀번호수정</a> --%>
         
-<div class="col-sm-2"></div>
 
 
 

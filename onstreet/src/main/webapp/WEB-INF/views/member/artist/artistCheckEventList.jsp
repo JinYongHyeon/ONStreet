@@ -4,11 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <script type="text/javascript">
 
-function check_all(){
-	for(i=0; i<form.checkboxBtn.length; i++){
-		form.checkboxBtn[i].checked = !form.checkboxBtn[i].checked;
-	}
-} 
 
 function check(){
 	var flag = false;
@@ -26,29 +21,51 @@ function check(){
 }
 
 	$(function(){
+		//전체 체크박스 클릭 이벤트
+		$(document).on("click","#checkboxBtn2",function(){
+			var flag =false;
+			var checkBox = document.getElementsByName("checkboxBtn");
+			var allCheckBox = document.getElementById("checkboxBtn2");
+			var btn =document.getElementById("deleteEventBtn");
+			var flag = false;
+			for(i=0; i<checkBox.length; i++){
+				checkBox[i].checked = allCheckBox.checked;
+				flag = checkBox[i].checked;
+			}
+			
+			if(flag===true){
+				$("#deleteEventBtn").css("display","block");
+				$("#deleteEventBtn").animate({
+					opacity:1
+				},500);
+
+			}else{
+				$("#deleteEventBtn").css({"display":"none","opacity":0});
+			}
+		});
+		
+		//체크박스 클릭 이벤트
 		$(document).on("click","#checkboxBtn",function(){
 			var flag=false;
 			var checkBox = document.getElementsByName("checkboxBtn");
 			for(i=0; i<checkBox.length; i++){
-				//console.log(form.checkboxBtn[i].checked==true);
 				if(checkBox[i].checked){
 				flag=true;
 				break;
 				}
-				
 			}
+			
 			if(flag===true){
 				$("#deleteEventBtn").css("display","block");
 				$("#deleteEventBtn").animate({
 					opacity : 1
-				},1000);
+				},500);
 				
 			}else{
-				$("#deleteEventBtn").animate({
-					opacity : 0
-				},1000,function(){
-					$(this).css("display","none");	
-				});
+			
+				$("#deleteEventBtn").css("display","none");	
+				$("#deleteEventBtn").css("opacity","0");	
+				
 				$("#checkboxBtn").prop('checked', false);	
 			}
 			
@@ -75,7 +92,7 @@ function check(){
 	<th>이벤트제목</th>
 	<th>이벤트내용</th>
 	<th>이벤트날짜</th>
-	<th>승인상태  <input type="checkbox" id="checkboxBtn" name="checkboxBtn" onclick="check_all()"/></th>
+	<th>승인상태  <input type="checkbox" id="checkboxBtn2"/></th>
 </tr>
 </thead>
 
@@ -84,9 +101,6 @@ function check(){
 <div>
 <p class="evetext">*반려상태인 이벤트만 삭제 가능합니다.</p>            
 <input type="submit" style="display:none; opacity: 0" id="deleteEventBtn" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>
-<small>
-<span class="count">1 item</span>
-</small>
 </div>
 <sec:csrfInput/>
 <c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">

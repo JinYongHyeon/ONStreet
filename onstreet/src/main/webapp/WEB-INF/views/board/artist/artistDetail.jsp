@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <br>
-<span id="artistDetailTitle">ARITST</span>
+<span id="artistDetailTitle">ARTIST</span>
 <div class="container con">
 
 <div class="col-sm-4 artistProfileImg">

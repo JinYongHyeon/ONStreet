@@ -116,19 +116,6 @@ h1 {
 
 <script type="text/javascript">
 function myFunction() {
-	  /* var dots = document.getElementById("dots");
-	  var moreText = document.getElementById("more");
-	  var btnText = document.getElementById("myBtn");
-
-	  if (dots.style.display === "none") {
-	    dots.style.display = "inline";
-	    btnText.innerHTML = "Read more"; 
-	    moreText.style.display = "none";
-	  } else {
-	    dots.style.display = "none";
-	    btnText.innerHTML = "Read less"; 
-	    moreText.style.display = "inline";
-	  } */
 	  var artistInfo = document.getElementById("artistInfo");
 	  var height = document.getElementById("artistInfoText").offsetHeight+40+'px';
 	  var btnText = document.getElementById("myBtn");
@@ -141,7 +128,6 @@ function myFunction() {
 	  }
 	}
 </script>
-
 <div class="container" id="mypage-alink">
   <span id="mypageTitle">Artist Mypage</span>
  
@@ -234,22 +220,8 @@ function myFunction() {
      </div>
      </div> 
 
-<div class="col-sm-2"></div>
 	
 </div>
 
 
-
-
-
-
-
-<%-- 
-<div class="mypageBtn">
-		<a href="${pageContext.request.contextPath}/removeMemberForm.do">회원탈퇴</a>
-		<a href="${pageContext.request.contextPath}/updateArtistForm.do">회원정보수정</a>
-		<a href="${pageContext.request.contextPath}/artistCheckEventList.do">이벤트신청현황</a>
-		<a href="${pageContext.request.contextPath}/updatePasswordForm.do">비밀번호수정</a>
-		<a href="${pageContext.request.contextPath}/followingList.do">팔로우리스트</a>
-	</div> --%>
 

@@ -48,12 +48,17 @@
 			var flag = false;
 			//체크 유무 검사
 			var followingId = document.getElementsByName("followingId");
-			for(var i=0;i<followingId.length;i++){
+			for(var i=0;i<followingId.length;i++) {
 				if(followingId[i].checked){
+					$(".followlistcheckSection input[value=모두선택]").show();
 					flag=true;
 					break;
-				}	
+				}
 			}
+			if($(".followlistcheck input[name=followingId]:checked").length===$(".followlistcheck input[name=followingId]").length) {
+				$(".followlistcheckSection input[value=모두선택]").hide();
+			}
+		
 			//체크 유무 확인 후 삭제버튼 활성화 이벤트
 			if(flag === true){
 				$("#removefollowBtn").css("display","block");
@@ -65,12 +70,14 @@
 		});//click event end
 		
 		$(document).on("click",".followlistcheckSection input[value=모두선택]",function(){
+			$(".followlistcheckSection input[value=모두선택]").hide();
 			var flag = false;
 			var fi = document.getElementsByName("followingId");
 			for(i=0; i< fi.length; i++){
 				fi[i].checked = true;
 				flag = true;
 			}
+			
 			//체크 유무 확인 후 삭제버튼 활성화 이벤트
 			if(flag === true){
 				$("#removefollowBtn").css("display","block");
@@ -87,6 +94,7 @@
 			for(i=0; i< fi.length; i++){
 				fi[i].checked = false;
 			}
+			$(".followlistcheckSection input[value=모두선택]").show();
 			//체크 유무 확인 후 삭제버튼 활성화 이벤트
 			if(flag === true){
 				$("#removefollowBtn").css("display","block");

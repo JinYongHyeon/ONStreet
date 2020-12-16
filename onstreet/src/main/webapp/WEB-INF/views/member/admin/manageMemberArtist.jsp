@@ -41,7 +41,7 @@
 <table id="manageMemberTable">
 	<thead>
 		<tr>
-		    <th><input type="checkbox" id="allNoticeCheck"></th>
+		    <th><input type="checkbox" id="allNoticeCheck" name="checkMember"></th>
 			<th>아이디</th>
 			<th>닉네임</th>
 			<th>주소</th>
@@ -95,6 +95,5 @@
 	<li><a href="${pageContext.request.contextPath}/manageMemberArtistForm.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 	</c:if>
 	</ul>	 		
-	</div>
 	</div>
 <div class="col-sm-2"></div>
