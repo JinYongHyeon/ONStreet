@@ -10,11 +10,11 @@ $(document).ready(function(){
       $("#header .bitMainSearch form").animate({
          left:0
       },1000);
-	}
+	}else{
 	$("#header .navigation .mobileSearch").animate({
 		right:"0"
 	},1000);
-      
+      }
    });//검색 아이콘 클릭 EVENT END
 
   /***********************************************로그인***********************************************/
