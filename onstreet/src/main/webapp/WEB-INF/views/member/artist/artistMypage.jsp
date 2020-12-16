@@ -143,7 +143,7 @@ function myFunction() {
    	<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
    	</c:when>
    	<c:otherwise>
-   	<img src="<sec:authentication property="principal.memberVO.profile"/>">
+    	<img src="${pageContext.request.contextPath}/resources/img/profile/<sec:authentication property="principal.memberVO.profile"/>"/>
    	</c:otherwise>
     </c:choose>
          <div id="btngroup">

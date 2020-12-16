@@ -124,7 +124,7 @@ h1 {
    	<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
    	</c:when>
    	<c:otherwise>
-   	<sec:authentication property="principal.memberVO.profile"/>
+   	<img src="${pageContext.request.contextPath}/resources/img/profile/<sec:authentication property="principal.memberVO.profile"/>"/>
    	</c:otherwise>
     </c:choose>
     </div>

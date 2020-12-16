@@ -131,7 +131,8 @@
 	<c:when test="${list.memberVO.profile!=null}">
 <ul>
   <li><input type="checkbox" id="cb${point.index}" name="followingId" value="${list.followingId}" />
-    <label for="cb${point.index}"><img src="${pageContext.request.contextPath}/resources/img/profile/${list.memberVO.profile}"></label>
+    <label for="cb${point.index}">
+    <img src="${pageContext.request.contextPath}/resources/img/profile/${list.memberVO.profile}"></label>
 	<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.followingId}">${list.memberVO.nickName}</a><br>
   </li>
 </ul>	
@@ -140,7 +141,8 @@
 	<c:otherwise>
 <ul>
   <li><input type="checkbox" id="cb${point.index}" name="followingId" value="${list.followingId}"/>
-    <label for="cb${point.index}"><img src="${pageContext.request.contextPath}/resources/img/profile/default.png"/></label>
+    <label for="cb${point.index}">
+    <img src="${pageContext.request.contextPath}/resources/img/profile/default.png"/></label>
 	<a href="${pageContext.request.contextPath}/getArtistDetail.do?id=${list.followingId}">${list.memberVO.nickName}</a><br>
   </li>
 </ul>
