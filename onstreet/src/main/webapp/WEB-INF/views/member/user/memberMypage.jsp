@@ -80,6 +80,7 @@ body {
 #Mypage img{
 	width: 35%;
     float: left;
+    max-height: 600px;
 }
 
 #btngroup{
