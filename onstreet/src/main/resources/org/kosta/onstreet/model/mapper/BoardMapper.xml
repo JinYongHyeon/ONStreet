@@ -99,33 +99,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<!-- 정지윤 -->
  	<!-- 아티스트 개수 -->
  	<select id="getTotalArtistCount" resultType="int">
-		select count(*) from os_artist
+		select count(*) from os_artist where check_date != '0001-01-01'
 	</select>
 
  	<!-- 아티스트 리스트 불러오기 -->
  	<select id="getArtistList" resultMap="artistList" parameterType="pagingBean">
- 		  SELECT m.id, m.nickname, m.profile
-	      FROM(SELECT row_number() over(order by id desc) as rnum, nickname, id, profile
-	      FROM os_member WHERE remove_user_date is null) m, os_artist t, os_auth a
-	      WHERE m.id=a.id AND m.id=t.id 
-	      AND a.auth_name='ROLE_ARTIST'
-	      AND check_date is not null 
-	      AND m.id NOT IN ('admin')
+ 		  select t.id,t.nickname,t.profile
+		from(select row_number() over(order by m.id desc) as rnum, m.id,m.nickname,m.profile from os_member m,os_artist t
+		where m.remove_user_date is null and m.id=t.id and t.check_date is not null and t.check_date != '0001-01-01'
+		and m.id != 'admin') t, os_auth a
+		where t.id=a.id
+		and a.auth_name='ROLE_ARTIST'
 	      AND rnum between #{startRowNumber} and #{endRowNumber} 
-	      ORDER BY t.check_date DESC
  	</select>
  	
  	<!-- 이벤트 개수 -->
  	<select id="getTotalEventCount" resultType="int">
-		select count(*) from os_event
+		select count(*) from os_event where event_check_date != '0001-01-02'
 	</select>
 	
  	<!-- 이벤트 리스트 불러오기 -->
  	<select id="getEventList" resultMap="eventList" parameterType="pagingBean">
- 		SELECT event_no, event_title, event_image, event_date
+ 				SELECT event_no, event_title, event_image, event_date
 		FROM (SELECT row_number() over(order by event_check_date desc) as rnum, event_check_date, event_no,
 		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') as event_date FROM os_event
-		WHERE event_check_date IS NOT NULL)
+		WHERE event_check_date IS NOT NULL and event_check_date != '0001-01-02')
 		WHERE rnum between #{startRowNumber} and #{endRowNumber} 
  	</select>
  	
