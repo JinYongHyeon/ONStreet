@@ -19,6 +19,7 @@ public interface AdminMapper {
 	 * @return
 	 */
 	int getTotalMemberCount();
+	int getTotalMemberArtistCount();
 	List<AuthVO> getManageMemberList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
 	List<AuthVO> getManageMemberArtistList(@Param("authName")String authName,@Param("pagingBean")PagingBean pagingBean);
 	

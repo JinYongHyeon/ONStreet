@@ -137,7 +137,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select m.nickname,m.profile,f.following_id
 		from(select row_number() over(order by id asc) as rnum,following_id,id
 		from os_follow where id=#{id} ) f,os_member m
-		where m.id=f.following_id 
+		where m.id=f.following_id and m.remove_user_date is null
 		and rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
 	</select>
 	

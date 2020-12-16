@@ -7,7 +7,6 @@
 	width: 100%;
 }	
 </style>
-
 <div class="container" id="mypage-alink">
   <span id="mypageTitle">Artist Mypage</span>
   <table class="table table-bordered table-sm" id="mypagetable">

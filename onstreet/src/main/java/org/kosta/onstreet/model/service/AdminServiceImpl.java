@@ -62,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public MemberListVO getMemberArtistList(String pageNo) {
-		int memberTotalCount = adminMapper.getTotalMemberCount();
+		int memberTotalCount = adminMapper.getTotalMemberArtistCount();
 		PagingBean pagingBean = null;
 		if(pageNo==null)
 			pagingBean = new PagingBean(memberTotalCount);

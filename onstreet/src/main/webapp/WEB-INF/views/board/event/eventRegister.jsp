@@ -167,7 +167,7 @@
 <div class="container">
 <form action="addEvent.do" method="post" id="addEvent" enctype="multipart/form-data">
 <sec:csrfInput />
-<input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle">
+<input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle" maxlength="30">
 <div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
