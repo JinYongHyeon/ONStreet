@@ -82,6 +82,7 @@ h1 {
 #Mypage img{
 	width: 35%;
     float: left;
+    max-height: 600px;
 }
   #mypage{
   width: 100%;

@@ -308,6 +308,7 @@ public class BoardController {
    @Secured("ROLE_ARTIST")
    @RequestMapping("updateShowForm.do")
    public String updateForm(String showNo, Model model) {
+	  model.addAttribute("today", boardService.getToday());
       model.addAttribute("svo", boardService.getShowDetail(showNo));
       return "board/show/showUpdate.tiles";
    }

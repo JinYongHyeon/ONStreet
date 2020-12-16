@@ -34,8 +34,8 @@ $(document).ready(function() {
 </sec:authorize>
 <th>번호</th>
 <th>제목</th>
-<th>작성일시</th>
 <th>작성자</th>
+<th>작성일시</th>
 </tr>
 </thead>
 <tbody>
@@ -51,9 +51,9 @@ $(document).ready(function() {
 <td align="center">
 ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 </td>
-<td><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
+<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
+<td id="noticeListNickNameTd">${list.memberVO.nickName}</td>
 <td>${list.noticeWriteDate}</td>
-<td>${list.memberVO.nickName}</td>
 </tr>
 </c:forEach>
 </tbody>

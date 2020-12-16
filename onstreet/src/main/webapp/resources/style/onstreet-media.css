@@ -706,6 +706,13 @@
     margin-left: 160px;
     padding-bottom: 5px;
 	}
+	#noticeListNickNameTd{
+	display: revert;
+    width: 62px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	}
 	/***********************************************마이페이지***********************************************/
 	/*마이페이지 타이틀*/
 	#mypageTitle {
