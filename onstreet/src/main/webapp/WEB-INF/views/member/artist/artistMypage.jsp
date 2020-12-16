@@ -143,7 +143,7 @@ function myFunction() {
    	<img src="${pageContext.request.contextPath}/resources/img/profile/default.png">
    	</c:when>
    	<c:otherwise>
-   	<sec:authentication property="principal.memberVO.profile"/>
+   	<img src="<sec:authentication property="principal.memberVO.profile"/>">
    	</c:otherwise>
     </c:choose>
          <div id="btngroup">
@@ -195,7 +195,14 @@ function myFunction() {
 		<sec:authentication property="principal.memberVO.nickName"/>
 		<hr>
         <b>현재온도</b>
-        ${requestScope.map.AVGLIKE}♨
+        	<c:choose>
+		<c:when test="${requestScope.map==null}">
+		🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는 0°C🔥
+		</c:when>
+		<c:otherwise>
+			🔥현재 <sec:authentication property="principal.memberVO.nickName"/>의 온도는	${requestScope.map.AVGLIKE}°C🔥
+		</c:otherwise>
+	</c:choose>
         <hr>
 		<b>팔로워</b>
 		${requestScope.followingTotalCount}명

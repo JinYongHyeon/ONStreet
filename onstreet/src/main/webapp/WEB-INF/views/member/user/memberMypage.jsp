@@ -164,7 +164,7 @@ h1 {
 		<span>팔로잉목록보기</span>
 		<div class="dot"></div>
 	</div>
-	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
+	<div class="btn" onclick="location.href='${pageContext.request.contextPath}/updatePasswordForm.do'">
 		<span>비밀번호수정</span>
 		<div class="dot"></div>
 	</div>
