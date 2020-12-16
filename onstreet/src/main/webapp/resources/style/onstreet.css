@@ -1893,12 +1893,6 @@ input[type=submit] {
 	border-radius: 5px;
 }
 
-#noticeButton_2:hover {
-	background-color: white;
-	border-color: #d03535;
-	color: black;
-}
-
 /*공지사항 상세보기 UI 김수민  */
 #noticeDetail {
 	width: 100%;
@@ -2009,15 +2003,6 @@ input[type=submit] {
 	border-radius: 5px;
 }
 
-#resetButton:hover {
-	background-color: white;
-	color: black;
-}
-
-#submitButton:hover {
-	background-color: white;
-	color: black;
-}
 /*회원정보 수정 UI 김수민  */
 #logoNoticeUpdate{
 	font-size: 40px;
