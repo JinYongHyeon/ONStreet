@@ -9,12 +9,7 @@
 <div class="eventDetailTitle">
 <span id="eventDetailTitle">EVENT</span>
 </div>
-<div class="container con">
-<div class="event">
-<sec:authorize access="hasRole('ROLE_ARTIST')">
-	<a href="${pageContext.request.contextPath}/addEventForm.do">이벤트 등록</a>
-</sec:authorize>
-</div>
+<div class="container">
 <c:forEach var="evo" items="${requestScope.eventVO.eventList}">
 <div class="eventList">
 
@@ -33,6 +28,12 @@
 <span id="eventDate">${evo.eventDate}</span> 
 </div>
 </c:forEach>
+<div class="event">
+<sec:authorize access="hasRole('ROLE_ARTIST')">
+	<a href="${pageContext.request.contextPath}/addEventForm.do">이벤트 등록</a>
+</sec:authorize>
+</div>
+   </div>
 <c:set var="pb" value="${requestScope.eventVO.pagingBean}" />
 <div class="pagingInfo">
    <ul class="pagination">
@@ -56,4 +57,4 @@
    </c:if>
    </ul>          
    </div> 
-   </div>
+

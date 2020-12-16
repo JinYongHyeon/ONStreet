@@ -261,7 +261,11 @@ $(document).ready(function(){
       $("#passwordUpdateForm input[name=passwordChange]"). focus();
       alert("변경될 비밀번호가 일치하지 않습니다.");
       return;
-   }
+   }else if($("#passwordUpdateForm input[name=passwordChange]").val().length<6){
+		alert("변경될 비밀번호를 6자 이상 입력해주세요");
+	    $("#passwordUpdateForm input[name=passwordChange]"). focus();
+		return;
+	}
    $.ajax({
       type:"post",
          url:"updatePassword.do",

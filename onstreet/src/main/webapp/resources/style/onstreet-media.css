@@ -280,8 +280,10 @@
 	}
 	/*이벤트리스트 개개인*/
 	.eventList {
-		width: 350px;
+		width:350px;
 		height: 70px;
+		float:left;
+		margin:30px auto;
 	}
 	.eventList img {
 		width: 100%;
@@ -413,7 +415,7 @@
 	
 	/* 아티스트 상세보기 폰트 */
 	.artistProfile{
-	font-size: inherit;
+	font-size: small;
     text-align: left;
 	}
 	/*********************************************** 아티스트 일정(달력)  ***********************************************/
