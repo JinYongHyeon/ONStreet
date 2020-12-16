@@ -258,11 +258,11 @@ public class TestJUnit {
 		 */
 
 		
-		  String password= "111111";
+		  String password= "1";
 		  
 		  String encoding = passwordEncoder.encode(password);
 		  
-		  MemberVO mvo = new MemberVO(); mvo.setId("zarta1"); mvo.setPassword(encoding);
+		  MemberVO mvo = new MemberVO(); mvo.setId("admin"); mvo.setPassword(encoding);
 		  System.out.println(mm.updatePassword(mvo));
 		 
 		// System.out.println(mvo.getPassword().equals(encoding));
