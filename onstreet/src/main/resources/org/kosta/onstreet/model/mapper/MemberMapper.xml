@@ -196,9 +196,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (SELECT row_number() 
 		over(order by event_check_date desc) as rnum, event_check_date, event_no,
 		event_title, event_image, to_char(event_date,'yyyy"년" mm"월" dd"일"') 
-		as event_date,id FROM os_event)
-		WHERE id=#{id}
-		AND rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
+		as event_date,id FROM os_event WHERE id=#{id})
+		WHERE rnum between #{pagingbean.startRowNumber} and #{pagingbean.endRowNumber} 
  	</select>
  	
  	
