@@ -1241,6 +1241,7 @@ input[type=submit] {
 	margin-left: 150px;
 	text-align: left;
 	margin-top: 50px;
+	word-break: break-all;
 }
 
 /* 아티스트상세보기 공식계정,후원계좌 아이콘이미지*/

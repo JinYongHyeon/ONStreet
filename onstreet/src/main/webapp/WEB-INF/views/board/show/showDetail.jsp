@@ -150,7 +150,7 @@ function move() {
 	      elem.innerHTML = width * 1  + '%';
 	    }
 	  }
-	}
+}
 
 
 </script>

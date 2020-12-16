@@ -151,7 +151,7 @@ alert(today) */
 	<form method="post" action="addShow.do" id="frm" >
 		<sec:csrfInput />
 		<br><br>
-				<input type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="45">
+				<input type="text" name="showTitle" required="required" id="showTitle" placeholder="공연제목" maxlength="35">
 					<div class="mutiPhotoUpload">
 						<div id="mutiPhotoUploadBtn">
 							<button type="button" class="preView" id="test">
