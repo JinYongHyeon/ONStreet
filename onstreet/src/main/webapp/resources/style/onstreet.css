@@ -1372,6 +1372,7 @@ input[type=submit] {
 .eventContent {
 	border: none;
 	background-color: #fff;
+	word-break: break-all;
 }
 .eventContent p img{
 	width:100%;
