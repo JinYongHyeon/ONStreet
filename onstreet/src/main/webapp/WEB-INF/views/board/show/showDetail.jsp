@@ -507,7 +507,7 @@ function move() {
       <div id="div-comment${order.count}" class="showDetailMemberComment">
 <br>
 
-			<form id="commentUpdate" action="deleteComment.do" method="post">
+			<form id="commentUpdate" action="deleteComment.do" method="post" style="float: left; margin-left: 502px;">
 <c:if test="${member.id==cvo.memberVO.id}">
 			<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
@@ -525,13 +525,15 @@ function move() {
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
 				</c:if>
 		</c:if>
+		</form>
+		<form id="commentUpdate" action="deleteComment.do" method="post">
 				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
 				<input type="hidden" name="countNo" value="${order.count}"> 
 				<input type="hidden" name="showNo" value="${svo.showNo}">
-				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+				<input type="submit" id="commentDelete${order.count}" value="삭제">
 				</sec:authorize>
 				</c:if>
 			</form>
