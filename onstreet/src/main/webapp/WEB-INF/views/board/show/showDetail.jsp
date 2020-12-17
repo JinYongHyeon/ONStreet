@@ -456,7 +456,7 @@ function move() {
 		</c:if>
 				<sec:authentication property="Authorities" var="role"/>
 				
-				<c:if test="${role[0]=='ROLE_ADMIN'}">
+				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
