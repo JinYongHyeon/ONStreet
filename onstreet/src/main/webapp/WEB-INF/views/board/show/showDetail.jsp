@@ -151,7 +151,6 @@ function move() {
 	    }
 	  }
 	}
-}
 
 </script>
 <!-- <br><br> -->
