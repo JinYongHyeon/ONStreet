@@ -2045,7 +2045,7 @@ input[type=submit] {
   #mypage .mypageImage{
   	width: 40%;
   	float: left;
-  	max-height :600px;
+  	max-height :none;
   }
   #mypage .mypageContent{
   	width: 40%;

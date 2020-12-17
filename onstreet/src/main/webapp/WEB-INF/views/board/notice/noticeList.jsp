@@ -51,9 +51,19 @@ $(document).ready(function() {
 <td align="center">
 ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 </td>
-<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
+<sec:authentication property="Authorities" var="role"/>
+<c:choose>
+<c:when test="${role[0]!='ROLE_ADMIN'}">
+<td id="noticeListTitleTd1"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
 <td id="noticeListNickNameTd">${list.memberVO.nickName}</td>
 <td>${list.noticeWriteDate}</td>
+</c:when>
+<c:otherwise>
+<td id="noticeListTitleTd2"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
+<td id="noticeListNickNameTd">${list.memberVO.nickName}</td>
+<td id="noticeListDateTd">${list.noticeWriteDate}</td>
+</c:otherwise>
+</c:choose>
 </tr>
 </c:forEach>
 </tbody>

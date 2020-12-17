@@ -25,13 +25,13 @@
 		<td>${requestScope.totalNoticePostCount}</td>
 		<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[0].noticeNo}">${requestScope.nlvo[0].noticeTitle}</a></td>		
 		<td>${requestScope.nlvo[0].memberVO.nickName}</td>		
-		<td></td>
+		<td>${requestScope.nlvo[0].noticeWriteDate}</td>
 		</tr>
 		<tr id="showListTableNotice">
 		<td>${requestScope.totalNoticePostCount-1}</td>
 		<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${requestScope.nlvo[1].noticeNo}">${requestScope.nlvo[1].noticeTitle}</a></td>		
 		<td>${requestScope.nlvo[1].memberVO.nickName}</td>		
-		<td></td>		
+		<td>${requestScope.nlvo[1].noticeWriteDate}</td>		
 		</tr>
 		<%-- </c:forEach> --%>
 		</c:if>
