@@ -758,13 +758,13 @@
 	}
 	#noticeListTitleTd2{
 	display: inline-block;
-		width: 148px;
+		width: 146px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
 	#noticeListDateTd{
-		width: 91px;
+		width: 93px;
 	}
 	/***********************************************마이페이지***********************************************/
 	/*마이페이지 타이틀*/
