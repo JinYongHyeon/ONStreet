@@ -272,8 +272,10 @@ function move() {
 <%-- 댓글 --%>
     <section class="chat-window">
 <c:forEach var="cvo" items="${requestScope.clvo.commentList}" varStatus="order">
+<sec:authentication property="Authorities" var="role"/>
+<c:choose>
 
-<c:if test="${cvo.memberVO.removeUserDate!=null}">
+<c:when test="${cvo.memberVO.removeUserDate!=null}">
 <c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
 <div id="div-comment${order.count}" class="showDetailArtistComment">
@@ -321,9 +323,11 @@ function move() {
 				<input type="button" id="commentUpdate${order.count}" value="수정">
 				</c:otherwise>
 				</c:choose>
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
+				</c:if>
 		</c:if>
-			<%-- 	<sec:authentication property="Authorities" var="role"/> --%>
+				<sec:authentication property="Authorities" var="role"/>
 		
 				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -385,7 +389,9 @@ function move() {
 				<input type="button" id="commentUpdate${order.count}" value="수정">
 				</c:otherwise>
 				</c:choose>
+				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+				</c:if>
 		</c:if>
 				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -401,8 +407,8 @@ function move() {
 </div>
 </c:otherwise>
 </c:choose>
-	</c:if>
-	
+	</c:when>
+	<c:otherwise>
 	<c:if test="${cvo.memberVO.removeUserDate==null}">
 	<c:choose>
 <c:when test="${cvo.memberVO.id==svo.artistVO.memberVO.id}">
@@ -451,11 +457,13 @@ function move() {
 				<input type="button" id="commentUpdate${order.count}" value="수정">
 				</c:otherwise>
 				</c:choose>
+				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
+				</c:if>
 		</c:if>
 				<sec:authentication property="Authorities" var="role"/>
+				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				
-				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 
@@ -515,7 +523,9 @@ function move() {
 				<input type="button" id="commentUpdate${order.count}" value="수정">
 				</c:otherwise>
 				</c:choose>
+				<c:if test="${role[0]!='ROLE_ADMIN'}">
 				<input type="submit" id="commentDelete${order.count}" value="삭제"> 
+				</c:if>
 		</c:if>
 				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -532,7 +542,9 @@ function move() {
 </c:otherwise>
 </c:choose>
 </c:if>
-	
+</c:otherwise>
+
+	</c:choose>	
 </c:forEach> 
       
       
