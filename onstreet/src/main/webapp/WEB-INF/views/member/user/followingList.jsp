@@ -116,6 +116,9 @@
 		
 		
 </script>
+<div class="followListTitle">
+<span id="followListTitle">FOLLOW</span>
+</div>
 <div class="container followlistcheckSection">
 <form action="${pageContext.request.contextPath}/removeFollowing.do" method="post" onsubmit="return check()" name="form" id="followlistform">
 <input type="submit" id="removefollowBtn" style="display:none; opacity: 0" class="btn btn-danger confirm_delete" value="삭제하기" data-original-title>

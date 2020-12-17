@@ -1449,6 +1449,22 @@ input[type=submit] {
 	text-align: center;
 	color: white;
 }
+
+#manageArtistInfo {
+	width: 135px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#manageEventContent p {
+	width: 245px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /*회원관리 삭제,아티스트목록,탈퇴회원목록 선택버튼*/
 #manageMemberBtn input[type=button] {
 	color: white;
@@ -2270,6 +2286,17 @@ input[type=submit] {
 /*회원탈퇴 페이지 ui 끝*/
 
 /*팔로우리스트 ui 정세희*/
+.followListTitle {
+	margin-top: 50px;	
+}
+
+#followListTitle {
+	font-size: 45px;
+    font-weight: bold;
+    margin-left: 900px;
+    border-bottom: 4px solid #d03535;
+}
+
  .followlistcheck ul li {
   display: inline-block;
 }

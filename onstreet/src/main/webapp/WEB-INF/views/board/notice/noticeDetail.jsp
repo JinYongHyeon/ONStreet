@@ -51,7 +51,7 @@ $(document).ready(function() {
 			</div>
 			
 			<br><br>
-<div id="showDetailContentSide" >
+<div id="noticeDetailContentSide" >
 <section class="test">
 						<div>
 			<span>${requestScope.nvo.noticeContent}</span>
