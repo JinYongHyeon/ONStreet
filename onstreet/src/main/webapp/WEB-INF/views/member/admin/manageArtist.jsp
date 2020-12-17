@@ -5,8 +5,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-				
-		
 		$("#checkArtist").click(function() {
 			var flag = false;
 			$(".checkArtist").each(function(){
@@ -42,10 +40,56 @@
 					return;
 				}
 		});//click
-		
+		/*관리자 아티스트 승인 - 아티스트 정보[팝업]보기*/
+		$(document).on("click","#checkArtistForm tbody tr td:nth-child(8)",function(){
+				//애니메이션 검사
+			   if($("#manageArtistInfo").is(":animated")||$("#manageArtistInfo").css("display")=="block")return;
+				$("#manageArtistInfo p").text($(this).text());
+				$("#loginBlind").css("display","block");
+				 $("html").animate({scrollTop:0},1000,function(){
+			         $(this).css("overflow","hidden");
+			      });
+				//아티스트 정보
+				$("#manageArtistInfo").css({"display":"block","top":"50%"});
+				$("#manageArtistInfo").animate({
+					top:"40%",
+					opacity:1
+				},800);
+				//검은배경화면
+				$("#loginBlind").animate({
+					opacity:0.7
+				},800);
+		});
+		$(document).on("click","#manageArtistInfo .manageArtistInfoTitle svg",function(){
+			//애니메이션 검사
+			  if($("#manageArtistInfo").is(":animated"))return;
+			//아티스트 정보
+			$("#manageArtistInfo").animate({
+				top:"30%",
+				opacity:0
+			},800,function(){
+				$(this).css("display","none");
+				$("#manageArtistInfo p").text("");
+			});
+			//검은배경화면
+			$("#loginBlind").animate({
+				opacity:0
+			},800,function(){
+				$(this).css("display","none");
+			});
+		});
 	});//ready
 </script>
-
+<div id="manageArtistInfo">
+	<div class="manageArtistInfoTitle">
+		<h1>아티스트 정보</h1>
+		<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+		  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+		</svg>
+	</div>
+	<p></p>
+</div>
 <br><br>
 <span id="manageFormTitle">MANAGE</span>
 <br>
@@ -102,7 +146,7 @@
 				${avo.memberVO.name}
 				</td>
 				<td>
-				${avo.artistInfo}
+				<span id="manageArtistInfo">${avo.artistInfo}</span>
 				</td>
 			</tr>
 		</c:forEach>

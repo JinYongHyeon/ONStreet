@@ -306,6 +306,7 @@
 		text-align: center;
 		box-shadow: inherit;
 		position: relative;
+		    margin-bottom: 30px;
 	}
 	#eventDetailTitle::before {
 		content: "";
@@ -534,7 +535,7 @@
 	#noticeButton_1 input[type='submit'] {
 		right: 0;
 		margin-left: 20px;
-		margin-right: 30px;
+		margin-right: 10px;
 	}
 	#noticeButton_2 {
 		right: 0;
@@ -556,7 +557,7 @@
 	font-size: 40px;
     font-weight: bolder;
     box-shadow: 0-6px #d03535 inset;
-    margin-left: 160px;
+    margin-left: 132px;
     padding-bottom: 5px;
 	}
 	
@@ -586,6 +587,11 @@
 	#manageFormBtn {
 		width: 100%;
 		margin-bottom: 5px;
+	}
+	/***********************************************관리자페이지 아티스트승인***********************************************/
+	/* 아티스트 정보[팝업]*/
+	#manageArtistInfo{
+		width: 350px;
 	}
 
 	/***********************************************회원가입[관객,아티스트] 선택***********************************************/
@@ -959,5 +965,45 @@
 		/************************************************지윤 main 화살표 안보이기****************************************************/
 		#mainVideo .mainMoveControl span svg {
    display: none;
+}
+	/************************************************지윤 공지사항 상세보기****************************************************/
+#noticeDetailContentSide {
+    width: 100%;
+    word-break: break-all;
+    height: inherit;
+}
+#eventCheckTitle h2 {
+    border-bottom: 4px solid #d03535;
+    width: 54%;
+    margin-left: 81px;
+    margin-bottom: 19px;
+}
+	/************************************************지윤 팔로우 리스트 제목****************************************************/
+#followListTitle {
+	    margin-left: 112px;
+}
+/************************************************지윤 이벤트 승인 현황****************************************************/
+#checkEventTitle {
+	display: inline-block;
+	width: 43px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#checkEventContent {
+	display: inline-block;
+	width: 63px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#eventTitle {
+	display: inline-block;
+	width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 }
