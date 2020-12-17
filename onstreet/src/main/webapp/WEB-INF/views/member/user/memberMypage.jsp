@@ -54,7 +54,7 @@ body {
 	</div>
 	<div class="passUpdateMemberMediaBtn" onclick="location.href='${pageContext.request.contextPath}/updatePasswordForm.do'">
 		<span id="passUpdateMemberMediaBtn">비밀번호수정</span>
-		<div class="dot"></div><br>
+		<div class="dot"></div>
 	</div>
 	<div class="followListMemberMediaBtn" onclick="location.href='${pageContext.request.contextPath}/followingList.do'">
 		<span id="followListMemberMediaBtn">팔로잉목록보기</span>
