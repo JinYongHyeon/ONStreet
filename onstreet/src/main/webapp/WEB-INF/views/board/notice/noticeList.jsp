@@ -51,7 +51,7 @@ $(document).ready(function() {
 <td align="center">
 ${requestScope.totalNoticePostCount-((pb.nowPage-1)*pb.postCountPerPage+status.index)}
 </td>
-<td id="showListTitleTd"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
+<td id="noticeListTitleTd"><a href="getNoticeDetail.do?noticeNo=${list.noticeNo}">${list.noticeTitle}</a></td>
 <td id="noticeListNickNameTd">${list.memberVO.nickName}</td>
 <td>${list.noticeWriteDate}</td>
 </tr>
