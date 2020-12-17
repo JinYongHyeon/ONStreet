@@ -1789,6 +1789,38 @@ input[type=submit] {
 	border: 2px solid #d03535;
 	border-radius: 5px;
 }
+/***********************************************마이페이지***********************************************/
+/*마이페이지[아티스트] 소개글 더보기 버튼*/
+.mypageContent #myBtn{
+	border:none;
+	background-color:inherit;
+	width:100%;
+	text-align: center;
+	position: relative;
+	outline: none;
+}
+.mypageContent #myBtn::before{
+	content:"";
+	width:40%;
+	height: 1px;
+	position: absolute;
+	left:0;
+	top:50%;
+	transform:translate(0,-50%);
+	border:1px dotted #999;
+	z-index: -1;
+}
+.mypageContent #myBtn::after{
+	content:"";
+	width:40%;
+	height: 1px;
+	position: absolute;
+	right:0;
+	top:50%;
+	transform:translate(0,-50%);
+	border:1px dotted #999;
+	z-index: -1;
+}
 /*********************************************** 주석 미정리 내용  ***********************************************/
 
 /* 팔로우리스트 세희 */
@@ -2452,7 +2484,7 @@ input[type=submit] {
 
 #showDetailContentSide {
 	float: left;
-	width: 100%;
+	width: 30%;
 	height: 942px;
 	max-height: 942px;
 	margin-left: 390px;

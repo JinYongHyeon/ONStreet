@@ -324,7 +324,7 @@ function move() {
 				</c:choose>
 				<input type="submit" id="commentDelete${order.count}" value="삭제">
 		</c:if>
-				<sec:authentication property="Authorities" var="role"/>
+			<%-- 	<sec:authentication property="Authorities" var="role"/> --%>
 		
 				<c:if test="${role[0]=='ROLE_ADMIN'}">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">

@@ -28,16 +28,24 @@
 </style> 
 
 <script type="text/javascript">
+window.onload = function(){
+	
+	if(document.getElementById("artistInfoText").offsetHeight<150){
+		document.getElementById("myBtn").style.display="none";	
+	}
+}
 function myFunction() {
 	  var artistInfo = document.getElementById("artistInfo");
 	  var height = document.getElementById("artistInfoText").offsetHeight+40+'px';
 	  var btnText = document.getElementById("myBtn");
 	  if(artistInfo.offsetHeight+'px' === height){
 		  artistInfo.style.height="150px";
-		  btnText.innerHTML = "Read more"; 
+		 // btnText.innerHTML = "Read more"; 
+		  btnText.innerHTML = "MORE"; 
 	  }else{
 		  artistInfo.style.height=height;
-		  btnText.innerHTML = "Read less"; 
+		  //btnText.innerHTML = "Read less"; 
+		  btnText.innerHTML = "LESS"; 
 	  }
 	}
 </script>
@@ -153,7 +161,7 @@ function myFunction() {
 		</span><span id="more"></span></p>
 		
 		</div>
-		<button onclick="myFunction()" id="myBtn">Read more</button>
+		<button onclick="myFunction()" id="myBtn">MORE</button>
 
    
 
