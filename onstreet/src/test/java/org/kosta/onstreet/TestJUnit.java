@@ -267,7 +267,7 @@ public class TestJUnit {
 		  
 		  String encoding = passwordEncoder.encode(password);
 		  
-		  MemberVO mvo = new MemberVO(); mvo.setId("user3"); mvo.setPassword(encoding);
+		  MemberVO mvo = new MemberVO(); mvo.setId("user4"); mvo.setPassword(encoding);
 		  System.out.println(mm.updatePassword(mvo));
 		/*
 		 * String password= "1";

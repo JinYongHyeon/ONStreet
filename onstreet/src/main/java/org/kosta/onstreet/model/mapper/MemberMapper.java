@@ -96,6 +96,12 @@ public interface MemberMapper {
 	 */
 	public int removeMember(ArtistVO avo);
 	
+	/**
+	 *  마이페이지 아티스트 팔로워 수
+	 * @param id
+	 * @return
+	 */
+	int mypagefollowingTotalCount(String id);
 	
 	/**
 	 * 1.팔로잉토탈카운트 - 정세희

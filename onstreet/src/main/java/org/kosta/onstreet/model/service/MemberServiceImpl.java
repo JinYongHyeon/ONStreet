@@ -166,9 +166,11 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
-
+	/**
+	 * 마이페이지 아티스트 팔로워 수 
+	 */
 	public int followingTotalCount(String id) {
-		int followingTotalCount = memberMapper.followingTotalCount(id);
+		int followingTotalCount = memberMapper.mypagefollowingTotalCount(id);
 		return followingTotalCount;
 	}
 	

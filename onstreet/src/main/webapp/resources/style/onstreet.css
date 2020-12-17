@@ -1994,9 +1994,10 @@ input[type=submit] {
 	cursor: pointer;	
 	margin-top: 10px;
     margin-right: 10px;
+	padding:0;
 }
-#btngroup .dot {
-	content: '';
+#btngroup .btn .dot {
+	content:'';
 	position: absolute;
 	top: 0;
 	width: var(--dot-w);
@@ -2005,8 +2006,8 @@ input[type=submit] {
 	transition: all 300ms ease;
 	display: none;
 }
-#btngroup .dot:after {
-	content: '';
+#btngroup .btn .dot::after {
+	content:'';
 	position: absolute;
 	left: calc(50% - .4em);
 	top: -.4em;
@@ -2018,7 +2019,7 @@ input[type=submit] {
 	box-shadow: 0 0 .7em var(--solid),
 				0 0 2em var(--primary);
 }
- .btn:hover .dot, .btn:focus .dot {
+ #btngroup .btn:hover .dot,#btngroup .btn:focus .dot {
 	animation: atom 2s infinite linear;
 	display: block;
 }
@@ -2456,8 +2457,7 @@ input[type=submit] {
     color: white;
     border-block-start-style: none;
 }  
-.buttonSec{
-}
+
 #mypageTitle{
 	width:100%;
 	float:left;
