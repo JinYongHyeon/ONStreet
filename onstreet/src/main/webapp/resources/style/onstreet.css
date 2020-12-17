@@ -1347,6 +1347,7 @@ input[type=submit] {
 /*이벤트리스트 이벤트제목*/
 #eventTitle {
 	font-size: medium;
+	    font-weight: bold;
 }
 
 /*이벤트리스트 이벤트날짠*/
@@ -2029,6 +2030,15 @@ input[type=submit] {
   margin:
   } */
   
+  .artistCheckEventTable {
+  	text-align: center;
+  }
+  
+  .artistCheckEventTable tr th {
+  	color: white;
+  	background-color: #d03535;
+  	text-align: center;
+  }
 
 /* 세희 마이페이지전체ui 끝 */
 
@@ -2440,6 +2450,22 @@ input[type=submit] {
 /* 이벤트승인현황 ui 정세희*/
 .evetext {
 	text-align: right;
+}
+
+#checkEventTitle {
+	display: inline-block;
+	width: 117px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#checkEventContent {
+	display: inline-block;
+	width: 267px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* 이벤트승인현황 ui 끝 정세희*/
 

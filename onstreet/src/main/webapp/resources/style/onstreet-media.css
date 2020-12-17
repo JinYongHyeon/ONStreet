@@ -970,4 +970,28 @@
 #followListTitle {
 	    margin-left: 112px;
 }
+/************************************************지윤 이벤트 승인 현황****************************************************/
+#checkEventTitle {
+	display: inline-block;
+	width: 43px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#checkEventContent {
+	display: inline-block;
+	width: 63px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#eventTitle {
+	display: inline-block;
+	width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 }

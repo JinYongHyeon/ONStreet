@@ -85,7 +85,7 @@ function check(){
   
 
 
-<table class="table">
+<table class=" table artistCheckEventTable">
 <thead>
 <tr>
 	<th>이벤트번호</th>
@@ -106,8 +106,8 @@ function check(){
 <c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
 <tr>
 	<td>${evtlist.eventNo}</td>
-	<td>${evtlist.eventTitle}</td>
-	<td>${evtlist.eventContent}</td>
+	<td><span id="checkEventTitle">${evtlist.eventTitle}</span></td>
+	<td><span id="checkEventContent">${evtlist.eventContent}</span></td>
 	<td>${evtlist.eventDate}</td>
 <!-- null이 아니면 승인 아니면 미승인 -->
 <td>
