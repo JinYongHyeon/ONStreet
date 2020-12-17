@@ -100,7 +100,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<!-- 정지윤 -->
  	<!-- 아티스트 개수 -->
  	<select id="getTotalArtistCount" resultType="int">
-		select count(*) from os_artist where check_date != '0001-01-01'
+		select count(*) from os_artist t,os_member m
+		where t.id=m.id
+		and t.check_date != '0001-01-01' 
+		AND t.check_date is not null
+		and m.remove_user_date is null
+		and m.id != 'admin'
 	</select>
 
  	<!-- 아티스트 리스트 불러오기 -->
@@ -111,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and m.id != 'admin') t, os_auth a
 		where t.id=a.id
 		and a.auth_name='ROLE_ARTIST'
-	      AND rnum between #{startRowNumber} and #{endRowNumber} 
+	     AND rnum between #{startRowNumber} and #{endRowNumber} 
  	</select>
  	
  	<!-- 이벤트 개수 -->

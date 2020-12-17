@@ -37,15 +37,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 정지윤 -->
 	<!-- 회원 수 -->
 	<select id="getTotalMemberCount" resultType="int">
-		select count(*) from os_member where remove_user_date is null and id != 'admin'
+		SELECT count(*) FROM OS_MEMBER WHERE ID IN(     
+           SELECT id FROM(
+            SELECT id,nickname,address,phone,email,name,age FROM OS_MEMBER M
+           WHERE ID NOT IN (SELECT M.ID FROM OS_MEMBER M, OS_ARTIST A WHERE M.ID=A.ID) AND REMOVE_USER_DATE IS NULL
+           )
+            union
+            select m.id
+            from os_member m, os_artist t
+            where m.id=t.id
+            and t.check_date is not null
+            and t.check_date != '0001-01-01'
+            and m.id != 'admin'
+         )
 	</select>
 	
 	<select id="getTotalMemberArtistCount" resultType="int">
-		select count(*) from os_member m,os_auth a 
+		select count(*) from os_member m,os_auth a, os_artist t
 		where m.id=a.id
+		and m.id=t.id
 		and m.remove_user_date is null
 		and a.auth_name='ROLE_ARTIST'
 		and m.id != 'admin'
+		and t.check_date != '0001-01-01'
+		and t.check_date is not null
 	</select>
 	
 	<!-- 탈퇴회원수 -->
@@ -55,13 +70,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원(ROLE_MEMBER) 리스트 불러오기 -->
 	<select id="getManageMemberList" resultMap="memberList" parameterType="map">
-		SELECT m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,a.auth_name
-		FROM (SELECT row_number() over(order by id desc) as rnum,id,nickname,address,phone,email,name,age,
-		remove_user_date FROM os_member WHERE remove_user_date IS NULL) m,os_auth a
-		WHERE m.id=a.id
-		AND a.auth_name=#{authName}
-		AND m.id != 'admin'
-		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
+	       
+ SELECT rnum,m.id,nickname,address,phone,email,name,age,auth_name FROM (
+        SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,id,nickname,address,phone,email,name,age FROM OS_MEMBER WHERE ID IN(     
+           SELECT id FROM(
+            SELECT id,nickname,address,phone,email,name,age FROM OS_MEMBER M
+           WHERE ID NOT IN (SELECT M.ID FROM OS_MEMBER M, OS_ARTIST A WHERE M.ID=A.ID) AND REMOVE_USER_DATE IS NULL
+           )
+            union
+            select m.id
+            from os_member m, os_artist t
+            where m.id=t.id
+            and t.check_date is not null
+            and t.check_date != '0001-01-01'
+            and m.id != 'admin'
+         )
+      )m,os_auth A WHERE rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber}  AND m.id= a.id AND a.auth_name='ROLE_MEMBER'
 	</select>
 	
 		<!-- 회원(ROLE_ARTIST) 리스트 불러오기 -->
@@ -69,8 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select t.id,t.nickname,t.address,t.phone,t.email,t.name,t.age,a.auth_name
 		from(select row_number() over(order by m.id desc) as rnum,m.id,m.nickname,m.address,m.phone,m.email,m.name,m.age,
 		m.remove_user_date from os_member m,os_artist t where m.remove_user_date is null and m.id=t.id and t.check_date is not null
-		AND t.id != 'admin') t, 
-		os_auth a
+		AND t.id != 'admin' AND t.check_date != '0001-01-01') t, os_auth a
 		where t.id=a.id 
 		and a.auth_name=#{authName}
 		AND rnum between #{pagingBean.startRowNumber} and #{pagingBean.endRowNumber} 
