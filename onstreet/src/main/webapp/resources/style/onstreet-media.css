@@ -754,12 +754,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
 	}
-	#noticeListTitleTd{
+	#noticeListTitleTd1{
 	display: inline-block;
 		width: 170px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+	#noticeListTitleTd2{
+	display: inline-block;
+		width: 148px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	#noticeListDateTd{
+		width: 91px;
 	}
 	/***********************************************마이페이지***********************************************/
 	/*마이페이지 타이틀*/
