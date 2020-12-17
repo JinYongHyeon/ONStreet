@@ -844,6 +844,7 @@
     font-size: large;
         word-break: break-all;
             margin-bottom: 30px;
+                margin-top: 23px;
 }
 	#btngroup {
 	display: none;
@@ -912,6 +913,7 @@
 	#mypage .removeMemberMediaBtn {
 	display: block;
     float: left;
+        margin-top: 20px;
 	}
 	#mypage .removeMemberMediaBtn #removeMemberMediaBtn {
 		padding: 10px 16px 10px 16px;
@@ -936,6 +938,7 @@
 	#mypage .followListMemberMediaBtn {
 	display: block;
 	    float: left;
+	        margin-top: 20px;
 	}
 	#mypage .followListMemberMediaBtn #followListMemberMediaBtn{
 	padding: 10px 10px 10px 10px;
