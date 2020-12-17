@@ -4,6 +4,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <script type="text/javascript">
+if($(window).width()<500){
+	alert("관리자페이지는 PC를 이용해 주십시오");
+	location.href="${pageContext.request.contextPath}/home.do";
+}	
 	$(document).ready(function() {
 		$("#checkEvent").click(function() {
 			var flag = false;

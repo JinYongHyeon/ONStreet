@@ -1439,7 +1439,7 @@ input[type=submit] {
 	min-height:600px;
 	background-color:#fff;
 	position: absolute;
-	top:50%;
+	top:60%;
 	left:50%;
 	transform:translate(-50%,-50%);
 	z-index: 5;

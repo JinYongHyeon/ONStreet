@@ -4,6 +4,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <script type="text/javascript">
+if($(window).width()<500){
+	alert("관리자페이지는 PC를 이용해 주십시오");
+	location.href="${pageContext.request.contextPath}/home.do";
+}	
 	$(document).ready(function() {
 		$("#checkArtist").click(function() {
 			var flag = false;
@@ -50,9 +54,9 @@
 			         $(this).css("overflow","hidden");
 			      });
 				//아티스트 정보
-				$("#manageArtistInfopopup").css({"display":"block","top":"50%"});
+				$("#manageArtistInfopopup").css({"display":"block","top":"60%"});
 				$("#manageArtistInfopopup").animate({
-					top:"40%",
+					top:"50%",
 					opacity:1
 				},800);
 				//검은배경화면
@@ -146,7 +150,7 @@
 				${avo.memberVO.name}
 				</td>
 				<td>
-				<span>${avo.artistInfo}</span>
+				<span id="manageArtistInfo">${avo.artistInfo}</span>
 				</td>
 			</tr>
 		</c:forEach>

@@ -55,7 +55,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		if (member == null) {
 			throw new UsernameNotFoundException("회원 아이디가 존재하지 않습니다");
 		}
-		
+		System.out.println(member.getMemberVO().getRemoveUserDate());
 		if(member.getMemberVO().getRemoveUserDate() != null) {
 			throw new UsernameNotFoundException("이미 탈퇴된 회원입니다.");
 		}

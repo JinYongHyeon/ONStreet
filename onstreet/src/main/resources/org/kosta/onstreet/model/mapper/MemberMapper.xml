@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<result column="email" property="memberVO.email"/>
  		<result column="name" property="memberVO.name"/>
  		<result column="age" property="memberVO.age"/>
- 		<result column="remove_user_date" property=" "/>
+ 		<result column="remove_user_date" property="memberVO.removeUserDate"/>
  		<result column="profile" property="memberVO.profile"/>
  	</resultMap>
  	
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	<!-- 로그인-진용현  -->
  	<select id ="login" resultMap="memberList">
- 		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,m.remove_user_date,m.profile,
+ 		SELECT m.id,m.password,m.nickname,m.address,m.phone,m.email,m.name,m.age,TO_CHAR(m.remove_user_date,'YYYY-MM-DD') AS remove_user_date ,m.profile,
 		a.sns,a.account,a.artist_info,TO_CHAR(a.check_date,'YYYY-MM-DD') as checkDate
 		FROM os_member m, os_artist a
 		WHERE m.id = a.id(+) AND m.id=#{value}
