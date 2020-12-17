@@ -1372,6 +1372,7 @@ input[type=submit] {
 .eventContent {
 	border: none;
 	background-color: #fff;
+	word-break: break-all;
 }
 .eventContent p img{
 	width:100%;
@@ -2452,7 +2453,7 @@ input[type=submit] {
 
 #showDetailContentSide {
 	float: left;
-	width: 100%;
+	width: 30%;
 	height: 942px;
 	max-height: 942px;
 	margin-left: 390px;
