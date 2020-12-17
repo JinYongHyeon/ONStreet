@@ -43,15 +43,15 @@
 		/*관리자 아티스트 승인 - 아티스트 정보[팝업]보기*/
 		$(document).on("click","#checkArtistForm tbody tr td:nth-child(8)",function(){
 				//애니메이션 검사
-			   if($("#manageArtistInfo").is(":animated")||$("#manageArtistInfo").css("display")=="block")return;
-				$("#manageArtistInfo p").text($(this).text());
+			   if($("#manageArtistInfopopup").is(":animated")||$("#manageArtistInfopopup").css("display")=="block")return;
+				$("#manageArtistInfopopup p").text($(this).text());
 				$("#loginBlind").css("display","block");
 				 $("html").animate({scrollTop:0},1000,function(){
 			         $(this).css("overflow","hidden");
 			      });
 				//아티스트 정보
-				$("#manageArtistInfo").css({"display":"block","top":"50%"});
-				$("#manageArtistInfo").animate({
+				$("#manageArtistInfopopup").css({"display":"block","top":"50%"});
+				$("#manageArtistInfopopup").animate({
 					top:"40%",
 					opacity:1
 				},800);
@@ -60,11 +60,11 @@
 					opacity:0.7
 				},800);
 		});
-		$(document).on("click","#manageArtistInfo .manageArtistInfoTitle svg",function(){
+		$(document).on("click","#manageArtistInfopopup .manageArtistInfoTitle svg",function(){
 			//애니메이션 검사
 			  if($("#manageArtistInfo").is(":animated"))return;
 			//아티스트 정보
-			$("#manageArtistInfo").animate({
+			$("#manageArtistInfopopup").animate({
 				top:"30%",
 				opacity:0
 			},800,function(){
@@ -80,7 +80,7 @@
 		});
 	});//ready
 </script>
-<div id="manageArtistInfo">
+<div id="manageArtistInfopopup">
 	<div class="manageArtistInfoTitle">
 		<h1>아티스트 정보</h1>
 		<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +146,7 @@
 				${avo.memberVO.name}
 				</td>
 				<td>
-				<span id="manageArtistInfo">${avo.artistInfo}</span>
+				<span>${avo.artistInfo}</span>
 				</td>
 			</tr>
 		</c:forEach>
