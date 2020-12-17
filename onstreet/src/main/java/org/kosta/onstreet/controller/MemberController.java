@@ -245,6 +245,7 @@ public class MemberController {
 	 * 마이페이지[관객,아티스트] - 정세희
 	 * @return
 	 */
+	 @Secured("ROLE_MEMBER")
 	@RequestMapping("mypageForm.do")
 	public ModelAndView mypageForm() {
 		ArtistVO avo=(ArtistVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

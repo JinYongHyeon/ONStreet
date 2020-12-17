@@ -70,6 +70,7 @@ public class BoardController {
     * 
     * @return
     */
+   @Secured("ROLE_ADMIN")
    @GetMapping("addNoticeForm.do")
    public String addNoticeForm() {
       return "board/notice/noticeRegister.tiles";
@@ -98,6 +99,7 @@ public class BoardController {
     * @param noticeNo
     * @return
     */
+   @Secured("ROLE_ADMIN")
    @GetMapping("updateNoticeForm.do")
    public ModelAndView updateNoticeForm(String noticeNo) {
       ModelAndView mv = new ModelAndView();
@@ -445,6 +447,7 @@ public class BoardController {
     * @param request
     * @return
     */
+   @Secured("ROLE_ARTIST")
    @ResponseBody
    @RequestMapping("fileupload.do")
    public ArrayList<String> file_uploader_html5(List<MultipartFile> files, MultipartHttpServletRequest request) {
