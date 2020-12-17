@@ -60,8 +60,9 @@
 		<tr>
 			<th></th>
 			<th>이벤트 번호</th>
-			<th align="center">아티스트명</th>
-			<th align="center">제목</th>
+			<th>아티스트명</th>
+			<th>제목</th>
+			<th>이벤트 내용</th>
 			<th>요청 날짜</th>
 			<th>이벤트 날짜</th>
 		</tr>
@@ -84,6 +85,9 @@
 				</td>
 				<td>
 				${evo.eventTitle}
+				</td>
+				<td>
+				<span id="manageEventContent">${evo.eventContent}</span>
 				</td>
 				<td>
 				${evo.eventWriteDate}

@@ -146,7 +146,7 @@
 				${avo.memberVO.name}
 				</td>
 				<td>
-				${avo.artistInfo}
+				<span id="manageArtistInfo">${avo.artistInfo}</span>
 				</td>
 			</tr>
 		</c:forEach>

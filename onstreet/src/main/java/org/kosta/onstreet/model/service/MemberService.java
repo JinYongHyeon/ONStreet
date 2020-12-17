@@ -139,7 +139,7 @@ public interface MemberService {
 	 * @param id
 	 * @return
 	 */
-	EventListVO artistCheckEventList(String pageNo,String id);
+	EventListVO artistCheckEventList(String id,String pageNo);
 
 
 	

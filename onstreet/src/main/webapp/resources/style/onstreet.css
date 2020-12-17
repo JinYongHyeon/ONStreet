@@ -1347,6 +1347,7 @@ input[type=submit] {
 /*이벤트리스트 이벤트제목*/
 #eventTitle {
 	font-size: medium;
+	    font-weight: bold;
 }
 
 /*이벤트리스트 이벤트날짠*/
@@ -1494,6 +1495,22 @@ input[type=submit] {
 	background-color: #d03535;
 	text-align: center;
 	color: white;
+}
+
+#manageArtistInfo {
+	width: 135px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#manageEventContent p {
+	width: 245px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /*회원관리 삭제,아티스트목록,탈퇴회원목록 선택버튼*/
 #manageMemberBtn input[type=button] {
@@ -2059,6 +2076,15 @@ input[type=submit] {
   margin:
   } */
   
+  .artistCheckEventTable {
+  	text-align: center;
+  }
+  
+  .artistCheckEventTable tr th {
+  	color: white;
+  	background-color: #d03535;
+  	text-align: center;
+  }
 
 /* 세희 마이페이지전체ui 끝 */
 
@@ -2316,6 +2342,17 @@ input[type=submit] {
 /*회원탈퇴 페이지 ui 끝*/
 
 /*팔로우리스트 ui 정세희*/
+.followListTitle {
+	margin-top: 50px;	
+}
+
+#followListTitle {
+	font-size: 45px;
+    font-weight: bold;
+    margin-left: 900px;
+    border-bottom: 4px solid #d03535;
+}
+
  .followlistcheck ul li {
   display: inline-block;
 }
@@ -2408,7 +2445,13 @@ input[type=submit] {
 .progress-bar{
 	line-height: 30px;
 }
-
+#noticeDetailContentSide{
+	float: left;
+	width: 100%;
+	height: 942px;
+	max-height: 942px;
+	word-break: break-all;
+}
 .followlistcheck a{
 	width:100%;
 	padding: 5px 5px;
@@ -2453,6 +2496,22 @@ input[type=submit] {
 /* 이벤트승인현황 ui 정세희*/
 .evetext {
 	text-align: right;
+}
+
+#checkEventTitle {
+	display: inline-block;
+	width: 117px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#checkEventContent {
+	display: inline-block;
+	width: 267px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* 이벤트승인현황 ui 끝 정세희*/
 
