@@ -978,15 +978,7 @@
 /************************************************지윤 이벤트 승인 현황****************************************************/
 #checkEventTitle {
 	display: inline-block;
-	width: 43px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#checkEventContent {
-	display: inline-block;
-	width: 63px;
+	width: 117px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

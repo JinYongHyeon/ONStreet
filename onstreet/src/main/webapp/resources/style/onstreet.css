@@ -1505,13 +1505,6 @@ input[type=submit] {
     text-overflow: ellipsis;
 }
 
-#manageEventContent p {
-	width: 245px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 /*회원관리 삭제,아티스트목록,탈퇴회원목록 선택버튼*/
 #manageMemberBtn input[type=button] {
 	color: white;
@@ -2500,15 +2493,7 @@ input[type=submit] {
 
 #checkEventTitle {
 	display: inline-block;
-	width: 117px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#checkEventContent {
-	display: inline-block;
-	width: 267px;
+	width: 274px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

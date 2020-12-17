@@ -62,7 +62,6 @@
 			<th>이벤트 번호</th>
 			<th>아티스트명</th>
 			<th>제목</th>
-			<th>이벤트 내용</th>
 			<th>요청 날짜</th>
 			<th>이벤트 날짜</th>
 		</tr>
@@ -84,10 +83,7 @@
 				${evo.artistVO.memberVO.nickName}
 				</td>
 				<td>
-				${evo.eventTitle}
-				</td>
-				<td>
-				<span id="manageEventContent">${evo.eventContent}</span>
+				<a href="getEventDetail.do?eventNo=${evo.eventNo}">${evo.eventTitle}</a>
 				</td>
 				<td>
 				${evo.eventWriteDate}

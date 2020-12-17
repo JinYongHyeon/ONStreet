@@ -90,7 +90,6 @@ function check(){
 <tr>
 	<th>이벤트번호</th>
 	<th>이벤트제목</th>
-	<th>이벤트내용</th>
 	<th>이벤트날짜</th>
 	<th>승인상태  <input type="checkbox" id="checkboxBtn2"/></th>
 </tr>
@@ -106,8 +105,7 @@ function check(){
 <c:forEach var="evtlist" items="${requestScope.eventVO.eventList}">
 <tr>
 	<td>${evtlist.eventNo}</td>
-	<td><span id="checkEventTitle">${evtlist.eventTitle}</span></td>
-	<td><span id="checkEventContent">${evtlist.eventContent}</span></td>
+	<td><a href="getEventDetail.do?eventNo=${evtlist.eventNo}"><span id="checkEventTitle">${evtlist.eventTitle}</span></a></td>
 	<td>${evtlist.eventDate}</td>
 <!-- null이 아니면 승인 아니면 미승인 -->
 <td>
