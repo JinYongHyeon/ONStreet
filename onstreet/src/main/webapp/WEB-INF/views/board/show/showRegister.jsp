@@ -111,10 +111,6 @@ alert(today) */
 						});//click
 	});
 </script>
-<div class="showListTitle">
-<span id="showListTitle">SHOW</span>
-</div>
-
 <div id="multipartPreView">
 
 	<div class="preViewImg">
@@ -144,10 +140,8 @@ alert(today) */
 	</form>
 </div>
 
-
-
-<div class="col-sm-2"></div>
-<div class="col-sm-8" id="showRegisterFormDiv">
+<div class="container" id="showRegisterFormDiv">
+<span id="showListTitle">SHOW</span>
 
 	<form method="post" action="addShow.do" id="frm" >
 		<sec:csrfInput />
@@ -170,4 +164,3 @@ alert(today) */
 	</form>
 <br>
 </div>
-<div class="col-sm-2"></div>

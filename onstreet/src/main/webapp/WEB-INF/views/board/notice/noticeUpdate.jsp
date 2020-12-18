@@ -2,9 +2,9 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<br><span id="logoNoticeUpdate">NOTICE</span>
 <form action="updateNotice.do" method="post" id="noticeUpdate">
 <div class="container">
+<span id="logoNoticeUpdate">NOTICE</span>
 
 <sec:csrfInput/>
 <input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="updateTitle" maxlength="30"> 

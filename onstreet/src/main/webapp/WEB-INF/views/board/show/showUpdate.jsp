@@ -125,9 +125,7 @@ var oEditors = [];
 	});
 </script>
 
-<div class="showListTitle">
-<span id="showListTitle">SHOW</span>
-</div>
+
 
 <div id="multipartPreView">
 	<div class="preViewImg">
@@ -160,8 +158,8 @@ var oEditors = [];
 
 
 <c:set var="svo" value="${requestScope.svo}" />
-<div class="col-sm-2"></div>
-<div class="col-sm-8" id="showUpdateFormDiv">
+<div class="container" id="showUpdateFormDiv">
+<span id="showListTitle">SHOW</span>
 	<form action="updateShow.do" method="post" id="frm">
 		<input type="hidden" name="showNo" value="${svo.showNo}">
 		<sec:csrfInput />
@@ -194,4 +192,3 @@ var oEditors = [];
 	</form>
 
 </div>
-<div class="col-sm-2"></div>

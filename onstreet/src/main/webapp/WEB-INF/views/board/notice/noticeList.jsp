@@ -18,10 +18,8 @@ $(document).ready(function() {
 	});//click
 });//ready
 </script>
-<div class="showListTitle">
-<span id="showListTitle">NOTICE</span>
-</div>
 <div class="container">
+<span id="showListTitle">NOTICE</span>
 <form action="deleteNotice.do" method="post" id="deleteNoticecheckForm">
 <sec:csrfInput/>
 

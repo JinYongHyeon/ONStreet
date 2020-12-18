@@ -81,7 +81,7 @@ function check(){
 
 
 <div class="container">
-  <span id="eventCheckTitle"><h2>이벤트승인현황</h2></span>
+  <span id="eventCheckTitle">이벤트승인현황</span>
   
 
 

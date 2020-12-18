@@ -154,11 +154,9 @@ function move() {
 
 </script>
 <!-- <br><br> -->
-<div class="showListTitle">
-<span id="showListTitle">SHOW</span>
-</div>
 <c:set var="svo" value="${requestScope.svo}" />
 <div class="container">
+<span id="showListTitle">SHOW</span>
 <sec:authentication property="principal.memberVO" var="member"/>
 			<h1>${svo.showTitle}</h1><hr>
 				<div id="showDetailProfile"><img class="user-img" id="showDetailProfileImg" src="${pageContext.request.contextPath}/resources/img/profile/${svo.artistVO.memberVO.profile}" width="35px"></div>

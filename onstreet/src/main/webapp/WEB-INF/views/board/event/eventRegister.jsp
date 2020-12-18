@@ -133,8 +133,8 @@
 	});
 </script>
 <body>
-<br><br>
-<span id="eventDetailTitle">EVENT</span> <br><br><br>
+
+
 
 <div id="multipartPreView">
 
@@ -165,6 +165,7 @@
 	</form>
 </div>
 <div class="container">
+<span id="eventDetailTitle">EVENT</span> 
 <form action="addEvent.do" method="post" id="addEvent" enctype="multipart/form-data">
 <sec:csrfInput />
 <input type="text" name="eventTitle" placeholder="제목을 입력하세요" required="required" id="eventTitle" maxlength="30">

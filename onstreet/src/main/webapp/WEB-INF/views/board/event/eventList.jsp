@@ -6,10 +6,9 @@
 
 <jsp:useBean id="toDay" class="java.util.Date" />
 <fmt:formatDate value='${toDay}' pattern='yyyy년 MM월 dd일' var="nowDate"/>
-<div class="eventDetailTitle">
-<span id="eventDetailTitle">EVENT</span>
-</div>
 <div class="container">
+<span id="eventDetailTitle">EVENT</span>
+<div id="eventListForm">
 <c:forEach var="evo" items="${requestScope.eventVO.eventList}">
 <div class="eventList">
 
@@ -52,6 +51,7 @@
    </c:choose>
 
    </c:forEach>
+  </div>
    <c:if test="${pb.nextPageGroup}">   
    <li><a href="${pageContext.request.contextPath}/getEventList.do?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
    </c:if>

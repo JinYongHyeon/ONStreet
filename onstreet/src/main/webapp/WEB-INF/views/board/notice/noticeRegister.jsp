@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <form action="addNotice.do" method="post" id="noticeRegister">
-<br><span id="register">NOTICE</span>
 <div class="container">
+<span id="register">NOTICE</span>
 <sec:csrfInput/>
 <input type="text" name="noticeTitle" placeholder="제목을 입력하세요" required="required" id="registerNoticeTitle" maxlength="30">
 <textarea rows="10" cols="70"  name="noticeContent" required="required" id="content" placeholder="공지사항의 내용을 입력하세요">

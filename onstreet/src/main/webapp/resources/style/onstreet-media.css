@@ -451,7 +451,31 @@
 		padding-top: 0;
 		padding-bottom: 0;
 	}
-
+	/*********************************************** 공연등록 ***********************************************/
+	#frm{
+		width:93%;
+	}
+	/* 공연등록 공연제목 폼  */
+	#showTitle {
+	width: 100%;
+	}
+	/* 공연등록,수정 공여내용 폼 안에 사진등록 */
+	.mutiPhotoUpload{
+	width: 100%;
+	border-right: solid 1px #b5b5b5;
+	}
+	/* 공연등록 날짜 */
+	#showRegisterShowDate{
+	width: 100% 
+	}
+	/* 공연 수정 제목 */
+	#postTitle{
+	width: 100%;
+	}
+	/* 공연 수정 날짜 */
+	#showUpdateShowDate{
+	width: 100%
+	}
 	/*********************************************** 공연 리스트 ***********************************************/
 	/* 공연리스트 -  타이틀 */
 	#showListTitle {
@@ -494,6 +518,29 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+	/***********************************************공연상세보기***********************************************/
+	
+	/* 공연상세보기 공연내용 */
+	#showDetailContentSide {
+		margin-left: 60px;
+		width: 76%;
+	    word-break: break-all;
+	    height: inherit;
+	}
+	/* 공연상세보기 댓글 */
+	#showDetailCommentSide{
+		margin-left: 60px; width: 76%;
+		    height: inherit;
+	}
+	/* 공연리스트 상세보기 수정삭제 버튼 */
+	#showDetailUpdateDeleteDiv{
+	margin-bottom: 15px;
+	}
+	/* 공연상세보기 댓글 */
+	#showDetailCommentSide {
+	width: 76%;
+    margin-left: 60px;
 	}
 	/*********************************************** 페이징 ***********************************************/
 	/* 페이징 */
@@ -543,22 +590,6 @@
 	/*공지사항 상세 제목*/
 	#noticeTitle{
 		font-size:24px;
-	}
-	/* 공지사항 등록 타이틀 */
-	#register {
-	font-size: 40px;
-	font-weight: bolder;
-	box-shadow: 0 -6px #d03535 inset;
-	margin-left: 160px;
-	padding-bottom: 5px;
-	}
-	/* 공지사항수정 타이틀 */
-	#logoNoticeUpdate{
-	font-size: 40px;
-    font-weight: bolder;
-    box-shadow: 0-6px #d03535 inset;
-    margin-left: 132px;
-    padding-bottom: 5px;
 	}
 	
 	/***********************************************관리자 페이지***********************************************/
@@ -645,61 +676,15 @@
 	#passwordUpdate{
 		width:90%;
 	}
-	/***********************************************공연상세보기***********************************************/
-	
-	/* 공연상세보기 공연내용 */
-	#showDetailContentSide {
-		margin-left: 60px;
-		width: 76%;
-	    word-break: break-all;
-	    height: inherit;
-	}
-	/* 공연상세보기 댓글 */
-	#showDetailCommentSide{
-		margin-left: 60px; width: 76%;
-		    height: inherit;
-	}
-	/* 공연등록 공연제목 폼  */
-	#showTitle {
-	width: 100%;
-	}
-	/* 공연등록 내용 폼 */
-	#showRegisterFormDiv{
-	margin-left: 0px
-	}
-	/* 공연등록,수정 공여내용 폼 안에 사진등록 */
-	.mutiPhotoUpload{
-	width: 100%;
-	border-right: solid 1px #b5b5b5;
-	}
-	/* 공연등록 날짜 */
-	#showRegisterShowDate{
-	width: 100% 
-	}
-	/* 공연 수정 내용 폼 */
-	#showUpdateFormDiv{
-	margin-left: 0px
-	}
-	/* 공연 수정 제목 */
-	#postTitle{
-	width: 100%;
-	}
-	/* 공연 수정 날짜 */
-	#showUpdateShowDate{
-	width: 100%
-	}
-	/* 공연리스트 상세보기 수정삭제 버튼 */
-	#showDetailUpdateDeleteDiv{
-	margin-bottom: 15px;
-	}
-	/* 공연상세보기 댓글 */
-	#showDetailCommentSide {
-	width: 76%;
-    margin-left: 60px;
+	/***********************************************네이버에디터***********************************************/
+	/*네이버에디터 대신 버튼*/
+	.mutiPhotoUpload #mutiPhotoUploadBtn{
+		right:0;
 	}
 	/***********************************************이벤트 등록***********************************************/
 	/* 이벤트 등록 폼 */
 	#addEvent{
+	width:100%;
 	margin-left: 0px
 	}
 	/* 이벤트 등록 안에 제목 */
@@ -717,17 +702,10 @@
     width: 67%;
 	}
 	
-	#addEvent input[type=button] {
-   margin-right: 0;
-}
 	/***********************************************공지사항***********************************************/
 	/* 공지사항 타이틀 */
-	#register {
-	font-size: 40px;
-	font-weight: bolder;
-	box-shadow: 0 -6px #d03535 inset;
-	margin-left: 160px;
-	padding-bottom: 5px;
+	#register::before {
+	   width:36%;
 	}
 	/* 공연상세보기 댓글 */
 	#showDetailCommentSide {
@@ -735,12 +713,8 @@
     margin-left: 60px;
 	}
 	/* 공지사항 타이틀 */
-	#logoNoticeUpdate{
-	font-size: 40px;
-    font-weight: bolder;
-    box-shadow: 0-6px #d03535 inset;
-    margin-left: 160px;
-    padding-bottom: 5px;
+	#logoNoticeUpdate::before{
+		width:36%;
 	}
 	#noticeListNickNameTd{
 	display: revert;
@@ -767,6 +741,10 @@
 		width: 93px;
 	}
 	/***********************************************마이페이지***********************************************/
+	/*마이페이지*/
+	#mypage{
+		float:inherit;
+	}
 	/*마이페이지 타이틀*/
 	#mypageTitle {
 		width: 100%;
