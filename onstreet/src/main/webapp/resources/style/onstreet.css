@@ -567,6 +567,7 @@ input[type=submit] {
 
 /* 오늘의 공연 슬라이드 리스트 아티스트 소개글*/
 #todayShow .artistShow .artistShowList li .todayShowInfo {
+	width:100%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -902,11 +903,11 @@ input[type=submit] {
 
 #registerTitle h1::before {
 	content: "";
-	width: 7%;
-	height: 2px;
+	width: 10%;
+	height: 3px;
 	background-color: #d03535;
 	position: absolute;
-	bottom: -10px;
+	bottom:-5px;
 	left: 50%;
 	transform: translate(-50%, 0);
 }
@@ -2190,8 +2191,8 @@ float: inherit;/*  margin-left: 272px; */
 
 #mypageTitle::before{
 	content:"";
-	width:23%;
-	height: 5px;
+	width:14%;
+	height: 3px;
 	background-color:#d03535;
 	position: absolute;
 	bottom:-1%;
