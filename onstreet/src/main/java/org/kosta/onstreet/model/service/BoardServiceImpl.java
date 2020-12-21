@@ -356,13 +356,13 @@ public class BoardServiceImpl implements BoardService {
 			Iterator<String> iterator = addArtistList.iterator();
 			//추천 아티스트 가져오기
 			while(iterator.hasNext()) {
-				if(artistList.size()==9)break;
+				if(artistList.size()==max)break;
 				artistList.add(boardMapper.getArtistRecommendationList(iterator.next()));
 			}
 		}else {
 			//추천 아티스트 가져오기
 			for(String id : artistIdList) {
-				if(artistList.size()==9)break;
+				if(artistList.size()==max)break;
 				artistList.add(boardMapper.getArtistRecommendationList(id));
 			}
 		}

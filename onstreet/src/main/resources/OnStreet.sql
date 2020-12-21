@@ -163,9 +163,4 @@ INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','admin');
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_ARTIST','admin');
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_ADMIN','admin');
 
-select * from os_event 
-
-select * from os_follow
-
-delete from os_follow
 
