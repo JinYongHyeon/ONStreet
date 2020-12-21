@@ -505,7 +505,7 @@ function move() {
       <div id="div-comment${order.count}" class="showDetailMemberComment">
 <br>
 
-			<form id="commentUpdate" action="deleteComment.do" method="post" style="float: left; margin-left: 502px;">
+			<form id="commentUpdate" action="deleteComment.do" method="post">
 <c:if test="${member.id==cvo.memberVO.id}">
 			<sec:csrfInput/>
 				<input type="hidden" name="commentNo" value="${cvo.commentNo}"> 

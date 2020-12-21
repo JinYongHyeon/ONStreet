@@ -410,8 +410,6 @@ public class BoardController {
    @Secured("ROLE_MEMBER")
    @PostMapping("deleteComment.do")
    public String deleteComment(String commentNo, String showNo, RedirectAttributes ra) {
-	   System.out.println(commentNo);
-	   System.out.println(showNo);
       boardService.deleteComment(commentNo);
       ra.addAttribute("showNo", showNo);
       return "redirect:getShowDetail.do";
