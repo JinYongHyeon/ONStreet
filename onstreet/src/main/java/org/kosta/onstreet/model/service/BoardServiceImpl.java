@@ -340,7 +340,7 @@ public class BoardServiceImpl implements BoardService {
 		List<String> artistIdList = boardMapper.getArtistRecommendation();
 		List<MemberVO> artistList = new ArrayList<MemberVO>();
 		int max= 9;
-		if (artistIdList.size() < max) {
+		if (artistIdList.size() <= max) {
 			LinkedHashSet<String> addArtistList = new LinkedHashSet<String>();
 			// 추천 아티스트
 			for (String id : artistIdList) {
@@ -356,15 +356,16 @@ public class BoardServiceImpl implements BoardService {
 			Iterator<String> iterator = addArtistList.iterator();
 			//추천 아티스트 가져오기
 			while(iterator.hasNext()) {
+				if(artistList.size()==9)break;
 				artistList.add(boardMapper.getArtistRecommendationList(iterator.next()));
 			}
 		}else {
 			//추천 아티스트 가져오기
 			for(String id : artistIdList) {
+				if(artistList.size()==9)break;
 				artistList.add(boardMapper.getArtistRecommendationList(id));
 			}
 		}
-
 		return artistList;
 	}
 	

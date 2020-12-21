@@ -254,7 +254,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (SELECT ROW_NUMBER() OVER(order by id asc) AS rnum, id,count(show_no) AS TOTALSHOW , 
 		ROUND((SUM(show_like)/2)/count(show_no),1) AS AVGLIKE , SUM(show_like) AS TOTALLIKE FROM os_show
 		GROUP BY id)s, os_member m,os_artist a
-		WHERE rnum between 1 and 9 and s.id = m.id AND m.remove_user_date IS NULL AND s.id = a.id AND a.check_date IS NOT NULL AND s.id NOT IN ('admin')
+		WHERE s.id = m.id AND m.remove_user_date IS NULL AND s.id = a.id AND a.check_date IS NOT NULL AND s.id NOT IN ('admin')
 		ORDER BY avglike DESC
  	</select>
  	
