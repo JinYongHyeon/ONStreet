@@ -2613,13 +2613,31 @@ margin-top: 43px;
 .followListTitle {
 	margin-top: 50px;	
 }
-
 #followListTitle {
-	font-size: 45px;
-    font-weight: bold;
-    margin-left: 900px;
-    border-bottom: 4px solid #d03535;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	text-align: center;
+	box-shadow: inherit;
+	position: relative;
+    font-size: 40px;
+	font-weight: bolder;
+	margin-top:45px;
+	margin-bottom:35px;
+
 }
+#followListTitle::before {
+	content: "";
+	width: 9%;
+	height: 3px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	background-color: #d03535;
+	bottom: 4%;
+}
+
+
 /*내팔로우 리스트 팔로우 체크박스*/
 .followlistcheck{
     width: 100%;
