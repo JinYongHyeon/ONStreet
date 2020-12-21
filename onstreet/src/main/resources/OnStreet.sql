@@ -157,7 +157,7 @@ alter table os_show drop column show_img
 
 
 INSERT INTO os_member(id,password,nickname,address,phone,email,name,age,profile) 
-VALUES('admin','1234','펭수','판교','01023451234','bit@gmail.com','펭귄','1997-01-01',NULL);
+VALUES('admin','1','관리자','판교','00000000000','bit@gmail.com','관리자','1994-04-07',NULL);
 INSERT INTO os_artist(id,sns,account,artist_info,check_date) VALUES('admin','instagram','2222223141','하이루',sysdate); 
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_MEMBER','admin');
 INSERT INTO os_auth(auth_name,id) VALUES('ROLE_ARTIST','admin');

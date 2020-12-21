@@ -1656,7 +1656,23 @@ input[type=submit] {
 	background-color: #ec971f;
 	color: white;
 }
-
+ #commentUpdate{
+float: inherit;/*  margin-left: 272px; */
+}
+/*	
+#commentUpdate2 input[type=button] {
+	border: 2px solid #eea236;
+	border-radius: 5px;
+	background-color: #ec971f;
+	color: white;
+}
+#commentUpdate2 input[type=submit] {
+	border: 2px solid #d03535;
+	border-radius: 5px;
+	background-color: #d03535;
+	color: white;
+	color: white;
+} */
 #commentUpdate input[type=submit] {
 	border: 2px solid #d03535;
 	border-radius: 5px;
